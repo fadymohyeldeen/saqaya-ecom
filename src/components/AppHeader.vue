@@ -1,8 +1,7 @@
 <template>
   <header class="header">
     <div class="header__container">
-      <div class="header__logo">Exclusive</div>
-
+      <router-link to="/" class="header__logo">Exclusive</router-link>
       <nav class="header__nav" :class="{ 'header__nav--open': menuOpen }">
         <router-link to="/" @click.native="menuOpen = false">Home</router-link>
         <router-link to="/contact" @click.native="menuOpen = false"
@@ -77,6 +76,7 @@
   letter-spacing: 0.03em;
   color: #000000;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .header__nav {

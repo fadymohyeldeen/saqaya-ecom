@@ -11,18 +11,36 @@ const routes = [
     component: HomeView,
   },
   {
-    path: "/about",
+    path: "/products",
+    name: "products",
+    component: () => import("../views/ProductsView.vue"),
+  },
+  {
+    path: "/product/:id",
+    name: "product",
+    component: () => import("../views/SingleProductView.vue"),
+  },
+  {
+    path: "/about-us",
     name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    component: () => import("../views/AboutView.vue"),
+  },
+  {
+    path: "/contact",
+    name: "contact",
+    component: () => import("../views/ContactView.vue"),
+  },
+  {
+    path: "*",
+    name: "not-found",
+    component: () => import("../views/NotFoundView.vue"),
   },
 ];
 
 const router = new VueRouter({
   mode: "history",
+  // hash mode: better performance but looks ugly and not SEO friendly.
+  // history mode: looks clean and SEO friendly but requires server config (in dev vite/vue-cli handles it, config only needed in prod or it will return 404 on refresh)
   base: process.env.BASE_URL,
   routes,
 });
