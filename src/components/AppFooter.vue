@@ -8,7 +8,7 @@
         <p class="footer__text">Get 10% off your first order</p>
         <div class="footer__input-wrap">
           <input type="email" placeholder="Enter your email" />
-          <img src="@/assets/arrow.svg" alt="Arrow Icon" />
+          <img src="@/assets/footer-icons/arrow.svg" alt="Arrow Icon" />
         </div>
       </div>
 
@@ -53,29 +53,32 @@
         </p>
         <div class="footer__app">
           <div class="footer__qr">
-            <img src="@/assets/qr.svg" alt="QR Code" />
+            <img src="@/assets/footer-icons/qr.svg" alt="QR Code" />
           </div>
           <div class="footer__stores">
             <div class="footer__store">
-              <img src="@/assets/google-play.svg" alt="Google Play" />
+              <img
+                src="@/assets/footer-icons/google-play.svg"
+                alt="Google Play"
+              />
             </div>
             <div class="footer__store">
-              <img src="@/assets/app-store.svg" alt="App Store" />
+              <img src="@/assets/footer-icons/app-store.svg" alt="App Store" />
             </div>
           </div>
         </div>
         <div class="footer__socials">
           <a href="#" aria-label="Facebook">
-            <img src="@/assets/facebook.svg" alt="Facebook" />
+            <img src="@/assets/footer-icons/facebook.svg" alt="Facebook" />
           </a>
           <a href="#" aria-label="Twitter">
-            <img src="@/assets/twitter.svg" alt="Twitter" />
+            <img src="@/assets/footer-icons/twitter.svg" alt="Twitter" />
           </a>
           <a href="#" aria-label="Instagram">
-            <img src="@/assets/instagram.svg" alt="Instagram" />
+            <img src="@/assets/footer-icons/instagram.svg" alt="Instagram" />
           </a>
           <a href="#" aria-label="LinkedIn">
-            <img src="@/assets/linkedin.svg" alt="LinkedIn" />
+            <img src="@/assets/footer-icons/linkedin.svg" alt="LinkedIn" />
           </a>
         </div>
       </div>
@@ -312,8 +315,6 @@
   }
 }
 </style>
-
-<!--------------------------------->
 
 <script>
 export default {

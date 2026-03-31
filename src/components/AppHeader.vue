@@ -220,8 +220,6 @@
 }
 </style>
 
-<!--------------------------------->
-
 <script>
 export default {
   name: "AppHeader",
