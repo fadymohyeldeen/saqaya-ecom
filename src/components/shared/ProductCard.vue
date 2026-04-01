@@ -257,9 +257,6 @@
 <script>
 export default {
   name: "ProductCard",
-  data() {
-    return {};
-  },
   props: {
     id: {
       type: Number,
