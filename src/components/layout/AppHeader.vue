@@ -52,7 +52,7 @@
 <style scoped>
 .header {
   width: 100%;
-  background: #ffffff;
+  background: var(--color-bg);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
@@ -60,9 +60,9 @@
 }
 
 .header__container {
-  max-width: 1440px;
+  max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 0 135px;
+  padding: 0 var(--container-padding);
   height: 80px;
   display: flex;
   align-items: center;
@@ -70,11 +70,11 @@
 }
 
 .header__logo {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-heading);
   font-weight: 700;
   font-size: 24px;
   letter-spacing: 0.03em;
-  color: #000000;
+  color: var(--color-text);
   cursor: pointer;
   text-decoration: none;
 }
@@ -85,10 +85,10 @@
 }
 
 .header__nav a {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-weight: 400;
   font-size: 16px;
-  color: #000000;
+  color: var(--color-text);
   text-decoration: none;
 }
 
@@ -107,10 +107,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  background: #f5f5f5;
-  border-radius: 4px;
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
   padding: 7px 12px 7px 20px;
-  width: 243px;
+  width: var(--search-width);
   height: 38px;
 }
 
@@ -119,9 +119,9 @@
   min-width: 0;
   border: none;
   background: transparent;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-size: 12px;
-  color: #000000;
+  color: var(--color-text);
   outline: none;
 }
 
@@ -155,14 +155,14 @@
   display: block;
   width: 100%;
   height: 2px;
-  background: #000000;
+  background: var(--color-text);
   border-radius: 2px;
 }
 
 /* Tablet: 768px - 1024px */
 @media (max-width: 1024px) {
   .header__container {
-    padding: 0 40px;
+    padding: 0 var(--container-padding-tablet);
   }
 
   .header__search {
@@ -177,7 +177,7 @@
 /* Mobile: < 768px */
 @media (max-width: 768px) {
   .header__container {
-    padding: 0 16px;
+    padding: 0 var(--container-padding-mobile);
     height: 60px;
     position: relative;
   }
@@ -192,7 +192,7 @@
     top: 60px;
     left: 0;
     right: 0;
-    background: #ffffff;
+    background: var(--color-bg);
     flex-direction: column;
     gap: 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);

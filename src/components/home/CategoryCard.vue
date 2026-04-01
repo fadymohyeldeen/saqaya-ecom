@@ -3,8 +3,8 @@
   <div class="category-card" :class="{ 'category-card--active': active }">
     <div class="category-card__icon">
       <component :is="icons[name]" />
+      <!-- looks up icons[name] in the icons object in data() finds it by name as an index-->
     </div>
-
     <span class="category-card__name">{{ name }}</span>
   </div>
 </template>
@@ -12,10 +12,10 @@
 <style scoped>
 .category-card {
   box-sizing: border-box;
-  width: 170px;
-  height: 145px;
+  width: var(--category-card-width);
+  height: var(--category-card-height);
   border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,7 +27,7 @@
 
 .category-card:hover,
 .category-card--active {
-  background: #db4444;
+  background: var(--color-primary);
   border: none;
   box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.05);
 }
@@ -38,26 +38,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #000000;
+  color: var(--color-text);
 }
 
 .category-card:hover .category-card__icon,
 .category-card--active .category-card__icon {
-  color: #ffffff;
+  color: var(--color-primary-light);
 }
 
 .category-card__name {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #000000;
+  color: var(--color-text);
   text-align: center;
 }
 
 .category-card:hover .category-card__name,
 .category-card--active .category-card__name {
-  color: #fafafa;
+  color: var(--color-text-light);
 }
 
 /* Responsive */

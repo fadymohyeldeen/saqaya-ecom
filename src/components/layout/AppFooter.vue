@@ -89,15 +89,15 @@
 
 <style scoped>
 .footer {
-  background: #000000;
-  color: #fafafa;
+  background: var(--color-bg-footer);
+  color: var(--color-text-light);
   padding: 80px 0 0;
 }
 
 .footer__container {
-  max-width: 1440px;
+  max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 0 135px;
+  padding: 0 var(--container-padding);
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -126,29 +126,29 @@
 }
 
 .footer__logo {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-heading);
   font-weight: 700;
   font-size: 24px;
   letter-spacing: 0.03em;
-  color: #fafafa;
+  color: var(--color-text-light);
   margin-bottom: 24px;
 }
 
 .footer__heading {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-weight: 500;
   font-size: 20px;
   line-height: 28px;
-  color: #fafafa;
+  color: var(--color-text-light);
   margin-bottom: 24px;
 }
 
 .footer__text {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #fafafa;
+  color: var(--color-text-light);
   margin-bottom: 16px;
 }
 
@@ -161,8 +161,8 @@
 .footer__input-wrap {
   display: flex;
   align-items: center;
-  border: 1.5px solid #fafafa;
-  border-radius: 4px;
+  border: 1.5px solid var(--color-text-light);
+  border-radius: var(--radius-sm);
   padding: 12px 16px;
   gap: 30px;
   width: 217px;
@@ -175,13 +175,13 @@
   background: transparent;
   border: none;
   outline: none;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-size: 16px;
-  color: #fafafa;
+  color: var(--color-text-light);
 }
 
 .footer__input-wrap input::placeholder {
-  color: #fafafa;
+  color: var(--color-text-light);
   opacity: 0.4;
 }
 
@@ -199,11 +199,11 @@
 
 .footer__list li,
 .footer__list a {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #fafafa;
+  color: var(--color-text-light);
   text-decoration: none;
 }
 
@@ -221,14 +221,14 @@
 .footer__qr {
   width: 80px;
   height: 80px;
-  background: #ffffff;
-  color: #000000;
+  background: var(--color-bg);
+  color: var(--color-text);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  font-family: "Poppins", sans-serif;
-  border-radius: 4px;
+  font-family: var(--font-body);
+  border-radius: var(--radius-sm);
 }
 
 .footer__stores {
@@ -262,10 +262,10 @@
 }
 
 .footer__bottom p {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-size: 16px;
   font-weight: 400;
-  color: #fafafa;
+  color: var(--color-text-light);
   opacity: 0.3;
   padding-bottom: 24px;
 }
@@ -273,7 +273,7 @@
 /* Tablet */
 @media (max-width: 1024px) {
   .footer__container {
-    padding: 0 40px;
+    padding: 0 var(--container-padding-tablet);
     gap: 40px;
     flex-wrap: wrap;
   }
@@ -294,7 +294,7 @@
   }
 
   .footer__container {
-    padding: 0 16px;
+    padding: 0 var(--container-padding-mobile);
     gap: 32px;
     flex-direction: column;
   }

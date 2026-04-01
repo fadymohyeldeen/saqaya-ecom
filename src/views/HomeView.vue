@@ -233,9 +233,9 @@
 
 <style scoped>
 .home {
-  max-width: 1440px;
+  max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 40px 135px;
+  padding: 40px var(--container-padding);
 }
 
 .home__section {
@@ -257,24 +257,24 @@
   display: block;
   width: 20px;
   height: 40px;
-  background: #db4444;
-  border-radius: 4px;
+  background: var(--color-primary);
+  border-radius: var(--radius-sm);
 }
 
 .home__section-label {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-weight: 600;
   font-size: 16px;
-  color: #db4444;
+  color: var(--color-primary);
 }
 
 .home__section-title {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-heading);
   font-weight: 600;
   font-size: 36px;
   line-height: 48px;
   letter-spacing: 0.04em;
-  color: #000000;
+  color: var(--color-text);
 }
 
 .home__products-scroll {
@@ -310,7 +310,7 @@
 .home__divider {
   width: 100%;
   height: 1px;
-  background: #000000;
+  background: var(--color-text);
   opacity: 0.3;
   margin: 60px 0;
 }
@@ -326,12 +326,12 @@
   align-items: center;
   justify-content: center;
   padding: 16px 48px;
-  background: #db4444;
-  color: #fafafa;
-  font-family: "Poppins", sans-serif;
+  background: var(--color-primary);
+  color: var(--color-text-light);
+  font-family: var(--font-body);
   font-weight: 500;
   font-size: 16px;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   text-decoration: none;
   transition: opacity 0.3s ease;
 }
@@ -357,26 +357,26 @@
 }
 
 .home__service-text h3 {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-weight: 600;
   font-size: 20px;
   line-height: 28px;
-  color: #000000;
+  color: var(--color-text);
   margin-bottom: 8px;
 }
 
 .home__service-text p {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
-  color: #000000;
+  color: var(--color-text);
 }
 
 /* Tablet */
 @media (max-width: 1024px) {
   .home {
-    padding: 40px;
+    padding: 40px var(--container-padding-tablet);
   }
 
   .home__services {
@@ -388,7 +388,7 @@
 /* Mobile */
 @media (max-width: 768px) {
   .home {
-    padding: 24px 16px;
+    padding: 24px var(--container-padding-mobile);
   }
 
   .home__section-title {

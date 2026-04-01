@@ -90,24 +90,24 @@
 
 .hero__brand-logo {
   font-size: 40px;
-  color: #fafafa;
+  color: var(--color-text-light);
 }
 
 .hero__brand-name {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #fafafa;
+  color: var(--color-text-light);
 }
 
 .hero__title {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-heading);
   font-weight: 600;
   font-size: 48px;
   line-height: 60px;
   letter-spacing: 0.04em;
-  color: #fafafa;
+  color: var(--color-text-light);
   width: 300px;
   height: 120px;
   overflow: hidden;
@@ -124,17 +124,17 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-weight: 500;
   font-size: 16px;
-  color: #fafafa;
+  color: var(--color-text-light);
 }
 
 .hero__cta-line {
   display: block;
   width: 100%;
   height: 1px;
-  background: #fafafa;
+  background: var(--color-text-light);
 }
 
 .hero__dots {
@@ -152,7 +152,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #ffffff;
+  background: var(--color-primary-light);
   opacity: 0.5;
   border: none;
   cursor: pointer;
@@ -164,8 +164,8 @@
   opacity: 1;
   width: 14px;
   height: 14px;
-  background: #db4444;
-  border: 2px solid #ffffff;
+  background: var(--color-primary);
+  border: 2px solid var(--color-primary-light);
 }
 
 /* Tablet */
