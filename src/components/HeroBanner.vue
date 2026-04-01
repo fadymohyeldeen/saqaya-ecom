@@ -206,7 +206,7 @@ export default {
       autoPlayInterval: null,
       slides: [
         {
-          bg: "#0f172a",
+          bg: "#000000",
           imageBg:
             "https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=800&q=80",
           logo: "",
@@ -214,7 +214,7 @@ export default {
           title: "Up to 10% off Voucher",
         },
         {
-          bg: "#7c2d12",
+          bg: "#000000",
           imageBg:
             "https://www.m1.com.sg/content/dam/M1/hero-banner-carousel/2025/jan/samsung/pre/21125/new/1440x520.png",
           logo: "",
@@ -222,7 +222,7 @@ export default {
           title: "Up to 15% off Today",
         },
         {
-          bg: "#065f46",
+          bg: "#000000",
           imageBg:
             "https://techlingo.co/wp-content/uploads/2018/10/OnePlus-6T-Banner-1500x500.jpg",
           logo: "",
@@ -230,7 +230,7 @@ export default {
           title: "Best Deals This Week",
         },
         {
-          bg: "#4c1d95",
+          bg: "#000000",
           imageBg:
             "https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=800&q=80",
           logo: "",
@@ -238,7 +238,7 @@ export default {
           title: "Up to 20% off Voucher",
         },
         {
-          bg: "#9f1239",
+          bg: "#000000",
           imageBg:
             "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=800&q=80",
           logo: "",

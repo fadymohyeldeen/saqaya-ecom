@@ -148,7 +148,7 @@
         <div class="home__service-icon">
           <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
             <circle cx="40" cy="40" r="40" fill="#2F2E30" fill-opacity="0.3" />
-            <circle cx="40" cy="40" r="34.5" fill="#000000" />
+            <circle cx="40" cy="40" r="30" fill="#000000" />
             <path
               d="M24 44L28 36H52L56 44"
               stroke="#FAFAFA"
@@ -180,7 +180,7 @@
         <div class="home__service-icon">
           <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
             <circle cx="40" cy="40" r="40" fill="#2F2E30" fill-opacity="0.3" />
-            <circle cx="40" cy="40" r="34.5" fill="#000000" />
+            <circle cx="40" cy="40" r="30" fill="#000000" />
             <path
               d="M30 50V46C30 44 32 42 34 42H46C48 42 50 44 50 46V50"
               stroke="#FAFAFA"
@@ -205,7 +205,7 @@
         <div class="home__service-icon">
           <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
             <circle cx="40" cy="40" r="40" fill="#2F2E30" fill-opacity="0.3" />
-            <circle cx="40" cy="40" r="34.5" fill="#000000" />
+            <circle cx="40" cy="40" r="30" fill="#000000" />
             <path
               d="M40 26L48 30V40C48 45 44 49 40 50C36 49 32 45 32 40V30L40 26Z"
               stroke="#FAFAFA"
