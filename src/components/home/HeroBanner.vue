@@ -14,9 +14,6 @@
         <!-- Left Content -->
         <div class="hero__content">
           <div class="hero__brand">
-            <span class="hero__brand-logo">{{
-              slides[currentSlide].logo
-            }}</span>
             <span class="hero__brand-name">{{
               slides[currentSlide].brandName
             }}</span>

@@ -1,9 +1,7 @@
 <template>
-  <div id="app">
-    <AppHeader />
+  <component :is="layout">
     <router-view />
-    <AppFooter />
-  </div>
+  </component>
 </template>
 
 <style>
@@ -15,15 +13,18 @@
 </style>
 
 <script>
-import AppHeader from "./components/AppHeader.vue";
-import AppFooter from "./components/AppFooter.vue";
+import DefaultLayout from "./layouts/DefaultLayout.vue";
 export default {
   name: "App",
   components: {
-    AppHeader,
-    AppFooter,
+    DefaultLayout,
+  },
+  computed: {
+    layout() {
+      return this.$route.meta.layout || "DefaultLayout";
+      /* in the router each route should declare its layout in the meta field and it will be used here
+     otherwise it will use the default layout */
+    },
   },
 };
 </script>
-
-<!-- search: layout folder structure -->

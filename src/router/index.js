@@ -8,12 +8,16 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: HomeView,
+    component: HomeView, // eager loading
+    meta: {
+      layout: "DefaultLayout",
+    },
   },
+  // used eager loading for home and lazy loading for others for performance
   {
     path: "/products",
     name: "products",
-    component: () => import("../views/ProductsView.vue"),
+    component: () => import("../views/ProductsView.vue"), // lazy loadings
   },
   {
     path: "/product/:id",

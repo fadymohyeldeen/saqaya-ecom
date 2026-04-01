@@ -74,12 +74,12 @@
 </style>
 
 <script>
-import BeautyIcon from "@/assets/category-icons/Beauty.vue";
-import FurnitureIcon from "@/assets/category-icons/Furniture.vue";
-import FragranceIcon from "@/assets/category-icons/Fragrance.vue";
-import CameraIcon from "@/assets/category-icons/Camera.vue";
-import MobileAccessoriesIcon from "@/assets/category-icons/MobileAccessories.vue";
-import HomeAccessoriesIcon from "@/assets/category-icons/HomeAccessories.vue";
+import BeautyIcon from "../icons/Beauty.vue";
+import FurnitureIcon from "../icons/Furniture.vue";
+import FragranceIcon from "../icons/Fragrance.vue";
+import CameraIcon from "../icons/Camera.vue";
+import MobileAccessoriesIcon from "../icons/MobileAccessories.vue";
+import HomeAccessoriesIcon from "../icons/HomeAccessories.vue";
 
 export default {
   name: "CategoryCard",

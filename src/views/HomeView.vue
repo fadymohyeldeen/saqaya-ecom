@@ -414,9 +414,9 @@
 
 <script lang="ts">
 import Vue from "vue";
-import HeroBanner from "@/components/HeroBanner.vue";
-import ProductCard from "@/components/ProductCard.vue";
-import CategoryCard from "@/components/CategoryCard.vue";
+import HeroBanner from "@/components/home/HeroBanner.vue";
+import ProductCard from "@/components/shared/ProductCard.vue";
+import CategoryCard from "@/components/home/CategoryCard.vue";
 
 export default Vue.extend({
   name: "HomeView",
