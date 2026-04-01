@@ -36,7 +36,7 @@
         </div>
 
         <div class="header__cart">
-          <img src="../assets/cart.svg" alt="Cart" />
+          <img src="@/assets/icons/cart.svg" alt="Cart" />
         </div>
 
         <button class="header__hamburger" @click="menuOpen = !menuOpen">
