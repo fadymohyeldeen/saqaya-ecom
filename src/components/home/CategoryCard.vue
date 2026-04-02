@@ -1,74 +1,60 @@
 <template>
-  <!-- CategoryCard -->
-  <div class="category-card" :class="{ 'category-card--active': active }">
-    <div class="category-card__icon">
-      <component :is="icons[name]" />
-      <!-- looks up icons[name] in the icons object in data() finds it by name as an index-->
-    </div>
+  <div class="category-card">
+    <component :is="icons[name]" class="category-card__icon" />
     <span class="category-card__name">{{ name }}</span>
   </div>
 </template>
 
 <style scoped>
+/* ─── Mobile ─── */
 .category-card {
   box-sizing: border-box;
-  width: var(--category-card-width);
-  height: var(--category-card-height);
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: var(--radius-sm);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 20px;
+  width: 100%;
+  max-width: 200px;
+  height: 100px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: all 0.3s ease;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.category-card:hover,
-.category-card--active {
-  background: var(--color-primary);
-  border: none;
-  box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.05);
+.category-card:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 .category-card__icon {
-  width: 56px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 35px;
+  height: 35px;
   color: var(--color-text);
 }
 
 .category-card:hover .category-card__icon,
-.category-card--active .category-card__icon {
-  color: var(--color-primary-light);
+.category-card:hover .category-card__name {
+  color: var(--color-text-light);
 }
 
 .category-card__name {
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: 16px;
+  font-size: var(--text-sm);
   line-height: 24px;
   color: var(--color-text);
   text-align: center;
 }
 
-.category-card:hover .category-card__name,
-.category-card--active .category-card__name {
-  color: var(--color-text-light);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
+/* ─── Tablet/Desktop ─── */
+@media (min-width: 768px) {
   .category-card {
-    width: 120px;
-    height: 110px;
-  }
-
-  .category-card__name {
-    font-size: 12px;
+    width: 100%;
+    max-width: 170px;
+    height: 145px;
   }
 }
 </style>
@@ -87,10 +73,6 @@ export default {
     name: {
       type: String,
       required: true,
-    },
-    active: {
-      type: Boolean,
-      default: false,
     },
   },
   data() {

@@ -88,41 +88,28 @@
 </template>
 
 <style scoped>
+/* ─── Mobile (base) ─── */
+
 .footer {
   background: var(--color-bg-footer);
   color: var(--color-text-light);
-  padding: 80px 0 0;
+  padding: 40px 0 0;
 }
 
 .footer__container {
   max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 0 var(--container-padding);
+  padding: 0 var(--container-padding-mobile);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 87px;
+  gap: 32px;
 }
 
 .footer__col {
   flex-shrink: 0;
-}
-
-.footer__col:nth-child(1) {
-  width: 217px;
-}
-.footer__col:nth-child(2) {
-  width: 175px;
-}
-.footer__col:nth-child(3) {
-  width: 123px;
-}
-.footer__col:nth-child(4) {
-  width: 109px;
-}
-.footer__col:nth-child(5) {
-  width: 198px;
+  width: 100%;
 }
 
 .footer__logo {
@@ -165,7 +152,7 @@
   border-radius: var(--radius-sm);
   padding: 12px 16px;
   gap: 30px;
-  width: 217px;
+  width: 100%;
   height: 48px;
 }
 
@@ -270,45 +257,56 @@
   padding-bottom: 24px;
 }
 
-/* Tablet */
-@media (max-width: 1024px) {
+/* ─── Tablet (768px+) ─── */
+
+@media (min-width: 768px) {
+  .footer {
+    padding: 80px 0 0;
+  }
+
   .footer__container {
     padding: 0 var(--container-padding-tablet);
-    gap: 40px;
+    flex-direction: row;
     flex-wrap: wrap;
+    gap: 40px;
   }
 
-  .footer__col:nth-child(1),
-  .footer__col:nth-child(2),
-  .footer__col:nth-child(3),
-  .footer__col:nth-child(4),
-  .footer__col:nth-child(5) {
+  .footer__col {
     width: auto;
-  }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .footer {
-    padding: 40px 0 0;
-  }
-
-  .footer__container {
-    padding: 0 var(--container-padding-mobile);
-    gap: 32px;
-    flex-direction: column;
-  }
-
-  .footer__col:nth-child(1),
-  .footer__col:nth-child(2),
-  .footer__col:nth-child(3),
-  .footer__col:nth-child(4),
-  .footer__col:nth-child(5) {
-    width: 100%;
   }
 
   .footer__input-wrap {
-    width: 100%;
+    width: 217px;
+  }
+}
+
+/* ─── Desktop (1024px+) ─── */
+
+@media (min-width: 1024px) {
+  .footer__container {
+    padding: 0 var(--container-padding);
+    gap: 87px;
+    flex-wrap: nowrap;
+  }
+
+  .footer__col:nth-child(1) {
+    width: 217px;
+  }
+
+  .footer__col:nth-child(2) {
+    width: 175px;
+  }
+
+  .footer__col:nth-child(3) {
+    width: 123px;
+  }
+
+  .footer__col:nth-child(4) {
+    width: 109px;
+  }
+
+  .footer__col:nth-child(5) {
+    width: 198px;
   }
 }
 </style>

@@ -77,10 +77,12 @@
 </template>
 
 <style scoped>
+/* ─── Mobile ─── */
+
 .product-card {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
   width: var(--product-card-width);
   cursor: pointer;
 }
@@ -99,26 +101,26 @@
 
 .product-card__discount {
   position: absolute;
-  top: 12px;
-  left: 12px;
+  top: 8px;
+  left: 8px;
   background: var(--color-primary);
   color: var(--color-text-light);
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: 12px;
-  line-height: 18px;
-  padding: 4px 12px;
+  font-size: 11px;
+  line-height: 16px;
+  padding: 3px 8px;
   border-radius: var(--radius-sm);
   z-index: 1;
 }
 
 .product-card__actions {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 8px;
+  right: 8px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   z-index: 1;
 }
 
@@ -147,18 +149,19 @@
   object-fit: cover;
 }
 
+/* On mobile (touch), the Add To Cart bar is always visible */
 .product-card__add-to-cart {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 41px;
+  height: 38px;
   background: var(--color-primary-dark);
   border-radius: 0 0 var(--radius-sm) var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateY(100%);
+  transform: translateY(0);
   transition: transform 0.3s ease;
 }
 
@@ -172,49 +175,44 @@
   color: var(--color-primary-light);
   font-family: var(--font-body);
   font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 22px;
   cursor: pointer;
-}
-
-/* Show Add To Cart on hover */
-.product-card__image-wrap:hover .product-card__add-to-cart {
-  transform: translateY(0);
 }
 
 .product-card__info {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .product-card__name {
   font-family: var(--font-body);
   font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 20px;
   color: var(--color-text);
 }
 
 .product-card__prices {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .product-card__price {
   font-family: var(--font-body);
   font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 20px;
   color: var(--color-primary);
 }
 
 .product-card__original-price {
   font-family: var(--font-body);
   font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 20px;
   color: var(--color-text);
   opacity: 0.5;
   text-decoration: line-through;
@@ -223,7 +221,7 @@
 .product-card__rating {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .product-card__stars {
@@ -231,8 +229,8 @@
 }
 
 .product-card__star {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   background: var(--color-text);
   opacity: 0.25;
   border-radius: 1.4px;
@@ -247,10 +245,84 @@
 .product-card__reviews {
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
+  font-size: 12px;
+  line-height: 18px;
   color: var(--color-text);
   opacity: 0.5;
+}
+
+/* ─── Tablet/Desktop ─── */
+
+@media (min-width: 768px) {
+  .product-card {
+    gap: 16px;
+  }
+
+  .product-card__discount {
+    top: 12px;
+    left: 12px;
+    font-size: 12px;
+    line-height: 18px;
+    padding: 4px 12px;
+  }
+
+  .product-card__actions {
+    top: 12px;
+    right: 12px;
+    gap: 8px;
+  }
+
+  /* Restore hover-slide behaviour on desktop */
+  .product-card__add-to-cart {
+    height: 41px;
+    transform: translateY(100%);
+  }
+
+  .product-card__image-wrap:hover .product-card__add-to-cart {
+    transform: translateY(0);
+  }
+
+  .product-card__add-to-cart button {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .product-card__info {
+    gap: 8px;
+  }
+
+  .product-card__name {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .product-card__prices {
+    gap: 12px;
+  }
+
+  .product-card__price {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .product-card__original-price {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .product-card__rating {
+    gap: 8px;
+  }
+
+  .product-card__star {
+    width: 20px;
+    height: 20px;
+  }
+
+  .product-card__reviews {
+    font-size: 14px;
+    line-height: 21px;
+  }
 }
 </style>
 
