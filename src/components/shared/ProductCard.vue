@@ -77,20 +77,22 @@
 </template>
 
 <style scoped>
+/* ─── Mobile ─── */
+
 .product-card {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  width: 270px;
+  gap: 10px;
+  width: var(--product-card-width);
   cursor: pointer;
 }
 
 .product-card__image-wrap {
   position: relative;
-  width: 270px;
-  height: 250px;
-  background: #f5f5f5;
-  border-radius: 4px;
+  width: var(--product-card-width);
+  height: var(--product-card-image-height);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,26 +101,26 @@
 
 .product-card__discount {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  background: #db4444;
-  color: #fafafa;
-  font-family: "Poppins", sans-serif;
+  top: 8px;
+  left: 8px;
+  background: var(--color-primary);
+  color: var(--color-text-light);
+  font-family: var(--font-body);
   font-weight: 400;
-  font-size: 12px;
-  line-height: 18px;
-  padding: 4px 12px;
-  border-radius: 4px;
+  font-size: 11px;
+  line-height: 16px;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
   z-index: 1;
 }
 
 .product-card__actions {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 8px;
+  right: 8px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   z-index: 1;
 }
 
@@ -133,12 +135,12 @@
 }
 
 .product-card__action-btn:hover circle:first-child {
-  fill: #db4444;
+  fill: var(--color-primary);
 }
 
 .product-card__action-btn:hover path,
 .product-card__action-btn:hover circle:not(:first-child) {
-  stroke: #ffffff;
+  stroke: var(--color-primary-light);
 }
 
 .product-card__image {
@@ -147,75 +149,71 @@
   object-fit: cover;
 }
 
+/* On mobile (touch), the Add To Cart bar is always visible */
 .product-card__add-to-cart {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 41px;
-  background: #000000;
-  border-radius: 0 0 4px 4px;
+  height: 38px;
+  background: var(--color-primary-dark);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateY(100%);
+  transform: translateY(0);
   transition: transform 0.3s ease;
 }
 
 .product-card__add-to-cart:hover {
-  background-color: #db4444;
+  background-color: var(--color-primary);
 }
 
 .product-card__add-to-cart button {
   background: none;
   border: none;
-  color: #ffffff;
-  font-family: "Poppins", sans-serif;
+  color: var(--color-primary-light);
+  font-family: var(--font-body);
   font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 22px;
   cursor: pointer;
-}
-
-/* Show Add To Cart on hover */
-.product-card__image-wrap:hover .product-card__add-to-cart {
-  transform: translateY(0);
 }
 
 .product-card__info {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .product-card__name {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  color: #000000;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-text);
 }
 
 .product-card__prices {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .product-card__price {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  color: #db4444;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-primary);
 }
 
 .product-card__original-price {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  color: #000000;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-text);
   opacity: 0.5;
   text-decoration: line-through;
 }
@@ -223,7 +221,7 @@
 .product-card__rating {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .product-card__stars {
@@ -231,35 +229,106 @@
 }
 
 .product-card__star {
-  width: 20px;
-  height: 20px;
-  background: #000000;
+  width: 16px;
+  height: 16px;
+  background: var(--color-text);
   opacity: 0.25;
   border-radius: 1.4px;
   display: inline-block;
 }
 
 .product-card__star--filled {
-  background: #ffad33;
+  background: var(--color-star);
   opacity: 1;
 }
 
 .product-card__reviews {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
-  color: #000000;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--color-text);
   opacity: 0.5;
+}
+
+/* ─── Tablet/Desktop ─── */
+
+@media (min-width: 768px) {
+  .product-card {
+    gap: 16px;
+  }
+
+  .product-card__discount {
+    top: 12px;
+    left: 12px;
+    font-size: 12px;
+    line-height: 18px;
+    padding: 4px 12px;
+  }
+
+  .product-card__actions {
+    top: 12px;
+    right: 12px;
+    gap: 8px;
+  }
+
+  /* Restore hover-slide behaviour on desktop */
+  .product-card__add-to-cart {
+    height: 41px;
+    transform: translateY(100%);
+  }
+
+  .product-card__image-wrap:hover .product-card__add-to-cart {
+    transform: translateY(0);
+  }
+
+  .product-card__add-to-cart button {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .product-card__info {
+    gap: 8px;
+  }
+
+  .product-card__name {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .product-card__prices {
+    gap: 12px;
+  }
+
+  .product-card__price {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .product-card__original-price {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .product-card__rating {
+    gap: 8px;
+  }
+
+  .product-card__star {
+    width: 20px;
+    height: 20px;
+  }
+
+  .product-card__reviews {
+    font-size: 14px;
+    line-height: 21px;
+  }
 }
 </style>
 
 <script>
 export default {
   name: "ProductCard",
-  data() {
-    return {};
-  },
   props: {
     id: {
       type: Number,

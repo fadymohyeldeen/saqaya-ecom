@@ -10,7 +10,35 @@
           <span class="home__section-bar"></span>
           <span class="home__section-label">Today's</span>
         </div>
-        <h2 class="home__section-title">Flash Sales</h2>
+        <div class="home__section-title-row">
+          <h2 class="home__section-title">Flash Sales</h2>
+          <div class="home__section-nav">
+            <button class="home__section-nav-btn" aria-label="Previous">
+              <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
+                <circle cx="23" cy="23" r="23" fill="#F5F5F5" />
+                <path
+                  d="M26 16L19 23L26 30"
+                  stroke="#000000"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <button class="home__section-nav-btn" aria-label="Next">
+              <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
+                <circle cx="23" cy="23" r="23" fill="#F5F5F5" />
+                <path
+                  d="M20 16L27 23L20 30"
+                  stroke="#000000"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
       <div class="home__products-scroll">
         <ProductCard
@@ -91,48 +119,74 @@
           <span class="home__section-bar"></span>
           <span class="home__section-label">Our Products</span>
         </div>
-        <h2 class="home__section-title">Explore Our Products</h2>
+        <div class="home__section-title-row">
+          <h2 class="home__section-title">Explore Our Products</h2>
+          <div class="home__section-nav">
+            <button class="home__section-nav-btn" aria-label="Previous">
+              <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
+                <circle cx="23" cy="23" r="23" fill="#F5F5F5" />
+                <path
+                  d="M26 16L19 23L26 30"
+                  stroke="#000000"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <button class="home__section-nav-btn" aria-label="Next">
+              <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
+                <circle cx="23" cy="23" r="23" fill="#F5F5F5" />
+                <path
+                  d="M20 16L27 23L20 30"
+                  stroke="#000000"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="home__products-grid">
+      <div class="home__products-scroll">
         <ProductCard
           :id="5"
-          name="HAVIT HV-G92 Gamepad"
-          :price="120"
-          :originalPrice="160"
-          :discount="35"
+          name="GP11 Shift Pro Controller"
+          :price="190"
+          :originalPrice="250"
+          :discount="24"
           image="https://cdn1.smartmedia.is/computer/skrar/vara/108050507_8915072497/108050507_8915072497_540_540_2.jpg"
-          :rating="5"
-          :reviews="88"
+          :rating="4"
+          :reviews="65"
         />
         <ProductCard
-          :id="5"
-          name="HAVIT HV-G92 Gamepad"
-          :price="120"
-          :originalPrice="160"
-          :discount="35"
+          :id="6"
+          name="RGB Liquid CPU Cooler"
+          :price="160"
+          :originalPrice="170"
+          :discount="6"
           image="https://cdn1.smartmedia.is/computer/skrar/vara/108050507_8915072497/108050507_8915072497_540_540_2.jpg"
           :rating="5"
-          :reviews="88"
+          :reviews="57"
         />
         <ProductCard
-          :id="5"
-          name="HAVIT HV-G92 Gamepad"
-          :price="120"
-          :originalPrice="160"
-          :discount="35"
+          :id="7"
+          name="Small BookShelf"
+          :price="360"
           image="https://cdn1.smartmedia.is/computer/skrar/vara/108050507_8915072497/108050507_8915072497_540_540_2.jpg"
           :rating="5"
-          :reviews="88"
+          :reviews="99"
         />
         <ProductCard
-          :id="5"
-          name="HAVIT HV-G92 Gamepad"
-          :price="120"
-          :originalPrice="160"
-          :discount="35"
+          :id="8"
+          name="Breed Dry Dog Food"
+          :price="100"
+          :originalPrice="120"
+          :discount="17"
           image="https://cdn1.smartmedia.is/computer/skrar/vara/108050507_8915072497/108050507_8915072497_540_540_2.jpg"
           :rating="5"
-          :reviews="88"
+          :reviews="35"
         />
       </div>
       <div class="home__center">
@@ -232,75 +286,118 @@
 </template>
 
 <style scoped>
+/* ─── Mobile (base) ─── */
+
 .home {
-  max-width: 1440px;
+  max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 40px 135px;
+  padding: 24px var(--container-padding-mobile);
 }
 
 .home__section {
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .home__section-header {
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 
 .home__section-tag {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .home__section-bar {
   display: block;
-  width: 20px;
-  height: 40px;
-  background: #db4444;
-  border-radius: 4px;
+  width: 16px;
+  height: 34px;
+  background: var(--color-primary);
+  border-radius: var(--radius-sm);
 }
 
 .home__section-label {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-weight: 600;
-  font-size: 16px;
-  color: #db4444;
+  font-size: 14px;
+  color: var(--color-primary);
+}
+
+/* Title row: title + nav arrows side by side */
+.home__section-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .home__section-title {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 36px;
-  line-height: 48px;
+  font-size: 24px;
+  line-height: 32px;
   letter-spacing: 0.04em;
-  color: #000000;
+  color: var(--color-text);
 }
 
+/* Arrow nav buttons (Figma: Frame 616) */
+.home__section-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.home__section-nav-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: opacity 0.2s ease;
+}
+
+.home__section-nav-btn:hover path {
+  stroke: white;
+}
+
+.home__section-nav-btn:hover svg circle {
+  fill: var(--color-primary);
+}
+
+/* Horizontal scroll — shared by Flash Sales & Explore on mobile */
 .home__products-scroll {
   display: flex;
   flex-direction: row;
-  gap: 30px;
+  gap: 20px;
   overflow-x: auto;
   padding-bottom: 16px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
 .home__products-scroll::-webkit-scrollbar {
   display: none;
 }
 
-.home__products-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  margin-bottom: 40px;
+.home__products-scroll > * {
+  scroll-snap-align: start;
+  flex-shrink: 0;
 }
 
 .home__categories {
   display: flex;
   flex-direction: row;
-  gap: 30px;
+  gap: 16px;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .home__categories::-webkit-scrollbar {
@@ -310,28 +407,28 @@
 .home__divider {
   width: 100%;
   height: 1px;
-  background: #000000;
+  background: var(--color-text);
   opacity: 0.3;
-  margin: 60px 0;
+  margin: 40px 0;
 }
 
 .home__center {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 32px;
 }
 
 .home__btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 48px;
-  background: #db4444;
-  color: #fafafa;
-  font-family: "Poppins", sans-serif;
+  padding: 14px 36px;
+  background: var(--color-primary);
+  color: var(--color-text-light);
+  font-family: var(--font-body);
   font-weight: 500;
-  font-size: 16px;
-  border-radius: 4px;
+  font-size: 14px;
+  border-radius: var(--radius-sm);
   text-decoration: none;
   transition: opacity 0.3s ease;
 }
@@ -342,9 +439,10 @@
 
 .home__services {
   display: flex;
-  justify-content: center;
-  gap: 88px;
-  padding: 40px 0 60px;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 32px 0 48px;
 }
 
 .home__service {
@@ -357,57 +455,106 @@
 }
 
 .home__service-text h3 {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-weight: 600;
-  font-size: 20px;
-  line-height: 28px;
-  color: #000000;
-  margin-bottom: 8px;
+  font-size: 18px;
+  line-height: 26px;
+  color: var(--color-text);
+  margin-bottom: 6px;
 }
 
 .home__service-text p {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-weight: 400;
-  font-size: 14px;
-  line-height: 21px;
-  color: #000000;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--color-text);
 }
 
-/* Tablet */
-@media (max-width: 1024px) {
+/* ─── Tablet/Desktop ─── */
+
+@media (min-width: 768px) {
   .home {
-    padding: 40px;
+    padding: 40px var(--container-padding-tablet);
   }
 
-  .home__services {
-    gap: 40px;
-    flex-wrap: wrap;
+  .home__section {
+    margin-bottom: 60px;
   }
-}
 
-/* Mobile */
-@media (max-width: 768px) {
-  .home {
-    padding: 24px 16px;
+  .home__section-header {
+    margin-bottom: 40px;
+  }
+
+  .home__section-tag {
+    margin-bottom: 20px;
+  }
+
+  .home__section-bar {
+    width: 20px;
+    height: 40px;
+  }
+
+  .home__section-label {
+    font-size: 16px;
   }
 
   .home__section-title {
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 36px;
+    line-height: 48px;
   }
 
-  .home__products-grid {
-    justify-content: center;
+  .home__products-scroll {
+    gap: 30px;
   }
 
   .home__categories {
-    gap: 16px;
+    gap: 30px;
+  }
+
+  .home__divider {
+    margin: 60px 0;
+  }
+
+  .home__center {
+    margin-top: 40px;
+  }
+
+  .home__btn {
+    padding: 16px 48px;
+    font-size: 16px;
   }
 
   .home__services {
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding: 40px 0 60px;
+  }
+
+  .home__service-text h3 {
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 8px;
+  }
+
+  .home__service-text p {
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
+
+/* ─── Desktop (1024px+) ─── */
+
+@media (min-width: 1024px) {
+  .home {
+    padding: 40px var(--container-padding);
+  }
+
+  .home__services {
+    gap: 88px;
+    flex-wrap: nowrap;
   }
 }
 </style>

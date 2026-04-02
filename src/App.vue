@@ -4,14 +4,6 @@
   </component>
 </template>
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-</style>
-
 <script>
 import DefaultLayout from "./layouts/DefaultLayout.vue";
 export default {
