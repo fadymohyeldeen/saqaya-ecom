@@ -178,7 +178,8 @@
 
 /* ─── Small Mobile ─── */
 
-@media (min-width: 376px) {
+@media (min-width: 400px) {
+  /* shows search bar after 400px */
   .header__search {
     display: flex;
   }
