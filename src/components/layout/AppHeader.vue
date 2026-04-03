@@ -13,10 +13,7 @@
       </nav>
 
       <div class="header__actions">
-        <div
-          class="header__search"
-          :class="{ 'header__search--open': searchOpen }"
-        >
+        <div class="header__search">
           <input type="text" placeholder="What are you looking for?" />
           <svg
             width="24"
@@ -122,7 +119,6 @@
 
 .header__search {
   display: none;
-  flex-direction: row;
   align-items: center;
   background: var(--color-bg-secondary);
   border-radius: var(--radius-sm);
@@ -205,10 +201,6 @@
     gap: 24px;
     background: transparent;
     border-bottom: none;
-    top: auto;
-    left: auto;
-    right: auto;
-    z-index: auto;
   }
 
   .header__nav a {
@@ -219,10 +211,6 @@
 
   .header__hamburger {
     display: none;
-  }
-
-  .header__search {
-    width: 180px;
   }
 }
 
