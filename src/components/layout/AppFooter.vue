@@ -102,7 +102,6 @@
   padding: 0 var(--container-padding-mobile);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
   gap: 32px;
 }
@@ -170,11 +169,6 @@
 .footer__input-wrap input::placeholder {
   color: var(--color-text-light);
   opacity: 0.4;
-}
-
-.footer__input-wrap svg {
-  cursor: pointer;
-  flex-shrink: 0;
 }
 
 .footer__list {

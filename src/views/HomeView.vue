@@ -46,7 +46,7 @@
           name="HAVIT HV-G92 Gamepad"
           :price="120"
           :originalPrice="160"
-          :discount="35"
+          :discount="15"
           image="https://cdn1.smartmedia.is/computer/skrar/vara/108050507_8915072497/108050507_8915072497_540_540_2.jpg"
           :rating="5"
           :reviews="88"
@@ -56,7 +56,7 @@
           name="AK-900 Wired Keyboard"
           :price="960"
           :originalPrice="1160"
-          :discount="35"
+          :discount="37"
           image="https://cdn1.smartmedia.is/computer/skrar/vara/108050507_8915072497/108050507_8915072497_540_540_2.jpg"
           :rating="4"
           :reviews="75"
@@ -66,7 +66,7 @@
           name="IPS LCD Gaming Monitor"
           :price="370"
           :originalPrice="400"
-          :discount="35"
+          :discount="54"
           image="https://cdn1.smartmedia.is/computer/skrar/vara/108050507_8915072497/108050507_8915072497_540_540_2.jpg"
           :rating="5"
           :reviews="99"
@@ -344,7 +344,6 @@
 /* Arrow nav buttons (Figma: Frame 616) */
 .home__section-nav {
   display: flex;
-  flex-direction: row;
   align-items: flex-start;
   gap: 8px;
   flex-shrink: 0;
@@ -375,7 +374,6 @@
 /* Horizontal scroll — shared by Flash Sales & Explore on mobile */
 .home__products-scroll {
   display: flex;
-  flex-direction: row;
   gap: 20px;
   overflow-x: auto;
   padding-bottom: 16px;
@@ -394,7 +392,6 @@
 
 .home__categories {
   display: flex;
-  flex-direction: row;
   gap: 16px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;

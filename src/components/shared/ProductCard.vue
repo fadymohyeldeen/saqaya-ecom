@@ -224,24 +224,6 @@
   gap: 6px;
 }
 
-.product-card__stars {
-  display: flex;
-}
-
-.product-card__star {
-  width: 16px;
-  height: 16px;
-  background: var(--color-text);
-  opacity: 0.25;
-  border-radius: 1.4px;
-  display: inline-block;
-}
-
-.product-card__star--filled {
-  background: var(--color-star);
-  opacity: 1;
-}
-
 .product-card__reviews {
   font-family: var(--font-body);
   font-weight: 600;
@@ -312,11 +294,6 @@
 
   .product-card__rating {
     gap: 8px;
-  }
-
-  .product-card__star {
-    width: 20px;
-    height: 20px;
   }
 
   .product-card__reviews {
