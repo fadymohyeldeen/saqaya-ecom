@@ -4,6 +4,9 @@
       <router-link to="/" class="header__logo">Exclusive</router-link>
       <nav class="header__nav" :class="{ 'header__nav--open': menuOpen }">
         <router-link to="/" @click.native="menuOpen = false">Home</router-link>
+        <router-link to="/products" @click.native="menuOpen = false"
+          >Products</router-link
+        >
         <router-link to="/contact" @click.native="menuOpen = false"
           >Contact</router-link
         >

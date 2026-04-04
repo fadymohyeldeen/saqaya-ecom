@@ -18,8 +18,8 @@
   --color-in-stock: #00ff66;
 
   /* ─── Typography ─── */
-  --font-heading: "Inter", sans-serif;
-  --font-body: "Poppins", sans-serif;
+  --font-heading: "Inter";
+  --font-body: "Poppins";
 
   /* ─── Font Sizes ─── */
   --text-xs: 12px;
