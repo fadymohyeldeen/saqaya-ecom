@@ -288,11 +288,7 @@
 <style scoped>
 /* ─── Mobile (base) ─── */
 
-.home {
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  padding: 24px var(--container-padding-mobile);
-}
+/* ─── Mobile (base) ─── */
 
 .home__section {
   margin-bottom: 40px;
@@ -471,9 +467,7 @@
 /* ─── Tablet/Desktop ─── */
 
 @media (min-width: 768px) {
-  .home {
-    padding: 40px var(--container-padding-tablet);
-  }
+  /* .home padding is now handled by .container in DefaultLayout.vue */
 
   .home__section {
     margin-bottom: 60px;
@@ -545,9 +539,7 @@
 /* ─── Desktop (1024px+) ─── */
 
 @media (min-width: 1024px) {
-  .home {
-    padding: 40px var(--container-padding);
-  }
+  /* .home padding is now handled by .container in DefaultLayout.vue */
 
   .home__services {
     gap: 88px;

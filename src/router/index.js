@@ -20,7 +20,7 @@ const routes = [
     component: () => import("../views/ProductsView.vue"), // lazy loadings
   },
   {
-    path: "/product/:id",
+    path: "/products/:id",
     name: "product",
     component: () => import("../views/SingleProductView.vue"),
   },

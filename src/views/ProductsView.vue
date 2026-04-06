@@ -63,12 +63,7 @@
 </template>
 
 <style scoped>
-.products__container {
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  padding: 24px var(--container-padding);
-  padding: 100px 0px 100p;
-}
+/* .products__container padding/max-width now handled by .container in DefaultLayout.vue */
 
 .products__header {
   justify-content: space-between;
@@ -138,6 +133,30 @@
 
 .home__btn:hover {
   opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  /* .products__container padding handled by .container in DefaultLayout.vue */
+
+  .products__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .products__header .section-title {
+    font-size: 20px;
+  }
+
+  .products__sort {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .products__select {
+    width: 100%;
+    flex: 1;
+  }
 }
 </style>
 <script>

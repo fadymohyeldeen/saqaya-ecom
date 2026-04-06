@@ -1,79 +1,81 @@
 <template>
-  <!-- ProductCard -->
-  <div class="product-card">
-    <!-- Image Section -->
-    <div class="product-card__image-wrap">
-      <!-- Discount Badge -->
-      <span v-if="discount" class="product-card__discount"
-        >-{{ discount }}%</span
-      >
-
-      <!-- Action Buttons -->
-      <div class="product-card__actions">
-        <button class="product-card__action-btn" aria-label="Add to wishlist">
-          <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
-            <circle cx="17" cy="17" r="17" fill="white" />
-            <path
-              d="M17 24S9 19 9 13.5C9 11.5 10.5 10 12.5 10C14 10 15.5 10.8 17 12.5C18.5 10.8 20 10 21.5 10C23.5 10 25 11.5 25 13.5C25 19 17 24 17 24Z"
-              stroke="#000"
-              stroke-width="1.5"
-            />
-          </svg>
-        </button>
-
-        <button class="product-card__action-btn" aria-label="Quick view">
-          <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
-            <circle cx="17" cy="17" r="17" fill="white" />
-            <path
-              d="M17 11C11 11 8 17 8 17C8 17 11 23 17 23C23 23 26 17 26 17C26 17 23 11 17 11Z"
-              stroke="#000"
-              stroke-width="1.5"
-            />
-            <circle cx="17" cy="17" r="3" stroke="#000" stroke-width="1.5" />
-          </svg>
-        </button>
-      </div>
-
-      <!-- Product Image -->
-      <img :src="image" :alt="name" class="product-card__image" />
-
-      <!-- Add To Cart — shown on hover -->
-      <div class="product-card__add-to-cart">
-        <button>Add To Cart</button>
-      </div>
-    </div>
-
-    <!-- Info Section -->
-    <div class="product-card__info">
-      <h3 class="product-card__name">{{ name }}</h3>
-      <div class="product-card__prices">
-        <span class="product-card__price">${{ price }}</span>
-        <span v-if="originalPrice" class="product-card__original-price"
-          >${{ originalPrice }}</span
+  <router-link to="/products/${id}">
+    <!-- ProductCard -->
+    <div class="product-card">
+      <!-- Image Section -->
+      <div class="product-card__image-wrap">
+        <!-- Discount Badge -->
+        <span v-if="discount" class="product-card__discount"
+          >-{{ discount }}%</span
         >
-      </div>
-      <div class="product-card__rating">
-        <div class="product-card__stars">
-          <svg
-            v-for="star in 5"
-            :key="star"
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-          >
-            <path
-              d="M10 1L12.39 6.26L18 7.27L14 11.14L14.76 17L10 14.27L5.24 17L6 11.14L2 7.27L7.61 6.26L10 1Z"
-              :fill="star <= rating ? '#FFAD33' : '#000000'"
-              :fill-opacity="star <= rating ? '1' : '0.25'"
-              stroke="none"
-            />
-          </svg>
+
+        <!-- Action Buttons -->
+        <div class="product-card__actions">
+          <button class="product-card__action-btn" aria-label="Add to wishlist">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+              <circle cx="17" cy="17" r="17" fill="white" />
+              <path
+                d="M17 24S9 19 9 13.5C9 11.5 10.5 10 12.5 10C14 10 15.5 10.8 17 12.5C18.5 10.8 20 10 21.5 10C23.5 10 25 11.5 25 13.5C25 19 17 24 17 24Z"
+                stroke="#000"
+                stroke-width="1.5"
+              />
+            </svg>
+          </button>
+
+          <button class="product-card__action-btn" aria-label="Quick view">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+              <circle cx="17" cy="17" r="17" fill="white" />
+              <path
+                d="M17 11C11 11 8 17 8 17C8 17 11 23 17 23C23 23 26 17 26 17C26 17 23 11 17 11Z"
+                stroke="#000"
+                stroke-width="1.5"
+              />
+              <circle cx="17" cy="17" r="3" stroke="#000" stroke-width="1.5" />
+            </svg>
+          </button>
         </div>
-        <span class="product-card__reviews">({{ reviews }})</span>
+
+        <!-- Product Image -->
+        <img :src="image" :alt="name" class="product-card__image" />
+
+        <!-- Add To Cart — shown on hover -->
+        <div class="product-card__add-to-cart">
+          <button>Add To Cart</button>
+        </div>
+      </div>
+
+      <!-- Info Section -->
+      <div class="product-card__info">
+        <h3 class="product-card__name">{{ name }}</h3>
+        <div class="product-card__prices">
+          <span class="product-card__price">${{ price }}</span>
+          <span v-if="originalPrice" class="product-card__original-price"
+            >${{ originalPrice }}</span
+          >
+        </div>
+        <div class="product-card__rating">
+          <div class="product-card__stars">
+            <svg
+              v-for="star in 5"
+              :key="star"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+            >
+              <path
+                d="M10 1L12.39 6.26L18 7.27L14 11.14L14.76 17L10 14.27L5.24 17L6 11.14L2 7.27L7.61 6.26L10 1Z"
+                :fill="star <= rating ? '#FFAD33' : '#000000'"
+                :fill-opacity="star <= rating ? '1' : '0.25'"
+                stroke="none"
+              />
+            </svg>
+          </div>
+          <span class="product-card__reviews">({{ reviews }})</span>
+        </div>
       </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <style scoped>
