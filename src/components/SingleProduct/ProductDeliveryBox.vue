@@ -20,9 +20,9 @@
       </svg>
       <div class="delivery-box__text">
         <p class="delivery-box__title">Free Delivery</p>
-        <a href="#" class="delivery-box__sub"
-          >Enter your postal code for Delivery Availability</a
-        >
+        <p class="delivery-box__sub">
+          Enter your postal code for Delivery Availability
+        </p>
       </div>
     </div>
 
@@ -131,14 +131,14 @@ export default {
   margin: 0;
 }
 
-/* ─── Tablet (768px+) ─── */
+/* ─── Tablet ─── */
 @media (min-width: 768px) {
   .delivery-box {
     margin-top: 16px;
   }
 }
 
-/* ─── Desktop (1024px+) ─── */
+/* ─── Desktop ─── */
 @media (min-width: 1024px) {
   .delivery-box {
     max-width: 399px;

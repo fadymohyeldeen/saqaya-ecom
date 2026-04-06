@@ -1,5 +1,7 @@
 <template>
   <div class="products__container">
+    <AppBreadcrumb :items="breadcrumbs" />
+
     <div class="products__header">
       <h2 class="section-title">Explore Our Products</h2>
       <div class="products__sort">
@@ -14,6 +16,7 @@
         </select>
       </div>
     </div>
+
     <div class="products__grid">
       <ProductCard
         :id="1"
@@ -56,19 +59,18 @@
         :reviews="99"
       />
     </div>
-    <div class="home__center">
-      <button class="home__btn">Load More ...</button>
+
+    <div class="products__load-more">
+      <AppButton label="Load More ..." />
     </div>
   </div>
 </template>
 
 <style scoped>
-/* .products__container padding/max-width now handled by .container in DefaultLayout.vue */
-
 .products__header {
   justify-content: space-between;
   display: flex;
-  padding: 60px 0px 60px 0px;
+  margin-bottom: 32px;
 }
 
 .products__header .section-title {
@@ -108,36 +110,13 @@
   gap: 20px;
 }
 
-.home__center {
+.products__load-more {
   display: flex;
   justify-content: center;
   margin-top: 32px;
 }
 
-.home__btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 36px;
-  background: var(--color-primary);
-  color: var(--color-text-light);
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 14px;
-  border-radius: var(--radius-sm);
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-  border: none;
-  cursor: pointer;
-}
-
-.home__btn:hover {
-  opacity: 0.9;
-}
-
 @media (max-width: 768px) {
-  /* .products__container padding handled by .container in DefaultLayout.vue */
-
   .products__header {
     flex-direction: column;
     align-items: flex-start;
@@ -151,6 +130,7 @@
   .products__sort {
     width: 100%;
     justify-content: space-between;
+    padding-right: 0;
   }
 
   .products__select {
@@ -159,13 +139,23 @@
   }
 }
 </style>
+
 <script>
+import AppBreadcrumb from "@/components/shared/AppBreadcrumb.vue";
+import AppButton from "@/components/shared/AppButton.vue";
 import ProductCard from "@/components/shared/ProductCard.vue";
 
 export default {
   name: "ProductsView",
   components: {
+    AppBreadcrumb,
+    AppButton,
     ProductCard,
+  },
+  data() {
+    return {
+      breadcrumbs: [{ label: "Home", to: "/" }, { label: "Products" }],
+    };
   },
 };
 </script>

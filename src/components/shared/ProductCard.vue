@@ -11,16 +11,7 @@
 
         <!-- Action Buttons -->
         <div class="product-card__actions">
-          <button class="product-card__action-btn" aria-label="Add to wishlist">
-            <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
-              <circle cx="17" cy="17" r="17" fill="white" />
-              <path
-                d="M17 24S9 19 9 13.5C9 11.5 10.5 10 12.5 10C14 10 15.5 10.8 17 12.5C18.5 10.8 20 10 21.5 10C23.5 10 25 11.5 25 13.5C25 19 17 24 17 24Z"
-                stroke="#000"
-                stroke-width="1.5"
-              />
-            </svg>
-          </button>
+          <FavButton />
 
           <button class="product-card__action-btn" aria-label="Quick view">
             <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
@@ -55,21 +46,7 @@
         </div>
         <div class="product-card__rating">
           <div class="product-card__stars">
-            <svg
-              v-for="star in 5"
-              :key="star"
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-            >
-              <path
-                d="M10 1L12.39 6.26L18 7.27L14 11.14L14.76 17L10 14.27L5.24 17L6 11.14L2 7.27L7.61 6.26L10 1Z"
-                :fill="star <= rating ? '#FFAD33' : '#000000'"
-                :fill-opacity="star <= rating ? '1' : '0.25'"
-                stroke="none"
-              />
-            </svg>
+            <StarRating :rating="rating" />
           </div>
           <span class="product-card__reviews">({{ reviews }})</span>
         </div>
@@ -306,8 +283,12 @@
 </style>
 
 <script>
+import FavButton from "@/components/shared/FavButton.vue";
+import StarRating from "@/components/shared/StarRating.vue";
+
 export default {
   name: "ProductCard",
+  components: { FavButton, StarRating },
   props: {
     id: {
       type: Number,

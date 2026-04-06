@@ -19,11 +19,7 @@
 
     <hr class="product-info__hr" />
 
-    <p class="product-info__category">
-      Category:&nbsp;<a href="#" class="product-info__category-link">{{
-        product.category
-      }}</a>
-    </p>
+    <p class="product-info__category">Category: {{ product.category }}</p>
 
     <ProductActions
       :quantity="quantity"
@@ -58,7 +54,7 @@ export default {
 </script>
 
 <style scoped>
-/* ─── Mobile base ─── */
+/* ─── Mobile  ─── */
 .product-info {
   display: flex;
   flex-direction: column;
@@ -147,7 +143,7 @@ export default {
   text-decoration: underline;
 }
 
-/* ─── Tablet (768px+) ─── */
+/* ─── Tablet   ─── */
 @media (min-width: 768px) {
   .product-info__title {
     font-size: var(--text-lg);
@@ -158,7 +154,7 @@ export default {
   }
 }
 
-/* ─── Desktop (1024px+) ─── */
+/* ─── Desktop  ─── */
 @media (min-width: 1024px) {
   .product-info__title {
     font-size: var(--text-xl);

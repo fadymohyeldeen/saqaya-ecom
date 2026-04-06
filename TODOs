@@ -5,15 +5,15 @@
 ### 1. Static Pages Content (HIGH)
 Branch: feat/static-pages
 
-  Commit 1 — feat: build static products page
+  <!-- Commit 1 — feat: build static products page
     - Add a product grid using static ProductCard components
     - Add section header and basic filter/sort placeholder
-    - Style to match the Figma
-
+    - Style to match the Figma -->
+<!-- 
   Commit 2 — feat: build static single product page
     - Add product image, title, price, description
     - Add quantity selector and Add to Cart button (all hardcoded/static)
-    - Use the :id param just for display
+    - Use the :id param just for display -->
 
   Commit 3 — feat: build static about-us page
     - Add company intro text and story section

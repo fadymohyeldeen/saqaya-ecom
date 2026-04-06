@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style scoped>
-/* ─── Mobile base ─── */
+/* ─── Mobile  ─── */
 .product-gallery {
   display: flex;
   flex-direction: column;
@@ -107,7 +107,7 @@ export default {
   object-fit: contain;
 }
 
-/* ─── Tablet (768px+) ─── */
+/* ─── Tablet ─── */
 @media (min-width: 768px) {
   .product-gallery {
     flex-direction: row;
@@ -131,7 +131,7 @@ export default {
   }
 }
 
-/* ─── Desktop (1024px+) ─── */
+/* ─── Desktop  ─── */
 @media (min-width: 1024px) {
   .product-gallery__image-wrap {
     height: 600px;

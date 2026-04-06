@@ -32,18 +32,20 @@
       </button>
     </div>
 
-    <AppButton label="Buy Now" variant="primary" />
-    <WishlistButton />
+    <AppButton label="Buy Now" />
+    <div class="product-actions__fav">
+      <FavButton />
+    </div>
   </div>
 </template>
 
 <script>
 import AppButton from "@/components/shared/AppButton.vue";
-import WishlistButton from "@/components/shared/WishlistButton.vue";
+import FavButton from "@/components/shared/FavButton.vue";
 
 export default {
   name: "ProductActions",
-  components: { AppButton, WishlistButton },
+  components: { AppButton, FavButton },
   props: {
     quantity: {
       type: Number,
@@ -99,6 +101,11 @@ export default {
   font-size: var(--text-md);
   border-top: 1px solid rgba(0, 0, 0, 0.5);
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.product-actions__fav {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
 }
 
 /* ─── Tablet (768px+) ─── */

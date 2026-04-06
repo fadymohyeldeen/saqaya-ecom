@@ -17,7 +17,10 @@
       />
     </div>
 
-    <RelatedProducts :products="relatedProducts" />
+    <ProductsSection
+      label="More of this category"
+      :products="relatedProducts"
+    />
   </div>
 </template>
 
@@ -25,7 +28,7 @@
 import AppBreadcrumb from "@/components/shared/AppBreadcrumb.vue";
 import ProductGallery from "@/components/SingleProduct/ProductGallery.vue";
 import ProductInfo from "@/components/SingleProduct/ProductInfo.vue";
-import RelatedProducts from "@/components/SingleProduct/RelatedProducts.vue";
+import ProductsSection from "@/components/shared/ProductsSection.vue";
 
 export default {
   name: "SingleProductView",
@@ -33,15 +36,15 @@ export default {
     AppBreadcrumb,
     ProductGallery,
     ProductInfo,
-    RelatedProducts,
+    ProductsSection,
   },
   data() {
     return {
       selectedImage: 0,
       quantity: 1,
       breadcrumbs: [
+        { label: "Home", to: "/" },
         { label: "Products", to: "/products" },
-        { label: "Gaming" },
         { label: "Havic HV G-92 Gamepad" },
       ],
       product: {
@@ -54,10 +57,10 @@ export default {
           "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
         category: "Gaming",
         images: [
-          "https://cdn1.smartmedia.is/computer/skrar/vara/108050507_8915072497/108050507_8915072497_540_540_2.jpg",
-          "https://cdn1.smartmedia.is/computer/skrar/vara/108050507_8915072497/108050507_8915072497_540_540_2.jpg",
-          "https://cdn1.smartmedia.is/computer/skrar/vara/108050507_8915072497/108050507_8915072497_540_540_2.jpg",
-          "https://cdn1.smartmedia.is/computer/skrar/vara/108050507_8915072497/108050507_8915072497_540_540_2.jpg",
+          "https://dummyjson.com/image/400x400/f5f5f5?text=Image+1",
+          "https://dummyjson.com/image/400x400/f5f5f5?text=Image+2",
+          "https://dummyjson.com/image/400x400/f5f5f5?text=Image+3",
+          "https://dummyjson.com/image/400x400/f5f5f5?text=Image+4",
         ],
       },
       relatedProducts: [

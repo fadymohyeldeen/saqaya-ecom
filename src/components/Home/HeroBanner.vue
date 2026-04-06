@@ -4,11 +4,8 @@
       <div
         class="hero__slide"
         :style="{
-          backgroundColor: slides[currentSlide].bg,
+          // :style because it has dynamic data
           backgroundImage: `url(${slides[currentSlide].imageBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'right center',
-          backgroundRepeat: 'no-repeat',
         }"
       >
         <!-- Left Content -->
@@ -65,6 +62,7 @@
 }
 
 .hero__slide {
+  background-color: #000000;
   width: 100%;
   height: 250px;
   display: flex;
@@ -72,6 +70,9 @@
   padding: 0 24px;
   position: relative;
   overflow: hidden;
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
 }
 
 .hero__content {
@@ -193,35 +194,30 @@ export default {
       autoPlayInterval: null,
       slides: [
         {
-          bg: "#000000",
           imageBg:
             "https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=800&q=80",
           brandName: "iPhone 14 Series",
           title: "Up to 10% off Voucher",
         },
         {
-          bg: "#000000",
           imageBg:
             "https://www.m1.com.sg/content/dam/M1/hero-banner-carousel/2025/jan/samsung/pre/21125/new/1440x520.png",
           brandName: "Samsung Galaxy Series",
           title: "Up to 15% off Today",
         },
         {
-          bg: "#000000",
           imageBg:
             "https://techlingo.co/wp-content/uploads/2018/10/OnePlus-6T-Banner-1500x500.jpg",
           brandName: "OnePlus Series",
           title: "Best Deals This Week",
         },
         {
-          bg: "#000000",
           imageBg:
             "https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=800&q=80",
           brandName: "Nothing Phone Series",
           title: "Up to 20% off Voucher",
         },
         {
-          bg: "#000000",
           imageBg:
             "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=800&q=80",
           brandName: "Xiaomi Series",
