@@ -1,8 +1,10 @@
 <template>
   <div>
     <AppHeader />
-    <slot />
-    <!-- any component passed to parent will be rendered here -->
+    <main class="container">
+      <slot />
+      <!-- any component passed to parent will be rendered here -->
+    </main>
     <AppFooter />
   </div>
 </template>
