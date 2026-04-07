@@ -1,16 +1,23 @@
 <template>
   <div class="contact">
     <AppBreadcrumb :items="breadcrumbs" />
-    <h1>Contact</h1>
+
+    <div class="contact__body">
+      <div class="contact__side-image">
+        <img src="@/assets/Contact.jpeg" alt="Contact" />
+      </div>
+      <ContactForm />
+    </div>
   </div>
 </template>
 
 <script>
 import AppBreadcrumb from "@/components/shared/AppBreadcrumb.vue";
+import ContactForm from "@/components/Contact/ContactForm.vue";
 
 export default {
   name: "ContactView",
-  components: { AppBreadcrumb },
+  components: { AppBreadcrumb, ContactForm },
   data() {
     return {
       breadcrumbs: [{ label: "Home", to: "/" }, { label: "Contact" }],
@@ -18,3 +25,50 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.contact__body {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 34px;
+  margin-bottom: 140px;
+}
+
+.contact__side-image {
+  flex: 1;
+  background: #cbe4e8;
+  border-radius: 4px;
+  overflow: hidden;
+  height: auto;
+}
+
+.contact__side-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+@media (max-width: 1023px) {
+  .contact__body {
+    flex-direction: column;
+    margin-bottom: 100px;
+  }
+
+  .contact__side-image {
+    height: 500px;
+  }
+}
+
+@media (max-width: 767px) {
+  .contact__body {
+    margin-bottom: 80px;
+  }
+
+  .contact__side-image {
+    height: 300px;
+  }
+}
+</style>
