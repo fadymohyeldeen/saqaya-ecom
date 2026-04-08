@@ -5,9 +5,7 @@
       <!-- Image Section -->
       <div class="product-card__image-wrap">
         <!-- Discount Badge -->
-        <span v-if="discount" class="product-card__discount"
-          >-{{ discount }}%</span
-        >
+        <span v-if="discount" class="product-card__discount">-{{ discount }}%</span>
 
         <!-- Action Buttons -->
         <div class="product-card__actions">
@@ -56,272 +54,272 @@
 </template>
 
 <style scoped>
-/* ─── Mobile ─── */
+  /* ─── Mobile ─── */
 
-.product-card {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: var(--product-card-width);
-  cursor: pointer;
-}
-
-.product-card__image-wrap {
-  position: relative;
-  width: var(--product-card-width);
-  height: var(--product-card-image-height);
-  background: var(--color-bg-secondary);
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.product-card__discount {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background: var(--color-primary);
-  color: var(--color-text-light);
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 11px;
-  line-height: 16px;
-  padding: 3px 8px;
-  border-radius: var(--radius-sm);
-  z-index: 1;
-}
-
-.product-card__actions {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  z-index: 1;
-}
-
-.product-card__action-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.product-card__action-btn:hover circle:first-child {
-  fill: var(--color-primary);
-}
-
-.product-card__action-btn:hover path,
-.product-card__action-btn:hover circle:not(:first-child) {
-  stroke: var(--color-primary-light);
-}
-
-.product-card__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* On mobile (touch), the Add To Cart bar is always visible */
-.product-card__add-to-cart {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 38px;
-  background: var(--color-primary-dark);
-  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: translateY(0);
-  transition: transform 0.3s ease;
-}
-
-.product-card__add-to-cart:hover {
-  background-color: var(--color-primary);
-}
-
-.product-card__add-to-cart button {
-  background: none;
-  border: none;
-  color: var(--color-primary-light);
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 22px;
-  cursor: pointer;
-}
-
-.product-card__info {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.product-card__name {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  color: var(--color-text);
-}
-
-.product-card__prices {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.product-card__price {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  color: var(--color-primary);
-}
-
-.product-card__original-price {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  color: var(--color-text);
-  opacity: 0.5;
-  text-decoration: line-through;
-}
-
-.product-card__rating {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.product-card__reviews {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 18px;
-  color: var(--color-text);
-  opacity: 0.5;
-}
-
-/* ─── Tablet/Desktop ─── */
-
-@media (min-width: 768px) {
   .product-card {
-    gap: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: var(--product-card-width);
+    cursor: pointer;
+  }
+
+  .product-card__image-wrap {
+    position: relative;
+    width: var(--product-card-width);
+    height: var(--product-card-image-height);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
   }
 
   .product-card__discount {
-    top: 12px;
-    left: 12px;
-    font-size: 12px;
-    line-height: 18px;
-    padding: 4px 12px;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: var(--color-primary);
+    color: var(--color-text-light);
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 16px;
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    z-index: 1;
   }
 
   .product-card__actions {
-    top: 12px;
-    right: 12px;
-    gap: 8px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 1;
   }
 
-  /* Restore hover-slide behaviour on desktop */
+  .product-card__action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-card__action-btn:hover circle:first-child {
+    fill: var(--color-primary);
+  }
+
+  .product-card__action-btn:hover path,
+  .product-card__action-btn:hover circle:not(:first-child) {
+    stroke: var(--color-primary-light);
+  }
+
+  .product-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* On mobile (touch), the Add To Cart bar is always visible */
   .product-card__add-to-cart {
-    height: 41px;
-    transform: translateY(100%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 38px;
+    background: var(--color-primary-dark);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
   }
 
-  .product-card__image-wrap:hover .product-card__add-to-cart {
-    transform: translateY(0);
+  .product-card__add-to-cart:hover {
+    background-color: var(--color-primary);
   }
 
   .product-card__add-to-cart button {
-    font-size: 16px;
-    line-height: 24px;
+    background: none;
+    border: none;
+    color: var(--color-primary-light);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    cursor: pointer;
   }
 
   .product-card__info {
-    gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
   }
 
   .product-card__name {
-    font-size: 16px;
-    line-height: 24px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--color-text);
   }
 
   .product-card__prices {
-    gap: 12px;
-  }
-
-  .product-card__price {
-    font-size: 16px;
-    line-height: 24px;
-  }
-
-  .product-card__original-price {
-    font-size: 16px;
-    line-height: 24px;
-  }
-
-  .product-card__rating {
+    display: flex;
+    align-items: center;
     gap: 8px;
   }
 
-  .product-card__reviews {
+  .product-card__price {
+    font-family: var(--font-body);
+    font-weight: 500;
     font-size: 14px;
-    line-height: 21px;
+    line-height: 20px;
+    color: var(--color-primary);
   }
-}
+
+  .product-card__original-price {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--color-text);
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+
+  .product-card__rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .product-card__reviews {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    color: var(--color-text);
+    opacity: 0.5;
+  }
+
+  /* ─── Tablet/Desktop ─── */
+
+  @media (min-width: 768px) {
+    .product-card {
+      gap: 16px;
+    }
+
+    .product-card__discount {
+      top: 12px;
+      left: 12px;
+      font-size: 12px;
+      line-height: 18px;
+      padding: 4px 12px;
+    }
+
+    .product-card__actions {
+      top: 12px;
+      right: 12px;
+      gap: 8px;
+    }
+
+    /* Restore hover-slide behaviour on desktop */
+    .product-card__add-to-cart {
+      height: 41px;
+      transform: translateY(100%);
+    }
+
+    .product-card__image-wrap:hover .product-card__add-to-cart {
+      transform: translateY(0);
+    }
+
+    .product-card__add-to-cart button {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .product-card__info {
+      gap: 8px;
+    }
+
+    .product-card__name {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .product-card__prices {
+      gap: 12px;
+    }
+
+    .product-card__price {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .product-card__original-price {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .product-card__rating {
+      gap: 8px;
+    }
+
+    .product-card__reviews {
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
 </style>
 
 <script>
-import FavButton from "@/components/shared/FavButton.vue";
-import StarRating from "@/components/shared/StarRating.vue";
+  import FavButton from '@/components/shared/FavButton.vue'
+  import StarRating from '@/components/shared/StarRating.vue'
 
-export default {
-  name: "ProductCard",
-  components: { FavButton, StarRating },
-  props: {
-    id: {
-      type: Number,
-      required: true,
+  export default {
+    name: 'ProductCard',
+    components: { FavButton, StarRating },
+    props: {
+      id: {
+        type: Number,
+        required: true,
+      },
+      name: {
+        type: String,
+        required: true,
+      },
+      price: {
+        type: Number,
+        required: true,
+      },
+      originalPrice: {
+        type: Number,
+        default: null,
+      },
+      discount: {
+        type: Number,
+        default: null,
+      },
+      image: {
+        type: String,
+        required: true,
+      },
+      rating: {
+        type: Number,
+        default: 0,
+      },
+      reviews: {
+        type: Number,
+        default: 0,
+      },
     },
-    name: {
-      type: String,
-      required: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-    originalPrice: {
-      type: Number,
-      default: null,
-    },
-    discount: {
-      type: Number,
-      default: null,
-    },
-    image: {
-      type: String,
-      required: true,
-    },
-    rating: {
-      type: Number,
-      default: 0,
-    },
-    reviews: {
-      type: Number,
-      default: 0,
-    },
-  },
-};
+  }
 </script>

@@ -1,9 +1,5 @@
 <template>
-  <button
-    class="fav-btn"
-    aria-label="Add to favourites"
-    @click.prevent="$emit('click')"
-  >
+  <button class="fav-btn" aria-label="Add to favourites" @click.prevent="$emit('click')">
     <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
       <circle cx="17" cy="17" r="17" fill="white" />
       <path
@@ -16,28 +12,28 @@
 </template>
 
 <script>
-export default {
-  name: "FavButton",
-  emits: ["click"],
-};
+  export default {
+    name: 'FavButton',
+    emits: ['click'],
+  }
 </script>
 
 <style scoped>
-.fav-btn {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  .fav-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.fav-btn:hover circle:first-child {
-  fill: var(--color-primary);
-}
+  .fav-btn:hover circle:first-child {
+    fill: var(--color-primary);
+  }
 
-.fav-btn:hover path {
-  stroke: var(--color-primary-light);
-}
+  .fav-btn:hover path {
+    stroke: var(--color-primary-light);
+  }
 </style>

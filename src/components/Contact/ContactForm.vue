@@ -51,152 +51,152 @@
 </template>
 
 <style scoped>
-/* ── Desktop ── */
-.contact__details {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  padding: 0;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-.contact__info-card {
-  background: #ffffff;
-  box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.05);
-  border-radius: 4px;
-  padding: 40px 35px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-.contact__info-block {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.contact__info-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.contact__icon-circle {
-  width: 40px;
-  height: 40px;
-  background: #db4444;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.contact__info-title {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  color: #000000;
-}
-
-.contact__info-body {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.contact__info-body p {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 21px;
-  color: #000000;
-  margin: 0;
-}
-
-.contact__divider {
-  width: 100%;
-  height: 1px;
-  background: #000000;
-  opacity: 0.5;
-}
-
-.contact__form-card {
-  background: #ffffff;
-  box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.05);
-  border-radius: 4px;
-  padding: 40px 31px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 32px;
-}
-
-.contact__form-row {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-  width: 100%;
-}
-
-.contact__field {
-  width: 100%;
-}
-
-.contact__field input,
-.contact__field textarea {
-  width: 100%;
-  background: #f5f5f5;
-  border: none;
-  border-radius: 4px;
-  padding: 13px 16px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: rgba(0, 0, 0, 0.5);
-  outline: none;
-  resize: none;
-  box-sizing: border-box;
-}
-
-.contact__field textarea {
-  height: auto;
-}
-
-.contact__field input::placeholder,
-.contact__field textarea::placeholder {
-  color: rgba(0, 0, 0, 0.5);
-}
-
-/* ── Tablet ── */
-@media (max-width: 1023px) {
+  /* ── Desktop ── */
   .contact__details {
-    padding: 24px 40px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 0;
+    height: 100%;
+    box-sizing: border-box;
   }
-}
 
-/* ── Mobile ── */
-@media (max-width: 767px) {
-  .contact__details {
-    padding: 16px;
+  .contact__info-card {
+    background: #ffffff;
+    box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    padding: 40px 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .contact__info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .contact__info-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .contact__icon-circle {
+    width: 40px;
+    height: 40px;
+    background: #db4444;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact__info-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+  }
+
+  .contact__info-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact__info-body p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000000;
+    margin: 0;
+  }
+
+  .contact__divider {
+    width: 100%;
+    height: 1px;
+    background: #000000;
+    opacity: 0.5;
+  }
+
+  .contact__form-card {
+    background: #ffffff;
+    box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    padding: 40px 31px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 32px;
   }
 
   .contact__form-row {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    width: 100%;
   }
-}
+
+  .contact__field {
+    width: 100%;
+  }
+
+  .contact__field input,
+  .contact__field textarea {
+    width: 100%;
+    background: #f5f5f5;
+    border: none;
+    border-radius: 4px;
+    padding: 13px 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.5);
+    outline: none;
+    resize: none;
+    box-sizing: border-box;
+  }
+
+  .contact__field textarea {
+    height: auto;
+  }
+
+  .contact__field input::placeholder,
+  .contact__field textarea::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  /* ── Tablet ── */
+  @media (max-width: 1023px) {
+    .contact__details {
+      padding: 24px 40px;
+    }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 767px) {
+    .contact__details {
+      padding: 16px;
+    }
+
+    .contact__form-row {
+      flex-direction: column;
+    }
+  }
 </style>
 
 <script>
-import AppButton from "../shared/AppButton.vue";
+  import AppButton from '../shared/AppButton.vue'
 
-export default {
-  name: "ContactForm",
-  components: { AppButton },
-};
+  export default {
+    name: 'ContactForm',
+    components: { AppButton },
+  }
 </script>

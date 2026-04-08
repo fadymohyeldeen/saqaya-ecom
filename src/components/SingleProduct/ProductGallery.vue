@@ -8,134 +8,126 @@
         :class="{ 'product-gallery__thumb-btn--active': selectedImage === idx }"
         @click="$emit('select', idx)"
       >
-        <img
-          :src="img"
-          :alt="`Product view ${idx + 1}`"
-          class="product-gallery__thumb-img"
-        />
+        <img :src="img" :alt="`Product view ${idx + 1}`" class="product-gallery__thumb-img" />
       </button>
     </div>
 
     <div class="product-gallery__image-wrap">
-      <img
-        :src="images[selectedImage]"
-        :alt="alt"
-        class="product-gallery__image"
-      />
+      <img :src="images[selectedImage]" :alt="alt" class="product-gallery__image" />
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: "ProductGallery",
-  props: {
-    images: {
-      type: Array,
-      required: true,
+  export default {
+    name: 'ProductGallery',
+    props: {
+      images: {
+        type: Array,
+        required: true,
+      },
+      selectedImage: {
+        type: Number,
+        required: true,
+      },
+      alt: {
+        type: String,
+        default: 'Product image',
+      },
     },
-    selectedImage: {
-      type: Number,
-      required: true,
-    },
-    alt: {
-      type: String,
-      default: "Product image",
-    },
-  },
-  emits: ["select"],
-};
+    emits: ['select'],
+  }
 </script>
 
 <style scoped>
-/* ─── Mobile  ─── */
-.product-gallery {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.product-gallery__thumbs {
-  display: flex;
-  flex-direction: row;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  gap: 8px;
-}
-
-.product-gallery__thumbs::-webkit-scrollbar {
-  display: none;
-}
-
-.product-gallery__thumb-btn {
-  flex-shrink: 0;
-  width: 80px;
-  height: 65px;
-  background: var(--color-bg-secondary);
-  border: 2px solid transparent;
-  border-radius: var(--radius-sm);
-  padding: 4px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.product-gallery__thumb-btn--active {
-  border-color: var(--color-text);
-}
-
-.product-gallery__thumb-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.product-gallery__image-wrap {
-  aspect-ratio: 4 / 3;
-  background: var(--color-bg-secondary);
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-.product-gallery__image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* ─── Tablet ─── */
-@media (min-width: 768px) {
+  /* ─── Mobile  ─── */
   .product-gallery {
-    flex-direction: row;
-    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 
   .product-gallery__thumbs {
-    flex-direction: column;
-    overflow-x: visible;
-    gap: 16px;
-    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 8px;
+  }
+
+  .product-gallery__thumbs::-webkit-scrollbar {
+    display: none;
   }
 
   .product-gallery__thumb-btn {
-    width: 170px;
-    height: 138px;
+    flex-shrink: 0;
+    width: 80px;
+    height: 65px;
+    background: var(--color-bg-secondary);
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm);
+    padding: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-gallery__thumb-btn--active {
+    border-color: var(--color-text);
+  }
+
+  .product-gallery__thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 
   .product-gallery__image-wrap {
-    flex: 1;
+    aspect-ratio: 4 / 3;
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
   }
-}
 
-/* ─── Desktop  ─── */
-@media (min-width: 1024px) {
-  .product-gallery__image-wrap {
-    height: 600px;
-    aspect-ratio: auto;
+  .product-gallery__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
-}
+
+  /* ─── Tablet ─── */
+  @media (min-width: 768px) {
+    .product-gallery {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    .product-gallery__thumbs {
+      flex-direction: column;
+      overflow-x: visible;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .product-gallery__thumb-btn {
+      width: 170px;
+      height: 138px;
+    }
+
+    .product-gallery__image-wrap {
+      flex: 1;
+    }
+  }
+
+  /* ─── Desktop  ─── */
+  @media (min-width: 1024px) {
+    .product-gallery__image-wrap {
+      height: 600px;
+      aspect-ratio: auto;
+    }
+  }
 </style>

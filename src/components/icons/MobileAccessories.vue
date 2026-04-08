@@ -1,11 +1,5 @@
 <template>
-  <svg
-    width="56"
-    height="56"
-    viewBox="0 0 56 56"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clip-path="url(#clip0_1001_552)">
       <path
         d="M16.3334 30.3333H14C11.4227 30.3333 9.33337 32.4226 9.33337 34.9999V41.9999C9.33337 44.5772 11.4227 46.6666 14 46.6666H16.3334C18.9107 46.6666 21 44.5772 21 41.9999V34.9999C21 32.4226 18.9107 30.3333 16.3334 30.3333Z"
@@ -37,7 +31,7 @@
   </svg>
 </template>
 <script>
-export default {
-  name: "MobileAccessoriesIcon",
-};
+  export default {
+    name: 'MobileAccessoriesIcon',
+  }
 </script>
