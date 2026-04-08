@@ -12,57 +12,57 @@
 </template>
 
 <style scoped>
-.app-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  padding: 10px 36px;
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: var(--text-md);
-  white-space: nowrap;
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: opacity 0.2s ease, scale 0.2s ease-in-out;
-  background: var(--color-primary);
-  color: var(--color-text-light);
-}
-
-.app-btn:hover {
-  opacity: 0.9;
-  scale: 1.01;
-}
-
-@media (max-width: 1023px) {
   .app-btn {
-    font-size: var(--text-sm);
-    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 10px 36px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: var(--text-md);
+    white-space: nowrap;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: opacity 0.2s ease, scale 0.2s ease-in-out;
+    background: var(--color-primary);
+    color: var(--color-text-light);
   }
-}
 
-@media (max-width: 767px) {
-  .app-btn {
-    font-size: var(--text-xs);
-    padding: 0 20px;
+  .app-btn:hover {
+    opacity: 0.9;
+    scale: 1.01;
   }
-}
+
+  @media (max-width: 1023px) {
+    .app-btn {
+      font-size: var(--text-sm);
+      padding: 0 32px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .app-btn {
+      font-size: var(--text-xs);
+      padding: 0 20px;
+    }
+  }
 </style>
 
 <script>
-export default {
-  name: "AppButton",
-  props: {
-    label: {
-      type: String,
-      required: true,
+  export default {
+    name: 'AppButton',
+    props: {
+      label: {
+        type: String,
+        required: true,
+      },
+      to: {
+        type: String,
+        default: null,
+      },
     },
-    to: {
-      type: String,
-      default: null,
-    },
-  },
-  emits: ["click"],
-};
+    emits: ['click'],
+  }
 </script>

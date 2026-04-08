@@ -5,7 +5,7 @@
 </template>
 
 <script>
-export default {
-  name: "NotFoundView",
-};
+  export default {
+    name: 'NotFoundView',
+  }
 </script>

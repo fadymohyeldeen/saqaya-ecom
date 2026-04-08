@@ -11,9 +11,7 @@
         <!-- Left Content -->
         <div class="hero__content">
           <div class="hero__brand">
-            <span class="hero__brand-name">{{
-              slides[currentSlide].brandName
-            }}</span>
+            <span class="hero__brand-name">{{ slides[currentSlide].brandName }}</span>
           </div>
 
           <h1 class="hero__title">{{ slides[currentSlide].title }}</h1>
@@ -51,201 +49,198 @@
 </template>
 
 <style scoped>
-.hero {
-  width: 100%;
-  margin-bottom: 60px;
-}
-
-.hero__container {
-  position: relative;
-  width: 100%;
-}
-
-.hero__slide {
-  background-color: #000000;
-  width: 100%;
-  height: 250px;
-  display: flex;
-  align-items: center;
-  padding: 0 24px;
-  position: relative;
-  overflow: hidden;
-  background-size: cover;
-  background-position: right center;
-  background-repeat: no-repeat;
-}
-
-.hero__content {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  z-index: 1;
-}
-
-.hero__brand {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.hero__brand-name {
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: var(--color-text-light);
-}
-
-.hero__title {
-  font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 32px;
-  letter-spacing: 0.04em;
-  color: var(--color-text-light);
-  width: 300px;
-  height: 120px;
-  overflow: hidden;
-}
-
-.hero__cta {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-}
-
-.hero__cta-text {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 16px;
-  color: var(--color-text-light);
-}
-
-.hero__cta-line {
-  display: block;
-  width: 100%;
-  height: 1px;
-  background: var(--color-text-light);
-}
-
-.hero__dots {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  z-index: 2;
-}
-
-.hero__dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--color-primary-light);
-  opacity: 0.5;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: all 0.3s ease;
-}
-
-.hero__dot--active {
-  opacity: 1;
-  width: 14px;
-  height: 14px;
-  background: var(--color-primary);
-  border: 2px solid var(--color-primary-light);
-}
-
-/* Tablet */
-@media (min-width: 768px) {
-  .hero__title {
-    font-size: 36px;
-    line-height: 48px;
+  .hero {
+    width: 100%;
+    margin-bottom: 60px;
   }
-}
 
-/* Desktop */
-@media (min-width: 1024px) {
+  .hero__container {
+    position: relative;
+    width: 100%;
+  }
+
   .hero__slide {
-    height: 346px;
-    padding: 0 64px;
+    background-color: #000000;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: right center;
+    background-repeat: no-repeat;
+  }
+
+  .hero__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    z-index: 1;
+  }
+
+  .hero__brand {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .hero__brand-name {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--color-text-light);
   }
 
   .hero__title {
-    font-size: 48px;
-    line-height: 60px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0.04em;
+    color: var(--color-text-light);
+    width: 300px;
+    height: 120px;
+    overflow: hidden;
   }
-}
+
+  .hero__cta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .hero__cta-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--color-text-light);
+  }
+
+  .hero__cta-line {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: var(--color-text-light);
+  }
+
+  .hero__dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 2;
+  }
+
+  .hero__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-primary-light);
+    opacity: 0.5;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+  }
+
+  .hero__dot--active {
+    opacity: 1;
+    width: 14px;
+    height: 14px;
+    background: var(--color-primary);
+    border: 2px solid var(--color-primary-light);
+  }
+
+  /* Tablet */
+  @media (min-width: 768px) {
+    .hero__title {
+      font-size: 36px;
+      line-height: 48px;
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 1024px) {
+    .hero__slide {
+      height: 346px;
+      padding: 0 64px;
+    }
+
+    .hero__title {
+      font-size: 48px;
+      line-height: 60px;
+    }
+  }
 </style>
 
 <script>
-export default {
-  name: "HeroBanner",
-  data() {
-    return {
-      currentSlide: 0,
-      autoPlayInterval: null,
-      slides: [
-        {
-          imageBg:
-            "https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=800&q=80",
-          brandName: "iPhone 14 Series",
-          title: "Up to 10% off Voucher",
-        },
-        {
-          imageBg:
-            "https://www.m1.com.sg/content/dam/M1/hero-banner-carousel/2025/jan/samsung/pre/21125/new/1440x520.png",
-          brandName: "Samsung Galaxy Series",
-          title: "Up to 15% off Today",
-        },
-        {
-          imageBg:
-            "https://techlingo.co/wp-content/uploads/2018/10/OnePlus-6T-Banner-1500x500.jpg",
-          brandName: "OnePlus Series",
-          title: "Best Deals This Week",
-        },
-        {
-          imageBg:
-            "https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=800&q=80",
-          brandName: "Nothing Phone Series",
-          title: "Up to 20% off Voucher",
-        },
-        {
-          imageBg:
-            "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=800&q=80",
-          brandName: "Xiaomi Series",
-          title: "Up to 25% off Voucher",
-        },
-      ],
-    };
-  },
-  methods: {
-    changeCurrentSlide(slideNumber) {
-      this.currentSlide = slideNumber;
+  export default {
+    name: 'HeroBanner',
+    data() {
+      return {
+        currentSlide: 0,
+        autoPlayInterval: null,
+        slides: [
+          {
+            imageBg: 'https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=800&q=80',
+            brandName: 'iPhone 14 Series',
+            title: 'Up to 10% off Voucher',
+          },
+          {
+            imageBg:
+              'https://www.m1.com.sg/content/dam/M1/hero-banner-carousel/2025/jan/samsung/pre/21125/new/1440x520.png',
+            brandName: 'Samsung Galaxy Series',
+            title: 'Up to 15% off Today',
+          },
+          {
+            imageBg:
+              'https://techlingo.co/wp-content/uploads/2018/10/OnePlus-6T-Banner-1500x500.jpg',
+            brandName: 'OnePlus Series',
+            title: 'Best Deals This Week',
+          },
+          {
+            imageBg: 'https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=800&q=80',
+            brandName: 'Nothing Phone Series',
+            title: 'Up to 20% off Voucher',
+          },
+          {
+            imageBg: 'https://images.unsplash.com/photo-1580910051074-3eb694886505?w=800&q=80',
+            brandName: 'Xiaomi Series',
+            title: 'Up to 25% off Voucher',
+          },
+        ],
+      }
     },
-    nextSlide() {
-      this.currentSlide = (this.currentSlide + 1) % this.slides.length;
-      // when currentSlide == slides.length it will go back to 0 and start again.
+    methods: {
+      changeCurrentSlide(slideNumber) {
+        this.currentSlide = slideNumber
+      },
+      nextSlide() {
+        this.currentSlide = (this.currentSlide + 1) % this.slides.length
+        // when currentSlide == slides.length it will go back to 0 and start again.
+      },
+      autoPlaySlider() {
+        this.autoPlayInterval = setInterval(() => {
+          // runs nextSlide() every 2 sec, and saves its ID in autoPlayInterval to kill it later.
+          this.nextSlide()
+        }, 2000)
+      },
     },
-    autoPlaySlider() {
-      this.autoPlayInterval = setInterval(() => {
-        // runs nextSlide() every 2 sec, and saves its ID in autoPlayInterval to kill it later.
-        this.nextSlide();
-      }, 2000);
+    mounted() {
+      this.autoPlaySlider()
     },
-  },
-  mounted() {
-    this.autoPlaySlider();
-  },
-  beforeDestroy() {
-    clearInterval(this.autoPlayInterval);
-  },
-};
+    beforeDestroy() {
+      clearInterval(this.autoPlayInterval)
+    },
+  }
 </script>

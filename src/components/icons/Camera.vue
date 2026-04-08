@@ -1,11 +1,5 @@
 <template>
-  <svg
-    width="56"
-    height="56"
-    viewBox="0 0 56 56"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M8 20C8 18 10 16 12 16H18L22 11H34L38 16H44C46 16 48 18 48 20V40C48 42 46 44 44 44H12C10 44 8 42 8 40V20Z"
       stroke="currentColor"
@@ -15,7 +9,7 @@
   </svg>
 </template>
 <script>
-export default {
-  name: "CameraIcon",
-};
+  export default {
+    name: 'CameraIcon',
+  }
 </script>
