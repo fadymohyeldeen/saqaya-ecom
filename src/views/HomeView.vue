@@ -34,7 +34,7 @@
 import Vue from "vue";
 import HeroBanner from "@/components/Home/HeroBanner.vue";
 import CategoriesSection from "@/components/Home/CategoriesSection.vue";
-import ServicesStrip from "@/components/Home/ServicesStrip.vue";
+import ServicesStrip from "@/components/shared/ServicesStrip.vue";
 import ProductsSection from "@/components/shared/ProductsSection.vue";
 
 export default Vue.extend({

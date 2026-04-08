@@ -36,7 +36,7 @@
         </div>
 
         <div class="header__cart">
-          <img src="@/assets/icons/cart.svg" alt="Cart" />
+          <img src="@/assets/icons/cart.svg" alt="Cart" class="cart-icon" />
         </div>
 
         <button class="header__hamburger" @click="menuOpen = !menuOpen">
@@ -153,6 +153,11 @@
 .header__cart {
   position: relative;
   cursor: pointer;
+}
+
+.cart-icon {
+  width: 24px;
+  height: 24px;
 }
 
 .header__hamburger {
