@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/products/${id}">
+  <router-link :to="`/products/${id}`">
     <!-- ProductCard -->
     <div class="product-card">
       <!-- Image Section -->
