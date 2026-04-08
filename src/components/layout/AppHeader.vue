@@ -7,6 +7,9 @@
         <router-link to="/products" @click.native="menuOpen = false">Products</router-link>
         <router-link to="/contact" @click.native="menuOpen = false">Contact</router-link>
         <router-link to="/about-us" @click.native="menuOpen = false">About</router-link>
+        <!-- router-link gets rendered as <a> element in the browser
+        .native listens to the actual DOM click event on the rendered <a> element
+        without .native, the click will listen to the router-link component not the rendered <a> element -->
       </nav>
 
       <div class="header__actions">
