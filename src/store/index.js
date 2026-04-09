@@ -1,22 +1,20 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import products from './modules/products'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-    // the actual data like variables or objects.
-  },
-  getters: {
-    // reads or returns computed values from state. (without changing it)
-  },
-  mutations: {
-    // the only functions allowed to change the state. (must be sync to use dev tools)
-  },
-  actions: {
-    // operations that eventually calls mutations. (can be async like api calls)
-  },
   modules: {
-    // can split store into smaller stores.
+    // splits store into smaller stores. (Pinia is modular by default, every store is a module and has its own file.)
+    products,
   },
 })
+
+/*
+Component dispatches action
+  → Action does async work (API call)
+    → Action commits a mutation
+      → Mutation updates state
+        → Component re-renders
+*/
