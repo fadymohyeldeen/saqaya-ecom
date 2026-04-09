@@ -16,9 +16,9 @@
       <div class="footer__col">
         <h3 class="footer__heading">Support</h3>
         <ul class="footer__list">
-          <li>111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.</li>
-          <li>exclusive@gmail.com</li>
-          <li>+88015-88888-9999</li>
+          <li v-for="item in support" :key="item.label">
+            {{ item.label }}
+          </li>
         </ul>
       </div>
 
@@ -26,11 +26,9 @@
       <div class="footer__col">
         <h3 class="footer__heading">Account</h3>
         <ul class="footer__list">
-          <li><a href="#">My Account</a></li>
-          <li><a href="#">Login / Register</a></li>
-          <li><a href="#">Cart</a></li>
-          <li><a href="#">Wishlist</a></li>
-          <li><a href="#">Shop</a></li>
+          <li v-for="item in accountLinks" :key="item.label">
+            <a :href="item.href">{{ item.label }}</a>
+          </li>
         </ul>
       </div>
 
@@ -38,10 +36,9 @@
       <div class="footer__col">
         <h3 class="footer__heading">Quick Link</h3>
         <ul class="footer__list">
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms Of Use</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Contact</a></li>
+          <li v-for="item in quickLinks" :key="item.label">
+            <a :href="item.href">{{ item.label }}</a>
+          </li>
         </ul>
       </div>
 
@@ -63,17 +60,8 @@
           </div>
         </div>
         <div class="footer__socials">
-          <a href="#" aria-label="Facebook">
-            <img src="@/assets/icons/facebook.svg" alt="Facebook" />
-          </a>
-          <a href="#" aria-label="Twitter">
-            <img src="@/assets/icons/twitter.svg" alt="Twitter" />
-          </a>
-          <a href="#" aria-label="Instagram">
-            <img src="@/assets/icons/instagram.svg" alt="Instagram" />
-          </a>
-          <a href="#" aria-label="LinkedIn">
-            <img src="@/assets/icons/linkedin.svg" alt="LinkedIn" />
+          <a v-for="item in icons" :key="item.alt" :href="item.href">
+            <img :src="item.src" :alt="item.alt" />
           </a>
         </div>
       </div>
@@ -304,7 +292,40 @@
 </style>
 
 <script>
+  import facebook from '@/assets/icons/facebook.svg'
+  import twitter from '@/assets/icons/twitter.svg'
+  import instagram from '@/assets/icons/instagram.svg'
+  import linkedin from '@/assets/icons/linkedin.svg'
+
   export default {
     name: 'AppFooter',
+    data() {
+      return {
+        support: [
+          { label: '111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.' },
+          { label: 'exclusive@gmail.com' },
+          { label: '+88015-88888-9999' },
+        ],
+        accountLinks: [
+          { label: 'My Account', href: '#' },
+          { label: 'Login / Register', href: '#' },
+          { label: 'Cart', href: '#' },
+          { label: 'Wishlist', href: '#' },
+          { label: 'Shop', href: '#' },
+        ],
+        quickLinks: [
+          { label: 'Privacy Policy', href: '#' },
+          { label: 'Terms Of Use', href: '#' },
+          { label: 'FAQ', href: '#' },
+          { label: 'Contact', href: '#' },
+        ],
+        icons: [
+          { src: facebook, alt: 'Facebook', href: '#' },
+          { src: twitter, alt: 'Twitter', href: '#' },
+          { src: instagram, alt: 'Instagram', href: '#' },
+          { src: linkedin, alt: 'LinkedIn', href: '#' },
+        ],
+      }
+    },
   }
 </script>
