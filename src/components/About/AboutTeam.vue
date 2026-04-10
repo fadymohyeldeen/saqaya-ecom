@@ -10,13 +10,13 @@
           <p class="about-team__role">{{ member.role }}</p>
           <div class="about-team__socials">
             <a :href="member.twitter" aria-label="Twitter">
-              <img src="@/assets/icons/twitter.svg" alt="Twitter" />
+              <img src="@/assets/icons/footer/twitter.svg" alt="Twitter" />
             </a>
             <a :href="member.instagram" aria-label="Instagram">
-              <img src="@/assets/icons/instagram.svg" alt="Instagram" />
+              <img src="@/assets/icons/footer/instagram.svg" alt="Instagram" />
             </a>
             <a :href="member.linkedin" aria-label="LinkedIn">
-              <img src="@/assets/icons/linkedin.svg" alt="LinkedIn" />
+              <img src="@/assets/icons/footer/linkedin.svg" alt="LinkedIn" />
             </a>
           </div>
         </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="category-card">
-    <component :is="icons[name]" class="category-card__icon" />
+    <img :src="icons[name]" :alt="name" class="category-card__icon" />
     <span class="category-card__name">{{ name }}</span>
   </div>
 </template>
@@ -31,10 +31,13 @@
   .category-card__icon {
     width: 35px;
     height: 35px;
-    color: var(--color-text);
+    transition: filter 0.2s ease;
   }
 
-  .category-card:hover .category-card__icon,
+  .category-card:hover .category-card__icon {
+    filter: invert(1);
+  }
+
   .category-card:hover .category-card__name {
     color: var(--color-text-light);
   }
@@ -59,12 +62,12 @@
 </style>
 
 <script>
-  import BeautyIcon from '../icons/Beauty.vue'
-  import FurnitureIcon from '../icons/Furniture.vue'
-  import FragranceIcon from '../icons/Fragrance.vue'
-  import CameraIcon from '../icons/Camera.vue'
-  import MobileAccessoriesIcon from '../icons/MobileAccessories.vue'
-  import HomeAccessoriesIcon from '../icons/HomeAccessories.vue'
+  import beautyIcon from '@/assets/icons/categories/icon-beauty.svg'
+  import cameraIcon from '@/assets/icons/categories/icon-camera.svg'
+  import fragranceIcon from '@/assets/icons/categories/icon-fragrance.svg'
+  import furnitureIcon from '@/assets/icons/categories/icon-furniture.svg'
+  import homeAccessoriesIcon from '@/assets/icons/categories/icon-home-accessories.svg'
+  import mobileAccessoriesIcon from '@/assets/icons/categories/icon-mobile-accessories.svg'
 
   export default {
     name: 'CategoryCard',
@@ -77,12 +80,12 @@
     data() {
       return {
         icons: {
-          Beauty: BeautyIcon,
-          Furniture: FurnitureIcon,
-          Fragrance: FragranceIcon,
-          Camera: CameraIcon,
-          'Mobile Accessories': MobileAccessoriesIcon,
-          'Home Accessories': HomeAccessoriesIcon,
+          Beauty: beautyIcon,
+          Furniture: furnitureIcon,
+          Fragrance: fragranceIcon,
+          Camera: cameraIcon,
+          'Mobile Accessories': mobileAccessoriesIcon,
+          'Home Accessories': homeAccessoriesIcon,
         },
       }
     },

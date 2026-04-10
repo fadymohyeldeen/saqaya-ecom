@@ -7,9 +7,6 @@
         <router-link to="/products" @click.native="menuOpen = false">Products</router-link>
         <router-link to="/contact" @click.native="menuOpen = false">Contact</router-link>
         <router-link to="/about-us" @click.native="menuOpen = false">About</router-link>
-        <!-- router-link gets rendered as <a> element in the browser
-        .native listens to the actual DOM click event on the rendered <a> element
-        without .native, the click will listen to the router-link component not the rendered <a> element -->
       </nav>
 
       <div class="header__actions">
@@ -28,7 +25,7 @@
         </div>
 
         <div class="header__cart">
-          <img src="@/assets/icons/cart.svg" alt="Cart" class="cart-icon" />
+          <img src="@/assets/icons/header/cart.svg" alt="Cart" />
         </div>
 
         <button class="header__hamburger" @click="menuOpen = !menuOpen">
@@ -145,11 +142,6 @@
   .header__cart {
     position: relative;
     cursor: pointer;
-  }
-
-  .cart-icon {
-    width: 24px;
-    height: 24px;
   }
 
   .header__hamburger {

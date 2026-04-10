@@ -8,7 +8,7 @@
         <p class="footer__text">Get 10% off your first order</p>
         <div class="footer__input-wrap">
           <input type="email" placeholder="Enter your email" />
-          <img src="@/assets/icons/arrow.svg" alt="Arrow Icon" />
+          <img src="@/assets/icons/footer/arrow.svg" alt="Arrow Icon" />
         </div>
       </div>
 
@@ -16,9 +16,9 @@
       <div class="footer__col">
         <h3 class="footer__heading">Support</h3>
         <ul class="footer__list">
-          <li v-for="item in support" :key="item.label">
-            {{ item.label }}
-          </li>
+          <li>111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.</li>
+          <li>exclusive@gmail.com</li>
+          <li>+88015-88888-9999</li>
         </ul>
       </div>
 
@@ -26,9 +26,11 @@
       <div class="footer__col">
         <h3 class="footer__heading">Account</h3>
         <ul class="footer__list">
-          <li v-for="item in accountLinks" :key="item.label">
-            <a :href="item.href">{{ item.label }}</a>
-          </li>
+          <li><a href="#">My Account</a></li>
+          <li><a href="#">Login / Register</a></li>
+          <li><a href="#">Cart</a></li>
+          <li><a href="#">Wishlist</a></li>
+          <li><a href="#">Shop</a></li>
         </ul>
       </div>
 
@@ -36,9 +38,10 @@
       <div class="footer__col">
         <h3 class="footer__heading">Quick Link</h3>
         <ul class="footer__list">
-          <li v-for="item in quickLinks" :key="item.label">
-            <a :href="item.href">{{ item.label }}</a>
-          </li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms Of Use</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact</a></li>
         </ul>
       </div>
 
@@ -48,20 +51,29 @@
         <p class="footer__text footer__text--small">Save $3 with App New User Only</p>
         <div class="footer__app">
           <div class="footer__qr">
-            <img src="@/assets/icons/qr.svg" alt="QR Code" />
+            <img src="@/assets/icons/footer/qr.svg" alt="QR Code" />
           </div>
           <div class="footer__stores">
             <div class="footer__store">
-              <img src="@/assets/icons/google-play.svg" alt="Google Play" />
+              <img src="@/assets/icons/footer/google-play.svg" alt="Google Play" />
             </div>
             <div class="footer__store">
-              <img src="@/assets/icons/app-store.svg" alt="App Store" />
+              <img src="@/assets/icons/footer/app-store.svg" alt="App Store" />
             </div>
           </div>
         </div>
         <div class="footer__socials">
-          <a v-for="item in icons" :key="item.alt" :href="item.href">
-            <img :src="item.src" :alt="item.alt" />
+          <a href="#" aria-label="Facebook">
+            <img src="@/assets/icons/footer/facebook.svg" alt="Facebook" />
+          </a>
+          <a href="#" aria-label="Twitter">
+            <img src="@/assets/icons/footer/twitter.svg" alt="Twitter" />
+          </a>
+          <a href="#" aria-label="Instagram">
+            <img src="@/assets/icons/footer/instagram.svg" alt="Instagram" />
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <img src="@/assets/icons/footer/linkedin.svg" alt="LinkedIn" />
           </a>
         </div>
       </div>
@@ -292,40 +304,7 @@
 </style>
 
 <script>
-  import facebook from '@/assets/icons/facebook.svg'
-  import twitter from '@/assets/icons/twitter.svg'
-  import instagram from '@/assets/icons/instagram.svg'
-  import linkedin from '@/assets/icons/linkedin.svg'
-
   export default {
     name: 'AppFooter',
-    data() {
-      return {
-        support: [
-          { label: '111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.' },
-          { label: 'exclusive@gmail.com' },
-          { label: '+88015-88888-9999' },
-        ],
-        accountLinks: [
-          { label: 'My Account', href: '#' },
-          { label: 'Login / Register', href: '#' },
-          { label: 'Cart', href: '#' },
-          { label: 'Wishlist', href: '#' },
-          { label: 'Shop', href: '#' },
-        ],
-        quickLinks: [
-          { label: 'Privacy Policy', href: '#' },
-          { label: 'Terms Of Use', href: '#' },
-          { label: 'FAQ', href: '#' },
-          { label: 'Contact', href: '#' },
-        ],
-        icons: [
-          { src: facebook, alt: 'Facebook', href: '#' },
-          { src: twitter, alt: 'Twitter', href: '#' },
-          { src: instagram, alt: 'Instagram', href: '#' },
-          { src: linkedin, alt: 'LinkedIn', href: '#' },
-        ],
-      }
-    },
   }
 </script>
