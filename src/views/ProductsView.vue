@@ -19,44 +19,16 @@
 
     <div class="products__grid">
       <ProductCard
-        :id="1"
-        name="HAVIT HV-G92 Gamepad"
-        :price="120"
-        :originalPrice="160"
-        :discount="15"
-        image="https://cdn1.smartmedia.is/computer/skrar/vara/108050507_8915072497/108050507_8915072497_540_540_2.jpg"
-        :rating="5"
-        :reviews="88"
-      />
-      <ProductCard
-        :id="2"
-        name="AK-900 Wired Keyboard"
-        :price="960"
-        :originalPrice="1160"
-        :discount="37"
-        image="https://cdn1.smartmedia.is/computer/skrar/vara/108050507_8915072497/108050507_8915072497_540_540_2.jpg"
-        :rating="4"
-        :reviews="75"
-      />
-      <ProductCard
-        :id="3"
-        name="IPS LCD Gaming Monitor"
-        :price="370"
-        :originalPrice="400"
-        :discount="54"
-        image="https://cdn1.smartmedia.is/computer/skrar/vara/108050507_8915072497/108050507_8915072497_540_540_2.jpg"
-        :rating="5"
-        :reviews="99"
-      />
-      <ProductCard
-        :id="4"
-        name="S-Series Comfort Chair"
-        :price="375"
-        :originalPrice="400"
-        :discount="35"
-        image="https://cdn1.smartmedia.is/computer/skrar/vara/108050507_8915072497/108050507_8915072497_540_540_2.jpg"
-        :rating="5"
-        :reviews="99"
+        v-for="product in products"
+        :key="product.id"
+        :id="product.id"
+        :name="product.title"
+        :price="priceAfterDiscount(product.price, product.discountPercentage)"
+        :originalPrice="product.price"
+        :discount="Math.round(product.discountPercentage)"
+        :image="product.thumbnail"
+        :rating="product.rating"
+        :reviews="product.reviews.length"
       />
     </div>
 
@@ -156,6 +128,19 @@
       return {
         breadcrumbs: [{ label: 'Home', to: '/' }, { label: 'Products' }],
       }
+    },
+    async mounted() {
+      await this.$store.dispatch('products/getAllProducts')
+    },
+    computed: {
+      products() {
+        return this.$store.state.products.products
+      },
+    },
+    methods: {
+      priceAfterDiscount(price, discount) {
+        return (price - price * (discount / 100)).toFixed(2)
+      },
     },
   }
 </script>

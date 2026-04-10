@@ -297,11 +297,11 @@
         required: true,
       },
       price: {
-        type: Number,
+        type: [Number, String],
         required: true,
       },
       originalPrice: {
-        type: Number,
+        type: [Number, String],
         default: null,
       },
       discount: {

@@ -10,7 +10,7 @@ export default {
   state: () => ({
     products: [],
     selectedProduct: null,
-    categoryList: [],
+    categories: [],
   }),
   mutations: {
     // the only functions allowed to change the state.
@@ -29,13 +29,13 @@ export default {
     // operations that eventually calls mutations.
     async getAllProducts({ commit }) {
       const response = await api.get('/products')
-      commit('SET_PRODUCTS', response.data)
+      commit('SET_PRODUCTS', response.data.products)
     },
     async getProductById({ commit }, productId) {
       const response = await api.get(`/products/${productId}`)
       commit('SET_SELECTED_PRODUCT', response.data)
     },
-    async getCategoryList({ commit }) {
+    async getCategories({ commit }) {
       const response = await api.get('/products/category-list')
       commit('SET_CATEGORIES', response.data)
     },
