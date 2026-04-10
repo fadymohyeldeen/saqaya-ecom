@@ -15,10 +15,10 @@
 </template>
 
 <script>
-  import sellerIcon from '@/assets/icons/sellers.svg'
-  import salesIcon from '@/assets/icons/dollar.svg'
-  import customerIcon from '@/assets/icons/customer.svg'
-  import moneyIcon from '@/assets/icons/money-bag.svg'
+  import sellerIcon from '@/assets/icons/about/sellers.svg'
+  import salesIcon from '@/assets/icons/about/dollar.svg'
+  import customerIcon from '@/assets/icons/about/customer.svg'
+  import moneyIcon from '@/assets/icons/about/money-bag.svg'
 
   export default {
     name: 'AboutStats',
