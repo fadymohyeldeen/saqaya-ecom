@@ -23,9 +23,8 @@
         :key="product.id"
         :id="product.id"
         :name="product.title"
-        :price="priceAfterDiscount(product.price, product.discountPercentage)"
         :originalPrice="product.price"
-        :discount="Math.round(product.discountPercentage)"
+        :discountPercentage="product.discountPercentage"
         :image="product.thumbnail"
         :rating="product.rating"
         :reviews="product.reviews.length"
@@ -135,11 +134,6 @@
     computed: {
       products() {
         return this.$store.state.products.products
-      },
-    },
-    methods: {
-      priceAfterDiscount(price, discount) {
-        return (price - price * (discount / 100)).toFixed(2)
       },
     },
   }

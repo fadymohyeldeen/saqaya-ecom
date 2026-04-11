@@ -13,16 +13,15 @@
       :class="{ 'products-section__scroll--grid': !alwaysScroll }"
     >
       <ProductCard
-        v-for="item in products"
-        :key="item.id"
-        :id="item.id"
-        :name="item.name"
-        :price="item.price"
-        :originalPrice="item.originalPrice"
-        :discount="item.discount"
-        :image="item.image"
-        :rating="item.rating"
-        :reviews="item.reviews"
+        v-for="product in products"
+        :key="product.id"
+        :id="product.id"
+        :name="product.title"
+        :originalPrice="product.price"
+        :discountPercentage="product.discountPercentage"
+        :image="product.thumbnail"
+        :rating="product.rating"
+        :reviews="product.reviews.length"
       />
     </div>
 
