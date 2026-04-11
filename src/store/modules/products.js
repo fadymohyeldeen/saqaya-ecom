@@ -8,20 +8,40 @@ export default {
   eg: products/SET_PRODUCTS and cart/SET_PRODUCTS
   */
   state: () => ({
-    products: [],
+    // ---------- Products Grid -----------
+    products: [], // all products
+    displayedProductsCount: 20, // the num of products displayed in grid
+    skip: 40, // the num of products to skip in new fetch
+
+    // ---------- Single Product ----------
     selectedProduct: null,
+
+    // ---------- Home Page Sections ----------
     categoryList: [],
     flashSaleProducts: [],
     exploreProducts: [],
   }),
   mutations: {
-    // the only functions allowed to change the state.
+    // ---------- Products Grid ----------
     SET_PRODUCTS(state, products) {
       state.products = products
     },
+    APPEND_PRODUCTS(state, newProducts) {
+      state.products = [...state.products, ...newProducts]
+    },
+    SET_DISPLAYED_PRODUCTS_COUNT(state, count) {
+      state.displayedProductsCount = count
+    },
+    SET_SKIP(state, skip) {
+      state.skip = skip
+    },
+
+    // ---------- Single Product ----------
     SET_SELECTED_PRODUCT(state, product) {
       state.selectedProduct = product
     },
+
+    // ---------- Home Page Sections ----------
     SET_CATEGORY_LIST(state, categoryList) {
       state.categoryList = categoryList
     },
@@ -32,20 +52,38 @@ export default {
       state.exploreProducts = products
     },
   },
-
-  actions: {
-    // operations that eventually calls mutations.
-    async getAllProducts({ commit }) {
-      const response = await api.get('/products')
-      commit('SET_PRODUCTS', response.data.products)
+  getters: {
+    // ---------- Products Grid ----------
+    displayedProducts: state => {
+      return state.products.slice(0, state.displayedProductsCount)
+      // returns the first 'N' products from the products array
     },
+  },
+  actions: {
+    // ---------- Products Grid ----------
+    async getAllProducts({ commit }) {
+      const response = await api.get('/products?limit=40')
+      commit('SET_PRODUCTS', response.data.products)
+      commit('SET_DISPLAYED_PRODUCTS_COUNT', 20)
+      commit('SET_SKIP', 40)
+    },
+    async loadMoreProducts({ commit, state }) {
+      const response = await api.get(`/products?limit=20&skip=${state.skip}`)
+      commit('APPEND_PRODUCTS', response.data.products)
+      commit('SET_DISPLAYED_PRODUCTS_COUNT', state.displayedProductsCount + 20)
+      commit('SET_SKIP', state.skip + 20)
+    },
+
+    // ---------- Single Product ----------
     async getProductById({ commit }, productId) {
       const response = await api.get(`/products/${productId}`)
       commit('SET_SELECTED_PRODUCT', response.data)
     },
+
+    // ---------- Home Page Sections ----------
     async getCategoryList({ commit }) {
       const response = await api.get('/products/category-list')
-      commit('SET_CATEGORIES', response.data)
+      commit('SET_CATEGORY_LIST', response.data)
     },
     async getFlashSaleProducts({ commit }) {
       const response = await api.get('/products?limit=8&sortBy=discountPercentage&order=desc')
