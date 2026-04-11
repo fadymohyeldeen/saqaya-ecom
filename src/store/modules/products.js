@@ -10,7 +10,9 @@ export default {
   state: () => ({
     products: [],
     selectedProduct: null,
-    categories: [],
+    categoryList: [],
+    flashSaleProducts: [],
+    exploreProducts: [],
   }),
   mutations: {
     // the only functions allowed to change the state.
@@ -20,8 +22,14 @@ export default {
     SET_SELECTED_PRODUCT(state, product) {
       state.selectedProduct = product
     },
-    SET_CATEGORIES(state, categories) {
-      state.categories = categories
+    SET_CATEGORY_LIST(state, categoryList) {
+      state.categoryList = categoryList
+    },
+    SET_FLASH_SALE_PRODUCTS(state, products) {
+      state.flashSaleProducts = products
+    },
+    SET_EXPLORE_PRODUCTS(state, products) {
+      state.exploreProducts = products
     },
   },
 
@@ -35,9 +43,17 @@ export default {
       const response = await api.get(`/products/${productId}`)
       commit('SET_SELECTED_PRODUCT', response.data)
     },
-    async getCategories({ commit }) {
+    async getCategoryList({ commit }) {
       const response = await api.get('/products/category-list')
       commit('SET_CATEGORIES', response.data)
+    },
+    async getFlashSaleProducts({ commit }) {
+      const response = await api.get('/products?limit=8&sortBy=discountPercentage&order=desc')
+      commit('SET_FLASH_SALE_PRODUCTS', response.data.products)
+    },
+    async getExploreProducts({ commit }) {
+      const response = await api.get('/products?limit=8')
+      commit('SET_EXPLORE_PRODUCTS', response.data.products)
     },
   },
 }

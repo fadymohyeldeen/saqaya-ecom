@@ -23,4 +23,5 @@ pnpm-debug.log*
 *.sw?
 
 TODOs
-study-tracker.txt
+study-tracker
+CLAUDE.md
