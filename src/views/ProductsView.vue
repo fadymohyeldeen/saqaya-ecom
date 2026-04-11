@@ -31,7 +31,7 @@
     </div>
 
     <div class="products__load-more">
-      <AppButton label="Load More ..." />
+      <AppButton label="Load More ..." @click="loadMore" />
     </div>
   </div>
 </template>
@@ -128,11 +128,16 @@
       }
     },
     async mounted() {
-      await this.$store.dispatch('products/getAllProducts')
+      await this.$store.dispatch('products/fetchProducts')
     },
     computed: {
       products() {
-        return this.$store.state.products.products
+        return this.$store.getters['products/displayedProducts']
+      },
+    },
+    methods: {
+      loadMore() {
+        this.$store.dispatch('products/loadMoreProducts')
       },
     },
   }

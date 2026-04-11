@@ -9,9 +9,9 @@ export default {
   */
   state: () => ({
     // ---------- Products Grid -----------
-    products: [], // all products
-    displayedProductsCount: 20, // the num of products displayed in grid
-    skip: 40, // the num of products to skip in new fetch
+    products: [], // all products (initially 40)
+    displayedProductsCount: 20, // the num of products displayed in the grid
+    skip: 40, // the num of products to skip in new fetch (incremented by 20 each time)
 
     // ---------- Single Product ----------
     selectedProduct: null,
@@ -61,11 +61,9 @@ export default {
   },
   actions: {
     // ---------- Products Grid ----------
-    async getAllProducts({ commit }) {
+    async fetchProducts({ commit }) {
       const response = await api.get('/products?limit=40')
       commit('SET_PRODUCTS', response.data.products)
-      commit('SET_DISPLAYED_PRODUCTS_COUNT', 20)
-      commit('SET_SKIP', 40)
     },
     async loadMoreProducts({ commit, state }) {
       const response = await api.get(`/products?limit=20&skip=${state.skip}`)
