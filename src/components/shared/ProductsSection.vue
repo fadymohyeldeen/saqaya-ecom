@@ -1,17 +1,9 @@
 <template>
   <section class="products-section">
-    <SectionHeader
-      :label="label"
-      :title="title"
-      :showNav="showNav"
-      @prev="$emit('prev')"
-      @next="$emit('next')"
-    />
+    <SectionHeader :label="label" :title="title" @next="scrollNext()" @prev="scrollPrev()" />
 
-    <div
-      class="products-section__scroll"
-      :class="{ 'products-section__scroll--grid': !alwaysScroll }"
-    >
+    <div ref="scrollContainer" class="products-section__scroll">
+      <!-- ref: vue's getElementById -->
       <ProductCard
         v-for="product in products"
         :key="product.id"
@@ -52,20 +44,24 @@
         type: Array,
         required: true,
       },
-      showNav: {
-        type: Boolean,
-        default: false,
-      },
+
       viewAllLink: {
         type: String,
         default: null,
       },
-      alwaysScroll: {
-        type: Boolean,
-        default: false,
+    },
+    methods: {
+      scrollNext() {
+        const scrollContainer = this.$refs.scrollContainer // selects the div with ref scrollContainer
+        const card = scrollContainer.firstElementChild // selects the first product card
+        scrollContainer.scrollBy({ left: card.offsetWidth, behavior: 'smooth' }) // scrolls by the width of a card
+      },
+      scrollPrev() {
+        const scrollContainer = this.$refs.scrollContainer
+        const card = scrollContainer.firstElementChild
+        scrollContainer.scrollBy({ left: -card.offsetWidth, behavior: 'smooth' })
       },
     },
-    emits: ['prev', 'next'],
   }
 </script>
 
@@ -109,20 +105,6 @@
       gap: 30px;
     }
 
-    /* Switch to grid when alwaysScroll is false */
-    .products-section__scroll--grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      overflow-x: visible;
-      padding-bottom: 0;
-      scroll-snap-type: none;
-    }
-
-    .products-section__scroll--grid > * {
-      flex-shrink: 1;
-    }
-
     .products-section__center {
       margin-top: 40px;
     }
@@ -132,11 +114,6 @@
   @media (min-width: 1024px) {
     .products-section {
       margin-bottom: 80px;
-    }
-
-    .products-section__scroll--grid {
-      grid-template-columns: repeat(4, 270px);
-      gap: 30px;
     }
   }
 </style>
