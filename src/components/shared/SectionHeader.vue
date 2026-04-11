@@ -5,38 +5,35 @@
       <span class="section-header__label">{{ label }}</span>
     </div>
 
-    <template v-if="title">
-      <div v-if="showNav" class="section-header__title-row">
-        <h2 class="section-header__title">{{ title }}</h2>
-        <div class="section-header__nav">
-          <button class="section-header__nav-btn" aria-label="Previous" @click="$emit('prev')">
-            <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
-              <circle cx="23" cy="23" r="23" fill="#F5F5F5" />
-              <path
-                d="M26 16L19 23L26 30"
-                stroke="#000000"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </button>
-          <button class="section-header__nav-btn" aria-label="Next" @click="$emit('next')">
-            <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
-              <circle cx="23" cy="23" r="23" fill="#F5F5F5" />
-              <path
-                d="M20 16L27 23L20 30"
-                stroke="#000000"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </button>
-        </div>
+    <div v-if="title" class="section-header__title-row">
+      <h2 class="section-header__title">{{ title }}</h2>
+      <div class="section-header__nav">
+        <button class="section-header__nav-btn" aria-label="Previous" @click="$emit('prev')">
+          <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
+            <circle cx="23" cy="23" r="23" fill="#F5F5F5" />
+            <path
+              d="M26 16L19 23L26 30"
+              stroke="#000000"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <button class="section-header__nav-btn" aria-label="Next" @click="$emit('next')">
+          <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
+            <circle cx="23" cy="23" r="23" fill="#F5F5F5" />
+            <path
+              d="M20 16L27 23L20 30"
+              stroke="#000000"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
       </div>
-      <h2 v-else class="section-header__title">{{ title }}</h2>
-    </template>
+    </div>
   </div>
 </template>
 
@@ -51,10 +48,6 @@
       title: {
         type: String,
         default: null,
-      },
-      showNav: {
-        type: Boolean,
-        default: false,
       },
     },
     emits: ['prev', 'next'],

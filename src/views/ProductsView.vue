@@ -12,7 +12,6 @@
           <option value="">Price: High to low</option>
           <option value="">Discount percentage</option>
           <option value="">Brand</option>
-          <option value="">Category</option>
         </select>
       </div>
     </div>

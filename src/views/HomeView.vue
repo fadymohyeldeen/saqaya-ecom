@@ -6,9 +6,7 @@
       label="Today's"
       title="Flash Sales"
       :products="flashSaleProducts"
-      :showNav="true"
       viewAllLink="/products"
-      :alwaysScroll="true"
     />
 
     <div class="home__divider"></div>
@@ -21,9 +19,7 @@
       label="Our Products"
       title="Explore Our Products"
       :products="exploreProducts"
-      :showNav="true"
       viewAllLink="/products"
-      :alwaysScroll="true"
     />
 
     <ServicesStrip />
