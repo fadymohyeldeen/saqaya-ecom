@@ -5,7 +5,9 @@
       <!-- Image Section -->
       <div class="product-card__image-wrap">
         <!-- Discount Badge -->
-        <span v-if="discount" class="product-card__discount">-{{ discount }}%</span>
+        <span v-if="discountPercentage" class="product-card__discount"
+          >-{{ Math.round(discountPercentage) }}%</span
+        >
 
         <!-- Action Buttons -->
         <div class="product-card__actions">
@@ -37,7 +39,7 @@
       <div class="product-card__info">
         <h3 class="product-card__name">{{ name }}</h3>
         <div class="product-card__prices">
-          <span class="product-card__price">${{ price }}</span>
+          <span class="product-card__price">${{ priceAfterDiscount }}</span>
           <span v-if="originalPrice" class="product-card__original-price"
             >${{ originalPrice }}</span
           >
@@ -296,17 +298,13 @@
         type: String,
         required: true,
       },
-      price: {
+      originalPrice: {
         type: [Number, String],
         required: true,
       },
-      originalPrice: {
-        type: [Number, String],
-        default: null,
-      },
-      discount: {
+      discountPercentage: {
         type: Number,
-        default: null,
+        default: 0,
       },
       image: {
         type: String,
@@ -319,6 +317,13 @@
       reviews: {
         type: Number,
         default: 0,
+      },
+    },
+    computed: {
+      priceAfterDiscount() {
+        return (this.originalPrice - this.originalPrice * (this.discountPercentage / 100)).toFixed(
+          2
+        )
       },
     },
   }
