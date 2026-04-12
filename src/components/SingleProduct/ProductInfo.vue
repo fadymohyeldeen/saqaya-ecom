@@ -1,9 +1,9 @@
 <template>
   <div class="product-info">
-    <h1 class="product-info__title">{{ product.name }}</h1>
+    <h1 class="product-info__title">{{ product.title }}</h1>
 
     <div class="product-info__meta">
-      <StarRating :rating="product.rating" :reviews="product.reviews" />
+      <StarRating :rating="product.rating" :reviews="product.rating" />
       <div class="product-info__meta-right">
         <span class="product-info__meta-sep"></span>
         <span class="product-info__stock">In Stock</span>
@@ -12,7 +12,7 @@
 
     <div class="product-info__price-row">
       <span class="product-info__price">${{ product.price.toFixed(2) }}</span>
-      <span class="product-info__discount-badge">-{{ product.discount }}%</span>
+      <span class="product-info__discount-badge">-{{ product.discountPercentage }}%</span>
     </div>
 
     <p class="product-info__description">{{ product.description }}</p>

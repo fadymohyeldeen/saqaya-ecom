@@ -40,7 +40,7 @@
         <h3 class="product-card__name">{{ name }}</h3>
         <div class="product-card__prices">
           <span class="product-card__price">${{ priceAfterDiscount }}</span>
-          <span v-if="originalPrice" class="product-card__original-price"
+          <span v-if="discountPercentage" class="product-card__original-price"
             >${{ originalPrice }}</span
           >
         </div>
