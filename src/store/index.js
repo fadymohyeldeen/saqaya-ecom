@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import products from './modules/products'
+import products from '@/store/modules/products'
 
 Vue.use(Vuex)
 
