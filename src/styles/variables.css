@@ -11,12 +11,13 @@
   --color-bg-footer: #000000;
 
   --color-text: #000000;
-  --color-text-faded: #707070;
+
   --color-text-light: #fafafa;
 
   --color-badge-new: #00ff66;
   --color-star: #ffad33;
   --color-in-stock: #00ff66;
+  --color-contact-bg: #cbe4e8;
 
   /* ─── Typography ─── */
   --font-heading: 'Inter';
@@ -36,15 +37,6 @@
   --container-padding: 135px;
   --container-padding-tablet: 40px;
   --container-padding-mobile: 16px;
-  --content-width: 1170px;
-
-  /* ─── Spacing ─── */
-  --space-xs: 4px;
-  --space-sm: 8px;
-  --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 40px;
-  --space-2xl: 60px;
 
   /* ─── Border Radius ─── */
   --radius-sm: 4px;
@@ -52,8 +44,5 @@
   /* ─── Component Sizes ─── */
   --product-card-width: 270px;
   --product-card-image-height: 250px;
-  --category-card-width: 170px;
-  --category-card-height: 145px;
   --search-width: 243px;
-  --btn-height: 56px;
 }

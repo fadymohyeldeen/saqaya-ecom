@@ -63,9 +63,9 @@
   }
 
   .contact__info-card {
-    background: #ffffff;
+    background: var(--color-bg);
     box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.05);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     padding: 40px 35px;
     display: flex;
     flex-direction: column;
@@ -87,7 +87,7 @@
   .contact__icon-circle {
     width: 40px;
     height: 40px;
-    background: #db4444;
+    background: var(--color-primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -96,11 +96,11 @@
   }
 
   .contact__info-title {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-body);
     font-weight: 500;
-    font-size: 16px;
+    font-size: var(--text-md);
     line-height: 24px;
-    color: #000000;
+    color: var(--color-text);
   }
 
   .contact__info-body {
@@ -110,25 +110,25 @@
   }
 
   .contact__info-body p {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-body);
     font-weight: 400;
-    font-size: 14px;
+    font-size: var(--text-sm);
     line-height: 21px;
-    color: #000000;
+    color: var(--color-text);
     margin: 0;
   }
 
   .contact__divider {
     width: 100%;
     height: 1px;
-    background: #000000;
+    background: var(--color-text);
     opacity: 0.5;
   }
 
   .contact__form-card {
-    background: #ffffff;
+    background: var(--color-bg);
     box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.05);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     padding: 40px 31px;
     display: flex;
     flex-direction: column;
@@ -150,13 +150,13 @@
   .contact__field input,
   .contact__field textarea {
     width: 100%;
-    background: #f5f5f5;
+    background: var(--color-bg-secondary);
     border: none;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     padding: 13px 16px;
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-body);
     font-weight: 400;
-    font-size: 16px;
+    font-size: var(--text-md);
     line-height: 24px;
     color: rgba(0, 0, 0, 0.5);
     outline: none;
@@ -193,7 +193,7 @@
 </style>
 
 <script>
-  import AppButton from '../shared/AppButton.vue'
+  import AppButton from '@/components/shared/AppButton.vue'
 
   export default {
     name: 'ContactForm',
