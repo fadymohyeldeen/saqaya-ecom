@@ -89,8 +89,8 @@
   .about-team__photo {
     width: 100%;
     aspect-ratio: 3 / 4;
-    background: #f5f5f5;
-    border-radius: 4px;
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-sm);
     overflow: hidden;
   }
 
@@ -162,7 +162,7 @@
   }
 
   .about-team__dot--active {
-    background: #db4444;
+    background: var(--color-primary);
   }
 
   @media (max-width: 767px) {

@@ -37,7 +37,7 @@
 
   .contact__side-image {
     flex: 1;
-    background: #cbe4e8;
+    background: var(--color-contact-bg);
     border-radius: 4px;
     overflow: hidden;
     height: auto;

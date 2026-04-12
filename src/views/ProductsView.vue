@@ -68,7 +68,7 @@
     border: none;
     font-size: 14px;
     font-weight: 500;
-    background-color: #403a45;
+    background-color: var(--color-primary-dark);
     color: white;
     cursor: pointer;
     outline: none;

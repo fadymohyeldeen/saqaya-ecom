@@ -60,7 +60,7 @@
   }
 
   .hero__slide {
-    background-color: #000000;
+    background-color: var(--color-primary-dark);
     width: 100%;
     height: 250px;
     display: flex;
