@@ -22,6 +22,6 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
-TODOs
+tasks
 study-tracker
 CLAUDE.md
