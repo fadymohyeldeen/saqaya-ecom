@@ -16,8 +16,16 @@
         @decrease-qty="decreaseQty"
       />
     </div>
-
-    <ProductsSection label="More of this category" :products="relatedProducts" />
+    <error-message
+      :message="`Product Not Found.. Please try again later!
+`"
+      v-else
+    />
+    <ProductsSection
+      v-if="relatedProducts.length"
+      label="More of this category"
+      :products="relatedProducts"
+    />
   </div>
 </template>
 
@@ -26,6 +34,7 @@
   import ProductGallery from '@/components/SingleProduct/ProductGallery.vue'
   import ProductInfo from '@/components/SingleProduct/ProductInfo.vue'
   import ProductsSection from '@/components/shared/ProductsSection.vue'
+  import ErrorMessage from '@/components/shared/ErrorMessage.vue'
 
   export default {
     name: 'ProductView',
@@ -34,6 +43,7 @@
       ProductGallery,
       ProductInfo,
       ProductsSection,
+      ErrorMessage,
     },
     data() {
       return {

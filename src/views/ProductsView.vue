@@ -1,37 +1,39 @@
 <template>
   <div class="products__container">
     <AppBreadcrumb :items="breadcrumbs" />
-
-    <div class="products__header">
-      <h2 class="section-title">Explore Our Products</h2>
-      <div class="products__sort">
-        <p>Sort by</p>
-        <select name="" id="" class="products__select">
-          <option value="">Highest Rating</option>
-          <option value="">Price: Low to high</option>
-          <option value="">Price: High to low</option>
-          <option value="">Discount percentage</option>
-          <option value="">Brand</option>
-        </select>
+    <ErrorMessage v-if="error" :message="`Products Not Found.. Please try again later!`" />
+    <div v-else>
+      <div class="products__header">
+        <h2 class="section-title">Explore Our Products</h2>
+        <div class="products__sort">
+          <p>Sort by</p>
+          <select name="" id="" class="products__select">
+            <option value="">Highest Rating</option>
+            <option value="">Price: Low to high</option>
+            <option value="">Price: High to low</option>
+            <option value="">Discount percentage</option>
+            <option value="">Brand</option>
+          </select>
+        </div>
       </div>
-    </div>
 
-    <div class="products__grid">
-      <ProductCard
-        v-for="product in products"
-        :key="product.id"
-        :id="product.id"
-        :name="product.title"
-        :originalPrice="product.price"
-        :discountPercentage="product.discountPercentage"
-        :image="product.thumbnail"
-        :rating="product.rating"
-        :reviews="product.reviews.length"
-      />
-    </div>
+      <div class="products__grid">
+        <ProductCard
+          v-for="product in products"
+          :key="product.id"
+          :id="product.id"
+          :name="product.title"
+          :originalPrice="product.price"
+          :discountPercentage="product.discountPercentage"
+          :image="product.thumbnail"
+          :rating="product.rating"
+          :reviews="product.reviews.length"
+        />
+      </div>
 
-    <div class="products__load-more">
-      <AppButton label="Load More ..." @click="loadMore" />
+      <div class="products__load-more">
+        <AppButton label="Load More ..." @click="loadMore" />
+      </div>
     </div>
   </div>
 </template>
@@ -114,6 +116,7 @@
   import AppBreadcrumb from '@/components/shared/AppBreadcrumb.vue'
   import AppButton from '@/components/shared/AppButton.vue'
   import ProductCard from '@/components/shared/ProductCard.vue'
+  import ErrorMessage from '@/components/shared/ErrorMessage.vue'
 
   export default {
     name: 'ProductsView',
@@ -121,6 +124,7 @@
       AppBreadcrumb,
       AppButton,
       ProductCard,
+      ErrorMessage,
     },
     data() {
       return {
@@ -133,6 +137,9 @@
     computed: {
       products() {
         return this.$store.getters['products/displayedProducts']
+      },
+      error() {
+        return this.$store.state.products.error
       },
     },
     methods: {
