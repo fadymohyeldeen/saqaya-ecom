@@ -19,6 +19,9 @@ export default {
     // ---------- Home Page Sections ----------
     categoryList: [],
     flashSaleProducts: [],
+
+    // ---------- Error Handling ----------
+    error: null,
   }),
   mutations: {
     // ---------- Products Grid ----------
@@ -47,6 +50,11 @@ export default {
     SET_FLASH_SALE_PRODUCTS(state, products) {
       state.flashSaleProducts = products
     },
+
+    // ---------- Error Handling ----------
+    SET_ERROR(state, message) {
+      state.error = message
+    },
   },
   getters: {
     // ---------- Products Grid ----------
@@ -62,30 +70,55 @@ export default {
   actions: {
     // ---------- Products Grid ----------
     async getProducts({ commit }) {
-      const response = await api.get('/products?limit=40')
-      commit('SET_PRODUCTS', response.data.products)
+      try {
+        const response = await api.get('/products?limit=40')
+        commit('SET_PRODUCTS', response.data.products)
+      } catch (error) {
+        console.error(error)
+        commit('SET_ERROR', error.message)
+      }
     },
     async loadMoreProducts({ commit, state }) {
-      const response = await api.get(`/products?limit=20&skip=${state.skip}`)
-      commit('APPEND_PRODUCTS', response.data.products)
-      commit('SET_DISPLAYED_PRODUCTS_COUNT', state.displayedProductsCount + 20)
-      commit('SET_SKIP', state.skip + 20)
+      try {
+        const response = await api.get(`/products?limit=20&skip=${state.skip}`)
+        commit('APPEND_PRODUCTS', response.data.products)
+        commit('SET_DISPLAYED_PRODUCTS_COUNT', state.displayedProductsCount + 20)
+        commit('SET_SKIP', state.skip + 20)
+      } catch (error) {
+        console.error(error)
+        commit('SET_ERROR', error.message)
+      }
     },
 
     // ---------- Single Product ----------
     async getProductById({ commit }, productId) {
-      const response = await api.get(`/products/${productId}`)
-      commit('SET_SELECTED_PRODUCT', response.data)
+      try {
+        const response = await api.get(`/products/${productId}`)
+        commit('SET_SELECTED_PRODUCT', response.data)
+      } catch (error) {
+        console.error(error)
+        commit('SET_ERROR', error.message)
+      }
     },
 
     // ---------- Home Page Sections ----------
     async getCategoryList({ commit }) {
-      const response = await api.get('/products/category-list')
-      commit('SET_CATEGORY_LIST', response.data)
+      try {
+        const response = await api.get('/products/category-list')
+        commit('SET_CATEGORY_LIST', response.data)
+      } catch (error) {
+        console.error(error)
+        commit('SET_ERROR', error.message)
+      }
     },
     async getFlashSaleProducts({ commit }) {
-      const response = await api.get('/products?limit=8&sortBy=discountPercentage&order=desc')
-      commit('SET_FLASH_SALE_PRODUCTS', response.data.products)
+      try {
+        const response = await api.get('/products?limit=8&sortBy=discountPercentage&order=desc')
+        commit('SET_FLASH_SALE_PRODUCTS', response.data.products)
+      } catch (error) {
+        console.error(error)
+        commit('SET_ERROR', error.message)
+      }
     },
   },
 }
