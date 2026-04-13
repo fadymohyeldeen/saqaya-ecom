@@ -128,7 +128,7 @@
       }
     },
     async mounted() {
-      await this.$store.dispatch('products/fetchProducts')
+      await this.$store.dispatch('products/getProducts')
     },
     computed: {
       products() {
