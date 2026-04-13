@@ -59,14 +59,14 @@
     },
     async mounted() {
       await this.$store.dispatch('products/getFlashSaleProducts')
-      await this.$store.dispatch('products/getExploreProducts')
+      await this.$store.dispatch('products/getProducts')
     },
     computed: {
       flashSaleProducts() {
         return this.$store.state.products.flashSaleProducts
       },
       exploreProducts() {
-        return this.$store.state.products.exploreProducts
+        return this.$store.getters['products/exploreProducts']
       },
     },
   })

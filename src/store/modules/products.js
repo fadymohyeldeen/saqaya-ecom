@@ -19,7 +19,6 @@ export default {
     // ---------- Home Page Sections ----------
     categoryList: [],
     flashSaleProducts: [],
-    exploreProducts: [],
   }),
   mutations: {
     // ---------- Products Grid ----------
@@ -48,9 +47,6 @@ export default {
     SET_FLASH_SALE_PRODUCTS(state, products) {
       state.flashSaleProducts = products
     },
-    SET_EXPLORE_PRODUCTS(state, products) {
-      state.exploreProducts = products
-    },
   },
   getters: {
     // ---------- Products Grid ----------
@@ -58,10 +54,14 @@ export default {
       return state.products.slice(0, state.displayedProductsCount)
       // returns the first 'N' products from the products array
     },
+    // ---------- Home Page Sections ----------
+    exploreProducts: state => {
+      return state.products.slice(0, 8)
+    },
   },
   actions: {
     // ---------- Products Grid ----------
-    async fetchProducts({ commit }) {
+    async getProducts({ commit }) {
       const response = await api.get('/products?limit=40')
       commit('SET_PRODUCTS', response.data.products)
     },
@@ -86,10 +86,6 @@ export default {
     async getFlashSaleProducts({ commit }) {
       const response = await api.get('/products?limit=8&sortBy=discountPercentage&order=desc')
       commit('SET_FLASH_SALE_PRODUCTS', response.data.products)
-    },
-    async getExploreProducts({ commit }) {
-      const response = await api.get('/products?limit=8')
-      commit('SET_EXPLORE_PRODUCTS', response.data.products)
     },
   },
 }
