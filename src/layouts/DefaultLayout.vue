@@ -18,5 +18,10 @@
       AppHeader,
       AppFooter,
     },
+    watch: {
+      $route() {
+        window.scrollTo(0, 0)
+      },
+    },
   }
 </script>
