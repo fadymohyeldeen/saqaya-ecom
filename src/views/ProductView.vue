@@ -56,7 +56,7 @@
     },
     async mounted() {
       await this.$store.dispatch('products/getProductById', this.$route.params.id)
-      await this.$store.dispatch('products/getExploreProducts')
+      await this.$store.dispatch('products/getProducts')
     },
     computed: {
       product() {
@@ -70,7 +70,7 @@
         ]
       },
       relatedProducts() {
-        return this.$store.state.products.exploreProducts
+        return this.$store.getters['products/exploreProducts']
       },
     },
   }
