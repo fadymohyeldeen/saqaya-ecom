@@ -2,29 +2,26 @@ import api from '@/services/api'
 
 export default {
   namespaced: true,
-  /* All actions and mutations from all modules live together in a global namespace (one big store). 
-  a conflict can happen if two modules have the same action or mutation name.
-  namespaced: true makes sure that actions and mutations are named after their module.
-  eg: products/SET_PRODUCTS and cart/SET_PRODUCTS
-  */
   state: () => ({
-    // ---------- Products Grid -----------
-    products: [], // all products (initially 40)
-    displayedProductsCount: 20, // the num of products displayed in the grid
-    skip: 40, // the num of products to skip in new fetch (incremented by 20 each time)
+    // ---------- Products Grid ---------------
+    products: [],
+    displayedProductsCount: 20,
 
-    // ---------- Single Product ----------
+    // ---------- Single Product --------------
     selectedProduct: null,
 
     // ---------- Home Page Sections ----------
     categoryList: [],
     flashSaleProducts: [],
 
-    // ---------- Error Handling ----------
+    // ---------- Error Handling --------------
     error: null,
+
+    // ---------- Loading ---------------------
+    isLoading: false,
   }),
   mutations: {
-    // ---------- Products Grid ----------
+    // ---------- Products Grid ---------------
     SET_PRODUCTS(state, products) {
       state.products = products
     },
@@ -34,11 +31,8 @@ export default {
     SET_DISPLAYED_PRODUCTS_COUNT(state, count) {
       state.displayedProductsCount = count
     },
-    SET_SKIP(state, skip) {
-      state.skip = skip
-    },
 
-    // ---------- Single Product ----------
+    // ---------- Single Product --------------
     SET_SELECTED_PRODUCT(state, product) {
       state.selectedProduct = product
     },
@@ -51,59 +45,73 @@ export default {
       state.flashSaleProducts = products
     },
 
-    // ---------- Error Handling ----------
+    // ---------- Error Handling --------------
     SET_ERROR(state, message) {
       state.error = message
     },
+
+    // ---------- Loading ---------------------
+    SET_LOADING(state, loading) {
+      state.isLoading = loading
+    },
   },
   getters: {
-    // ---------- Products Grid ----------
+    // ---------- Products Grid ---------------
     displayedProducts: state => {
       return state.products.slice(0, state.displayedProductsCount)
-      // returns the first 'N' products from the products array
     },
+
     // ---------- Home Page Sections ----------
     exploreProducts: state => {
       return state.products.slice(0, 8)
     },
   },
   actions: {
-    // ---------- Products Grid ----------
+    // --- Products Grid / Explore Products ---
     async getProducts({ commit }) {
       try {
+        commit('SET_LOADING', true)
+        commit('SET_ERROR', null)
         const response = await api.get('/products?limit=40')
         commit('SET_PRODUCTS', response.data.products)
+        commit('SET_LOADING', false)
       } catch (error) {
         console.error(error)
+        commit('SET_LOADING', false)
         commit('SET_ERROR', error.message)
       }
     },
     async loadMoreProducts({ commit, state }) {
       try {
-        const response = await api.get(`/products?limit=20&skip=${state.skip}`)
+        commit('SET_ERROR', null)
+        const response = await api.get(`/products?limit=20&skip=${state.products.length}`)
         commit('APPEND_PRODUCTS', response.data.products)
         commit('SET_DISPLAYED_PRODUCTS_COUNT', state.displayedProductsCount + 20)
-        commit('SET_SKIP', state.skip + 20)
       } catch (error) {
         console.error(error)
         commit('SET_ERROR', error.message)
       }
     },
 
-    // ---------- Single Product ----------
+    // ---------- Single Product --------------
     async getProductById({ commit }, productId) {
       try {
+        commit('SET_LOADING', true)
+        commit('SET_ERROR', null)
         const response = await api.get(`/products/${productId}`)
         commit('SET_SELECTED_PRODUCT', response.data)
+        commit('SET_LOADING', false)
       } catch (error) {
         console.error(error)
+        commit('SET_LOADING', false)
         commit('SET_ERROR', error.message)
       }
     },
 
-    // ---------- Home Page Sections ----------
+    // ---------- Home Sections -----------
     async getCategoryList({ commit }) {
       try {
+        commit('SET_ERROR', null)
         const response = await api.get('/products/category-list')
         commit('SET_CATEGORY_LIST', response.data)
       } catch (error) {
@@ -113,14 +121,16 @@ export default {
     },
     async getFlashSaleProducts({ commit }) {
       try {
+        commit('SET_LOADING', true)
+        commit('SET_ERROR', null)
         const response = await api.get('/products?limit=8&sortBy=discountPercentage&order=desc')
         commit('SET_FLASH_SALE_PRODUCTS', response.data.products)
+        commit('SET_LOADING', false)
       } catch (error) {
         console.error(error)
+        commit('SET_LOADING', false)
         commit('SET_ERROR', error.message)
       }
     },
   },
 }
-// commit is a function that calls mutations from actions to update the state.
-// dispatch is a function that calls actions from component to update the state.
