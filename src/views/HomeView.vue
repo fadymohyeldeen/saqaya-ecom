@@ -1,21 +1,23 @@
 <template>
   <div class="home">
     <HeroBanner />
+    <div v-if="flashSaleProducts.length">
+      <ProductsSection
+        label="Today's"
+        title="Flash Sales"
+        :products="flashSaleProducts"
+        viewAllLink="/products"
+      />
 
-    <ProductsSection
-      label="Today's"
-      title="Flash Sales"
-      :products="flashSaleProducts"
-      viewAllLink="/products"
-    />
-
-    <div class="home__divider"></div>
+      <div class="home__divider"></div>
+    </div>
 
     <CategoriesSection />
 
     <div class="home__divider"></div>
 
     <ProductsSection
+      v-if="exploreProducts.length"
       label="Our Products"
       title="Explore Our Products"
       :products="exploreProducts"

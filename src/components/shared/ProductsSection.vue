@@ -1,5 +1,5 @@
 <template>
-  <section class="products-section">
+  <section class="products-section" v-if="products">
     <SectionHeader :label="label" :title="title" @next="scrollNext()" @prev="scrollPrev()" />
 
     <div ref="scrollContainer" class="products-section__scroll">
