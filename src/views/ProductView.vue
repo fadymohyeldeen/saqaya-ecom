@@ -49,9 +49,14 @@
         if (this.quantity > 1) this.quantity--
       },
     },
+    watch: {
+      '$route.params.id'(newId) {
+        this.$store.dispatch('products/getProductById', newId)
+      },
+    },
     async mounted() {
       await this.$store.dispatch('products/getProductById', this.$route.params.id)
-      await this.$store.dispatch('products/getFlashSaleProducts')
+      await this.$store.dispatch('products/getExploreProducts')
     },
     computed: {
       product() {
