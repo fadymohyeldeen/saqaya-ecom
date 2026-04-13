@@ -54,11 +54,13 @@
       scrollNext() {
         const scrollContainer = this.$refs.scrollContainer // selects the div with ref scrollContainer
         const card = scrollContainer.firstElementChild // selects the first product card
+        if (!card) return
         scrollContainer.scrollBy({ left: card.offsetWidth, behavior: 'smooth' }) // scrolls by the width of a card
       },
       scrollPrev() {
         const scrollContainer = this.$refs.scrollContainer
         const card = scrollContainer.firstElementChild
+        if (!card) return
         scrollContainer.scrollBy({ left: -card.offsetWidth, behavior: 'smooth' })
       },
     },
