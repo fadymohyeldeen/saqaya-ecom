@@ -1,34 +1,50 @@
 <template>
   <div class="product-gallery">
-    <div class="product-gallery__thumbs">
-      <button
-        v-for="(img, idx) in images"
-        :key="idx"
-        class="product-gallery__thumb-btn"
-        :class="{ 'product-gallery__thumb-btn--active': selectedImage === idx }"
-        @click="$emit('select', idx)"
-      >
-        <img :src="img" :alt="`Product view ${idx + 1}`" class="product-gallery__thumb-img" />
-      </button>
-    </div>
+    <template v-if="isLoading">
+      <div class="product-gallery__thumbs">
+        <SkeletonBox v-for="n in 4" :key="n" width="80px" height="65px" />
+      </div>
+      <SkeletonBox class="product-gallery__image-wrap" height="100%" />
+    </template>
 
-    <div class="product-gallery__image-wrap">
-      <img :src="images[selectedImage]" :alt="alt" class="product-gallery__image" />
-    </div>
+    <template v-else>
+      <div class="product-gallery__thumbs">
+        <button
+          v-for="(img, idx) in images"
+          :key="idx"
+          class="product-gallery__thumb-btn"
+          :class="{ 'product-gallery__thumb-btn--active': selectedImage === idx }"
+          @click="$emit('select', idx)"
+        >
+          <img :src="img" :alt="`Product view ${idx + 1}`" class="product-gallery__thumb-img" />
+        </button>
+      </div>
+
+      <div class="product-gallery__image-wrap">
+        <img :src="images[selectedImage]" :alt="alt" class="product-gallery__image" />
+      </div>
+    </template>
   </div>
 </template>
 
 <script>
+  import SkeletonBox from '@/components/shared/SkeletonBox.vue'
+
   export default {
     name: 'ProductGallery',
+    components: { SkeletonBox },
     props: {
+      isLoading: {
+        type: Boolean,
+        default: false,
+      },
       images: {
         type: Array,
-        required: true,
+        default: () => [],
       },
       selectedImage: {
         type: Number,
-        required: true,
+        default: 0,
       },
       alt: {
         type: String,
