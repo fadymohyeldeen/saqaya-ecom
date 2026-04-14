@@ -1,33 +1,45 @@
 <template>
   <div class="product-info">
-    <h1 class="product-info__title">{{ product.title }}</h1>
+    <template v-if="isLoading">
+      <SkeletonBox height="32px" width="70%" />
+      <SkeletonBox height="20px" width="40%" />
+      <SkeletonBox height="28px" width="30%" />
+      <SkeletonBox height="16px" />
+      <SkeletonBox height="16px" />
+      <SkeletonBox height="16px" width="80%" />
+      <SkeletonBox height="48px" width="50%" />
+    </template>
 
-    <div class="product-info__meta">
-      <StarRating :rating="product.rating" :reviews="product.rating" />
-      <div class="product-info__meta-right">
-        <span class="product-info__meta-sep"></span>
-        <span class="product-info__stock">In Stock</span>
+    <template v-else>
+      <h1 class="product-info__title">{{ product.title }}</h1>
+
+      <div class="product-info__meta">
+        <StarRating :rating="product.rating" :reviews="product.rating" />
+        <div class="product-info__meta-right">
+          <span class="product-info__meta-sep"></span>
+          <span class="product-info__stock">In Stock</span>
+        </div>
       </div>
-    </div>
 
-    <div class="product-info__price-row">
-      <span class="product-info__price">${{ product.price.toFixed(2) }}</span>
-      <span class="product-info__discount-badge">-{{ product.discountPercentage }}%</span>
-    </div>
+      <div class="product-info__price-row">
+        <span class="product-info__price">${{ product.price.toFixed(2) }}</span>
+        <span class="product-info__discount-badge">-{{ product.discountPercentage }}%</span>
+      </div>
 
-    <p class="product-info__description">{{ product.description }}</p>
+      <p class="product-info__description">{{ product.description }}</p>
 
-    <hr class="product-info__hr" />
+      <hr class="product-info__hr" />
 
-    <p class="product-info__category">Category: {{ product.category }}</p>
+      <p class="product-info__category">Category: {{ product.category }}</p>
 
-    <ProductActions
-      :quantity="quantity"
-      @increase="$emit('increase-qty')"
-      @decrease="$emit('decrease-qty')"
-    />
+      <ProductActions
+        :quantity="quantity"
+        @increase="$emit('increase-qty')"
+        @decrease="$emit('decrease-qty')"
+      />
 
-    <ProductDeliveryBox />
+      <ProductDeliveryBox />
+    </template>
   </div>
 </template>
 
@@ -35,18 +47,23 @@
   import StarRating from '@/components/shared/StarRating.vue'
   import ProductActions from '@/components/SingleProduct/ProductActions.vue'
   import ProductDeliveryBox from '@/components/SingleProduct/ProductDeliveryBox.vue'
+  import SkeletonBox from '@/components/shared/SkeletonBox.vue'
 
   export default {
     name: 'ProductInfo',
-    components: { StarRating, ProductActions, ProductDeliveryBox },
+    components: { StarRating, ProductActions, ProductDeliveryBox, SkeletonBox },
     props: {
+      isLoading: {
+        type: Boolean,
+        default: false,
+      },
       product: {
         type: Object,
-        required: true,
+        default: null,
       },
       quantity: {
         type: Number,
-        required: true,
+        default: 1,
       },
     },
     emits: ['increase-qty', 'decrease-qty'],

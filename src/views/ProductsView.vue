@@ -18,17 +18,22 @@
       </div>
 
       <div class="products__grid">
-        <ProductCard
-          v-for="product in products"
-          :key="product.id"
-          :id="product.id"
-          :name="product.title"
-          :originalPrice="product.price"
-          :discountPercentage="product.discountPercentage"
-          :image="product.thumbnail"
-          :rating="product.rating"
-          :reviews="product.reviews.length"
-        />
+        <template v-if="isLoading">
+          <ProductCard v-for="n in 20" :key="n" :isLoading="true" />
+        </template>
+        <template v-else>
+          <ProductCard
+            v-for="product in products"
+            :key="product.id"
+            :id="product.id"
+            :name="product.title"
+            :originalPrice="product.price"
+            :discountPercentage="product.discountPercentage"
+            :image="product.thumbnail"
+            :rating="product.rating"
+            :reviews="product.reviews.length"
+          />
+        </template>
       </div>
 
       <div class="products__load-more">
@@ -140,6 +145,9 @@
       },
       error() {
         return this.$store.state.products.error
+      },
+      isLoading() {
+        return this.$store.state.products.isLoading
       },
     },
     methods: {

@@ -2,29 +2,29 @@
   <div class="single-product">
     <AppBreadcrumb :items="breadcrumbs" />
 
-    <div class="single-product__main" v-if="product">
+    <div v-if="isLoading || product" class="single-product__main">
       <ProductGallery
-        :images="product.images"
+        :isLoading="isLoading"
+        :images="product ? product.images : []"
         :selectedImage="selectedImage"
-        :alt="product.title"
+        :alt="product ? product.title : ''"
         @select="selectedImage = $event"
       />
       <ProductInfo
+        :isLoading="isLoading"
         :product="product"
         :quantity="quantity"
         @increase-qty="increaseQty"
         @decrease-qty="decreaseQty"
       />
     </div>
-    <error-message
-      :message="`Product Not Found.. Please try again later!
-`"
-      v-else
-    />
+
+    <ErrorMessage v-else message="Product Not Found.. Please try again later!" />
     <ProductsSection
-      v-if="relatedProducts.length"
+      v-if="relatedProducts.length || isLoading"
       label="More of this category"
       :products="relatedProducts"
+      :isLoading="isLoading"
     />
   </div>
 </template>
@@ -81,6 +81,9 @@
       },
       relatedProducts() {
         return this.$store.getters['products/exploreProducts']
+      },
+      isLoading() {
+        return this.$store.state.products.isLoading
       },
     },
   }

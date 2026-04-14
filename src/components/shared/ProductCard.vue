@@ -1,62 +1,89 @@
 <template>
-  <router-link :to="`/products/${id}`">
-    <!-- ProductCard -->
-    <div class="product-card">
-      <!-- Image Section -->
-      <div class="product-card__image-wrap">
-        <!-- Discount Badge -->
-        <span v-if="discountPercentage" class="product-card__discount"
-          >-{{ Math.round(discountPercentage) }}%</span
-        >
-
-        <!-- Action Buttons -->
-        <div class="product-card__actions">
-          <FavButton />
-
-          <button class="product-card__action-btn" aria-label="Quick view">
-            <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
-              <circle cx="17" cy="17" r="17" fill="white" />
-              <path
-                d="M17 11C11 11 8 17 8 17C8 17 11 23 17 23C23 23 26 17 26 17C26 17 23 11 17 11Z"
-                stroke="#000"
-                stroke-width="1.5"
-              />
-              <circle cx="17" cy="17" r="3" stroke="#000" stroke-width="1.5" />
-            </svg>
-          </button>
-        </div>
-
-        <!-- Product Image -->
-        <img :src="image" :alt="name" class="product-card__image" />
-
-        <!-- Add To Cart — shown on hover -->
-        <div class="product-card__add-to-cart">
-          <button>Add To Cart</button>
+  <!-- ProductCard -->
+  <div>
+    <template v-if="isLoading">
+      <div class="product-card__skeleton">
+        <SkeletonBox height="250px" />
+        <div class="product-card__skeleton-info">
+          <SkeletonBox height="16px" width="70%" />
+          <SkeletonBox height="16px" width="40%" />
+          <SkeletonBox height="16px" width="55%" />
         </div>
       </div>
+    </template>
+    <template v-else>
+      <router-link :to="`/products/${id}`">
+        <div class="product-card">
+          <!-- Image Section -->
+          <div class="product-card__image-wrap">
+            <!-- Discount Badge -->
+            <span v-if="discountPercentage" class="product-card__discount"
+              >-{{ Math.round(discountPercentage) }}%</span
+            >
 
-      <!-- Info Section -->
-      <div class="product-card__info">
-        <h3 class="product-card__name">{{ name }}</h3>
-        <div class="product-card__prices">
-          <span class="product-card__price">${{ priceAfterDiscount }}</span>
-          <span v-if="discountPercentage" class="product-card__original-price"
-            >${{ originalPrice }}</span
-          >
-        </div>
-        <div class="product-card__rating">
-          <div class="product-card__stars">
-            <StarRating :rating="rating" />
+            <!-- Action Buttons -->
+            <div class="product-card__actions">
+              <FavButton />
+
+              <button class="product-card__action-btn" aria-label="Quick view">
+                <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+                  <circle cx="17" cy="17" r="17" fill="white" />
+                  <path
+                    d="M17 11C11 11 8 17 8 17C8 17 11 23 17 23C23 23 26 17 26 17C26 17 23 11 17 11Z"
+                    stroke="#000"
+                    stroke-width="1.5"
+                  />
+                  <circle cx="17" cy="17" r="3" stroke="#000" stroke-width="1.5" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Product Image -->
+            <img :src="image" :alt="name" class="product-card__image" />
+
+            <!-- Add To Cart — shown on hover -->
+            <div class="product-card__add-to-cart">
+              <button>Add To Cart</button>
+            </div>
           </div>
-          <span class="product-card__reviews">({{ reviews }})</span>
+
+          <!-- Info Section -->
+          <div class="product-card__info">
+            <h3 class="product-card__name">{{ name }}</h3>
+            <div class="product-card__prices">
+              <span class="product-card__price">${{ priceAfterDiscount }}</span>
+              <span v-if="discountPercentage" class="product-card__original-price"
+                >${{ originalPrice }}</span
+              >
+            </div>
+            <div class="product-card__rating">
+              <div class="product-card__stars">
+                <StarRating :rating="rating" />
+              </div>
+              <span class="product-card__reviews">({{ reviews }})</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </router-link>
+      </router-link>
+    </template>
+  </div>
 </template>
 
 <style scoped>
   /* ─── Mobile ─── */
+
+  .product-card__skeleton {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: var(--product-card-width);
+  }
+
+  .product-card__skeleton-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
 
   .product-card {
     display: flex;
@@ -285,22 +312,24 @@
 <script>
   import FavButton from '@/components/shared/FavButton.vue'
   import StarRating from '@/components/shared/StarRating.vue'
+  import SkeletonBox from '@/components/shared/SkeletonBox.vue'
 
   export default {
     name: 'ProductCard',
-    components: { FavButton, StarRating },
+    components: { FavButton, StarRating, SkeletonBox },
     props: {
       id: {
         type: Number,
-        required: true,
+      },
+      isLoading: {
+        type: Boolean,
+        default: false,
       },
       name: {
         type: String,
-        required: true,
       },
       originalPrice: {
         type: [Number, String],
-        required: true,
       },
       discountPercentage: {
         type: Number,
@@ -308,7 +337,6 @@
       },
       image: {
         type: String,
-        required: true,
       },
       rating: {
         type: Number,

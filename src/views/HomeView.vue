@@ -7,6 +7,7 @@
         title="Flash Sales"
         :products="flashSaleProducts"
         viewAllLink="/products"
+        :isLoading="isLoading"
       />
 
       <div class="home__divider"></div>
@@ -22,6 +23,7 @@
       title="Explore Our Products"
       :products="exploreProducts"
       viewAllLink="/products"
+      :isLoading="isLoading"
     />
 
     <ServicesStrip />
@@ -69,6 +71,9 @@
       },
       exploreProducts() {
         return this.$store.getters['products/exploreProducts']
+      },
+      isLoading() {
+        return this.$store.state.products.isLoading
       },
     },
   })

@@ -1,20 +1,25 @@
 <template>
-  <section class="products-section" v-if="products">
+  <section class="products-section">
     <SectionHeader :label="label" :title="title" @next="scrollNext()" @prev="scrollPrev()" />
 
     <div ref="scrollContainer" class="products-section__scroll">
       <!-- ref: vue's getElementById -->
-      <ProductCard
-        v-for="product in products"
-        :key="product.id"
-        :id="product.id"
-        :name="product.title"
-        :originalPrice="product.price"
-        :discountPercentage="product.discountPercentage"
-        :image="product.thumbnail"
-        :rating="product.rating"
-        :reviews="product.reviews.length"
-      />
+      <template v-if="isLoading">
+        <ProductCard v-for="n in 4" :key="n" :isLoading="true" />
+      </template>
+      <template v-else>
+        <ProductCard
+          v-for="product in products"
+          :key="product.id"
+          :id="product.id"
+          :name="product.title"
+          :originalPrice="product.price"
+          :discountPercentage="product.discountPercentage"
+          :image="product.thumbnail"
+          :rating="product.rating"
+          :reviews="product.reviews.length"
+        />
+      </template>
     </div>
 
     <div v-if="viewAllLink" class="products-section__center">
@@ -48,6 +53,10 @@
       viewAllLink: {
         type: String,
         default: null,
+      },
+      isLoading: {
+        type: Boolean,
+        default: false,
       },
     },
     methods: {
