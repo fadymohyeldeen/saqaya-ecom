@@ -33,6 +33,7 @@
       <p class="product-info__category">Category: {{ product.category }}</p>
 
       <ProductActions
+        :product="product"
         :quantity="quantity"
         @increase="$emit('increase-qty')"
         @decrease="$emit('decrease-qty')"

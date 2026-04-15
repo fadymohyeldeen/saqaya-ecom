@@ -1,9 +1,11 @@
 <template>
   <div>
     <AppHeader />
+    <transition name="cart-slide">
+      <CartSidebar v-if="isCartOpen" />
+    </transition>
     <main class="container">
       <slot />
-      <!-- any component passed to parent will be rendered here -->
     </main>
     <AppFooter />
   </div>
@@ -12,15 +14,22 @@
 <script>
   import AppHeader from '@/components/layout/AppHeader.vue'
   import AppFooter from '@/components/layout/AppFooter.vue'
+  import CartSidebar from '@/components/cart/CartSidebar.vue'
   export default {
     name: 'DefaultLayout',
     components: {
       AppHeader,
       AppFooter,
+      CartSidebar,
     },
     watch: {
       $route() {
         window.scrollTo(0, 0)
+      },
+    },
+    computed: {
+      isCartOpen() {
+        return this.$store.state.cart.isCartOpen
       },
     },
   }

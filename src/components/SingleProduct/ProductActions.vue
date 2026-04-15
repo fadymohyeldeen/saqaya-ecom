@@ -22,7 +22,7 @@
       </button>
     </div>
 
-    <AppButton label="Buy Now" />
+    <AppButton label="Add To Cart" @click="addToCart" />
     <div class="product-actions__fav">
       <FavButton />
     </div>
@@ -37,9 +37,18 @@
     name: 'ProductActions',
     components: { AppButton, FavButton },
     props: {
+      product: {
+        type: Object,
+        required: true,
+      },
       quantity: {
         type: Number,
         required: true,
+      },
+    },
+    methods: {
+      addToCart() {
+        this.$store.commit('cart/ADD_TO_CART', { newItem: this.product, quantity: this.quantity })
       },
     },
     emits: ['increase', 'decrease'],

@@ -9,12 +9,13 @@ export default {
   }),
   mutations: {
     // ---------- Cart Items ------------------
-    ADD_TO_CART(state, newItem) {
+    ADD_TO_CART(state, { newItem, quantity = 1 }) {
+      state.isCartOpen = true
       const itemExists = state.cartItems.find(item => item.id === newItem.id)
       if (itemExists) {
-        itemExists.quantity++
+        itemExists.quantity += quantity
       } else {
-        state.cartItems.push({ ...newItem, quantity: 1 })
+        state.cartItems.push({ ...newItem, quantity })
       }
     },
 

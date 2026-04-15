@@ -12,13 +12,13 @@
       </div>
     </template>
     <template v-else>
-      <router-link :to="`/products/${id}`">
+      <router-link :to="`/products/${product.id}`">
         <div class="product-card">
           <!-- Image Section -->
           <div class="product-card__image-wrap">
             <!-- Discount Badge -->
-            <span v-if="discountPercentage" class="product-card__discount"
-              >-{{ Math.round(discountPercentage) }}%</span
+            <span v-if="product.discountPercentage" class="product-card__discount"
+              >-{{ Math.round(product.discountPercentage) }}%</span
             >
 
             <!-- Action Buttons -->
@@ -39,28 +39,28 @@
             </div>
 
             <!-- Product Image -->
-            <img :src="image" :alt="name" class="product-card__image" />
+            <img :src="product.thumbnail" :alt="product.title" class="product-card__image" />
 
             <!-- Add To Cart — shown on hover -->
-            <div class="product-card__add-to-cart">
+            <div class="product-card__add-to-cart" @click.prevent="addToCart">
               <button>Add To Cart</button>
             </div>
           </div>
 
           <!-- Info Section -->
           <div class="product-card__info">
-            <h3 class="product-card__name">{{ name }}</h3>
+            <h3 class="product-card__name">{{ product.title }}</h3>
             <div class="product-card__prices">
               <span class="product-card__price">${{ priceAfterDiscount }}</span>
-              <span v-if="discountPercentage" class="product-card__original-price"
-                >${{ originalPrice }}</span
+              <span v-if="product.discountPercentage" class="product-card__original-price"
+                >${{ product.price }}</span
               >
             </div>
             <div class="product-card__rating">
               <div class="product-card__stars">
-                <StarRating :rating="rating" />
+                <StarRating :rating="product.rating" />
               </div>
-              <span class="product-card__reviews">({{ reviews }})</span>
+              <span class="product-card__reviews">({{ product.reviews.length }})</span>
             </div>
           </div>
         </div>
@@ -68,6 +68,35 @@
     </template>
   </div>
 </template>
+
+<script>
+  import FavButton from '@/components/shared/FavButton.vue'
+  import StarRating from '@/components/shared/StarRating.vue'
+  import SkeletonBox from '@/components/shared/SkeletonBox.vue'
+
+  export default {
+    name: 'ProductCard',
+    components: { FavButton, StarRating, SkeletonBox },
+    props: {
+      product: { type: Object, default: null },
+      isLoading: { type: Boolean, default: false },
+    },
+    computed: {
+      priceAfterDiscount() {
+        if (!this.product) return 0
+        return (
+          this.product.price -
+          this.product.price * (this.product.discountPercentage / 100)
+        ).toFixed(2)
+      },
+    },
+    methods: {
+      addToCart() {
+        this.$store.commit('cart/ADD_TO_CART', { newItem: this.product, quantity: 1 })
+      },
+    },
+  }
+</script>
 
 <style scoped>
   /* ─── Mobile ─── */
@@ -308,51 +337,3 @@
     }
   }
 </style>
-
-<script>
-  import FavButton from '@/components/shared/FavButton.vue'
-  import StarRating from '@/components/shared/StarRating.vue'
-  import SkeletonBox from '@/components/shared/SkeletonBox.vue'
-
-  export default {
-    name: 'ProductCard',
-    components: { FavButton, StarRating, SkeletonBox },
-    props: {
-      id: {
-        type: Number,
-      },
-      isLoading: {
-        type: Boolean,
-        default: false,
-      },
-      name: {
-        type: String,
-      },
-      originalPrice: {
-        type: [Number, String],
-      },
-      discountPercentage: {
-        type: Number,
-        default: 0,
-      },
-      image: {
-        type: String,
-      },
-      rating: {
-        type: Number,
-        default: 0,
-      },
-      reviews: {
-        type: Number,
-        default: 0,
-      },
-    },
-    computed: {
-      priceAfterDiscount() {
-        return (this.originalPrice - this.originalPrice * (this.discountPercentage / 100)).toFixed(
-          2
-        )
-      },
-    },
-  }
-</script>

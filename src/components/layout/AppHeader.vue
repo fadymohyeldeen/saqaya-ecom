@@ -24,9 +24,9 @@
           </svg>
         </div>
 
-        <div class="header__cart">
+        <button class="header__cart" @click="toggleCart">
           <img src="@/assets/icons/header/cart.svg" alt="Cart" />
-        </div>
+        </button>
 
         <button class="header__hamburger" @click="menuOpen = !menuOpen">
           <span></span>
@@ -140,6 +140,8 @@
   }
 
   .header__cart {
+    border: none;
+    background: none;
     position: relative;
     cursor: pointer;
   }
@@ -231,6 +233,11 @@
         menuOpen: false,
         searchOpen: false,
       }
+    },
+    methods: {
+      toggleCart() {
+        this.$store.commit('cart/TOGGLE_CART')
+      },
     },
   }
 </script>

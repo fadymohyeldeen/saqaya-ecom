@@ -8,17 +8,7 @@
         <ProductCard v-for="n in 4" :key="n" :isLoading="true" />
       </template>
       <template v-else>
-        <ProductCard
-          v-for="product in products"
-          :key="product.id"
-          :id="product.id"
-          :name="product.title"
-          :originalPrice="product.price"
-          :discountPercentage="product.discountPercentage"
-          :image="product.thumbnail"
-          :rating="product.rating"
-          :reviews="product.reviews.length"
-        />
+        <ProductCard v-for="product in products" :key="product.id" :product="product" />
       </template>
     </div>
 
