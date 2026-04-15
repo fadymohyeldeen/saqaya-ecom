@@ -8,7 +8,7 @@
         <p class="footer__text">Get 10% off your first order</p>
         <div class="footer__input-wrap">
           <input type="email" placeholder="Enter your email" />
-          <img src="@/assets/icons/footer/arrow.svg" alt="Arrow Icon" />
+          <img src="@/assets/icons/footer/icon-arrow.svg" alt="Arrow Icon" />
         </div>
       </div>
 
@@ -51,29 +51,29 @@
         <p class="footer__text footer__text--small">Save $3 with App New User Only</p>
         <div class="footer__app">
           <div class="footer__qr">
-            <img src="@/assets/icons/footer/qr.svg" alt="QR Code" />
+            <img src="@/assets/icons/footer/icon-qr.svg" alt="QR Code" />
           </div>
           <div class="footer__stores">
             <div class="footer__store">
-              <img src="@/assets/icons/footer/google-play.svg" alt="Google Play" />
+              <img src="@/assets/icons/footer/icon-google-play.svg" alt="Google Play" />
             </div>
             <div class="footer__store">
-              <img src="@/assets/icons/footer/app-store.svg" alt="App Store" />
+              <img src="@/assets/icons/footer/icon-app-store.svg" alt="App Store" />
             </div>
           </div>
         </div>
         <div class="footer__socials">
           <a href="#" aria-label="Facebook">
-            <img src="@/assets/icons/footer/facebook.svg" alt="Facebook" />
+            <img src="@/assets/icons/footer/icon-facebook.svg" alt="Facebook" />
           </a>
           <a href="#" aria-label="Twitter">
-            <img src="@/assets/icons/footer/twitter.svg" alt="Twitter" />
+            <img src="@/assets/icons/footer/icon-twitter.svg" alt="Twitter" />
           </a>
           <a href="#" aria-label="Instagram">
-            <img src="@/assets/icons/footer/instagram.svg" alt="Instagram" />
+            <img src="@/assets/icons/footer/icon-instagram.svg" alt="Instagram" />
           </a>
           <a href="#" aria-label="LinkedIn">
-            <img src="@/assets/icons/footer/linkedin.svg" alt="LinkedIn" />
+            <img src="@/assets/icons/footer/icon-linkedin.svg" alt="LinkedIn" />
           </a>
         </div>
       </div>

@@ -25,7 +25,7 @@
         </div>
 
         <button class="header__cart" @click="toggleCart">
-          <img src="@/assets/icons/header/cart.svg" alt="Cart" />
+          <img src="@/assets/icons/header/icon-cart.svg" alt="Cart" />
         </button>
 
         <button class="header__hamburger" @click="menuOpen = !menuOpen">

@@ -24,7 +24,7 @@
   import AppButton from '@/components/shared/AppButton.vue'
 
   export default {
-    name: 'ProductsSection',
+    name: 'ProductSection',
     components: { SectionHeader, ProductCard, AppButton },
     props: {
       label: {

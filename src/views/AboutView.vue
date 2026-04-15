@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <AppBreadcrumb :items="breadcrumbs" />
-    <OurStory />
+    <StorySection />
     <AboutStats />
     <AboutTeam />
     <ServicesStrip />
@@ -10,14 +10,14 @@
 
 <script>
   import AppBreadcrumb from '@/components/shared/AppBreadcrumb.vue'
-  import OurStory from '@/components/About/OurStory.vue'
-  import AboutStats from '@/components/About/AboutStats.vue'
-  import AboutTeam from '@/components/About/AboutTeam.vue'
+  import StorySection from '@/components/about/StorySection.vue'
+  import AboutStats from '@/components/about/AboutStats.vue'
+  import AboutTeam from '@/components/about/AboutTeam.vue'
   import ServicesStrip from '@/components/shared/ServicesStrip.vue'
 
   export default {
     name: 'AboutView',
-    components: { AppBreadcrumb, OurStory, AboutStats, AboutTeam, ServicesStrip },
+    components: { AppBreadcrumb, StorySection, AboutStats, AboutTeam, ServicesStrip },
     data() {
       return {
         breadcrumbs: [{ label: 'Home', to: '/' }, { label: 'About Us' }],

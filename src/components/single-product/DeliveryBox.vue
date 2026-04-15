@@ -60,7 +60,7 @@
 
 <script>
   export default {
-    name: 'ProductDeliveryBox',
+    name: 'DeliveryBox',
   }
 </script>
 

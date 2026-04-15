@@ -24,7 +24,7 @@
 
 <script>
   export default {
-    name: 'OurStory',
+    name: 'StorySection',
   }
 </script>
 

@@ -39,20 +39,20 @@
         @decrease="$emit('decrease-qty')"
       />
 
-      <ProductDeliveryBox />
+      <DeliveryBox />
     </template>
   </div>
 </template>
 
 <script>
   import StarRating from '@/components/shared/StarRating.vue'
-  import ProductActions from '@/components/SingleProduct/ProductActions.vue'
-  import ProductDeliveryBox from '@/components/SingleProduct/ProductDeliveryBox.vue'
+  import ProductActions from '@/components/single-product/ProductActions.vue'
+  import DeliveryBox from '@/components/single-product/DeliveryBox.vue'
   import SkeletonBox from '@/components/shared/SkeletonBox.vue'
 
   export default {
     name: 'ProductInfo',
-    components: { StarRating, ProductActions, ProductDeliveryBox, SkeletonBox },
+    components: { StarRating, ProductActions, DeliveryBox, SkeletonBox },
     props: {
       isLoading: {
         type: Boolean,

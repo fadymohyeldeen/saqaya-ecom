@@ -56,7 +56,7 @@
   }
 
   .products__select {
-    background-image: url('@/assets/icons/products/drop-down-arrow.svg');
+    background-image: url('@/assets/icons/products/icon-drop-down.svg');
     background-repeat: no-repeat;
     background-position: right 10px center;
     appearance: none;
