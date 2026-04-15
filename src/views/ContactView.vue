@@ -4,7 +4,7 @@
 
     <div class="contact__body">
       <div class="contact__side-image">
-        <img src="@/assets/Contact.jpeg" alt="Contact" />
+        <img src="@/assets/contact.jpeg" alt="Contact" />
       </div>
       <ContactForm />
     </div>
@@ -13,7 +13,7 @@
 
 <script>
   import AppBreadcrumb from '@/components/shared/AppBreadcrumb.vue'
-  import ContactForm from '@/components/Contact/ContactForm.vue'
+  import ContactForm from '@/components/contact/ContactForm.vue'
 
   export default {
     name: 'ContactView',

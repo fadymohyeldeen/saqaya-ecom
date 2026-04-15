@@ -5,7 +5,7 @@
         <div class="services-strip__icon-outer">
           <div class="services-strip__icon-inner">
             <img
-              src="@/assets/icons/header/cart.svg"
+              src="@/assets/icons/header/icon-cart.svg"
               alt="Delivery"
               class="services-strip__icon-cart"
             />
@@ -23,7 +23,7 @@
         <div class="services-strip__icon-outer">
           <div class="services-strip__icon-inner">
             <img
-              src="@/assets/icons/about/customer.svg"
+              src="@/assets/icons/about/icon-customer.svg"
               alt="Customer Service"
               class="services-strip__icon-customer"
             />
@@ -41,7 +41,7 @@
         <div class="services-strip__icon-outer">
           <div class="services-strip__icon-inner">
             <img
-              src="@/assets/icons/about/dollar.svg"
+              src="@/assets/icons/about/icon-dollar.svg"
               alt="Money Back"
               class="services-strip__icon-dollar"
             />

@@ -14,10 +14,10 @@
 
 <script>
   import SectionHeader from '@/components/shared/SectionHeader.vue'
-  import CategoryCard from '@/components/Home/CategoryCard.vue'
+  import CategoryCard from '@/components/home/CategoryCard.vue'
 
   export default {
-    name: 'CategoriesSection',
+    name: 'CategorySection',
     components: { SectionHeader, CategoryCard },
   }
 </script>

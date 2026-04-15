@@ -20,7 +20,7 @@
     </div>
 
     <ErrorMessage v-else message="Product Not Found.. Please try again later!" />
-    <ProductsSection
+    <ProductSection
       v-if="relatedProducts.length || isLoading"
       label="More of this category"
       :products="relatedProducts"
@@ -31,9 +31,9 @@
 
 <script>
   import AppBreadcrumb from '@/components/shared/AppBreadcrumb.vue'
-  import ProductGallery from '@/components/SingleProduct/ProductGallery.vue'
-  import ProductInfo from '@/components/SingleProduct/ProductInfo.vue'
-  import ProductsSection from '@/components/shared/ProductsSection.vue'
+  import ProductGallery from '@/components/single-product/ProductGallery.vue'
+  import ProductInfo from '@/components/single-product/ProductInfo.vue'
+  import ProductSection from '@/components/shared/ProductSection.vue'
   import ErrorMessage from '@/components/shared/ErrorMessage.vue'
 
   export default {
@@ -42,7 +42,7 @@
       AppBreadcrumb,
       ProductGallery,
       ProductInfo,
-      ProductsSection,
+      ProductSection,
       ErrorMessage,
     },
     data() {

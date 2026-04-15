@@ -2,7 +2,7 @@
   <div class="home">
     <HeroBanner />
     <div v-if="flashSaleProducts.length">
-      <ProductsSection
+      <ProductSection
         label="Today's"
         title="Flash Sales"
         :products="flashSaleProducts"
@@ -13,11 +13,11 @@
       <div class="home__divider"></div>
     </div>
 
-    <CategoriesSection />
+    <CategorySection />
 
     <div class="home__divider"></div>
 
-    <ProductsSection
+    <ProductSection
       v-if="exploreProducts.length"
       label="Our Products"
       title="Explore Our Products"
@@ -48,18 +48,18 @@
 
 <script lang="ts">
   import Vue from 'vue'
-  import HeroBanner from '@/components/Home/HeroBanner.vue'
-  import CategoriesSection from '@/components/Home/CategoriesSection.vue'
+  import HeroBanner from '@/components/home/HeroBanner.vue'
+  import CategorySection from '@/components/home/CategorySection.vue'
   import ServicesStrip from '@/components/shared/ServicesStrip.vue'
-  import ProductsSection from '@/components/shared/ProductsSection.vue'
+  import ProductSection from '@/components/shared/ProductSection.vue'
 
   export default Vue.extend({
     name: 'HomeView',
     components: {
       HeroBanner,
-      CategoriesSection,
+      CategorySection,
       ServicesStrip,
-      ProductsSection,
+      ProductSection,
     },
     async mounted() {
       await this.$store.dispatch('products/getFlashSaleProducts')

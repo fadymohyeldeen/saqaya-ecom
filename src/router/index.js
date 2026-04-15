@@ -37,7 +37,7 @@ const routes = [
   {
     path: '*',
     name: 'not-found',
-    component: () => import('../views/NotFoundView.vue'),
+    component: () => import('../views/ErrorView.vue'),
   },
 ]
 

@@ -5,7 +5,7 @@
       <div class="contact__info-block">
         <div class="contact__info-header">
           <div class="contact__icon-circle">
-            <img src="@/assets/icons/contact/phone.svg" alt="Phone" />
+            <img src="@/assets/icons/contact/icon-phone.svg" alt="Phone" />
           </div>
           <span class="contact__info-title">Call us</span>
         </div>
@@ -20,7 +20,7 @@
       <div class="contact__info-block">
         <div class="contact__info-header">
           <div class="contact__icon-circle">
-            <img src="@/assets/icons/contact/mail.svg" alt="Mail" />
+            <img src="@/assets/icons/contact/icon-mail.svg" alt="Mail" />
           </div>
           <span class="contact__info-title">Write To US</span>
         </div>
