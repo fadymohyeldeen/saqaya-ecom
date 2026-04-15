@@ -94,7 +94,7 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding: 14px 40px 0;
+    padding: 14px 30px 0;
   }
 
   .cart-sidebar__empty {

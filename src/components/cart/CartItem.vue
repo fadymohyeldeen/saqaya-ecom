@@ -6,7 +6,7 @@
 
     <img :src="item.thumbnail" alt="Product" class="cart-item__image" />
 
-    <span class="cart-item__name">{{ item.title }}</span>
+    <!-- <span class="cart-item__name">{{ item.title }}</span> -->
 
     <div class="cart-item__quantity">
       <span class="cart-item__qty-value">{{ item.quantity }}</span>
@@ -50,10 +50,12 @@
 
 <style scoped>
   .cart-item {
+    width: 100%;
     position: relative;
     display: flex;
     align-items: center;
-    gap: 14px;
+    justify-content: space-between;
+    gap: 12px;
     padding: 12px;
     background: var(--color-bg);
     box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.05);

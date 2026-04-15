@@ -29,7 +29,7 @@
     components: { AppButton },
     computed: {
       cartTotal() {
-        return this.$store.getters['cart/cartTotal']
+        return this.$store.getters['cart/cartTotal'].toFixed(2)
       },
     },
   }
