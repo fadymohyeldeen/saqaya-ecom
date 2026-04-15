@@ -2,7 +2,7 @@
   <div class="cart-summary">
     <div class="cart-summary__row">
       <span class="cart-summary__label">Subtotal:</span>
-      <span class="cart-summary__value">$1750</span>
+      <span class="cart-summary__value">${{ cartTotal }}</span>
     </div>
     <div class="cart-summary__divider"></div>
 
@@ -14,7 +14,7 @@
 
     <div class="cart-summary__row">
       <span class="cart-summary__label">Total:</span>
-      <span class="cart-summary__value">$1750</span>
+      <span class="cart-summary__value">${{ cartTotal }}</span>
     </div>
 
     <AppButton label="Place Order" />
@@ -27,6 +27,11 @@
   export default {
     name: 'CartSummary',
     components: { AppButton },
+    computed: {
+      cartTotal() {
+        return this.$store.getters['cart/cartTotal']
+      },
+    },
   }
 </script>
 
