@@ -2,7 +2,7 @@
   <div class="cart-sidebar">
     <div class="cart-sidebar__header">
       <h2 class="cart-sidebar__title">Shopping Cart</h2>
-      <button class="cart-sidebar__close" aria-label="Close cart">
+      <button class="cart-sidebar__close" aria-label="Close cart" @click="toggleCart">
         <img src="@/assets/icons/cart/icon-close.svg" alt="" />
       </button>
     </div>
@@ -23,6 +23,11 @@
   export default {
     name: 'CartSidebar',
     components: { CartItem, CartSummary },
+    methods: {
+      toggleCart() {
+        this.$store.commit('cart/TOGGLE_CART')
+      },
+    },
   }
 </script>
 
@@ -85,5 +90,15 @@
     flex-direction: column;
     gap: 16px;
     padding: 14px 40px 0;
+  }
+
+  .cart-slide-enter-active,
+  .cart-slide-leave-active {
+    transition: transform 0.3s ease;
+  }
+
+  .cart-slide-enter,
+  .cart-slide-leave-to {
+    transform: translateX(100%);
   }
 </style>

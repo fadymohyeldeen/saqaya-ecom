@@ -1,10 +1,11 @@
 <template>
   <div>
     <AppHeader />
-    <CartSidebar />
+    <transition name="cart-slide">
+      <CartSidebar v-if="isCartOpen" />
+    </transition>
     <main class="container">
       <slot />
-      <!-- any component passed to parent will be rendered here -->
     </main>
     <AppFooter />
   </div>
@@ -24,6 +25,11 @@
     watch: {
       $route() {
         window.scrollTo(0, 0)
+      },
+    },
+    computed: {
+      isCartOpen() {
+        return this.$store.state.cart.isCartOpen
       },
     },
   }
