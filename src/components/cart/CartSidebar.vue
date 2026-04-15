@@ -8,8 +8,8 @@
     </div>
 
     <div class="cart-sidebar__items">
-      <CartItem />
-      <CartItem />
+      <CartItem v-for="item in cartItems" :key="item.id" :item="item" />
+      <p v-if="cartItems.length === 0" class="cart-sidebar__empty">Cart is empty..</p>
     </div>
 
     <CartSummary />
@@ -26,6 +26,11 @@
     methods: {
       toggleCart() {
         this.$store.commit('cart/TOGGLE_CART')
+      },
+    },
+    computed: {
+      cartItems() {
+        return this.$store.state.cart.cartItems
       },
     },
   }
@@ -90,6 +95,17 @@
     flex-direction: column;
     gap: 16px;
     padding: 14px 40px 0;
+  }
+
+  .cart-sidebar__empty {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-body);
+    font-size: var(--text-md);
+    color: var(--color-text);
+    opacity: 0.4;
   }
 
   .cart-slide-enter-active,
