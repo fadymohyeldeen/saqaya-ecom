@@ -2,7 +2,7 @@ export default {
   namespaced: true,
   state: () => ({
     // ---------- Cart Items ------------------
-    cartItems: [],
+    cartItems: JSON.parse(localStorage.getItem('cartItems') || '[]'),
 
     // ---------- Sidebar ---------------------
     isCartOpen: false,
@@ -17,10 +17,12 @@ export default {
       } else {
         state.cartItems.push({ ...newItem, quantity })
       }
+      localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
     },
 
     REMOVE_FROM_CART(state, itemId) {
       state.cartItems = state.cartItems.filter(item => item.id !== itemId)
+      localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
     },
 
     UPDATE_CART_ITEM_QUANTITY(state, { itemId, quantity }) {
@@ -32,10 +34,12 @@ export default {
           item.quantity = quantity
         }
       }
+      localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
     },
 
     CLEAR_CART(state) {
       state.cartItems = []
+      localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
     },
 
     // ---------- Sidebar ----------
