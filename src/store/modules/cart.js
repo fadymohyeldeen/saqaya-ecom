@@ -2,7 +2,7 @@ export default {
   namespaced: true,
   state: () => ({
     // ---------- Cart Items ------------------
-    cartItems: JSON.parse(localStorage.getItem('cartItems') || []),
+    cartItems: JSON.parse(localStorage.getItem('cartItems') || '[]'),
 
     // ---------- Sidebar ---------------------
     isCartOpen: false,
