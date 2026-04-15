@@ -8,7 +8,7 @@
 
     <div class="cart-summary__row">
       <span class="cart-summary__label">Shipping:</span>
-      <span class="cart-summary__value">Free</span>
+      <span class="cart-summary__value">$0.00</span>
     </div>
     <div class="cart-summary__divider"></div>
 

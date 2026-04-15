@@ -3,10 +3,9 @@
     <button class="cart-item__remove" aria-label="Remove item" @click="removeItem">
       <img src="@/assets/icons/cart/icon-remove.svg" alt="" />
     </button>
-
-    <img :src="item.thumbnail" alt="Product" class="cart-item__image" />
-
-    <!-- <span class="cart-item__name">{{ item.title }}</span> -->
+    <router-link :to="`/products/${item.id}`">
+      <img :src="item.thumbnail" alt="Product" class="cart-item__image" />
+    </router-link>
 
     <div class="cart-item__quantity">
       <span class="cart-item__qty-value">{{ item.quantity }}</span>

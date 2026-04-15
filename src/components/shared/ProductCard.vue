@@ -92,7 +92,7 @@
     },
     methods: {
       addToCart() {
-        this.$store.commit('cart/ADD_TO_CART', this.product)
+        this.$store.commit('cart/ADD_TO_CART', { newItem: this.product, quantity: 1 })
       },
     },
   }
