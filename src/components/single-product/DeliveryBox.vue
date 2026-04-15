@@ -1,17 +1,7 @@
 <template>
   <div class="delivery-box">
     <div class="delivery-box__item">
-      <svg class="delivery-box__icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
-        <rect width="40" height="40" fill="none" />
-        <path
-          d="M33 25H7V13C7 11.895 7.895 11 9 11H27C28.105 11 29 11.895 29 13V17H31L35 21V25H33Z"
-          stroke="#000"
-          stroke-width="2"
-          stroke-linejoin="round"
-        />
-        <circle cx="12" cy="28" r="3" stroke="#000" stroke-width="2" />
-        <circle cx="28" cy="28" r="3" stroke="#000" stroke-width="2" />
-      </svg>
+      <img src="@/assets/icons/shared/icon-truck.svg" alt="Delivery" class="delivery-box__icon" />
       <div class="delivery-box__text">
         <p class="delivery-box__title">Free Delivery</p>
         <p class="delivery-box__sub">Enter your postal code for Delivery Availability</p>
@@ -21,35 +11,7 @@
     <hr class="delivery-box__hr" />
 
     <div class="delivery-box__item">
-      <svg class="delivery-box__icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
-        <rect width="40" height="40" fill="none" />
-        <path
-          d="M20 10C15.582 10 12 13.582 12 18"
-          stroke="#000"
-          stroke-width="2"
-          stroke-linecap="round"
-        />
-        <path
-          d="M20 30C24.418 30 28 26.418 28 22"
-          stroke="#000"
-          stroke-width="2"
-          stroke-linecap="round"
-        />
-        <path
-          d="M12 14L12 18L16 18"
-          stroke="#000"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M28 26L28 22L24 22"
-          stroke="#000"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
+      <img src="@/assets/icons/shared/icon-return.svg" alt="Return" class="delivery-box__icon" />
       <div class="delivery-box__text">
         <p class="delivery-box__title">Return Delivery</p>
         <p class="delivery-box__sub">Free 30 Days Delivery Returns. <a href="#">Details</a></p>

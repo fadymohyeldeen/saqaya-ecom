@@ -12,16 +12,11 @@
       <div class="header__actions">
         <div class="header__search">
           <input type="text" placeholder="What are you looking for?" />
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
+          <img
+            src="@/assets/icons/header/icon-search.svg"
+            alt="Search"
             @click="searchOpen = !searchOpen"
-          >
-            <circle cx="11" cy="11" r="7" stroke="#000" stroke-width="1.5" />
-            <path d="M16.5 16.5L21 21" stroke="#000" stroke-width="1.5" stroke-linecap="round" />
-          </svg>
+          />
         </div>
 
         <button class="header__cart" @click="toggleCart">
