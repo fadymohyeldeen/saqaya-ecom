@@ -1,28 +1,50 @@
 <template>
   <div class="cart-item">
-    <button class="cart-item__remove" aria-label="Remove item">
+    <button class="cart-item__remove" aria-label="Remove item" @click="removeItem">
       <img src="@/assets/icons/cart/icon-remove.svg" alt="" />
     </button>
 
-    <img src="https://dummyjson.com/image/54x54" alt="Product" class="cart-item__image" />
+    <img :src="item.thumbnail" alt="Product" class="cart-item__image" />
 
-    <span class="cart-item__name">LCD Monitor</span>
+    <span class="cart-item__name">{{ item.title }}</span>
 
     <div class="cart-item__quantity">
-      <span class="cart-item__qty-value">01</span>
+      <span class="cart-item__qty-value">{{ item.quantity }}</span>
       <div class="cart-item__qty-controls">
-        <button class="cart-item__qty-btn" aria-label="Increase quantity">&#8743;</button>
-        <button class="cart-item__qty-btn" aria-label="Decrease quantity">&#8744;</button>
+        <button class="cart-item__qty-btn" aria-label="Increase quantity" @click="increaseQuantity">
+          &#8743;
+        </button>
+        <button class="cart-item__qty-btn" aria-label="Decrease quantity" @click="decreaseQuantity">
+          &#8744;
+        </button>
       </div>
     </div>
 
-    <span class="cart-item__price">$650</span>
+    <span class="cart-item__price">${{ item.price }}</span>
   </div>
 </template>
 
 <script>
   export default {
     name: 'CartItem',
+    props: { item: { type: Object, required: true } },
+    methods: {
+      removeItem() {
+        this.$store.commit('cart/REMOVE_FROM_CART', this.item.id)
+      },
+      increaseQuantity() {
+        this.$store.commit('cart/UPDATE_CART_ITEM_QUANTITY', {
+          itemId: this.item.id,
+          quantity: this.item.quantity + 1,
+        })
+      },
+      decreaseQuantity() {
+        this.$store.commit('cart/UPDATE_CART_ITEM_QUANTITY', {
+          itemId: this.item.id,
+          quantity: this.item.quantity - 1,
+        })
+      },
+    },
   }
 </script>
 
