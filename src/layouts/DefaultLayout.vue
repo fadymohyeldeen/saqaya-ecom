@@ -1,6 +1,7 @@
 <template>
   <div>
     <AppHeader />
+    <CartSidebar />
     <main class="container">
       <slot />
       <!-- any component passed to parent will be rendered here -->
@@ -12,11 +13,13 @@
 <script>
   import AppHeader from '@/components/layout/AppHeader.vue'
   import AppFooter from '@/components/layout/AppFooter.vue'
+  import CartSidebar from '@/components/cart/CartSidebar.vue'
   export default {
     name: 'DefaultLayout',
     components: {
       AppHeader,
       AppFooter,
+      CartSidebar,
     },
     watch: {
       $route() {
