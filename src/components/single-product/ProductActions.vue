@@ -6,9 +6,7 @@
         aria-label="Decrease quantity"
         @click="$emit('decrease')"
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M5 12H19" stroke="#000000" stroke-width="1.5" stroke-linecap="round" />
-        </svg>
+        <img src="@/assets/icons/shared/icon-minus.svg" alt="Decrease" />
       </button>
       <span class="product-actions__qty-value">{{ quantity }}</span>
       <button
@@ -16,9 +14,7 @@
         aria-label="Increase quantity"
         @click="$emit('increase')"
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M12 5V19M5 12H19" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" />
-        </svg>
+        <img src="@/assets/icons/shared/icon-plus.svg" alt="Increase" />
       </button>
     </div>
 

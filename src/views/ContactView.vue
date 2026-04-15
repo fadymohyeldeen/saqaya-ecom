@@ -4,7 +4,7 @@
 
     <div class="contact__body">
       <div class="contact__side-image">
-        <img src="@/assets/contact.jpeg" alt="Contact" />
+        <img src="@/assets/images/contact.jpeg" alt="Contact" />
       </div>
       <ContactForm />
     </div>
