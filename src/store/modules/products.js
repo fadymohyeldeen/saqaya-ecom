@@ -29,8 +29,10 @@ export default {
       state.products = products
     },
     APPEND_PRODUCTS(state, newProducts) {
-      state.products = [...state.products, ...newProducts]
-    },
+      // --- guards Load more rapid clicks ----
+      const existingProducts = new Set(state.products.map(p => p.id)) // returns a Set of current products' ids
+      state.products = [...state.products, ...newProducts.filter(p => !existingProducts.has(p.id))]
+    }, // adds only products with Ids that are not in products (makes sure no duplicate products are added)
     SET_DISPLAYED_PRODUCTS_COUNT(state, count) {
       state.displayedProductsCount = count
     },

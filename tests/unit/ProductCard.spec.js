@@ -1,0 +1,150 @@
+import { shallowMount, createLocalVue } from '@vue/test-utils'
+import ProductCard from '@/components/shared/ProductCard.vue'
+import Vuex from 'vuex'
+
+const localVue = createLocalVue()
+localVue.use(Vuex)
+
+describe('ProductCard Loading State', () => {
+  let wrapper
+  beforeEach(() => {
+    wrapper = shallowMount(ProductCard, {
+      propsData: {
+        product: {
+          id: 1,
+          title: 'Product 1',
+          price: 10,
+          discountPercentage: 10,
+          reviews: [],
+          thumbnail: 'https://example.com/product1.jpg',
+        },
+        isLoading: false,
+      },
+    })
+  })
+
+  it('skeleton renders when isLoading: true', async () => {
+    await wrapper.setProps({ isLoading: true })
+    expect(wrapper.find('.product-card__skeleton').exists()).toBe(true)
+  })
+
+  it('product card renders when isLoading: false', async () => {
+    await wrapper.setProps({ isLoading: false })
+    expect(wrapper.find('.product-card').exists()).toBe(true)
+  })
+})
+
+describe('ProductCard DOM Rendering', () => {
+  let wrapper
+  beforeEach(() => {
+    wrapper = shallowMount(ProductCard, {
+      propsData: {
+        product: {
+          id: 1,
+          title: 'Product 1',
+          price: 10,
+          discountPercentage: 10,
+          reviews: [{ rating: 5 }, { rating: 4 }, { rating: 3 }, { rating: 2 }, { rating: 1 }],
+          thumbnail: 'https://example.com/product1.jpg',
+        },
+        isLoading: false,
+      },
+    })
+  })
+
+  it('product name matches prop', () => {
+    const productName = wrapper.find('.product-card__name')
+    expect(productName.text()).toBe(wrapper.vm.product.title)
+  })
+
+  it('product thumbnail matches prop', () => {
+    const productThumbnail = wrapper.find('.product-card__image').attributes('src')
+    expect(productThumbnail).toBe(wrapper.vm.product.thumbnail)
+  })
+  it('reviews count matches product.reviews.length', () => {
+    const reviewCount = wrapper.find('.product-card__reviews')
+    expect(reviewCount.text()).toBe(`(${wrapper.vm.product.reviews.length})`)
+  })
+  it('discount badge visible when discountPercentage > 0', () => {
+    const discountBadge = wrapper.find('.product-card__discount')
+    expect(discountBadge.exists()).toBe(true)
+  })
+
+  it('discount badge hidden when discountPercentage is 0', async () => {
+    await wrapper.setProps({ product: { ...wrapper.vm.product, discountPercentage: 0 } })
+    const discountBadge = wrapper.find('.product-card__discount')
+    expect(discountBadge.exists()).toBe(false)
+  })
+
+  it('original price hidden when no discount', async () => {
+    await wrapper.setProps({ product: { ...wrapper.vm.product, discountPercentage: 0 } })
+    const originalPrice = wrapper.find('.product-card__original-price')
+    expect(originalPrice.exists()).toBe(false)
+  })
+})
+
+describe('ProductCard Logic', () => {
+  let wrapper
+  beforeEach(() => {
+    wrapper = shallowMount(ProductCard, {
+      propsData: {
+        product: {
+          id: 1,
+          title: 'Product 1',
+          price: 10,
+          discountPercentage: 10,
+          reviews: [{ rating: 5 }, { rating: 4 }, { rating: 3 }, { rating: 2 }, { rating: 1 }],
+          thumbnail: 'https://example.com/product1.jpg',
+        },
+        isLoading: false,
+      },
+    })
+  })
+
+  it('priceAfterDiscount computed calculates correctly', () => {
+    expect(wrapper.vm.priceAfterDiscount).toBe('9.00')
+  })
+
+  it('addToCart commits to Vuex with correct payload', () => {
+    const store = new Vuex.Store({
+      modules: {
+        cart: {
+          namespaced: true,
+          state: {
+            cart: [],
+          },
+          mutations: {
+            ADD_TO_CART: (state, product) => {
+              state.cart.push(product)
+            },
+          },
+        },
+      },
+    })
+    const wrapper = shallowMount(ProductCard, {
+      store,
+      localVue, // an isolated copy of Vue to avoid affecting other tests
+      propsData: {
+        product: {
+          id: 1,
+          title: 'Product 1',
+          price: 10,
+          discountPercentage: 10,
+          reviews: [{ rating: 1 }],
+          thumbnail: 'https://example.com/product1.jpg',
+        },
+        isLoading: false,
+      },
+    })
+    wrapper.vm.addToCart()
+    expect(store.mutation.ADD_TO_CART).toHaveBeenCalledWith({
+      newItem: wrapper.vm.product,
+      quantity: 1,
+    })
+
+    // expect the mutation to have been called with the correct payload
+    // use jest.spyOn() on the store's commit method before mounting
+    // then expect it to have been called with 'cart/ADD_TO_CART' and the correct payload
+    // payload is { newItem: product, quantity: 1 } — check ProductCard.vue line 87
+  })
+})
