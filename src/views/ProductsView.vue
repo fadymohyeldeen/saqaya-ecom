@@ -41,7 +41,7 @@
                 class="products__filter-option"
                 @click="filterByCategory(category)"
               >
-                {{ category }}
+                {{ formatName(category) }}
               </p>
             </div>
           </div>
@@ -139,6 +139,9 @@
         this.$store.commit('products/SET_CATEGORY', category)
         this.$store.dispatch('products/getProducts')
         this.filterOpen = false
+      },
+      formatName(name) {
+        return name.replace(/-/g, ' ')
       },
     },
   }
