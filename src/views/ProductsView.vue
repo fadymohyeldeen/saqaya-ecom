@@ -16,12 +16,7 @@
               />
             </button>
             <div v-if="sortOpen" class="products__filter-dropdown">
-              <p
-                v-for="option in sortOptions"
-                :key="option.value"
-                class="products__filter-option"
-                @click="sortBy(option.value)"
-              >
+              <p v-for="option in sortOptions" :key="option.value" class="products__filter-option">
                 {{ option.label }}
               </p>
             </div>
@@ -92,22 +87,6 @@
       }
     },
 
-    mounted() {
-      const category = this.$route.query.category || null
-      this.$store.commit('products/SET_CATEGORY', category)
-      this.$store.dispatch('products/getProducts')
-      document.addEventListener('click', this.handleOutsideClick)
-      this.$store.dispatch('products/getCategoryList')
-    },
-    beforeDestroy() {
-      document.removeEventListener('click', this.handleOutsideClick)
-    },
-    async beforeRouteUpdate(to, from, next) {
-      this.$store.commit('products/SET_CATEGORY', to.query.category || null)
-      await this.$store.dispatch('products/getProducts')
-      next()
-    },
-
     computed: {
       products() {
         return this.$store.getters['products/displayedProducts']
@@ -123,10 +102,26 @@
       },
     },
 
+    mounted() {
+      this.fetchByCategory(this.$route.query.category)
+      this.$store.dispatch('products/getCategoryList')
+      document.addEventListener('click', this.handleOutsideClick)
+    },
+
+    async beforeRouteUpdate(to, _from, next) {
+      await this.fetchByCategory(to.query.category)
+      next()
+    },
+
+    beforeDestroy() {
+      document.removeEventListener('click', this.handleOutsideClick)
+    },
+
     methods: {
       loadMore() {
         this.$store.dispatch('products/loadMoreProducts')
       },
+
       handleOutsideClick(e) {
         if (this.$refs.filterRef && !this.$refs.filterRef.contains(e.target)) {
           this.filterOpen = false
@@ -135,12 +130,17 @@
           this.sortOpen = false
         }
       },
+
+      async fetchByCategory(category) {
+        this.$store.commit('products/SET_CATEGORY', category || null)
+        await this.$store.dispatch('products/getProducts')
+      },
+
       filterByCategory(category) {
-        this.$store.commit('products/SET_CATEGORY', category)
-        this.$store.dispatch('products/getProducts')
         this.$router.push({ path: '/products', query: category ? { category } : {} })
         this.filterOpen = false
       },
+
       formatName(name) {
         return name.replace(/-/g, ' ')
       },
