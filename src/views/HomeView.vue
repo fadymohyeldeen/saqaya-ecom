@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <HeroBanner />
-    <div v-if="flashSaleProducts.length">
+    <div v-if="flashSaleProducts.length || isLoading">
       <ProductSection
         label="Today's"
         title="Flash Sales"
@@ -18,7 +18,7 @@
     <div class="home__divider"></div>
 
     <ProductSection
-      v-if="exploreProducts.length"
+      v-if="exploreProducts.length || isLoading"
       label="Our Products"
       title="Explore Our Products"
       :products="exploreProducts"
