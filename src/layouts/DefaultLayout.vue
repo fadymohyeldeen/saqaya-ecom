@@ -22,11 +22,6 @@
       AppFooter,
       CartSidebar,
     },
-    watch: {
-      $route() {
-        window.scrollTo(0, 0)
-      },
-    },
     computed: {
       isCartOpen() {
         return this.$store.state.cart.isCartOpen
