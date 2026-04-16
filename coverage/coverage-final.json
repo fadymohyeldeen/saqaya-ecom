@@ -1,0 +1,20 @@
+{
+  "/home/fady/Desktop/saqaya-ecom/src/components/home/HeroBanner.vue": {
+    "path": "/home/fady/Desktop/saqaya-ecom/src/components/home/HeroBanner.vue",
+    "statementMap": {
+      "0": { "start": { "line": 185, "column": 0 }, "end": { "line": 245, "column": null } },
+      "1": { "start": { "line": 1, "column": 0 }, "end": { "line": 1, "column": null } }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_7)",
+        "decl": { "start": { "line": 1, "column": 0 }, "end": { "line": 1, "column": null } },
+        "loc": { "start": { "line": 1, "column": 0 }, "end": { "line": 1, "column": null } }
+      }
+    },
+    "branchMap": {},
+    "s": { "0": 1, "1": 83 },
+    "f": { "0": 60 },
+    "b": {}
+  }
+}
