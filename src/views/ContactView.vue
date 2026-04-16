@@ -1,6 +1,6 @@
 <template>
   <div class="contact">
-    <AppBreadcrumb :items="breadcrumbs" />
+    <AppBreadcrumb />
 
     <div class="contact__body">
       <div class="contact__side-image">
@@ -18,11 +18,6 @@
   export default {
     name: 'ContactView',
     components: { AppBreadcrumb, ContactForm },
-    data() {
-      return {
-        breadcrumbs: [{ label: 'Home', to: '/' }, { label: 'Contact' }],
-      }
-    },
   }
 </script>
 

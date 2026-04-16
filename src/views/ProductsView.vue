@@ -1,6 +1,6 @@
 <template>
   <div class="products__container">
-    <AppBreadcrumb :items="breadcrumbs" />
+    <AppBreadcrumb />
     <ErrorMessage v-if="error" :message="`Products Not Found.. Please try again later!`" />
     <div v-else>
       <div class="products__header">
@@ -75,7 +75,6 @@
     },
     data() {
       return {
-        breadcrumbs: [{ label: 'Home', to: '/' }, { label: 'Products' }],
         filterOpen: false,
         sortOpen: false,
         sortOptions: [
