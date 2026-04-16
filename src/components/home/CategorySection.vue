@@ -1,13 +1,18 @@
 <template>
   <section class="categories-section">
-    <SectionHeader label="Categories" title="Browse By Category" />
-    <div class="categories-section__grid">
-      <CategoryCard name="Beauty" />
-      <CategoryCard name="Furniture" />
-      <CategoryCard name="Fragrance" />
-      <CategoryCard name="Camera" />
-      <CategoryCard name="Mobile Accessories" />
-      <CategoryCard name="Home Accessories" />
+    <SectionHeader
+      label="Categories"
+      title="Browse By Category"
+      @next="scrollNext"
+      @prev="scrollPrev"
+    />
+    <div class="categories-section__grid" ref="scrollContainer">
+      <CategoryCard
+        v-for="category in categoryList"
+        :key="category"
+        :name="category"
+        @select="onSelect"
+      />
     </div>
   </section>
 </template>
@@ -19,6 +24,31 @@
   export default {
     name: 'CategorySection',
     components: { SectionHeader, CategoryCard },
+    mounted() {
+      this.$store.dispatch('products/getCategoryList')
+    },
+    computed: {
+      categoryList() {
+        return this.$store.state.products.categoryList
+      },
+    },
+    methods: {
+      scrollNext() {
+        const container = this.$refs.scrollContainer
+        const card = container.firstElementChild
+        if (!card) return
+        container.scrollBy({ left: card.offsetWidth, behavior: 'smooth' })
+      },
+      scrollPrev() {
+        const container = this.$refs.scrollContainer
+        const card = container.firstElementChild
+        if (!card) return
+        container.scrollBy({ left: -card.offsetWidth, behavior: 'smooth' })
+      },
+      onSelect(category) {
+        this.$router.push({ path: '/products', query: { category } })
+      },
+    },
   }
 </script>
 
