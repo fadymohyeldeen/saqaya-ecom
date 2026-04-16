@@ -1,9 +1,20 @@
 <template>
-  <div class="category-card">
-    <img :src="icons[name]" :alt="name" class="category-card__icon" />
+  <div class="category-card" @click="$emit('select', name)">
     <span class="category-card__name">{{ name }}</span>
   </div>
 </template>
+
+<script>
+  export default {
+    name: 'CategoryCard',
+    props: {
+      name: {
+        type: String,
+        required: true,
+      },
+    },
+  }
+</script>
 
 <style scoped>
   /* ─── Mobile ─── */
@@ -18,6 +29,7 @@
     height: 100px;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: var(--radius-sm);
+    padding: 0 16px;
     cursor: pointer;
     flex-shrink: 0;
     transition: background-color 0.2s ease, color 0.2s ease;
@@ -28,16 +40,6 @@
     border-color: var(--color-primary);
   }
 
-  .category-card__icon {
-    width: 35px;
-    height: 35px;
-    transition: filter 0.2s ease;
-  }
-
-  .category-card:hover .category-card__icon {
-    filter: invert(1);
-  }
-
   .category-card:hover .category-card__name {
     color: var(--color-text-light);
   }
@@ -45,7 +47,7 @@
   .category-card__name {
     font-family: var(--font-body);
     font-weight: 400;
-    font-size: var(--text-sm);
+    font-size: var(--text-md);
     line-height: 24px;
     color: var(--color-text);
     text-align: center;
@@ -60,34 +62,3 @@
     }
   }
 </style>
-
-<script>
-  import beautyIcon from '@/assets/icons/categories/icon-beauty.svg'
-  import cameraIcon from '@/assets/icons/categories/icon-camera.svg'
-  import fragranceIcon from '@/assets/icons/categories/icon-fragrance.svg'
-  import furnitureIcon from '@/assets/icons/categories/icon-furniture.svg'
-  import homeAccessoriesIcon from '@/assets/icons/categories/icon-home-accessories.svg'
-  import mobileAccessoriesIcon from '@/assets/icons/categories/icon-mobile-accessories.svg'
-
-  export default {
-    name: 'CategoryCard',
-    props: {
-      name: {
-        type: String,
-        required: true,
-      },
-    },
-    data() {
-      return {
-        icons: {
-          Beauty: beautyIcon,
-          Furniture: furnitureIcon,
-          Fragrance: fragranceIcon,
-          Camera: cameraIcon,
-          'Mobile Accessories': mobileAccessoriesIcon,
-          'Home Accessories': homeAccessoriesIcon,
-        },
-      }
-    },
-  }
-</script>
