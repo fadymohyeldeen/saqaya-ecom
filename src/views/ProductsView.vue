@@ -138,6 +138,7 @@
       filterByCategory(category) {
         this.$store.commit('products/SET_CATEGORY', category)
         this.$store.dispatch('products/getProducts')
+        this.$router.push({ path: '/products', query: category ? { category } : {} })
         this.filterOpen = false
       },
       formatName(name) {
