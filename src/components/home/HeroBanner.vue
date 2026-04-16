@@ -37,7 +37,7 @@
         <div class="hero__dots">
           <button
             v-for="(slide, index) in slides"
-            :key="index"
+            :key="slide.brandName"
             class="hero__dot"
             :class="{ 'hero__dot--active': index === currentSlide }"
             @click="changeCurrentSlide(index)"

@@ -1,7 +1,7 @@
 <template>
   <section class="about-team">
     <div class="about-team__grid">
-      <div v-for="(member, index) in team" :key="index" class="about-team__card">
+      <div v-for="member in team" :key="member.name" class="about-team__card">
         <div class="about-team__photo">
           <img :src="member.image" :alt="member.name" />
         </div>
@@ -145,24 +145,6 @@
     height: 100%;
     object-fit: contain;
     filter: invert(1);
-  }
-
-  .about-team__dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 40px;
-  }
-
-  .about-team__dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.2);
-  }
-
-  .about-team__dot--active {
-    background: var(--color-primary);
   }
 
   @media (max-width: 767px) {
