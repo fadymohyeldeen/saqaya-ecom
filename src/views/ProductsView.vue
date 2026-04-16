@@ -126,9 +126,18 @@
         breadcrumbs: [{ label: 'Home', to: '/' }, { label: 'Products' }],
       }
     },
+
     async mounted() {
+      const category = this.$route.query.category || null
+      this.$store.commit('products/SET_CATEGORY', category)
       await this.$store.dispatch('products/getProducts')
     },
+    async beforeRouteUpdate(to, from, next) {
+      this.$store.commit('products/SET_CATEGORY', to.query.category || null)
+      await this.$store.dispatch('products/getProducts')
+      next()
+    },
+
     computed: {
       products() {
         return this.$store.getters['products/displayedProducts']
@@ -140,6 +149,7 @@
         return this.$store.state.products.isLoading
       },
     },
+
     methods: {
       loadMore() {
         this.$store.dispatch('products/loadMoreProducts')
