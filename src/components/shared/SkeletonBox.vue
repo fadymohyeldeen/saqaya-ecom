@@ -4,7 +4,7 @@
 
 <script>
   export default {
-    name: 'SkeletonBlock',
+    name: 'SkeletonBox',
     props: {
       width: {
         type: String,
