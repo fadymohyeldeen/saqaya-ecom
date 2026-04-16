@@ -62,8 +62,10 @@
       ProductSection,
     },
     async mounted() {
-      await this.$store.dispatch('products/getFlashSaleProducts')
-      await this.$store.dispatch('products/getProducts')
+      await Promise.all([
+        this.$store.dispatch('products/getFlashSaleProducts'),
+        this.$store.dispatch('products/getProducts'),
+      ])
     },
     computed: {
       flashSaleProducts() {
