@@ -31,7 +31,12 @@
             </div>
 
             <!-- Product Image -->
-            <img :src="product.thumbnail" :alt="product.title" class="product-card__image" />
+            <img
+              :src="product.thumbnail"
+              :alt="product.title"
+              class="product-card__image"
+              @error="e => (e.target.src = require('@/assets/images/placeholder.svg'))"
+            />
 
             <!-- Add To Cart — shown on hover -->
             <div class="product-card__add-to-cart" @click.prevent="addToCart">
