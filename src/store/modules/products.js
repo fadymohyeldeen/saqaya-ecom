@@ -90,7 +90,6 @@ export default {
         commit('SET_PRODUCTS', response.data.products)
         commit('SET_LOADING', false)
       } catch (error) {
-        console.error(error)
         commit('SET_LOADING', false)
         commit('SET_ERROR', error.message)
       }
@@ -106,7 +105,6 @@ export default {
         commit('APPEND_PRODUCTS', response.data.products)
         commit('SET_DISPLAYED_PRODUCTS_COUNT', state.displayedProductsCount + 20)
       } catch (error) {
-        console.error(error)
         commit('SET_ERROR', error.message)
       }
     },
@@ -120,7 +118,6 @@ export default {
         commit('SET_SELECTED_PRODUCT', response.data)
         commit('SET_LOADING', false)
       } catch (error) {
-        console.error(error)
         commit('SET_LOADING', false)
         commit('SET_ERROR', error.message)
       }
@@ -133,7 +130,6 @@ export default {
         const response = await api.get('/products/category-list')
         commit('SET_CATEGORY_LIST', response.data)
       } catch (error) {
-        console.error(error)
         commit('SET_ERROR', error.message)
       }
     },
@@ -145,7 +141,6 @@ export default {
         commit('SET_FLASH_SALE_PRODUCTS', response.data.products)
         commit('SET_LOADING', false)
       } catch (error) {
-        console.error(error)
         commit('SET_LOADING', false)
         commit('SET_ERROR', error.message)
       }
