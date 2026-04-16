@@ -17,7 +17,7 @@ const routes = [
   {
     path: '/products',
     name: 'products',
-    component: () => import('../views/ProductsView.vue'), // lazy loadings
+    component: () => import('@/views/ProductsView.vue'), // lazy loadings
   },
   {
     path: '/products/:id',
@@ -27,17 +27,17 @@ const routes = [
   {
     path: '/about-us',
     name: 'about',
-    component: () => import('../views/AboutView.vue'),
+    component: () => import('@/views/AboutView.vue'),
   },
   {
     path: '/contact',
     name: 'contact',
-    component: () => import('../views/ContactView.vue'),
+    component: () => import('@/views/ContactView.vue'),
   },
   {
     path: '*',
     name: 'not-found',
-    component: () => import('../views/ErrorView.vue'),
+    component: () => import('@/views/ErrorView.vue'),
   },
 ]
 
