@@ -16,10 +16,14 @@
               />
             </button>
             <div v-if="sortOpen" class="products__filter-dropdown">
-              <p class="products__filter-option">Highest Rating</p>
-              <p class="products__filter-option">Price: Low to High</p>
-              <p class="products__filter-option">Price: High to Low</p>
-              <p class="products__filter-option">Discount Percentage</p>
+              <p
+                v-for="option in sortOptions"
+                :key="option.value"
+                class="products__filter-option"
+                @click="sortBy(option.value)"
+              >
+                {{ option.label }}
+              </p>
             </div>
           </div>
           <div ref="filterRef" class="products__filter">
@@ -30,9 +34,15 @@
               @click="filterOpen = !filterOpen"
             />
             <div v-if="filterOpen" class="products__filter-dropdown">
-              <p class="products__filter-option">Category 1</p>
-              <p class="products__filter-option">Category 2</p>
-              <p class="products__filter-option">Category 3</p>
+              <p class="products__filter-option" @click="filterByCategory(null)">All Categories</p>
+              <p
+                v-for="category in categories"
+                :key="category"
+                class="products__filter-option"
+                @click="filterByCategory(category)"
+              >
+                {{ category }}
+              </p>
             </div>
           </div>
         </div>
@@ -73,6 +83,12 @@
         breadcrumbs: [{ label: 'Home', to: '/' }, { label: 'Products' }],
         filterOpen: false,
         sortOpen: false,
+        sortOptions: [
+          { label: 'Price: Low to High', value: 'price-asc' },
+          { label: 'Price: High to Low', value: 'price-desc' },
+          { label: 'Rating: High to Low', value: 'rating-desc' },
+          { label: 'Rating: Low to High', value: 'rating-asc' },
+        ],
       }
     },
 
@@ -81,6 +97,7 @@
       this.$store.commit('products/SET_CATEGORY', category)
       this.$store.dispatch('products/getProducts')
       document.addEventListener('click', this.handleOutsideClick)
+      this.$store.dispatch('products/getCategoryList')
     },
     beforeDestroy() {
       document.removeEventListener('click', this.handleOutsideClick)
@@ -94,6 +111,9 @@
     computed: {
       products() {
         return this.$store.getters['products/displayedProducts']
+      },
+      categories() {
+        return this.$store.state.products.categoryList
       },
       error() {
         return this.$store.state.products.error
@@ -114,6 +134,11 @@
         if (this.$refs.sortRef && !this.$refs.sortRef.contains(e.target)) {
           this.sortOpen = false
         }
+      },
+      filterByCategory(category) {
+        this.$store.commit('products/SET_CATEGORY', category)
+        this.$store.dispatch('products/getProducts')
+        this.filterOpen = false
       },
     },
   }
