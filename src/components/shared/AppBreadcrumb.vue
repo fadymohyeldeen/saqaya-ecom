@@ -1,7 +1,6 @@
 <template>
   <nav class="breadcrumb">
-    <template v-for="(item, index) in items">
-      <!-- generates a link or a span based on item.to value, and a separator if needed -->
+    <template v-for="(item, index) in breadcrumbs">
       <router-link
         v-if="item.to"
         :key="`item-${index}`"
@@ -13,12 +12,13 @@
         v-else
         :key="`span-${index}`"
         class="breadcrumb__item"
-        :class="{ 'breadcrumb__item--muted': index < items.length - 1 }"
+        :class="{ 'breadcrumb__item--muted': index < breadcrumbs.length - 1 }"
         >{{ item.label }}</span
       >
-      <!-- used different keys for each span so that vue knows these are two different elements -->
       <!-- renderes / between items except the last one -->
-      <span v-if="index < items.length - 1" :key="`sep-${index}`" class="breadcrumb__sep">/</span>
+      <span v-if="index < breadcrumbs.length - 1" :key="`sep-${index}`" class="breadcrumb__sep"
+        >/</span
+      >
     </template>
   </nav>
 </template>
@@ -27,9 +27,27 @@
   export default {
     name: 'AppBreadcrumb',
     props: {
-      items: {
-        type: Array,
-        required: true,
+      productName: {
+        type: String,
+        default: null,
+      },
+    },
+    computed: {
+      breadcrumbs() {
+        const urlSegments = this.$route.path.split('/').filter(Boolean)
+        const crumbs = [{ label: 'Home', to: '/' }]
+
+        urlSegments.forEach((segment, index) => {
+          const isLastSegment = index === urlSegments.length - 1
+          const label = segment.replace(/-/g, ' ')
+
+          crumbs.push({
+            label: isLastSegment && this.productName ? this.productName : label,
+            to: isLastSegment ? null : '/' + urlSegments.slice(0, index + 1).join('/'),
+          })
+        })
+
+        return crumbs
       },
     },
   }
@@ -48,6 +66,7 @@
     font-size: var(--text-sm);
     color: var(--color-text);
     text-decoration: none;
+    text-transform: capitalize;
   }
 
   .breadcrumb__item--muted {

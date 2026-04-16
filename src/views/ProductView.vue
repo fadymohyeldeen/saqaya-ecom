@@ -1,6 +1,6 @@
 <template>
   <div class="single-product">
-    <AppBreadcrumb :items="breadcrumbs" />
+    <AppBreadcrumb :product-name="product ? product.title : ''" />
 
     <div v-if="isLoading || product" class="single-product__main">
       <ProductGallery
@@ -71,13 +71,6 @@
     computed: {
       product() {
         return this.$store.state.products.selectedProduct
-      },
-      breadcrumbs() {
-        return [
-          { label: 'Home', to: '/' },
-          { label: 'Products', to: '/products' },
-          { label: this.product?.title },
-        ]
       },
       relatedProducts() {
         return this.$store.getters['products/exploreProducts']

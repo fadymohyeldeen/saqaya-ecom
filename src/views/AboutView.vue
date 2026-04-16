@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <AppBreadcrumb :items="breadcrumbs" />
+    <AppBreadcrumb />
     <StorySection />
     <AboutStats />
     <AboutTeam />
@@ -18,10 +18,5 @@
   export default {
     name: 'AboutView',
     components: { AppBreadcrumb, StorySection, AboutStats, AboutTeam, ServicesStrip },
-    data() {
-      return {
-        breadcrumbs: [{ label: 'Home', to: '/' }, { label: 'About Us' }],
-      }
-    },
   }
 </script>
