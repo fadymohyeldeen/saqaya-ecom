@@ -59,15 +59,19 @@
         if (this.quantity > 1) this.quantity--
       },
     },
-    watch: {
-      '$route.params.id'(newId) {
-        this.$store.dispatch('products/getProductById', newId)
-      },
-    },
     async mounted() {
+      // first visit
       await this.$store.dispatch('products/getProductById', this.$route.params.id)
       await this.$store.dispatch('products/getProducts')
     },
+
+    async beforeRouteUpdate(to, _from, next) {
+      // when navigating between products
+      await this.$store.dispatch('products/getProductById', to.params.id)
+      await this.$store.dispatch('products/getProducts')
+      next()
+    },
+
     computed: {
       product() {
         return this.$store.state.products.selectedProduct
