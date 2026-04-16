@@ -6,14 +6,35 @@
       <div class="products__header">
         <h2 class="section-title">Explore Our Products</h2>
         <div class="products__sort">
-          <p>Sort by</p>
-          <select name="" id="" class="products__select">
-            <option value="">Highest Rating</option>
-            <option value="">Price: Low to high</option>
-            <option value="">Price: High to low</option>
-            <option value="">Discount percentage</option>
-            <option value="">Brand</option>
-          </select>
+          <div ref="sortRef" class="products__sort-dropdown">
+            <button class="products__select" @click="sortOpen = !sortOpen">
+              Sort by
+              <img
+                src="@/assets/icons/products/icon-drop-down.svg"
+                alt=""
+                class="products__select-arrow"
+              />
+            </button>
+            <div v-if="sortOpen" class="products__filter-dropdown">
+              <p class="products__filter-option">Highest Rating</p>
+              <p class="products__filter-option">Price: Low to High</p>
+              <p class="products__filter-option">Price: High to Low</p>
+              <p class="products__filter-option">Discount Percentage</p>
+            </div>
+          </div>
+          <div ref="filterRef" class="products__filter">
+            <img
+              src="@/assets/icons/products/icon-filter.svg"
+              alt="Filter"
+              class="products__filter-icon"
+              @click="filterOpen = !filterOpen"
+            />
+            <div v-if="filterOpen" class="products__filter-dropdown">
+              <p class="products__filter-option">Category 1</p>
+              <p class="products__filter-option">Category 2</p>
+              <p class="products__filter-option">Category 3</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -32,6 +53,71 @@
     </div>
   </div>
 </template>
+
+<script>
+  import AppBreadcrumb from '@/components/shared/AppBreadcrumb.vue'
+  import AppButton from '@/components/shared/AppButton.vue'
+  import ProductCard from '@/components/shared/ProductCard.vue'
+  import ErrorMessage from '@/components/shared/ErrorMessage.vue'
+
+  export default {
+    name: 'ProductsView',
+    components: {
+      AppBreadcrumb,
+      AppButton,
+      ProductCard,
+      ErrorMessage,
+    },
+    data() {
+      return {
+        breadcrumbs: [{ label: 'Home', to: '/' }, { label: 'Products' }],
+        filterOpen: false,
+        sortOpen: false,
+      }
+    },
+
+    mounted() {
+      const category = this.$route.query.category || null
+      this.$store.commit('products/SET_CATEGORY', category)
+      this.$store.dispatch('products/getProducts')
+      document.addEventListener('click', this.handleOutsideClick)
+    },
+    beforeDestroy() {
+      document.removeEventListener('click', this.handleOutsideClick)
+    },
+    async beforeRouteUpdate(to, from, next) {
+      this.$store.commit('products/SET_CATEGORY', to.query.category || null)
+      await this.$store.dispatch('products/getProducts')
+      next()
+    },
+
+    computed: {
+      products() {
+        return this.$store.getters['products/displayedProducts']
+      },
+      error() {
+        return this.$store.state.products.error
+      },
+      isLoading() {
+        return this.$store.state.products.isLoading
+      },
+    },
+
+    methods: {
+      loadMore() {
+        this.$store.dispatch('products/loadMoreProducts')
+      },
+      handleOutsideClick(e) {
+        if (this.$refs.filterRef && !this.$refs.filterRef.contains(e.target)) {
+          this.filterOpen = false
+        }
+        if (this.$refs.sortRef && !this.$refs.sortRef.contains(e.target)) {
+          this.sortOpen = false
+        }
+      },
+    },
+  }
+</script>
 
 <style scoped>
   .products__header {
@@ -52,14 +138,17 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    padding-right: 40px;
+    padding-right: 10px;
+  }
+
+  .products__sort-dropdown {
+    position: relative;
   }
 
   .products__select {
-    background-image: url('@/assets/icons/products/icon-drop-down.svg');
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    appearance: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     padding: 12px 20px;
     border-radius: var(--radius-sm);
     border: none;
@@ -69,6 +158,53 @@
     color: white;
     cursor: pointer;
     outline: none;
+  }
+
+  .products__select-arrow {
+    width: 16px;
+    height: 16px;
+  }
+
+  .products__filter {
+    position: relative;
+  }
+
+  .products__filter-icon {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    background-color: var(--color-primary-dark);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    box-sizing: border-box;
+    display: block;
+  }
+
+  .products__filter-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background-color: var(--color-bg);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    min-width: 180px;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  .products__filter-option {
+    padding: 10px 16px;
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    cursor: pointer;
+    text-transform: capitalize;
+  }
+
+  .products__filter-option:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
   }
 
   .products__grid {
@@ -106,54 +242,3 @@
     }
   }
 </style>
-
-<script>
-  import AppBreadcrumb from '@/components/shared/AppBreadcrumb.vue'
-  import AppButton from '@/components/shared/AppButton.vue'
-  import ProductCard from '@/components/shared/ProductCard.vue'
-  import ErrorMessage from '@/components/shared/ErrorMessage.vue'
-
-  export default {
-    name: 'ProductsView',
-    components: {
-      AppBreadcrumb,
-      AppButton,
-      ProductCard,
-      ErrorMessage,
-    },
-    data() {
-      return {
-        breadcrumbs: [{ label: 'Home', to: '/' }, { label: 'Products' }],
-      }
-    },
-
-    async mounted() {
-      const category = this.$route.query.category || null
-      this.$store.commit('products/SET_CATEGORY', category)
-      await this.$store.dispatch('products/getProducts')
-    },
-    async beforeRouteUpdate(to, from, next) {
-      this.$store.commit('products/SET_CATEGORY', to.query.category || null)
-      await this.$store.dispatch('products/getProducts')
-      next()
-    },
-
-    computed: {
-      products() {
-        return this.$store.getters['products/displayedProducts']
-      },
-      error() {
-        return this.$store.state.products.error
-      },
-      isLoading() {
-        return this.$store.state.products.isLoading
-      },
-    },
-
-    methods: {
-      loadMore() {
-        this.$store.dispatch('products/loadMoreProducts')
-      },
-    },
-  }
-</script>
