@@ -1,6 +1,6 @@
 <template>
   <div class="category-card" @click="$emit('select', name)">
-    <span class="category-card__name">{{ name }}</span>
+    <span class="category-card__name">{{ formatName(name) }}</span>
   </div>
 </template>
 
@@ -11,6 +11,11 @@
       name: {
         type: String,
         required: true,
+      },
+    },
+    methods: {
+      formatName(name) {
+        return name.replace(/-/g, ' ')
       },
     },
   }
@@ -45,6 +50,7 @@
   }
 
   .category-card__name {
+    text-transform: capitalize;
     font-family: var(--font-body);
     font-weight: 400;
     font-size: var(--text-md);
