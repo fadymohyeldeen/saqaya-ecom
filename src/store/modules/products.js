@@ -14,6 +14,9 @@ export default {
     categoryList: [],
     flashSaleProducts: [],
 
+    // ---------- Category Filter -------------
+    selectedCategory: null,
+
     // ---------- Error Handling --------------
     error: null,
 
@@ -45,6 +48,12 @@ export default {
       state.flashSaleProducts = products
     },
 
+    // ---------- Category Filter -------------
+    SET_CATEGORY(state, category) {
+      state.selectedCategory = category
+      state.displayedProductsCount = 20
+    },
+
     // ---------- Error Handling --------------
     SET_ERROR(state, message) {
       state.error = message
@@ -68,11 +77,14 @@ export default {
   },
   actions: {
     // --- Products Grid / Explore Products ---
-    async getProducts({ commit }) {
+    async getProducts({ commit, state }) {
+      const url = state.selectedCategory
+        ? `/products/category/${state.selectedCategory}?limit=40`
+        : '/products?limit=40'
       try {
         commit('SET_LOADING', true)
         commit('SET_ERROR', null)
-        const response = await api.get('/products?limit=40')
+        const response = await api.get(url)
         commit('SET_PRODUCTS', response.data.products)
         commit('SET_LOADING', false)
       } catch (error) {
@@ -81,10 +93,14 @@ export default {
         commit('SET_ERROR', error.message)
       }
     },
+
     async loadMoreProducts({ commit, state }) {
+      const url = state.selectedCategory
+        ? `/products/category/${state.selectedCategory}?limit=20&skip=${state.products.length}`
+        : `/products?limit=20&skip=${state.products.length}`
       try {
         commit('SET_ERROR', null)
-        const response = await api.get(`/products?limit=20&skip=${state.products.length}`)
+        const response = await api.get(url)
         commit('APPEND_PRODUCTS', response.data.products)
         commit('SET_DISPLAYED_PRODUCTS_COUNT', state.displayedProductsCount + 20)
       } catch (error) {
