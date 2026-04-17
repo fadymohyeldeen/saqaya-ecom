@@ -10,7 +10,7 @@
     <template v-else>
       <div class="product-gallery__thumbs">
         <button
-          v-for="(img, idx) in images"
+          v-for="(img, idx) in images.slice(0, 4)"
           :key="idx"
           class="product-gallery__thumb-btn"
           :class="{ 'product-gallery__thumb-btn--active': selectedImage === idx }"
