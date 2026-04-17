@@ -26,39 +26,13 @@
 </template>
 
 <script>
+  import { TEAM } from '@/utils/constants'
+
   export default {
     name: 'AboutTeam',
     data() {
       return {
-        team: [
-          {
-            name: 'Jack willson',
-            role: 'Founder & Chairman',
-            image:
-              'https://images.unsplash.com/photo-1590086782792-42dd2350140d?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            twitter: '#',
-            instagram: '#',
-            linkedin: '#',
-          },
-          {
-            name: 'Adam Smith',
-            role: 'Managing Director',
-            image:
-              'https://images.unsplash.com/photo-1623184663110-89ba5b565eb6?q=80&w=1112&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            twitter: '#',
-            instagram: '#',
-            linkedin: '#',
-          },
-          {
-            name: 'Richard Branson',
-            role: 'Product Designer',
-            image:
-              'https://images.unsplash.com/photo-1755140208191-ec5def51708d?q=80&w=721&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            twitter: '#',
-            instagram: '#',
-            linkedin: '#',
-          },
-        ],
+        team: TEAM,
       }
     },
   }

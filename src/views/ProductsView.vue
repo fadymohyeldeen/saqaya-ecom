@@ -61,6 +61,7 @@
 
 <script>
   import { formatName } from '@/utils/formatters'
+  import { SORT_OPTIONS } from '@/utils/constants'
   import AppBreadcrumb from '@/components/shared/AppBreadcrumb.vue'
   import ButtonApp from '@/components/shared/ButtonApp.vue'
   import ProductCard from '@/components/shared/ProductCard.vue'
@@ -78,12 +79,7 @@
       return {
         filterOpen: false,
         sortOpen: false,
-        sortOptions: [
-          { label: 'Price: Low to High', value: 'price-asc' },
-          { label: 'Price: High to Low', value: 'price-desc' },
-          { label: 'Rating: High to Low', value: 'rating-desc' },
-          { label: 'Rating: Low to High', value: 'rating-asc' },
-        ],
+        sortOptions: SORT_OPTIONS,
       }
     },
 
