@@ -24,10 +24,10 @@
 <style scoped>
   .contact__body {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: stretch;
     gap: 34px;
-    margin-bottom: 140px;
+    margin-bottom: 80px;
   }
 
   .contact__side-image {
@@ -35,7 +35,7 @@
     background: var(--color-contact-bg);
     border-radius: 4px;
     overflow: hidden;
-    height: auto;
+    height: 300px;
   }
 
   .contact__side-image img {
@@ -46,9 +46,8 @@
     display: block;
   }
 
-  @media (max-width: 1023px) {
+  @media (min-width: 768px) {
     .contact__body {
-      flex-direction: column;
       margin-bottom: 100px;
     }
 
@@ -57,13 +56,14 @@
     }
   }
 
-  @media (max-width: 767px) {
+  @media (min-width: 1024px) {
     .contact__body {
-      margin-bottom: 80px;
+      flex-direction: row;
+      margin-bottom: 140px;
     }
 
     .contact__side-image {
-      height: 300px;
+      height: auto;
     }
   }
 </style>
