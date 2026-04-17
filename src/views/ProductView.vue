@@ -62,13 +62,13 @@
     async mounted() {
       // first visit
       await this.$store.dispatch('products/getProductById', this.$route.params.id)
-      await this.$store.dispatch('products/getProducts')
+      await this.$store.dispatch('products/getRelatedProducts', this.category)
     },
 
     async beforeRouteUpdate(to, _from, next) {
       // when navigating between products
       await this.$store.dispatch('products/getProductById', to.params.id)
-      await this.$store.dispatch('products/getProducts')
+      await this.$store.dispatch('products/getRelatedProducts', this.category)
       next()
     },
 
@@ -77,10 +77,13 @@
         return this.$store.state.products.selectedProduct
       },
       relatedProducts() {
-        return this.$store.getters['products/exploreProducts']
+        return this.$store.state.products.relatedProducts
       },
       isLoading() {
         return this.$store.state.products.isLoading
+      },
+      category() {
+        return this.$store.state.products.selectedProduct?.category
       },
     },
   }
