@@ -52,7 +52,7 @@
 
 <script>
   export default {
-    name: 'AppButton',
+    name: 'ButtonApp',
     props: {
       label: {
         type: String,

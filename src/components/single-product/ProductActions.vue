@@ -18,20 +18,20 @@
       </button>
     </div>
 
-    <AppButton label="Add To Cart" @click="addToCart" />
+    <ButtonApp label="Add To Cart" @click="addToCart" />
     <div class="product-actions__fav">
-      <FavButton />
+      <ButtonFav />
     </div>
   </div>
 </template>
 
 <script>
-  import AppButton from '@/components/shared/AppButton.vue'
-  import FavButton from '@/components/shared/FavButton.vue'
+  import ButtonApp from '@/components/shared/ButtonApp.vue'
+  import ButtonFav from '@/components/shared/ButtonFav.vue'
 
   export default {
     name: 'ProductActions',
-    components: { AppButton, FavButton },
+    components: { ButtonApp, ButtonFav },
     props: {
       product: {
         type: Object,

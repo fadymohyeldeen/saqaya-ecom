@@ -13,7 +13,7 @@
 
 <script>
   export default {
-    name: 'FavButton',
+    name: 'ButtonFav',
     emits: ['click'],
   }
 </script>

@@ -53,7 +53,7 @@
       </div>
 
       <div class="products__load-more">
-        <AppButton label="Load More ..." @click="loadMore" />
+        <ButtonApp label="Load More ..." @click="loadMore" />
       </div>
     </div>
   </div>
@@ -61,7 +61,7 @@
 
 <script>
   import AppBreadcrumb from '@/components/shared/AppBreadcrumb.vue'
-  import AppButton from '@/components/shared/AppButton.vue'
+  import ButtonApp from '@/components/shared/ButtonApp.vue'
   import ProductCard from '@/components/shared/ProductCard.vue'
   import ErrorMessage from '@/components/shared/ErrorMessage.vue'
 
@@ -69,7 +69,7 @@
     name: 'ProductsView',
     components: {
       AppBreadcrumb,
-      AppButton,
+      ButtonApp,
       ProductCard,
       ErrorMessage,
     },
