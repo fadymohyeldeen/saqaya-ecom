@@ -64,7 +64,7 @@
     async mounted() {
       await Promise.all([
         this.$store.dispatch('products/getFlashSaleProducts'),
-        this.$store.dispatch('products/getProducts'),
+        this.$store.dispatch('products/getExploreProducts'),
       ])
     },
     computed: {
@@ -72,7 +72,7 @@
         return this.$store.state.products.flashSaleProducts
       },
       exploreProducts() {
-        return this.$store.getters['products/exploreProducts']
+        return this.$store.state.products.exploreProducts
       },
       isLoading() {
         return this.$store.state.products.isLoading

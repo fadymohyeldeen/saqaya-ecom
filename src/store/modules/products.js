@@ -13,6 +13,7 @@ export default {
     // ---------- Home Page Sections ----------
     categoryList: [],
     flashSaleProducts: [],
+    exploreProducts: [],
 
     // ---------- Category Filter -------------
     selectedCategory: null,
@@ -43,11 +44,14 @@ export default {
     },
 
     // ---------- Home Page Sections ----------
+    SET_FLASH_SALE_PRODUCTS(state, products) {
+      state.flashSaleProducts = products
+    },
     SET_CATEGORY_LIST(state, categoryList) {
       state.categoryList = categoryList
     },
-    SET_FLASH_SALE_PRODUCTS(state, products) {
-      state.flashSaleProducts = products
+    SET_EXPLORE_PRODUCTS(state, products) {
+      state.exploreProducts = products
     },
 
     // ---------- Category Filter -------------
@@ -71,14 +75,9 @@ export default {
     displayedProducts: state => {
       return state.products.slice(0, state.displayedProductsCount)
     },
-
-    // ---------- Home Page Sections ----------
-    exploreProducts: state => {
-      return state.products.slice(0, 8)
-    },
   },
   actions: {
-    // --- Products Grid / Explore Products ---
+    // ----------- Products Grid --------------
     async getProducts({ commit, state }) {
       const url = state.selectedCategory
         ? `/products/category/${state.selectedCategory}?limit=40`
@@ -124,6 +123,20 @@ export default {
     },
 
     // ---------- Home Sections -----------
+
+    async getFlashSaleProducts({ commit }) {
+      try {
+        commit('SET_LOADING', true)
+        commit('SET_ERROR', null)
+        const response = await api.get('/products?limit=8&sortBy=discountPercentage&order=desc')
+        commit('SET_FLASH_SALE_PRODUCTS', response.data.products)
+        commit('SET_LOADING', false)
+      } catch (error) {
+        commit('SET_LOADING', false)
+        commit('SET_ERROR', error.message)
+      }
+    },
+
     async getCategoryList({ commit }) {
       try {
         commit('SET_ERROR', null)
@@ -133,12 +146,14 @@ export default {
         commit('SET_ERROR', error.message)
       }
     },
-    async getFlashSaleProducts({ commit }) {
+
+    async getExploreProducts({ commit }) {
       try {
         commit('SET_LOADING', true)
         commit('SET_ERROR', null)
-        const response = await api.get('/products?limit=8&sortBy=discountPercentage&order=desc')
-        commit('SET_FLASH_SALE_PRODUCTS', response.data.products)
+        const skip = Math.floor(Math.random() * 100)
+        const response = await api.get(`/products?limit=8&skip=${skip}`)
+        commit('SET_EXPLORE_PRODUCTS', response.data.products)
         commit('SET_LOADING', false)
       } catch (error) {
         commit('SET_LOADING', false)
