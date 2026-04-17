@@ -1,56 +1,19 @@
 <template>
   <section class="services-strip">
-    <div class="services-strip__item">
-      <div class="services-strip__icon">
-        <div class="services-strip__icon-outer">
-          <div class="services-strip__icon-inner">
-            <img
-              src="@/assets/icons/header/icon-cart.svg"
-              alt="Delivery"
-              class="services-strip__icon-cart"
-            />
-          </div>
+    <div v-for="service in services" :key="service.title" class="services-strip__item">
+      <div class="services-strip__icon-outer">
+        <div class="services-strip__icon-inner">
+          <img
+            :src="service.icon"
+            :alt="service.alt"
+            class="services-strip__icon-img"
+            :class="{ 'services-strip__icon-img--inverted': service.inverted }"
+          />
         </div>
       </div>
       <div class="services-strip__text">
-        <h3>FREE AND FAST DELIVERY</h3>
-        <p>Free delivery for all orders over $140</p>
-      </div>
-    </div>
-
-    <div class="services-strip__item">
-      <div class="services-strip__icon">
-        <div class="services-strip__icon-outer">
-          <div class="services-strip__icon-inner">
-            <img
-              src="@/assets/icons/about/icon-customer.svg"
-              alt="Customer Service"
-              class="services-strip__icon-customer"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="services-strip__text">
-        <h3>24/7 CUSTOMER SERVICE</h3>
-        <p>Friendly 24/7 customer support</p>
-      </div>
-    </div>
-
-    <div class="services-strip__item">
-      <div class="services-strip__icon">
-        <div class="services-strip__icon-outer">
-          <div class="services-strip__icon-inner">
-            <img
-              src="@/assets/icons/about/icon-dollar.svg"
-              alt="Money Back"
-              class="services-strip__icon-dollar"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="services-strip__text">
-        <h3>MONEY BACK GUARANTEE</h3>
-        <p>We return money within 30 days</p>
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.description }}</p>
       </div>
     </div>
   </section>
@@ -58,7 +21,13 @@
 
 <script>
   export default {
-    name: 'ServicesStrip',
+    name: 'ServiceItems',
+    props: {
+      services: {
+        type: Array,
+        required: true,
+      },
+    },
   }
 </script>
 
@@ -101,24 +70,17 @@
     justify-content: center;
   }
 
-  .services-strip__icon-inner img {
+  .services-strip__icon-img {
+    width: 32px;
+    height: 32px;
+    display: block;
     object-fit: contain;
   }
 
-  .services-strip__icon-cart {
+  .services-strip__icon-img--inverted {
     filter: invert(1);
-    width: 28px;
-    height: 28px;
-  }
-
-  .services-strip__icon-customer {
-    width: 32px;
-    height: 32px;
-  }
-
-  .services-strip__icon-dollar {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
   }
 
   .services-strip__text h3 {
