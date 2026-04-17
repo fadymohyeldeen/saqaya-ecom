@@ -5,8 +5,7 @@
   </router-link>
 
   <!-- for actions -->
-  <button v-else class="app-btn" @click="$emit('click', $event)">
-    <!-- $emit tells the parent to do something when the button is clicked -->
+  <button v-else class="app-btn" :disabled="disabled" @click="$emit('click', $event)">
     {{ label }}
   </button>
 </template>
@@ -32,7 +31,16 @@
 
   .app-btn:hover {
     opacity: 0.9;
-    scale: 1.01;
+  }
+
+  .app-btn:disabled {
+    background: rgba(0, 0, 0, 0.15);
+    cursor: not-allowed;
+  }
+
+  .app-btn:disabled:hover {
+    opacity: 1;
+    scale: 1;
   }
 
   @media (max-width: 1023px) {
@@ -61,6 +69,10 @@
       to: {
         type: String,
         default: null,
+      },
+      disabled: {
+        type: Boolean,
+        default: false,
       },
     },
     emits: ['click'],
