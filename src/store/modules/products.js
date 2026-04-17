@@ -9,6 +9,7 @@ export default {
 
     // ---------- Single Product --------------
     selectedProduct: null,
+    relatedProducts: [],
 
     // ---------- Home Page Sections ----------
     categoryList: [],
@@ -41,6 +42,9 @@ export default {
     // ---------- Single Product --------------
     SET_SELECTED_PRODUCT(state, product) {
       state.selectedProduct = product
+    },
+    SET_RELATED_PRODUCTS(state, products) {
+      state.relatedProducts = products
     },
 
     // ---------- Home Page Sections ----------
@@ -115,6 +119,19 @@ export default {
         commit('SET_ERROR', null)
         const response = await api.get(`/products/${productId}`)
         commit('SET_SELECTED_PRODUCT', response.data)
+        commit('SET_LOADING', false)
+      } catch (error) {
+        commit('SET_LOADING', false)
+        commit('SET_ERROR', error.message)
+      }
+    },
+
+    async getRelatedProducts({ commit }, category) {
+      try {
+        commit('SET_LOADING', true)
+        commit('SET_ERROR', null)
+        const response = await api.get(`/products/category/${category}?limit=8`)
+        commit('SET_RELATED_PRODUCTS', response.data.products)
         commit('SET_LOADING', false)
       } catch (error) {
         commit('SET_LOADING', false)
