@@ -140,6 +140,11 @@
       },
 
       filterByCategory(category) {
+        const currentCategory = this.$route.query.category || null
+        if (currentCategory === (category || null)) {
+          this.filterOpen = false
+          return
+        }
         this.$router.push({ path: '/products', query: category ? { category } : {} })
         this.filterOpen = false
       },
