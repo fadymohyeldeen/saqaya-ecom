@@ -44,7 +44,7 @@
         <textarea placeholder="Your Message" rows="8"></textarea>
       </div>
       <div class="contact__form-actions">
-        <AppButton :label="'Send Message'" />
+        <ButtonApp :label="'Send Message'" />
       </div>
     </div>
   </div>
@@ -193,10 +193,10 @@
 </style>
 
 <script>
-  import AppButton from '@/components/shared/AppButton.vue'
+  import ButtonApp from '@/components/shared/ButtonApp.vue'
 
   export default {
     name: 'ContactForm',
-    components: { AppButton },
+    components: { ButtonApp },
   }
 </script>

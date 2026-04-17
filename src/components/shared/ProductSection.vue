@@ -13,7 +13,7 @@
     </div>
 
     <div v-if="viewAllLink" class="products-section__center">
-      <AppButton label="View All Products" :to="viewAllLink" />
+      <ButtonApp label="View All Products" :to="viewAllLink" />
     </div>
   </section>
 </template>
@@ -21,11 +21,11 @@
 <script>
   import SectionHeader from '@/components/shared/SectionHeader.vue'
   import ProductCard from '@/components/shared/ProductCard.vue'
-  import AppButton from '@/components/shared/AppButton.vue'
+  import ButtonApp from '@/components/shared/ButtonApp.vue'
 
   export default {
     name: 'ProductSection',
-    components: { SectionHeader, ProductCard, AppButton },
+    components: { SectionHeader, ProductCard, ButtonApp },
     props: {
       label: {
         type: String,

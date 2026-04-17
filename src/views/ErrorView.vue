@@ -5,20 +5,20 @@
     <div class="not-found__content">
       <h1 class="not-found__heading">404 Not Found</h1>
       <p class="not-found__subtitle">Your visited page not found. You may go home page.</p>
-      <AppButton label="Back to home page" to="/" />
+      <ButtonApp label="Back to home page" to="/" />
     </div>
   </div>
 </template>
 
 <script>
   import AppBreadcrumb from '@/components/shared/AppBreadcrumb.vue'
-  import AppButton from '@/components/shared/AppButton.vue'
+  import ButtonApp from '@/components/shared/ButtonApp.vue'
 
   export default {
     name: 'ErrorView',
     components: {
       AppBreadcrumb,
-      AppButton,
+      ButtonApp,
     },
   }
 </script>

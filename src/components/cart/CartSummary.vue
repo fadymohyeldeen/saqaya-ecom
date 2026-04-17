@@ -17,16 +17,16 @@
       <span class="cart-summary__value">${{ cartTotal }}</span>
     </div>
 
-    <AppButton label="Place Order" />
+    <ButtonApp label="Place Order" />
   </div>
 </template>
 
 <script>
-  import AppButton from '@/components/shared/AppButton.vue'
+  import ButtonApp from '@/components/shared/ButtonApp.vue'
 
   export default {
     name: 'CartSummary',
-    components: { AppButton },
+    components: { ButtonApp },
     computed: {
       cartTotal() {
         return this.$store.getters['cart/cartTotal'].toFixed(2)
