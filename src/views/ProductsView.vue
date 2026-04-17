@@ -16,7 +16,12 @@
               />
             </button>
             <div v-if="sortOpen" class="products__filter-dropdown">
-              <p v-for="option in sortOptions" :key="option.value" class="products__filter-option">
+              <p
+                v-for="option in sortOptions"
+                :key="option.label"
+                class="products__filter-option"
+                @click="sortProducts(option.value, option.order)"
+              >
                 {{ option.label }}
               </p>
             </div>
@@ -143,6 +148,12 @@
         }
         this.$router.push({ path: '/products', query: category ? { category } : {} })
         this.filterOpen = false
+      },
+
+      async sortProducts(sortBy, sortOrder) {
+        this.$store.commit('products/SET_SORT', { sortBy, sortOrder })
+        await this.$store.dispatch('products/getProducts')
+        this.sortOpen = false
       },
 
       formatName,

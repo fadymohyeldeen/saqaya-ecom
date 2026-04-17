@@ -31,10 +31,10 @@ export const SERVICES = [
 
 // ------------- Sort Options -------------
 export const SORT_OPTIONS = [
-  { label: 'Price: Low to High', value: 'price-asc' },
-  { label: 'Price: High to Low', value: 'price-desc' },
-  { label: 'Rating: High to Low', value: 'rating-desc' },
-  { label: 'Rating: Low to High', value: 'rating-asc' },
+  { label: 'Price: Low to High', value: 'price', order: 'asc' },
+  { label: 'Price: High to Low', value: 'price', order: 'desc' },
+  { label: 'Rating: High to Low', value: 'rating', order: 'desc' },
+  { label: 'Rating: Low to High', value: 'rating', order: 'asc' },
 ]
 
 // ---------------- Stats -----------------
