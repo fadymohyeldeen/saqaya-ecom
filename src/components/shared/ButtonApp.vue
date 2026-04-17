@@ -16,10 +16,10 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    padding: 10px 36px;
+    padding: 0 20px;
     font-family: var(--font-body);
     font-weight: 500;
-    font-size: var(--text-md);
+    font-size: var(--text-xs);
     white-space: nowrap;
     border: none;
     border-radius: var(--radius-sm);
@@ -43,17 +43,17 @@
     scale: 1;
   }
 
-  @media (max-width: 1023px) {
+  @media (min-width: 768px) {
     .app-btn {
       font-size: var(--text-sm);
       padding: 0 32px;
     }
   }
 
-  @media (max-width: 767px) {
+  @media (min-width: 1024px) {
     .app-btn {
-      font-size: var(--text-xs);
-      padding: 0 20px;
+      font-size: var(--text-md);
+      padding: 10px 36px;
     }
   }
 </style>

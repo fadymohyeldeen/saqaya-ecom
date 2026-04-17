@@ -45,7 +45,8 @@
 
   .about-team__grid {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
     gap: 30px;
     justify-content: center;
     flex-wrap: wrap;
@@ -57,7 +58,7 @@
     gap: 16px;
     flex: 1;
     min-width: 200px;
-    max-width: 370px;
+    max-width: 100%;
   }
 
   .about-team__photo {
@@ -85,8 +86,8 @@
   .about-team__name {
     font-family: var(--font-heading);
     font-weight: 600;
-    font-size: 32px;
-    line-height: 40px;
+    font-size: 24px;
+    line-height: 32px;
     color: var(--color-text);
   }
 
@@ -121,19 +122,19 @@
     filter: invert(1);
   }
 
-  @media (max-width: 767px) {
+  @media (min-width: 768px) {
     .about-team__grid {
-      flex-direction: column;
-      align-items: center;
+      flex-direction: row;
+      align-items: flex-start;
     }
 
     .about-team__card {
-      max-width: 100%;
+      max-width: 370px;
     }
 
     .about-team__name {
-      font-size: 24px;
-      line-height: 32px;
+      font-size: 32px;
+      line-height: 40px;
     }
   }
 </style>

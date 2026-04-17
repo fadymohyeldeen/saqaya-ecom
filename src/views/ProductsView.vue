@@ -163,15 +163,18 @@
 
 <style scoped>
   .products__header {
-    justify-content: space-between;
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
     margin-bottom: 32px;
   }
 
   .products__header .section-title {
     font-family: var(--font-heading);
     font-weight: 600;
-    font-size: 36px;
+    font-size: 20px;
     letter-spacing: 0.04em;
     color: var(--color-text);
   }
@@ -180,7 +183,9 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    padding-right: 10px;
+    width: 100%;
+    justify-content: space-between;
+    padding-right: 0;
   }
 
   .products__sort-dropdown {
@@ -200,6 +205,8 @@
     color: white;
     cursor: pointer;
     outline: none;
+    width: 100%;
+    flex: 1;
   }
 
   .products__select-arrow {
@@ -261,26 +268,26 @@
     margin-top: 32px;
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 768px) {
     .products__header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 12px;
+      flex-direction: row;
+      align-items: center;
+      gap: 0;
     }
 
     .products__header .section-title {
-      font-size: 20px;
+      font-size: 36px;
     }
 
     .products__sort {
-      width: 100%;
-      justify-content: space-between;
-      padding-right: 0;
+      width: auto;
+      justify-content: flex-end;
+      padding-right: 10px;
     }
 
     .products__select {
-      width: 100%;
-      flex: 1;
+      width: auto;
+      flex: none;
     }
   }
 </style>

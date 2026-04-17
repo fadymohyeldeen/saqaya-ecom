@@ -41,7 +41,7 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
-    padding: 0;
+    padding: 16px;
     height: 100%;
     box-sizing: border-box;
   }
@@ -76,25 +76,24 @@
 
   .contact__form-row {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 16px;
     width: 100%;
   }
 
-  @media (max-width: 1023px) {
+  @media (min-width: 768px) {
     .contact__details {
       padding: 24px 40px;
     }
-  }
-
-  /* ── Mobile ── */
-  @media (max-width: 767px) {
-    .contact__details {
-      padding: 16px;
-    }
 
     .contact__form-row {
-      flex-direction: column;
+      flex-direction: row;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .contact__details {
+      padding: 0;
     }
   }
 </style>

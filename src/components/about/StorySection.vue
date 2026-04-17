@@ -31,10 +31,10 @@
 <style scoped>
   .our-story {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    gap: 75px;
-    margin-bottom: 80px;
+    gap: 32px;
+    margin-bottom: 48px;
   }
 
   .our-story__text {
@@ -47,8 +47,8 @@
   .our-story__heading {
     font-family: var(--font-heading);
     font-weight: 600;
-    font-size: 54px;
-    line-height: 64px;
+    font-size: 36px;
+    line-height: 44px;
     letter-spacing: 0.03em;
     color: var(--color-text);
   }
@@ -72,16 +72,16 @@
     display: block;
   }
 
-  @media (max-width: 767px) {
+  @media (min-width: 768px) {
     .our-story {
-      flex-direction: column;
-      gap: 32px;
-      margin-bottom: 48px;
+      flex-direction: row;
+      gap: 75px;
+      margin-bottom: 80px;
     }
 
     .our-story__heading {
-      font-size: 36px;
-      line-height: 44px;
+      font-size: 54px;
+      line-height: 64px;
     }
   }
 </style>

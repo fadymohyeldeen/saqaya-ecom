@@ -43,7 +43,8 @@
     align-items: center;
     gap: 16px;
     padding: 30px 0;
-    width: 270px;
+    width: 100%;
+    max-width: 300px;
     border: 1px solid rgba(0, 0, 0, 0.13);
     border-radius: 4px;
     text-align: center;
@@ -120,10 +121,10 @@
     color: var(--color-primary-light);
   }
 
-  @media (max-width: 767px) {
+  @media (min-width: 768px) {
     .about-stats__card {
-      width: 100%;
-      max-width: 300px;
+      width: 270px;
+      max-width: none;
     }
   }
 </style>
