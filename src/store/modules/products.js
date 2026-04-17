@@ -20,6 +20,10 @@ export default {
     // ---------- Category Filter -------------
     selectedCategory: null,
 
+    // --------------- Sort -------------------
+    sortBy: 'createdAt',
+    sortOrder: 'desc',
+
     // ---------- Error Handling --------------
     error: null,
 
@@ -68,6 +72,13 @@ export default {
       state.displayedProductsCount = 20
     },
 
+    // --------------- Sort -------------------
+    SET_SORT(state, { sortBy, sortOrder }) {
+      state.sortBy = sortBy
+      state.sortOrder = sortOrder
+      state.displayedProductsCount = 20
+    },
+
     // ---------- Error Handling --------------
     SET_ERROR(state, message) {
       state.error = message
@@ -87,9 +98,16 @@ export default {
   actions: {
     // ----------- Products Grid --------------
     async getProducts({ commit, state }) {
+      const params = new URLSearchParams({
+        limit: 40,
+        sortBy: state.sortBy,
+        order: state.sortOrder,
+      })
+
       const url = state.selectedCategory
-        ? `/products/category/${state.selectedCategory}?limit=40`
-        : '/products?limit=40'
+        ? `/products/category/${state.selectedCategory}?${params}`
+        : `/products?${params}`
+
       try {
         commit('SET_LOADING', true)
         commit('SET_ERROR', null)
@@ -104,9 +122,17 @@ export default {
     },
 
     async loadMoreProducts({ commit, state }) {
+      const params = new URLSearchParams({
+        limit: 20,
+        skip: state.products.length,
+        sortBy: state.sortBy,
+        order: state.sortOrder,
+      })
+
       const url = state.selectedCategory
-        ? `/products/category/${state.selectedCategory}?limit=20&skip=${state.products.length}`
-        : `/products?limit=20&skip=${state.products.length}`
+        ? `/products/category/${state.selectedCategory}?${params}`
+        : `/products?${params}`
+
       try {
         commit('SET_ERROR', null)
         const response = await api.get(url)
