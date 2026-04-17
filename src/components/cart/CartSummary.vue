@@ -19,7 +19,7 @@
 
     <div class="cart-summary__actions">
       <ButtonApp label="Place Order" :disabled="cartIsEmpty" />
-      <ButtonTrash :disabled="cartIsEmpty" ariaLabel="'Clear cart'" @click="clearCart" />
+      <ButtonTrash :disabled="cartIsEmpty" ariaLabel="Clear cart" @click="clearCart" />
     </div>
   </div>
 </template>

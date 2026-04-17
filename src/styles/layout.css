@@ -1,19 +1,15 @@
-/* ─── Layout container classes ─── */
-
 .container {
   max-width: var(--container-max-width);
   margin: 0 auto;
   padding: 24px var(--container-padding-mobile);
 }
 
-/* Tablet */
 @media (min-width: 768px) {
   .container {
     padding: 40px var(--container-padding-tablet);
   }
 }
 
-/* Desktop */
 @media (min-width: 1024px) {
   .container {
     padding: 40px var(--container-padding);

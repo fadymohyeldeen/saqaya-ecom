@@ -77,14 +77,12 @@
     margin: 0;
   }
 
-  /* ─── Tablet ─── */
   @media (min-width: 768px) {
     .delivery-box {
       margin-top: 16px;
     }
   }
 
-  /* ─── Desktop ─── */
   @media (min-width: 1024px) {
     .delivery-box {
       max-width: 399px;

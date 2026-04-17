@@ -108,13 +108,4 @@
     opacity: 0.4;
   }
 
-  .cart-slide-enter-active,
-  .cart-slide-leave-active {
-    transition: transform 0.3s ease;
-  }
-
-  .cart-slide-enter,
-  .cart-slide-leave-to {
-    transform: translateX(100%);
-  }
 </style>

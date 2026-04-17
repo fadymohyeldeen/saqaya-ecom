@@ -11,11 +11,3 @@ export default new Vuex.Store({
     cart,
   },
 })
-
-/*
-Component dispatches action
-  → Action does async work (API call)
-    → Action commits a mutation
-      → Mutation updates state
-        → Component re-renders
-*/

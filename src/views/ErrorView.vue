@@ -45,7 +45,6 @@
     opacity: 0.5;
   }
 
-  /* ─── Tablet (768px+) ─── */
   @media (min-width: 768px) {
     .not-found__content {
       padding: 200px 0 250px;

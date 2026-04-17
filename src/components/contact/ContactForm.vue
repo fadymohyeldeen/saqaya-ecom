@@ -24,16 +24,27 @@
 
     <div class="contact__form-card">
       <div class="contact__form-row">
-        <InputField type="text" placeholder="Your Name *" />
-        <InputField type="email" placeholder="Your Email *" />
+        <InputField type="text" name="name" placeholder="Your Name *" />
+        <InputField type="email" name="email" placeholder="Your Email *" />
       </div>
-      <InputField type="textarea" placeholder="Your Message" />
+      <InputField type="textarea" name="message" placeholder="Your Message" />
       <div class="contact__form-actions">
         <ButtonApp :label="'Send Message'" />
       </div>
     </div>
   </div>
 </template>
+
+<script>
+  import ButtonApp from '@/components/shared/ButtonApp.vue'
+  import ContactInfo from '@/components/contact/ContactInfo.vue'
+  import InputField from '@/components/shared/InputField.vue'
+
+  export default {
+    name: 'ContactForm',
+    components: { ButtonApp, ContactInfo, InputField },
+  }
+</script>
 
 <style scoped>
   .contact__details {
@@ -97,14 +108,3 @@
     }
   }
 </style>
-
-<script>
-  import ButtonApp from '@/components/shared/ButtonApp.vue'
-  import ContactInfo from '@/components/contact/ContactInfo.vue'
-  import InputField from '@/components/shared/InputField.vue'
-
-  export default {
-    name: 'ContactForm',
-    components: { ButtonApp, ContactInfo, InputField },
-  }
-</script>

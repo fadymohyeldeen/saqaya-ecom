@@ -3,7 +3,6 @@
     <SectionHeader :label="label" :title="title" @next="scrollNext()" @prev="scrollPrev()" />
 
     <div ref="scrollContainer" class="products-section__scroll">
-      <!-- ref: vue's getElementById -->
       <template v-if="isLoading">
         <ProductCard v-for="n in 4" :key="n" :isLoading="true" />
       </template>
@@ -51,8 +50,8 @@
     },
     methods: {
       scrollNext() {
-        const scrollContainer = this.$refs.scrollContainer // selects the div with ref scrollContainer
-        const card = scrollContainer.firstElementChild // selects the first product card
+        const scrollContainer = this.$refs.scrollContainer
+        const card = scrollContainer.firstElementChild
         if (!card) return
         scrollContainer.scrollBy({ left: card.offsetWidth, behavior: 'smooth' }) // scrolls by the width of a card
       },
@@ -67,7 +66,6 @@
 </script>
 
 <style scoped>
-  /* ─── Mobile base ─── */
   .products-section {
     margin-bottom: 40px;
   }
@@ -96,7 +94,6 @@
     margin-top: 32px;
   }
 
-  /* ─── Tablet (768px+) ─── */
   @media (min-width: 768px) {
     .products-section {
       margin-bottom: 60px;
@@ -111,7 +108,6 @@
     }
   }
 
-  /* ─── Desktop (1024px+) ─── */
   @media (min-width: 1024px) {
     .products-section {
       margin-bottom: 80px;

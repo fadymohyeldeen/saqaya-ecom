@@ -90,7 +90,6 @@
 </script>
 
 <style scoped>
-  /* ─── Mobile base ─── */
   .single-product__main {
     display: flex;
     flex-direction: column;
@@ -98,7 +97,6 @@
     margin-bottom: 60px;
   }
 
-  /* ─── Tablet (768px+) ─── */
   @media (min-width: 768px) {
     .single-product__main {
       display: grid;
@@ -108,7 +106,6 @@
     }
   }
 
-  /* ─── Desktop (1024px+) ─── */
   @media (min-width: 1024px) {
     .single-product__main {
       grid-template-columns: 670px 1fr;

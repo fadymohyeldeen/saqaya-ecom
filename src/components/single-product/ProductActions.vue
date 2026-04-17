@@ -103,7 +103,6 @@
     border-radius: 50%;
   }
 
-  /* ─── Tablet (768px+) ─── */
   @media (min-width: 768px) {
     .product-actions {
       flex-wrap: nowrap;

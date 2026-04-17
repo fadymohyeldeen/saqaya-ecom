@@ -51,7 +51,6 @@
 </script>
 
 <style scoped>
-  /* ─── Mobile  ─── */
   .categories-section {
     margin-bottom: 40px;
   }
@@ -67,7 +66,6 @@
     display: none;
   }
 
-  /* ─── Tablet/Desktop  ─── */
   @media (min-width: 768px) {
     .categories-section {
       margin-bottom: 60px;
