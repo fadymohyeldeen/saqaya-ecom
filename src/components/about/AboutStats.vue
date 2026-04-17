@@ -15,37 +15,13 @@
 </template>
 
 <script>
-  import sellerIcon from '@/assets/icons/about/icon-sellers.svg'
-  import salesIcon from '@/assets/icons/about/icon-dollar.svg'
-  import customerIcon from '@/assets/icons/about/icon-customer.svg'
-  import moneyIcon from '@/assets/icons/about/icon-money-bag.svg'
+  import { STATS } from '@/utils/constants'
 
   export default {
     name: 'AboutStats',
     data() {
       return {
-        stats: [
-          {
-            icon: sellerIcon,
-            number: '10.5k',
-            label: 'Sellers active our site',
-          },
-          {
-            icon: salesIcon,
-            number: '33k',
-            label: 'Monthly Product Sale',
-          },
-          {
-            icon: customerIcon,
-            number: '45.5k',
-            label: 'Customer active in our site',
-          },
-          {
-            icon: moneyIcon,
-            number: '25k',
-            label: 'Anual gross sales in our site',
-          },
-        ],
+        stats: STATS,
       }
     },
   }
