@@ -5,6 +5,8 @@
 </template>
 
 <script>
+  import { formatName } from '@/utils/formatters'
+
   export default {
     name: 'CategoryCard',
     props: {
@@ -14,9 +16,7 @@
       },
     },
     methods: {
-      formatName(name) {
-        return name.replace(/-/g, ' ')
-      },
+      formatName,
     },
   }
 </script>

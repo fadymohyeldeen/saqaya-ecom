@@ -30,7 +30,7 @@
 
       <hr class="product-info__hr" />
 
-      <p class="product-info__category">Category: {{ product.category }}</p>
+      <p class="product-info__category">Category: {{ formatName(product.category) }}</p>
 
       <ProductActions
         :product="product"
@@ -49,6 +49,7 @@
   import ProductActions from '@/components/single-product/ProductActions.vue'
   import DeliveryBox from '@/components/single-product/DeliveryBox.vue'
   import SkeletonBox from '@/components/shared/SkeletonBox.vue'
+  import { formatName } from '@/utils/formatters'
 
   export default {
     name: 'ProductInfo',
@@ -66,6 +67,9 @@
         type: Number,
         default: 1,
       },
+    },
+    methods: {
+      formatName,
     },
     emits: ['increase-qty', 'decrease-qty'],
   }
