@@ -23,7 +23,9 @@
 
       <div class="product-info__price-row">
         <span class="product-info__price">${{ product.price.toFixed(2) }}</span>
-        <span class="product-info__discount-badge">-{{ product.discountPercentage }}%</span>
+        <span v-if="Math.round(product.discountPercentage) > 0" class="product-info__discount-badge"
+          >-{{ Math.round(product.discountPercentage) }}%</span
+        >
       </div>
 
       <p class="product-info__description">{{ product.description }}</p>

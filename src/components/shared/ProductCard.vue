@@ -17,7 +17,7 @@
           <!-- Image Section -->
           <div class="product-card__image-wrap">
             <!-- Discount Badge -->
-            <span v-if="product.discountPercentage" class="product-card__discount"
+            <span v-if="Math.round(product.discountPercentage) > 0" class="product-card__discount"
               >-{{ Math.round(product.discountPercentage) }}%</span
             >
 
@@ -47,7 +47,9 @@
             <h3 class="product-card__name">{{ product.title }}</h3>
             <div class="product-card__prices">
               <span class="product-card__price">${{ priceAfterDiscount }}</span>
-              <span v-if="product.discountPercentage" class="product-card__original-price"
+              <span
+                v-if="Math.round(product.discountPercentage) > 0"
+                class="product-card__original-price"
                 >${{ product.price }}</span
               >
             </div>
