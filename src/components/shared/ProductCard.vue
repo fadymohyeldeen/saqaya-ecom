@@ -23,11 +23,9 @@
 
             <!-- Action Buttons -->
             <div class="product-card__actions">
-              <FavButton />
+              <ButtonFav />
 
-              <button class="product-card__action-btn" aria-label="Quick view">
-                <img src="@/assets/icons/shared/icon-eye.svg" alt="Quick view" />
-              </button>
+              <ButtonEye />
             </div>
 
             <!-- Product Image -->
@@ -67,13 +65,14 @@
 </template>
 
 <script>
-  import FavButton from '@/components/shared/FavButton.vue'
+  import ButtonFav from '@/components/shared/ButtonFav.vue'
+  import ButtonEye from '@/components/shared/ButtonEye.vue'
   import StarRating from '@/components/shared/StarRating.vue'
   import SkeletonBox from '@/components/shared/SkeletonBox.vue'
 
   export default {
     name: 'ProductCard',
-    components: { FavButton, StarRating, SkeletonBox },
+    components: { ButtonFav, ButtonEye, StarRating, SkeletonBox },
     props: {
       product: { type: Object, default: null },
       isLoading: { type: Boolean, default: false },
@@ -154,25 +153,6 @@
     flex-direction: column;
     gap: 6px;
     z-index: 1;
-  }
-
-  .product-card__action-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .product-card__action-btn:hover circle:first-child {
-    fill: var(--color-primary);
-  }
-
-  .product-card__action-btn:hover path,
-  .product-card__action-btn:hover circle:not(:first-child) {
-    stroke: var(--color-primary-light);
   }
 
   .product-card__image {
