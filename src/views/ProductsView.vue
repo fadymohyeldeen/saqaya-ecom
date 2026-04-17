@@ -60,6 +60,7 @@
 </template>
 
 <script>
+  import { formatName } from '@/utils/formatters'
   import AppBreadcrumb from '@/components/shared/AppBreadcrumb.vue'
   import ButtonApp from '@/components/shared/ButtonApp.vue'
   import ProductCard from '@/components/shared/ProductCard.vue'
@@ -140,9 +141,7 @@
         this.filterOpen = false
       },
 
-      formatName(name) {
-        return name.replace(/-/g, ' ')
-      },
+      formatName,
     },
   }
 </script>

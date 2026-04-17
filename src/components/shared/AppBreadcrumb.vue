@@ -24,6 +24,8 @@
 </template>
 
 <script>
+  import { formatName } from '@/utils/formatters'
+
   export default {
     name: 'AppBreadcrumb',
     props: {
@@ -39,7 +41,7 @@
 
         urlSegments.forEach((segment, index) => {
           const isLastSegment = index === urlSegments.length - 1
-          const label = segment.replace(/-/g, ' ')
+          const label = formatName(segment)
 
           crumbs.push({
             label: isLastSegment && this.productName ? this.productName : label,
