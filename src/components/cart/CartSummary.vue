@@ -17,19 +17,31 @@
       <span class="cart-summary__value">${{ cartTotal }}</span>
     </div>
 
-    <ButtonApp label="Place Order" />
+    <div class="cart-summary__actions">
+      <ButtonApp label="Place Order" :disabled="cartIsEmpty" />
+      <ButtonTrash :disabled="cartIsEmpty" ariaLabel="'Clear cart'" @click="clearCart" />
+    </div>
   </div>
 </template>
 
 <script>
   import ButtonApp from '@/components/shared/ButtonApp.vue'
+  import ButtonTrash from '@/components/cart/ButtonTrash.vue'
 
   export default {
     name: 'CartSummary',
-    components: { ButtonApp },
+    components: { ButtonApp, ButtonTrash },
     computed: {
       cartTotal() {
         return this.$store.getters['cart/cartTotal'].toFixed(2)
+      },
+      cartIsEmpty() {
+        return this.$store.state.cart.cartItems.length === 0
+      },
+    },
+    methods: {
+      clearCart() {
+        this.$store.commit('cart/CLEAR_CART')
       },
     },
   }
@@ -55,6 +67,12 @@
     font-size: var(--text-md);
     font-weight: 400;
     color: var(--color-text);
+  }
+
+  .cart-summary__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
 
   .cart-summary__divider {
