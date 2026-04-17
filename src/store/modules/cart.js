@@ -1,8 +1,10 @@
+import { getFromLocalStorage, setToLocalStorage, removeFromLocalStorage } from '@/utils/storage'
+
 export default {
   namespaced: true,
   state: () => ({
     // ---------- Cart Items ------------------
-    cartItems: JSON.parse(localStorage.getItem('cartItems') || '[]'),
+    cartItems: getFromLocalStorage('cartItems') || [],
 
     // ---------- Sidebar ---------------------
     isCartOpen: false,
@@ -17,12 +19,12 @@ export default {
       } else {
         state.cartItems.push({ ...newItem, quantity })
       }
-      localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
+      setToLocalStorage('cartItems', state.cartItems)
     },
 
     REMOVE_FROM_CART(state, itemId) {
       state.cartItems = state.cartItems.filter(item => item.id !== itemId)
-      localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
+      setToLocalStorage('cartItems', state.cartItems)
     },
 
     UPDATE_CART_ITEM_QUANTITY(state, { itemId, quantity }) {
@@ -34,12 +36,12 @@ export default {
           item.quantity = quantity
         }
       }
-      localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
+      setToLocalStorage('cartItems', state.cartItems)
     },
 
     CLEAR_CART(state) {
       state.cartItems = []
-      localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
+      removeFromLocalStorage('cartItems')
     },
 
     // ---------- Sidebar ----------
