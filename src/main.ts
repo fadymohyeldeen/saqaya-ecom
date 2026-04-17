@@ -5,6 +5,9 @@ import store from './store'
 import './styles/global.css'
 
 Vue.config.productionTip = false
+Vue.config.errorHandler = function (err, _, info) {
+  console.error(`[Vue Error] ${info}:`, err)
+}
 
 new Vue({
   router,
