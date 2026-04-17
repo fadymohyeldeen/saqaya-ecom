@@ -8,22 +8,21 @@ An e-commerce web app built with Vue 2.
 
 ## Tech Stack
 
-- **Vue 2** with Vue Router and Vuex
-- **Axios** for API calls — data from [dummyjson.com](https://dummyjson.com)
-- **Vue CLI**, ESLint, Prettier
+- Vue 2 · Vue Router 3 · Vuex 3
+- Axios — data from [dummyjson.com](https://dummyjson.com)
+- Vue CLI, ESLint, Prettier
 
 ---
 
-## Features
+## Core Features
 
-- Product listing with load more pagination
-- Product detail page with image gallery, rating, and quantity selector
-- Flash sales and explore sections on the homepage
-- Shopping cart — add from any product card or the product page, update quantities, remove items, real-time totals
-- Slide-in cart sidebar with smooth transition
-- Skeleton loading states across all views
-- Responsive, mobile-first layout
-- About and Contact pages
+- Homepage with flash sales and category browsing.
+- Product listing with category filter, sort, and pagination.
+- Product detail page with product image gallery.
+- Add to cart from any product card or detail page.
+- Cart sidebar with quantity and persistent localStorage state.
+- Skeleton loading and error states across all views.
+- Responsive, mobile-first layout.
 
 ---
 
@@ -32,13 +31,4 @@ An e-commerce web app built with Vue 2.
 ```bash
 npm install
 npm run serve
-```
-
-Other commands:
-
-```bash
-npm run build      # production build
-npm run test:unit  # unit tests
-npm run lint       # lint
-npm run format     # format with Prettier
 ```

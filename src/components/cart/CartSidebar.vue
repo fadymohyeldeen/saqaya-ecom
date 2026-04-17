@@ -107,5 +107,4 @@
     color: var(--color-text);
     opacity: 0.4;
   }
-
 </style>

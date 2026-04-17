@@ -6,13 +6,7 @@
       :name="name"
       :placeholder="placeholder"
     />
-    <input
-      v-else
-      class="input-field__input"
-      :type="type"
-      :name="name"
-      :placeholder="placeholder"
-    />
+    <input v-else class="input-field__input" :type="type" :name="name" :placeholder="placeholder" />
   </div>
 </template>
 
