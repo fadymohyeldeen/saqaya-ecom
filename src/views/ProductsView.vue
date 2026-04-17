@@ -53,7 +53,7 @@
       </div>
 
       <div class="products__load-more">
-        <ButtonApp label="Load More ..." @click="loadMore" />
+        <ButtonApp v-if="hasMoreProducts" label="Load More ..." @click="loadMore" />
       </div>
     </div>
   </div>
@@ -99,6 +99,9 @@
       },
       isLoading() {
         return this.$store.state.products.isLoading
+      },
+      hasMoreProducts() {
+        return this.$store.state.products.totalProductsCount > this.products.length
       },
     },
 

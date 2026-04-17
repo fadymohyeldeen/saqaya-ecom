@@ -6,6 +6,7 @@ export default {
     // ---------- Products Grid ---------------
     products: [],
     displayedProductsCount: 20,
+    totalProductsCount: 0,
 
     // ---------- Single Product --------------
     selectedProduct: null,
@@ -37,6 +38,9 @@ export default {
     }, // adds only products with Ids that are not in products (makes sure no duplicate products are added)
     SET_DISPLAYED_PRODUCTS_COUNT(state, count) {
       state.displayedProductsCount = count
+    },
+    SET_TOTAL_PRODUCTS_COUNT(state, count) {
+      state.totalProductsCount = count
     },
 
     // ---------- Single Product --------------
@@ -91,6 +95,7 @@ export default {
         commit('SET_ERROR', null)
         const response = await api.get(url)
         commit('SET_PRODUCTS', response.data.products)
+        commit('SET_TOTAL_PRODUCTS_COUNT', response.data.total)
         commit('SET_LOADING', false)
       } catch (error) {
         commit('SET_LOADING', false)
@@ -107,6 +112,7 @@ export default {
         const response = await api.get(url)
         commit('APPEND_PRODUCTS', response.data.products)
         commit('SET_DISPLAYED_PRODUCTS_COUNT', state.displayedProductsCount + 20)
+        commit('SET_TOTAL_PRODUCTS_COUNT', response.data.total)
       } catch (error) {
         commit('SET_ERROR', error.message)
       }
