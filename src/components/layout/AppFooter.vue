@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="footer__container">
-      <!-- Column 1: Subscribe -->
+      <!--------------- Subscribe ------------------->
       <div class="footer__col">
         <div class="footer__logo">Exclusive</div>
         <h3 class="footer__heading">Subscribe</h3>
@@ -12,82 +12,119 @@
         </div>
       </div>
 
-      <!-- Column 2: Support -->
+      <!--------------- Support ------------------->
       <div class="footer__col">
         <h3 class="footer__heading">Support</h3>
         <ul class="footer__list">
-          <li>111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.</li>
-          <li>exclusive@gmail.com</li>
-          <li>+88015-88888-9999</li>
+          <li v-for="item in supportInfo" :key="item">{{ item }}</li>
         </ul>
       </div>
 
-      <!-- Column 3: Account -->
+      <!--------------- Account ------------------->
       <div class="footer__col">
         <h3 class="footer__heading">Account</h3>
         <ul class="footer__list">
-          <li><a href="#">My Account</a></li>
-          <li><a href="#">Login / Register</a></li>
-          <li><a href="#">Cart</a></li>
-          <li><a href="#">Wishlist</a></li>
-          <li><a href="#">Shop</a></li>
+          <li v-for="link in accountLinks" :key="link.label">
+            <a :href="link.path" :aria-label="link.label">
+              {{ link.label }}
+            </a>
+          </li>
         </ul>
       </div>
 
-      <!-- Column 4: Quick Link -->
+      <!--------------- Quick Link ------------------->
       <div class="footer__col">
         <h3 class="footer__heading">Quick Link</h3>
         <ul class="footer__list">
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms Of Use</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Contact</a></li>
+          <li v-for="link in quickLinks" :key="link.label">
+            <a :href="link.path">{{ link.label }}</a>
+          </li>
         </ul>
       </div>
 
-      <!-- Column 5: Download App -->
+      <!--------------- Download App ------------------->
       <div class="footer__col">
         <h3 class="footer__heading">Download App</h3>
         <p class="footer__text footer__text--small">Save $3 with App New User Only</p>
         <div class="footer__app">
           <div class="footer__qr">
-            <img src="@/assets/icons/footer/icon-qr.svg" alt="QR Code" />
+            <img :src="qrCode" alt="QR Code" />
           </div>
           <div class="footer__stores">
             <div class="footer__store">
-              <img src="@/assets/icons/footer/icon-google-play.svg" alt="Google Play" />
+              <img :src="googlePlay" alt="Google Play" />
             </div>
             <div class="footer__store">
-              <img src="@/assets/icons/footer/icon-app-store.svg" alt="App Store" />
+              <img :src="appStore" alt="App Store" />
             </div>
           </div>
         </div>
+
+        <!--------------- Socials ------------------->
         <div class="footer__socials">
-          <a href="#" aria-label="Facebook">
-            <img src="@/assets/icons/footer/icon-facebook.svg" alt="Facebook" />
-          </a>
-          <a href="#" aria-label="Twitter">
-            <img src="@/assets/icons/footer/icon-twitter.svg" alt="Twitter" />
-          </a>
-          <a href="#" aria-label="Instagram">
-            <img src="@/assets/icons/footer/icon-instagram.svg" alt="Instagram" />
-          </a>
-          <a href="#" aria-label="LinkedIn">
-            <img src="@/assets/icons/footer/icon-linkedin.svg" alt="LinkedIn" />
+          <a
+            v-for="social in socialIcons"
+            :key="social.alt"
+            :href="social.path"
+            :aria-label="social.alt"
+          >
+            <img :src="social.src" :alt="social.alt" />
           </a>
         </div>
       </div>
     </div>
 
     <div class="footer__bottom">
-      <p>© Copyright Rimel 2022. All right reserved</p>
+      <p>© Copyright Exclusive 2022. All right reserved</p>
     </div>
   </footer>
 </template>
 
-<style scoped>
-  /* ─── Mobile (base) ─── */
+<script>
+  import facebook from '@/assets/icons/footer/icon-facebook.svg'
+  import twitter from '@/assets/icons/footer/icon-twitter.svg'
+  import instagram from '@/assets/icons/footer/icon-instagram.svg'
+  import linkedin from '@/assets/icons/footer/icon-linkedin.svg'
+  import qrCode from '@/assets/icons/footer/icon-qr.svg'
+  import googlePlay from '@/assets/icons/footer/icon-google-play.svg'
+  import appStore from '@/assets/icons/footer/icon-app-store.svg'
 
+  export default {
+    name: 'AppFooter',
+    data() {
+      return {
+        supportInfo: [
+          '111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.',
+          'exclusive@gmail.com',
+          '+88015-88888-9999',
+        ],
+        accountLinks: [
+          { label: 'My Account', path: '#' },
+          { label: 'Login / Register', path: '#' },
+          { label: 'Cart', path: '#' },
+          { label: 'Wishlist', path: '#' },
+        ],
+        quickLinks: [
+          { label: 'Home', path: '/' },
+          { label: 'Products', path: '/products' },
+          { label: 'Contact', path: '/contact' },
+          { label: 'About', path: '/about-us' },
+        ],
+        socialIcons: [
+          { src: facebook, alt: 'Facebook', path: '#' },
+          { src: twitter, alt: 'Twitter', path: '#' },
+          { src: instagram, alt: 'Instagram', path: '#' },
+          { src: linkedin, alt: 'LinkedIn', path: '#' },
+        ],
+        qrCode,
+        googlePlay,
+        appStore,
+      }
+    },
+  }
+</script>
+
+<style scoped>
   .footer {
     background: var(--color-bg-footer);
     color: var(--color-text-light);
@@ -249,8 +286,6 @@
     padding-bottom: 24px;
   }
 
-  /* ─── Tablet (768px+) ─── */
-
   @media (min-width: 768px) {
     .footer {
       padding: 80px 0 0;
@@ -271,8 +306,6 @@
       width: 217px;
     }
   }
-
-  /* ─── Desktop (1024px+) ─── */
 
   @media (min-width: 1024px) {
     .footer__container {
@@ -302,9 +335,3 @@
     }
   }
 </style>
-
-<script>
-  export default {
-    name: 'AppFooter',
-  }
-</script>
