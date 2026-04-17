@@ -140,8 +140,8 @@
       },
 
       filterByCategory(category) {
-        const currentCategory = this.$route.query.category || null
-        if (currentCategory === (category || null)) {
+        const sameCategory = (this.$route.query.category || null) === (category || null)
+        if (sameCategory) {
           this.filterOpen = false
           return
         }
