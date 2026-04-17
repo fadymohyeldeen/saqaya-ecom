@@ -13,7 +13,7 @@
       <div class="home__divider"></div>
     </div>
 
-    <CategorySection />
+    <CategorySection :categories="categories" />
 
     <div class="home__divider"></div>
 
@@ -71,6 +71,7 @@
       await Promise.all([
         this.$store.dispatch('products/getFlashSaleProducts'),
         this.$store.dispatch('products/getExploreProducts'),
+        this.$store.dispatch('products/getCategoryList'),
       ])
     },
     computed: {
@@ -82,6 +83,9 @@
       },
       isLoading() {
         return this.$store.state.products.isLoading
+      },
+      categories() {
+        return this.$store.state.products.categoryList
       },
     },
   })
