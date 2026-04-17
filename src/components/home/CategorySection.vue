@@ -8,7 +8,7 @@
     />
     <div class="categories-section__grid" ref="scrollContainer">
       <CategoryCard
-        v-for="category in categoryList"
+        v-for="category in categories"
         :key="category"
         :name="category"
         @select="onSelect"
@@ -24,12 +24,10 @@
   export default {
     name: 'CategorySection',
     components: { SectionHeader, CategoryCard },
-    mounted() {
-      this.$store.dispatch('products/getCategoryList')
-    },
-    computed: {
-      categoryList() {
-        return this.$store.state.products.categoryList
+    props: {
+      categories: {
+        type: Array,
+        required: true,
       },
     },
     methods: {
