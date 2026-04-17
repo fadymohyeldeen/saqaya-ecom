@@ -56,7 +56,6 @@
 </script>
 
 <style scoped>
-  /* ─── Mobile  ─── */
   .product-gallery {
     display: flex;
     flex-direction: column;
@@ -115,7 +114,6 @@
     object-fit: contain;
   }
 
-  /* ─── Tablet ─── */
   @media (min-width: 768px) {
     .product-gallery {
       flex-direction: row;
@@ -139,7 +137,6 @@
     }
   }
 
-  /* ─── Desktop  ─── */
   @media (min-width: 1024px) {
     .product-gallery__image-wrap {
       height: 600px;

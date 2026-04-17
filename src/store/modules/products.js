@@ -3,12 +3,12 @@ import api from '@/services/api'
 export default {
   namespaced: true,
   state: () => ({
-    // ---------- Products Grid ---------------
+    // ------------- Products Grid ------------
     products: [],
     displayedProductsCount: 20,
     totalProductsCount: 0,
 
-    // ---------- Single Product --------------
+    // ------------ Single Product ------------
     selectedProduct: null,
     relatedProducts: [],
 
@@ -17,21 +17,21 @@ export default {
     flashSaleProducts: [],
     exploreProducts: [],
 
-    // ---------- Category Filter -------------
+    // ----------- Category Filter ------------
     selectedCategory: null,
 
-    // --------------- Sort -------------------
+    // ----------------- Sort -----------------
     sortBy: 'createdAt',
     sortOrder: 'desc',
 
-    // ---------- Error Handling --------------
+    // ------------ Error Handling ------------
     error: null,
 
-    // ---------- Loading ---------------------
+    // --------------- Loading ----------------
     isLoading: false,
   }),
   mutations: {
-    // ---------- Products Grid ---------------
+    // ------------- Products Grid ------------
     SET_PRODUCTS(state, products) {
       state.products = products
     },
@@ -47,7 +47,7 @@ export default {
       state.totalProductsCount = count
     },
 
-    // ---------- Single Product --------------
+    // ------------ Single Product ------------
     SET_SELECTED_PRODUCT(state, product) {
       state.selectedProduct = product
     },
@@ -66,37 +66,37 @@ export default {
       state.exploreProducts = products
     },
 
-    // ---------- Category Filter -------------
+    // ----------- Category Filter ------------
     SET_CATEGORY(state, category) {
       state.selectedCategory = category
       state.displayedProductsCount = 20
     },
 
-    // --------------- Sort -------------------
+    // ----------------- Sort -----------------
     SET_SORT(state, { sortBy, sortOrder }) {
       state.sortBy = sortBy
       state.sortOrder = sortOrder
       state.displayedProductsCount = 20
     },
 
-    // ---------- Error Handling --------------
+    // ------------ Error Handling ------------
     SET_ERROR(state, message) {
       state.error = message
     },
 
-    // ---------- Loading ---------------------
+    // --------------- Loading ----------------
     SET_LOADING(state, loading) {
       state.isLoading = loading
     },
   },
   getters: {
-    // ---------- Products Grid ---------------
+    // ------------- Products Grid ------------
     displayedProducts: state => {
       return state.products.slice(0, state.displayedProductsCount)
     },
   },
   actions: {
-    // ----------- Products Grid --------------
+    // ------------- Products Grid ------------
     async getProducts({ commit, state }) {
       const params = new URLSearchParams({
         limit: 40,
@@ -144,7 +144,7 @@ export default {
       }
     },
 
-    // ---------- Single Product --------------
+    // ------------ Single Product ------------
     async getProductById({ commit }, productId) {
       try {
         commit('SET_LOADING', true)
@@ -171,8 +171,7 @@ export default {
       }
     },
 
-    // ---------- Home Sections -----------
-
+    // ------------- Home Sections ------------
     async getFlashSaleProducts({ commit }) {
       try {
         commit('SET_LOADING', true)

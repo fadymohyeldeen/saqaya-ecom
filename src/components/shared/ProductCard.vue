@@ -1,5 +1,4 @@
 <template>
-  <!-- ProductCard -->
   <div>
     <template v-if="isLoading">
       <div class="product-card__skeleton">
@@ -14,21 +13,16 @@
     <template v-else>
       <router-link :to="`/products/${product.id}`">
         <div class="product-card">
-          <!-- Image Section -->
           <div class="product-card__image-wrap">
-            <!-- Discount Badge -->
             <span v-if="Math.round(product.discountPercentage) > 0" class="product-card__discount"
               >-{{ Math.round(product.discountPercentage) }}%</span
             >
-
-            <!-- Action Buttons -->
             <div class="product-card__actions">
               <ButtonFav />
 
               <ButtonEye />
             </div>
 
-            <!-- Product Image -->
             <img
               :src="product.thumbnail"
               :alt="product.title"
@@ -36,13 +30,11 @@
               @error="e => (e.target.src = require('@/assets/images/placeholder.svg'))"
             />
 
-            <!-- Add To Cart — shown on hover -->
             <div class="product-card__add-to-cart" @click.prevent="addToCart">
               <button>Add To Cart</button>
             </div>
           </div>
 
-          <!-- Info Section -->
           <div class="product-card__info">
             <h3 class="product-card__name">{{ product.title }}</h3>
             <div class="product-card__prices">
@@ -97,8 +89,6 @@
 </script>
 
 <style scoped>
-  /* ─── Mobile ─── */
-
   .product-card__skeleton {
     display: flex;
     flex-direction: column;
@@ -163,7 +153,6 @@
     object-fit: cover;
   }
 
-  /* On mobile (touch), the Add To Cart bar is always visible */
   .product-card__add-to-cart {
     position: absolute;
     bottom: 0;
@@ -247,8 +236,6 @@
     opacity: 0.5;
   }
 
-  /* ─── Tablet/Desktop ─── */
-
   @media (min-width: 768px) {
     .product-card {
       gap: 16px;
@@ -268,7 +255,6 @@
       gap: 8px;
     }
 
-    /* Restore hover-slide behaviour on desktop */
     .product-card__add-to-cart {
       height: 41px;
       transform: translateY(100%);

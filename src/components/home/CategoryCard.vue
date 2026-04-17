@@ -22,7 +22,6 @@
 </script>
 
 <style scoped>
-  /* ─── Mobile ─── */
   .category-card {
     display: flex;
     flex-direction: column;
@@ -59,7 +58,6 @@
     text-align: center;
   }
 
-  /* ─── Tablet/Desktop ─── */
   @media (min-width: 768px) {
     .category-card {
       width: 100%;

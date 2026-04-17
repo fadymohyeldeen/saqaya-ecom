@@ -3,14 +3,14 @@ import { getFromLocalStorage, setToLocalStorage, removeFromLocalStorage } from '
 export default {
   namespaced: true,
   state: () => ({
-    // ---------- Cart Items ------------------
+    // -------------- Cart Items --------------
     cartItems: getFromLocalStorage('cartItems') || [],
 
-    // ---------- Sidebar ---------------------
+    // --------------- Sidebar ----------------
     isCartOpen: false,
   }),
   mutations: {
-    // ---------- Cart Items ------------------
+    // -------------- Cart Items --------------
     ADD_TO_CART(state, { newItem, quantity = 1 }) {
       state.isCartOpen = true
       const itemExists = state.cartItems.find(item => item.id === newItem.id)
@@ -44,13 +44,13 @@ export default {
       removeFromLocalStorage('cartItems')
     },
 
-    // ---------- Sidebar ----------
+    // --------------- Sidebar ----------------
     TOGGLE_CART(state) {
       state.isCartOpen = !state.isCartOpen
     },
   },
   getters: {
-    // ---------- Cart Totals -----------------
+    // ------------- Cart Totals --------------
     cartItemsCount: state => state.cartItems.reduce((count, item) => count + item.quantity, 0),
     cartTotal: state =>
       state.cartItems.reduce((total, item) => total + item.price * item.quantity, 0),

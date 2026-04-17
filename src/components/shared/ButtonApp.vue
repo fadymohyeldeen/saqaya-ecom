@@ -10,6 +10,27 @@
   </button>
 </template>
 
+<script>
+  export default {
+    name: 'ButtonApp',
+    props: {
+      label: {
+        type: String,
+        required: true,
+      },
+      to: {
+        type: String,
+        default: null,
+      },
+      disabled: {
+        type: Boolean,
+        default: false,
+      },
+    },
+    emits: ['click'],
+  }
+</script>
+
 <style scoped>
   .app-btn {
     display: flex;
@@ -57,24 +78,3 @@
     }
   }
 </style>
-
-<script>
-  export default {
-    name: 'ButtonApp',
-    props: {
-      label: {
-        type: String,
-        required: true,
-      },
-      to: {
-        type: String,
-        default: null,
-      },
-      disabled: {
-        type: Boolean,
-        default: false,
-      },
-    },
-    emits: ['click'],
-  }
-</script>

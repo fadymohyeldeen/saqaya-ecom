@@ -55,7 +55,6 @@
 </script>
 
 <style scoped>
-  /* ─── Mobile base ─── */
   .section-header {
     margin-bottom: 24px;
   }
@@ -128,7 +127,6 @@
     fill: var(--color-primary);
   }
 
-  /* ─── Tablet (768px+) ─── */
   @media (min-width: 768px) {
     .section-header {
       margin-bottom: 40px;

@@ -12,11 +12,7 @@
       <div class="header__actions">
         <div class="header__search">
           <input type="text" placeholder="What are you looking for?" />
-          <img
-            src="@/assets/icons/header/icon-search.svg"
-            alt="Search"
-            @click="searchOpen = !searchOpen"
-          />
+          <img src="@/assets/icons/header/icon-search.svg" alt="Search" />
         </div>
 
         <button class="header__cart" @click="toggleCart">
@@ -33,9 +29,23 @@
   </header>
 </template>
 
-<style scoped>
-  /* ─── Mobile ─── */
+<script>
+  export default {
+    name: 'AppHeader',
+    data() {
+      return {
+        menuOpen: false,
+      }
+    },
+    methods: {
+      toggleCart() {
+        this.$store.commit('cart/TOGGLE_CART')
+      },
+    },
+  }
+</script>
 
+<style scoped>
   .header {
     width: 100%;
     background: var(--color-bg);
@@ -129,11 +139,6 @@
     opacity: 0.5;
   }
 
-  .header__search svg {
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-
   .header__cart {
     border: none;
     background: none;
@@ -161,16 +166,11 @@
     border-radius: 2px;
   }
 
-  /* ─── Small Mobile ─── */
-
   @media (min-width: 400px) {
-    /* shows search bar after 400px */
     .header__search {
       display: flex;
     }
   }
-
-  /* ─── Tablet/Desktop ─── */
 
   @media (min-width: 768px) {
     .header__container {
@@ -203,8 +203,6 @@
     }
   }
 
-  /* ─── Desktop ─── */
-
   @media (min-width: 1024px) {
     .header__container {
       padding: 0 var(--container-padding);
@@ -219,20 +217,3 @@
     }
   }
 </style>
-
-<script>
-  export default {
-    name: 'AppHeader',
-    data() {
-      return {
-        menuOpen: false,
-        searchOpen: false,
-      }
-    },
-    methods: {
-      toggleCart() {
-        this.$store.commit('cart/TOGGLE_CART')
-      },
-    },
-  }
-</script>

@@ -1,7 +1,18 @@
 <template>
   <div class="input-field">
-    <textarea v-if="type === 'textarea'" class="input-field__input" :placeholder="placeholder" />
-    <input v-else class="input-field__input" :type="type" :placeholder="placeholder" />
+    <textarea
+      v-if="type === 'textarea'"
+      class="input-field__input"
+      :name="name"
+      :placeholder="placeholder"
+    />
+    <input
+      v-else
+      class="input-field__input"
+      :type="type"
+      :name="name"
+      :placeholder="placeholder"
+    />
   </div>
 </template>
 
@@ -12,6 +23,10 @@
       type: {
         type: String,
         default: 'text',
+      },
+      name: {
+        type: String,
+        default: null,
       },
       placeholder: {
         type: String,

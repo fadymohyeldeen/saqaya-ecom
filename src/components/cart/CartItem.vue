@@ -79,17 +79,6 @@
     flex-shrink: 0;
   }
 
-  .cart-item__name {
-    flex: 1;
-    font-family: var(--font-body);
-    font-size: var(--text-md);
-    font-weight: 400;
-    color: var(--color-text);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
   .cart-item__quantity {
     display: flex;
     align-items: center;

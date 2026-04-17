@@ -32,7 +32,6 @@
 </script>
 
 <style scoped>
-  /* ─── Mobile  ─── */
   .services-strip {
     display: flex;
     flex-direction: column;
@@ -100,7 +99,6 @@
     color: var(--color-text);
   }
 
-  /* ─── Tablet ─── */
   @media (min-width: 768px) {
     .services-strip {
       flex-direction: row;
@@ -122,7 +120,6 @@
     }
   }
 
-  /* ─── Desktop  ─── */
   @media (min-width: 1024px) {
     .services-strip {
       gap: 88px;

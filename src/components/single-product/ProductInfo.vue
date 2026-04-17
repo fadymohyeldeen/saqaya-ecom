@@ -78,7 +78,6 @@
 </script>
 
 <style scoped>
-  /* ─── Mobile  ─── */
   .product-info {
     display: flex;
     flex-direction: column;
@@ -162,11 +161,6 @@
     color: var(--color-text);
   }
 
-  .product-info__category-link {
-    color: var(--color-text);
-    text-decoration: underline;
-  }
-
   /* ─── Tablet   ─── */
   @media (min-width: 768px) {
     .product-info__title {
@@ -178,7 +172,6 @@
     }
   }
 
-  /* ─── Desktop  ─── */
   @media (min-width: 1024px) {
     .product-info__title {
       font-size: var(--text-xl);

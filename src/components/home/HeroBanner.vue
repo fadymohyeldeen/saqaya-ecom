@@ -4,11 +4,9 @@
       <div
         class="hero__slide"
         :style="{
-          // :style because it has dynamic data
           backgroundImage: `url(${slides[currentSlide].imageBg})`,
         }"
       >
-        <!-- Left Content -->
         <div class="hero__content">
           <div class="hero__brand">
             <span class="hero__brand-name">{{ slides[currentSlide].brandName }}</span>
@@ -33,7 +31,6 @@
           </router-link>
         </div>
 
-        <!-- Carousel Dots -->
         <div class="hero__dots">
           <button
             v-for="(slide, index) in slides"
@@ -47,6 +44,66 @@
     </div>
   </div>
 </template>
+
+<script>
+  export default {
+    name: 'HeroBanner',
+    data() {
+      return {
+        currentSlide: 0,
+        autoPlayInterval: null,
+        slides: [
+          {
+            imageBg: 'https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=800&q=80',
+            brandName: 'iPhone 14 Series',
+            title: 'Up to 10% off Voucher',
+          },
+          {
+            imageBg:
+              'https://www.m1.com.sg/content/dam/M1/hero-banner-carousel/2025/jan/samsung/pre/21125/new/1440x520.png',
+            brandName: 'Samsung Galaxy Series',
+            title: 'Up to 15% off Today',
+          },
+          {
+            imageBg:
+              'https://techlingo.co/wp-content/uploads/2018/10/OnePlus-6T-Banner-1500x500.jpg',
+            brandName: 'OnePlus Series',
+            title: 'Best Deals This Week',
+          },
+          {
+            imageBg: 'https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=800&q=80',
+            brandName: 'Nothing Phone Series',
+            title: 'Up to 20% off Voucher',
+          },
+          {
+            imageBg: 'https://images.unsplash.com/photo-1580910051074-3eb694886505?w=800&q=80',
+            brandName: 'Xiaomi Series',
+            title: 'Up to 25% off Voucher',
+          },
+        ],
+      }
+    },
+    mounted() {
+      this.autoPlaySlider()
+    },
+    beforeDestroy() {
+      clearInterval(this.autoPlayInterval)
+    },
+    methods: {
+      changeCurrentSlide(slideNumber) {
+        this.currentSlide = slideNumber
+      },
+      nextSlide() {
+        this.currentSlide = (this.currentSlide + 1) % this.slides.length
+      },
+      autoPlaySlider() {
+        this.autoPlayInterval = setInterval(() => {
+          this.nextSlide()
+        }, 2000)
+      },
+    },
+  }
+</script>
 
 <style scoped>
   .hero {
@@ -161,7 +218,6 @@
     border: 2px solid var(--color-primary-light);
   }
 
-  /* Tablet */
   @media (min-width: 768px) {
     .hero__title {
       font-size: 36px;
@@ -169,7 +225,6 @@
     }
   }
 
-  /* Desktop */
   @media (min-width: 1024px) {
     .hero__slide {
       height: 346px;
@@ -182,65 +237,3 @@
     }
   }
 </style>
-
-<script>
-  export default {
-    name: 'HeroBanner',
-    data() {
-      return {
-        currentSlide: 0,
-        autoPlayInterval: null,
-        slides: [
-          {
-            imageBg: 'https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=800&q=80',
-            brandName: 'iPhone 14 Series',
-            title: 'Up to 10% off Voucher',
-          },
-          {
-            imageBg:
-              'https://www.m1.com.sg/content/dam/M1/hero-banner-carousel/2025/jan/samsung/pre/21125/new/1440x520.png',
-            brandName: 'Samsung Galaxy Series',
-            title: 'Up to 15% off Today',
-          },
-          {
-            imageBg:
-              'https://techlingo.co/wp-content/uploads/2018/10/OnePlus-6T-Banner-1500x500.jpg',
-            brandName: 'OnePlus Series',
-            title: 'Best Deals This Week',
-          },
-          {
-            imageBg: 'https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=800&q=80',
-            brandName: 'Nothing Phone Series',
-            title: 'Up to 20% off Voucher',
-          },
-          {
-            imageBg: 'https://images.unsplash.com/photo-1580910051074-3eb694886505?w=800&q=80',
-            brandName: 'Xiaomi Series',
-            title: 'Up to 25% off Voucher',
-          },
-        ],
-      }
-    },
-    methods: {
-      changeCurrentSlide(slideNumber) {
-        this.currentSlide = slideNumber
-      },
-      nextSlide() {
-        this.currentSlide = (this.currentSlide + 1) % this.slides.length
-        // when currentSlide == slides.length it will go back to 0 and start again.
-      },
-      autoPlaySlider() {
-        this.autoPlayInterval = setInterval(() => {
-          // runs nextSlide() every 2 sec, and saves its ID in autoPlayInterval to kill it later.
-          this.nextSlide()
-        }, 2000)
-      },
-    },
-    mounted() {
-      this.autoPlaySlider()
-    },
-    beforeDestroy() {
-      clearInterval(this.autoPlayInterval)
-    },
-  }
-</script>
