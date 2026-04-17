@@ -24,16 +24,10 @@
 
     <div class="contact__form-card">
       <div class="contact__form-row">
-        <div class="contact__field">
-          <input type="text" placeholder="Your Name *" />
-        </div>
-        <div class="contact__field">
-          <input type="email" placeholder="Your Email *" />
-        </div>
+        <InputField type="text" placeholder="Your Name *" />
+        <InputField type="email" placeholder="Your Email *" />
       </div>
-      <div class="contact__field">
-        <textarea placeholder="Your Message" rows="8"></textarea>
-      </div>
+      <InputField type="textarea" placeholder="Your Message" />
       <div class="contact__form-actions">
         <ButtonApp :label="'Send Message'" />
       </div>
@@ -87,36 +81,6 @@
     width: 100%;
   }
 
-  .contact__field {
-    width: 100%;
-  }
-
-  .contact__field input,
-  .contact__field textarea {
-    width: 100%;
-    background: var(--color-bg-secondary);
-    border: none;
-    border-radius: var(--radius-sm);
-    padding: 13px 16px;
-    font-family: var(--font-body);
-    font-weight: 400;
-    font-size: var(--text-md);
-    line-height: 24px;
-    color: rgba(0, 0, 0, 0.5);
-    outline: none;
-    resize: none;
-    box-sizing: border-box;
-  }
-
-  .contact__field textarea {
-    height: auto;
-  }
-
-  .contact__field input::placeholder,
-  .contact__field textarea::placeholder {
-    color: rgba(0, 0, 0, 0.5);
-  }
-
   @media (max-width: 1023px) {
     .contact__details {
       padding: 24px 40px;
@@ -138,9 +102,10 @@
 <script>
   import ButtonApp from '@/components/shared/ButtonApp.vue'
   import ContactInfo from '@/components/contact/ContactInfo.vue'
+  import InputField from '@/components/shared/InputField.vue'
 
   export default {
     name: 'ContactForm',
-    components: { ButtonApp, ContactInfo },
+    components: { ButtonApp, ContactInfo, InputField },
   }
 </script>
