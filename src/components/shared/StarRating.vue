@@ -1,7 +1,15 @@
 <template>
   <div class="star-rating">
     <div class="star-rating__stars">
-      <svg v-for="star in 5" :key="star" width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <svg
+        v-for="star in 5"
+        :key="star"
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        class="star-rating__star"
+      >
         <path
           d="M10 1L12.39 6.26L18 7.27L14 11.14L14.76 17L10 14.27L5.24 17L6 11.14L2 7.27L7.61 6.26L10 1Z"
           :fill="star <= rating ? '#FFAD33' : '#000000'"
@@ -9,7 +17,8 @@
         />
       </svg>
     </div>
-    <span v-if="reviews !== null" class="star-rating__reviews">({{ reviews }} Reviews)</span>
+    <span v-if="reviews" class="star-rating__reviews">({{ reviews }})</span>
+    <span v-else class="star-rating__reviews">No reviews</span>
   </div>
 </template>
 

@@ -1,15 +1,24 @@
 import { shallowMount } from '@vue/test-utils'
 import HeroBanner from '@/components/home/HeroBanner.vue'
 
-describe('HeroBanner Logic', () => {
+describe('HeroBanner', () => {
   let wrapper
+  let dots
+  let activeDot
+  let brandName
+  let title
+
   beforeEach(() => {
     wrapper = shallowMount(HeroBanner, { stubs: ['router-link'] })
+    dots = wrapper.findAll('.hero__dot')
+    activeDot = dots.at(wrapper.vm.currentSlide)
+    brandName = wrapper.find('.hero__brand-name')
+    title = wrapper.find('.hero__title')
   })
 
   // ------------- Initial State -------------
   it('HeroBanner starts at slide 0', () => {
-    expect(wrapper.vm.currentSlide).toBe(0) // vm = Vue model/instance. (the component instance)
+    expect(wrapper.vm.currentSlide).toBe(0)
   })
 
   // --------- changeCurrentSlide() ----------
@@ -35,7 +44,6 @@ describe('HeroBanner Logic', () => {
   it('autoPlaySlider() changes slider every 2 secs with setInterval', () => {
     jest.useFakeTimers()
     const wrapper = shallowMount(HeroBanner, { stubs: ['router-link'] })
-    // didn't call autoPlaySlider() because it's already called in mounted() inside the component.
     expect(wrapper.vm.currentSlide).toBe(0)
     jest.advanceTimersByTime(2000)
     expect(wrapper.vm.currentSlide).toBe(1)
@@ -50,28 +58,19 @@ describe('HeroBanner Logic', () => {
     wrapper.destroy()
     expect(spy).toHaveBeenCalled()
   })
-})
-
-describe('HeroBanner DOM Rendering', () => {
-  let wrapper
-  beforeEach(() => {
-    wrapper = shallowMount(HeroBanner, { stubs: ['router-link'] })
-  })
 
   // ----------------- Dots ------------------
   it('renders the correct number of dots', () => {
-    const dots = wrapper.findAll('.hero__dot')
     expect(dots.length).toBe(wrapper.vm.slides.length)
   })
 
   it('active dot is the same as current slide', () => {
-    const activeDot = wrapper.findAll('.hero__dot').at(wrapper.vm.currentSlide)
     expect(activeDot.classes()).toContain('hero__dot--active')
   })
 
   it('active dot updates when slide changes and previous dot becomes inactive', async () => {
     wrapper.vm.changeCurrentSlide(1)
-    await wrapper.vm.$nextTick() // wait for the changeCurrentSlide() to update DOM.
+    await wrapper.vm.$nextTick()
     const dots = wrapper.findAll('.hero__dot')
     expect(dots.at(1).classes()).toContain('hero__dot--active')
     expect(dots.at(0).classes()).not.toContain('hero__dot--active')
@@ -79,13 +78,11 @@ describe('HeroBanner DOM Rendering', () => {
 
   // ------------- Slide Content -------------
   it('brand name is the same as current slide', () => {
-    const brandName = wrapper.find('.hero__brand-name')
     const currentSlide = wrapper.vm.slides[wrapper.vm.currentSlide]
     expect(brandName.text()).toBe(currentSlide.brandName)
   })
 
   it('title is the same as current slide', () => {
-    const title = wrapper.find('.hero__title')
     const currentSlide = wrapper.vm.slides[wrapper.vm.currentSlide]
     expect(title.text()).toBe(currentSlide.title)
   })

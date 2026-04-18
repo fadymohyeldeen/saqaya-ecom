@@ -46,10 +46,7 @@
               >
             </div>
             <div class="product-card__rating">
-              <div class="product-card__stars">
-                <StarRating :rating="product.rating" />
-              </div>
-              <span class="product-card__reviews">({{ product.reviews.length }})</span>
+              <StarRating :rating="product.rating" :reviews="product.reviews.length" />
             </div>
           </div>
         </div>

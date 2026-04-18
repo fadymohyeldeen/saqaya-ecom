@@ -67,11 +67,6 @@ describe('ProductCard DOM Rendering', () => {
     expect(productThumbnail).toBe(wrapper.vm.product.thumbnail)
   })
 
-  it('reviews count matches product.reviews.length', () => {
-    const reviewCount = wrapper.find('.product-card__reviews')
-    expect(reviewCount.text()).toBe(`(${wrapper.vm.product.reviews.length})`)
-  })
-
   // ------------ Discount Badge ------------
   it('discount badge visible when discountPercentage > 0', () => {
     const discountBadge = wrapper.find('.product-card__discount')
@@ -135,9 +130,7 @@ describe('ProductCard Logic', () => {
           namespaced: true,
           state: () => ({ cart: [] }),
           mutations: {
-            ADD_TO_CART: (state, product) => {
-              state.cart.push(product)
-            },
+            ADD_TO_CART: () => {},
           },
         },
       },
@@ -145,7 +138,7 @@ describe('ProductCard Logic', () => {
     const commitSpy = jest.spyOn(store, 'commit')
     const wrapper = shallowMount(ProductCard, {
       store,
-      localVue, // an isolated copy of Vue to avoid affecting other tests
+      localVue,
       propsData: {
         product: {
           id: 1,
