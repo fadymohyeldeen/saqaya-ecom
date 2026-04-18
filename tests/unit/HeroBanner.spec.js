@@ -1,7 +1,7 @@
 import { shallowMount } from '@vue/test-utils'
 import HeroBanner from '@/components/home/HeroBanner.vue'
 
-describe('HeroBanner Logic', () => {
+describe('HeroBanner', () => {
   let wrapper
   beforeEach(() => {
     wrapper = shallowMount(HeroBanner, { stubs: ['router-link'] })
@@ -9,7 +9,7 @@ describe('HeroBanner Logic', () => {
 
   // ------------- Initial State -------------
   it('HeroBanner starts at slide 0', () => {
-    expect(wrapper.vm.currentSlide).toBe(0) // vm = Vue model/instance. (the component instance)
+    expect(wrapper.vm.currentSlide).toBe(0)
   })
 
   // --------- changeCurrentSlide() ----------
@@ -35,7 +35,6 @@ describe('HeroBanner Logic', () => {
   it('autoPlaySlider() changes slider every 2 secs with setInterval', () => {
     jest.useFakeTimers()
     const wrapper = shallowMount(HeroBanner, { stubs: ['router-link'] })
-    // didn't call autoPlaySlider() because it's already called in mounted() inside the component.
     expect(wrapper.vm.currentSlide).toBe(0)
     jest.advanceTimersByTime(2000)
     expect(wrapper.vm.currentSlide).toBe(1)
@@ -49,13 +48,6 @@ describe('HeroBanner Logic', () => {
     const spy = jest.spyOn(global, 'clearInterval')
     wrapper.destroy()
     expect(spy).toHaveBeenCalled()
-  })
-})
-
-describe('HeroBanner DOM Rendering', () => {
-  let wrapper
-  beforeEach(() => {
-    wrapper = shallowMount(HeroBanner, { stubs: ['router-link'] })
   })
 
   // ----------------- Dots ------------------
@@ -71,7 +63,7 @@ describe('HeroBanner DOM Rendering', () => {
 
   it('active dot updates when slide changes and previous dot becomes inactive', async () => {
     wrapper.vm.changeCurrentSlide(1)
-    await wrapper.vm.$nextTick() // wait for the changeCurrentSlide() to update DOM.
+    await wrapper.vm.$nextTick()
     const dots = wrapper.findAll('.hero__dot')
     expect(dots.at(1).classes()).toContain('hero__dot--active')
     expect(dots.at(0).classes()).not.toContain('hero__dot--active')
