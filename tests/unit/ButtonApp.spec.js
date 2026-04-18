@@ -1,0 +1,42 @@
+import { shallowMount } from '@vue/test-utils'
+import ButtonApp from '@/components/shared/ButtonApp.vue'
+
+describe('ButtonApp', () => {
+  let wrapper
+  beforeEach(() => {
+    wrapper = shallowMount(ButtonApp, {
+      propsData: {
+        label: 'Click me',
+      },
+      stubs: ['router-link'],
+    })
+  })
+
+  // ------------ Render Mode ---------------
+  it('renders a <router-link> when `to` prop is passed', async () => {
+    await wrapper.setProps({ to: '/test' })
+    expect(wrapper.find('router-link-stub').exists()).toBe(true)
+  })
+
+  it('renders a <button> when no `to` prop is passed', async () => {
+    await wrapper.setProps({ to: null })
+    expect(wrapper.find('button').exists()).toBe(true)
+  })
+
+  // -------------- Label -------------------
+  it('renders the correct label text', () => {
+    expect(wrapper.text()).toBe(wrapper.props('label'))
+  })
+
+  // -------------- Button ------------------
+  it('emits click event when button is clicked', async () => {
+    await wrapper.trigger('click')
+    expect(wrapper.emitted('click')).toBeTruthy()
+  })
+
+  // -------------- Disabled ----------------
+  it('button has disabled attribute when disabled prop is true', async () => {
+    await wrapper.setProps({ disabled: true })
+    expect(wrapper.find('button').attributes('disabled')).toBe('disabled')
+  })
+})
