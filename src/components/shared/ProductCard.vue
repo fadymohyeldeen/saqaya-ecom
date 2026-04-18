@@ -10,7 +10,7 @@
         </div>
       </div>
     </template>
-    <template v-else>
+    <template v-else-if="product">
       <router-link :to="`/products/${product.id}`">
         <div class="product-card">
           <div class="product-card__image-wrap">
@@ -73,7 +73,7 @@
     },
     computed: {
       priceAfterDiscount() {
-        if (!this.product) return 0
+        if (!this.product) return null
         return (
           this.product.price -
           this.product.price * (this.product.discountPercentage / 100)
