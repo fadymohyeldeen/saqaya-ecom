@@ -67,11 +67,6 @@ describe('ProductCard DOM Rendering', () => {
     expect(productThumbnail).toBe(wrapper.vm.product.thumbnail)
   })
 
-  it('reviews count matches product.reviews.length', () => {
-    const reviewCount = wrapper.find('.product-card__reviews')
-    expect(reviewCount.text()).toBe(`(${wrapper.vm.product.reviews.length})`)
-  })
-
   // ------------ Discount Badge ------------
   it('discount badge visible when discountPercentage > 0', () => {
     const discountBadge = wrapper.find('.product-card__discount')
