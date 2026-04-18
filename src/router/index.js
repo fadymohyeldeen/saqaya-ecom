@@ -45,7 +45,7 @@ const router = new VueRouter({
   mode: 'history',
   // hash mode: better performance but looks ugly and not SEO friendly.
   // history mode: looks clean and SEO friendly but requires server config (in dev vite/vue-cli handles it, config only needed in prod or it will return 404 on refresh)
-  base: process.env.BASE_URL,
+  base: import.meta.env.BASE_URL,
   routes,
   scrollBehavior() {
     return { x: 0, y: 0 }
