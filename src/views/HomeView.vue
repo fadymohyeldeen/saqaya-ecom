@@ -31,14 +31,13 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue'
   import HeroBanner from '@/components/home/HeroBanner.vue'
   import CategorySection from '@/components/home/CategorySection.vue'
   import ServiceItems from '@/components/shared/ServiceItems.vue'
   import ProductSection from '@/components/shared/ProductSection.vue'
   import { SERVICES } from '@/utils/constants'
 
-  export default Vue.extend({
+  export default {
     name: 'HomeView',
     components: {
       HeroBanner,
@@ -72,7 +71,7 @@
         this.$store.dispatch('products/getCategoryList'),
       ])
     },
-  })
+  }
 </script>
 
 <style scoped>
