@@ -1,11 +1,3 @@
-// wrapper.findAll()
-// finds all matching DOM elements. Returns a WrapperArray.
-// use .at(index) to access a specific one, .length to count them.
-
-// wrapper.find().attributes('attr')
-// returns the value of an HTML attribute on the found element.
-// used here to check the fill color of each star's SVG path.
-
 import { shallowMount } from '@vue/test-utils'
 import StarRating from '@/components/shared/StarRating.vue'
 
@@ -25,7 +17,8 @@ describe('StarRating', () => {
     const star = wrapper.findAll('.star-rating__star')
     expect(star.length).toBe(5)
   })
-  // --------------- Star Fill ---------------
+
+  // -------------- Star Fill ---------------
   it('stars <= rating are filled orange #FFAD33', () => {
     const star = wrapper.findAll('.star-rating__star')
     for (let i = 0; i < wrapper.props('rating'); i++) {
@@ -40,7 +33,7 @@ describe('StarRating', () => {
     }
   })
 
-  // -------------- Reviews Display ------------
+  // ----------- Reviews Display ------------
   it('shows reviews count when reviews prop is passed', () => {
     const review = wrapper.find('.star-rating__reviews')
     expect(review.exists()).toBe(true)

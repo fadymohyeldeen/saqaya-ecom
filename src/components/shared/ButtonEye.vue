@@ -1,5 +1,5 @@
 <template>
-  <button class="eye-btn" aria-label="Quick view" @click.prevent="$emit('click')">
+  <button class="eye-btn" aria-label="Quick view" @click.prevent>
     <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
       <circle cx="17" cy="17" r="17" fill="white" />
       <path
@@ -15,7 +15,6 @@
 <script>
   export default {
     name: 'ButtonEye',
-    emits: ['click'],
   }
 </script>
 
