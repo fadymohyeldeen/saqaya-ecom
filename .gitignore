@@ -26,3 +26,5 @@ pnpm-debug.log*
 tasks
 study-tracker
 CLAUDE.md
+TestingToolKit
+/coverage

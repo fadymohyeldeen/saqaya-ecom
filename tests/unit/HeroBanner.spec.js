@@ -42,6 +42,7 @@ describe('HeroBanner Logic', () => {
     jest.advanceTimersByTime(2000)
     expect(wrapper.vm.currentSlide).toBe(2)
     jest.useRealTimers()
+    wrapper.destroy()
   })
 
   it('autoPlaySlider() clears interval on unmount', () => {
@@ -89,10 +90,3 @@ describe('HeroBanner DOM Rendering', () => {
     expect(title.text()).toBe(currentSlide.title)
   })
 })
-
-/*
-how to bypass setInterval in jest:
-jest.useFakeTimers() — replaces real timers with fake ones
-jest.advanceTimersByTime(2000) — fast forwards time by 2000ms
-jest.useRealTimers() — restores real timers after the test 
-*/
