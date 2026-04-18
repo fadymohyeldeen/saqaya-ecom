@@ -35,6 +35,7 @@
   import ProductCard from '@/components/shared/ProductCard.vue'
   import ErrorMessage from '@/components/shared/ErrorMessage.vue'
   import DropdownMenu from '@/components/shared/DropdownMenu.vue'
+  import filterIcon from '@/assets/icons/products/icon-filter.svg'
 
   export default {
     name: 'ProductsView',
@@ -48,7 +49,7 @@
     data() {
       return {
         sortOptions: SORT_OPTIONS,
-        filterIcon: require('@/assets/icons/products/icon-filter.svg'),
+        filterIcon,
       }
     },
     computed: {

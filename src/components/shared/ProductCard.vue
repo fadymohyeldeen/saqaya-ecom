@@ -27,7 +27,7 @@
               :src="product.thumbnail"
               :alt="product.title"
               class="product-card__image"
-              @error="e => (e.target.src = require('@/assets/images/placeholder.svg'))"
+              @error="e => (e.target.src = placeholderImg)"
             />
 
             <div class="product-card__add-to-cart" @click.prevent="addToCart">
@@ -60,10 +60,16 @@
   import ButtonEye from '@/components/shared/ButtonEye.vue'
   import StarRating from '@/components/shared/StarRating.vue'
   import SkeletonBox from '@/components/shared/SkeletonBox.vue'
+  import placeholderImg from '@/assets/images/placeholder.svg'
 
   export default {
     name: 'ProductCard',
     components: { ButtonFav, ButtonEye, StarRating, SkeletonBox },
+    data() {
+      return {
+        placeholderImg,
+      }
+    },
     props: {
       product: { type: Object, default: null },
       isLoading: { type: Boolean, default: false },
