@@ -130,9 +130,7 @@ describe('ProductCard Logic', () => {
           namespaced: true,
           state: () => ({ cart: [] }),
           mutations: {
-            ADD_TO_CART: (state, product) => {
-              state.cart.push(product)
-            },
+            ADD_TO_CART: () => {},
           },
         },
       },
