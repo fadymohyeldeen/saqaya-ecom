@@ -23,8 +23,8 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
-tasks
-study-tracker
+.claude/tasks
+.claude/study-tracker
+.claude/TestingToolKit
 CLAUDE.md
-TestingToolKit
 /coverage
