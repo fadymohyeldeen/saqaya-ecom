@@ -9,6 +9,7 @@ localVue.use(Vuex)
 describe('CartSidebar', () => {
   let store
   let wrapper
+  let closeSidebarButton
 
   beforeEach(() => {
     store = new Vuex.Store({
@@ -31,6 +32,7 @@ describe('CartSidebar', () => {
       store,
       localVue,
     })
+    closeSidebarButton = wrapper.find('.cart-sidebar__close')
   })
 
   // -------------- Empty State --------------
@@ -63,8 +65,7 @@ describe('CartSidebar', () => {
   it('commits cart/TOGGLE_CART when close button is clicked', async () => {
     store.state.cart.isCartOpen = true
     await wrapper.vm.$nextTick()
-    const button = wrapper.find('.cart-sidebar__close')
-    await button.trigger('click')
+    await closeSidebarButton.trigger('click')
     expect(store.state.cart.isCartOpen).toBe(false)
   })
 })

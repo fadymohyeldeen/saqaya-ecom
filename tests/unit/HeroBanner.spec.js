@@ -3,8 +3,17 @@ import HeroBanner from '@/components/home/HeroBanner.vue'
 
 describe('HeroBanner', () => {
   let wrapper
+  let dots
+  let activeDot
+  let brandName
+  let title
+
   beforeEach(() => {
     wrapper = shallowMount(HeroBanner, { stubs: ['router-link'] })
+    dots = wrapper.findAll('.hero__dot')
+    activeDot = dots.at(wrapper.vm.currentSlide)
+    brandName = wrapper.find('.hero__brand-name')
+    title = wrapper.find('.hero__title')
   })
 
   // ------------- Initial State -------------
@@ -52,12 +61,10 @@ describe('HeroBanner', () => {
 
   // ----------------- Dots ------------------
   it('renders the correct number of dots', () => {
-    const dots = wrapper.findAll('.hero__dot')
     expect(dots.length).toBe(wrapper.vm.slides.length)
   })
 
   it('active dot is the same as current slide', () => {
-    const activeDot = wrapper.findAll('.hero__dot').at(wrapper.vm.currentSlide)
     expect(activeDot.classes()).toContain('hero__dot--active')
   })
 
@@ -71,13 +78,11 @@ describe('HeroBanner', () => {
 
   // ------------- Slide Content -------------
   it('brand name is the same as current slide', () => {
-    const brandName = wrapper.find('.hero__brand-name')
     const currentSlide = wrapper.vm.slides[wrapper.vm.currentSlide]
     expect(brandName.text()).toBe(currentSlide.brandName)
   })
 
   it('title is the same as current slide', () => {
-    const title = wrapper.find('.hero__title')
     const currentSlide = wrapper.vm.slides[wrapper.vm.currentSlide]
     expect(title.text()).toBe(currentSlide.title)
   })

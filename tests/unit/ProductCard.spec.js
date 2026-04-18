@@ -138,7 +138,7 @@ describe('ProductCard Logic', () => {
     const commitSpy = jest.spyOn(store, 'commit')
     const wrapper = shallowMount(ProductCard, {
       store,
-      localVue, // an isolated copy of Vue to avoid affecting other tests
+      localVue,
       propsData: {
         product: {
           id: 1,

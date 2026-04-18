@@ -3,6 +3,8 @@ import StarRating from '@/components/shared/StarRating.vue'
 
 describe('StarRating', () => {
   let wrapper
+  let star
+
   beforeEach(() => {
     wrapper = shallowMount(StarRating, {
       propsData: {
@@ -10,24 +12,22 @@ describe('StarRating', () => {
         reviews: 7,
       },
     })
+    star = wrapper.findAll('.star-rating__star')
   })
 
   // -------------- DOM Rendering ------------
   it('always renders 5 stars', () => {
-    const star = wrapper.findAll('.star-rating__star')
     expect(star.length).toBe(5)
   })
 
   // -------------- Star Fill ---------------
   it('stars <= rating are filled orange #FFAD33', () => {
-    const star = wrapper.findAll('.star-rating__star')
     for (let i = 0; i < wrapper.props('rating'); i++) {
       expect(star.at(i).find('path').attributes('fill')).toBe('#FFAD33')
     }
   })
 
   it('stars > rating are filled black #000000', () => {
-    const star = wrapper.findAll('.star-rating__star')
     for (let i = wrapper.props('rating'); i < 5; i++) {
       expect(star.at(i).find('path').attributes('fill')).toBe('#000000')
     }
