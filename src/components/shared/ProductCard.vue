@@ -61,6 +61,7 @@
   import StarRating from '@/components/shared/StarRating.vue'
   import SkeletonBox from '@/components/shared/SkeletonBox.vue'
   import placeholderImg from '@/assets/images/placeholder.svg'
+  import { useCartStore } from '@/stores/cart'
 
   export default {
     name: 'ProductCard',
@@ -75,6 +76,9 @@
       isLoading: { type: Boolean, default: false },
     },
     computed: {
+      cartStore() {
+        return useCartStore()
+      },
       priceAfterDiscount() {
         if (!this.product) return null
         return (
@@ -85,7 +89,7 @@
     },
     methods: {
       addToCart() {
-        this.$store.commit('cart/ADD_TO_CART', { newItem: this.product, quantity: 1 })
+        this.cartStore.addToCart({ newItem: this.product, quantity: 1 })
       },
     },
   }
