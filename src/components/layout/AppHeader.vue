@@ -30,6 +30,7 @@
 </template>
 
 <script>
+  import { useCartStore } from '@/stores/cart'
   export default {
     name: 'AppHeader',
     data() {
@@ -39,7 +40,7 @@
     },
     methods: {
       toggleCart() {
-        this.$store.commit('cart/TOGGLE_CART')
+        useCartStore().toggleCart()
       },
     },
   }

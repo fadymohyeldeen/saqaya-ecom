@@ -12,6 +12,7 @@
 </template>
 
 <script>
+  import { useCartStore } from '@/stores/cart'
   import AppHeader from '@/components/layout/AppHeader.vue'
   import AppFooter from '@/components/layout/AppFooter.vue'
   import CartSidebar from '@/components/cart/CartSidebar.vue'
@@ -24,7 +25,7 @@
     },
     computed: {
       isCartOpen() {
-        return this.$store.state.cart.isCartOpen
+        return useCartStore().isCartOpen
       },
     },
   }

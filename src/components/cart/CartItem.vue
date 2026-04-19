@@ -24,21 +24,27 @@
 </template>
 
 <script>
+  import { useCartStore } from '@/stores/cart'
   export default {
     name: 'CartItem',
     props: { item: { type: Object, required: true } },
+    computed: {
+      cartStore() {
+        return useCartStore()
+      },
+    },
     methods: {
       removeItem() {
-        this.$store.commit('cart/REMOVE_FROM_CART', this.item.id)
+        this.cartStore.removeFromCart(this.item.id)
       },
       increaseQuantity() {
-        this.$store.commit('cart/UPDATE_CART_ITEM_QUANTITY', {
+        this.cartStore.updateCartItemQuantity({
           itemId: this.item.id,
           quantity: this.item.quantity + 1,
         })
       },
       decreaseQuantity() {
-        this.$store.commit('cart/UPDATE_CART_ITEM_QUANTITY', {
+        this.cartStore.updateCartItemQuantity({
           itemId: this.item.id,
           quantity: this.item.quantity - 1,
         })
