@@ -36,6 +36,7 @@
   import ErrorMessage from '@/components/shared/ErrorMessage.vue'
   import DropdownMenu from '@/components/shared/DropdownMenu.vue'
   import filterIcon from '@/assets/icons/products/icon-filter.svg'
+  import { useProductsStore } from '@/stores/products'
 
   export default {
     name: 'ProductsView',
@@ -53,30 +54,33 @@
       }
     },
     computed: {
+      productsStore() {
+        return useProductsStore()
+      },
       filterOptions() {
         const all = [{ label: 'All Categories', value: null }]
         const cats = this.categories.map(cat => ({ label: formatName(cat), value: cat }))
         return [...all, ...cats]
       },
       products() {
-        return this.$store.getters['products/displayedProducts']
+        return this.productsStore.displayedProducts
       },
       categories() {
-        return this.$store.state.products.categoryList
+        return this.productsStore.categoryList
       },
       error() {
-        return this.$store.state.products.error
+        return this.productsStore.error
       },
       isLoading() {
-        return this.$store.state.products.isLoading
+        return this.productsStore.isLoading
       },
       hasMoreProducts() {
-        return this.$store.state.products.totalProductsCount > this.products.length
+        return this.productsStore.totalProductsCount > this.products.length
       },
     },
     mounted() {
       this.fetchByCategory(this.$route.query.category)
-      this.$store.dispatch('products/getCategoryList')
+      this.productsStore.getCategoryList()
     },
     async beforeRouteUpdate(to, _from, next) {
       await this.fetchByCategory(to.query.category)
@@ -84,11 +88,11 @@
     },
     methods: {
       loadMore() {
-        this.$store.dispatch('products/loadMoreProducts')
+        this.productsStore.loadMoreProducts()
       },
       async fetchByCategory(category) {
-        this.$store.commit('products/SET_CATEGORY', category || null)
-        await this.$store.dispatch('products/getProducts')
+        this.productsStore.setCategory(category || null)
+        await this.productsStore.getProducts()
       },
       onFilterSelect(option) {
         const category = option.value
@@ -97,8 +101,8 @@
         this.$router.push({ path: '/products', query: category ? { category } : {} })
       },
       async onSortSelect(option) {
-        this.$store.commit('products/SET_SORT', { sortBy: option.value, sortOrder: option.order })
-        await this.$store.dispatch('products/getProducts')
+        this.productsStore.setSort({ sortBy: option.value, sortOrder: option.order })
+        await this.productsStore.getProducts()
       },
     },
   }

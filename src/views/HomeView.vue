@@ -13,7 +13,7 @@
       <div class="home__divider"></div>
     </div>
 
-    <CategorySection :categories="categories" />
+    <CategorySection :categories="categoryList" />
 
     <div class="home__divider"></div>
 
@@ -36,6 +36,7 @@
   import ServiceItems from '@/components/shared/ServiceItems.vue'
   import ProductSection from '@/components/shared/ProductSection.vue'
   import { SERVICES } from '@/utils/constants'
+  import { useProductsStore } from '@/stores/products'
 
   export default {
     name: 'HomeView',
@@ -51,24 +52,28 @@
       }
     },
     computed: {
+      productsStore() {
+        return useProductsStore()
+      },
       flashSaleProducts() {
-        return this.$store.state.products.flashSaleProducts
+        return this.productsStore.flashSaleProducts
       },
       exploreProducts() {
-        return this.$store.state.products.exploreProducts
+        return this.productsStore.exploreProducts
       },
       isLoading() {
-        return this.$store.state.products.isLoading
+        return this.productsStore.isLoading
       },
-      categories() {
-        return this.$store.state.products.categoryList
+      categoryList() {
+        return this.productsStore.categoryList
       },
     },
+
     async mounted() {
       await Promise.all([
-        this.$store.dispatch('products/getFlashSaleProducts'),
-        this.$store.dispatch('products/getExploreProducts'),
-        this.$store.dispatch('products/getCategoryList'),
+        this.productsStore.getFlashSaleProducts(),
+        this.productsStore.getExploreProducts(),
+        this.productsStore.getCategoryList(),
       ])
     },
   }

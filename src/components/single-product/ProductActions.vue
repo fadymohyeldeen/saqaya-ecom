@@ -28,6 +28,7 @@
 <script>
   import ButtonApp from '@/components/shared/ButtonApp.vue'
   import ButtonFav from '@/components/shared/ButtonFav.vue'
+  import { useCartStore } from '@/stores/cart'
 
   export default {
     name: 'ProductActions',
@@ -44,7 +45,7 @@
     },
     methods: {
       addToCart() {
-        this.$store.commit('cart/ADD_TO_CART', { newItem: this.product, quantity: this.quantity })
+        useCartStore().addToCart({ newItem: this.product, quantity: this.quantity })
       },
     },
     emits: ['increase', 'decrease'],

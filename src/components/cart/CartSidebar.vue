@@ -19,18 +19,22 @@
 <script>
   import CartItem from '@/components/cart/CartItem.vue'
   import CartSummary from '@/components/cart/CartSummary.vue'
+  import { useCartStore } from '@/stores/cart'
 
   export default {
     name: 'CartSidebar',
     components: { CartItem, CartSummary },
-    methods: {
-      toggleCart() {
-        this.$store.commit('cart/TOGGLE_CART')
+    computed: {
+      cartStore() {
+        return useCartStore()
+      },
+      cartItems() {
+        return this.cartStore.cartItems
       },
     },
-    computed: {
-      cartItems() {
-        return this.$store.state.cart.cartItems
+    methods: {
+      toggleCart() {
+        this.cartStore.toggleCart()
       },
     },
   }
