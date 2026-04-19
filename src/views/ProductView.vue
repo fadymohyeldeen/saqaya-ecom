@@ -35,6 +35,7 @@
   import ProductInfo from '@/components/single-product/ProductInfo.vue'
   import ProductSection from '@/components/shared/ProductSection.vue'
   import ErrorMessage from '@/components/shared/ErrorMessage.vue'
+  import { useProductsStore } from '@/stores/products'
 
   export default {
     name: 'ProductView',
@@ -61,29 +62,32 @@
     },
     async mounted() {
       // first visit
-      await this.$store.dispatch('products/getProductById', this.$route.params.id)
-      await this.$store.dispatch('products/getRelatedProducts', this.category)
+      await this.productsStore.getProductById(this.$route.params.id)
+      await this.productsStore.getRelatedProducts(this.category)
     },
 
     async beforeRouteUpdate(to, _from, next) {
       // when navigating between products
-      await this.$store.dispatch('products/getProductById', to.params.id)
-      await this.$store.dispatch('products/getRelatedProducts', this.category)
+      await this.productsStore.getProductById(to.params.id)
+      await this.productsStore.getRelatedProducts(this.category)
       next()
     },
 
     computed: {
+      productsStore() {
+        return useProductsStore()
+      },
       product() {
-        return this.$store.state.products.selectedProduct
+        return this.productsStore.selectedProduct
       },
       relatedProducts() {
-        return this.$store.state.products.relatedProducts
+        return this.productsStore.relatedProducts
       },
       isLoading() {
-        return this.$store.state.products.isLoading
+        return this.productsStore.isLoading
       },
       category() {
-        return this.$store.state.products.selectedProduct?.category
+        return this.productsStore.selectedProduct?.category
       },
     },
   }
