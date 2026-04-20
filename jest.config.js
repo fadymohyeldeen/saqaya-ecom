@@ -5,8 +5,9 @@ module.exports = {
     '^.+\\.[jt]s$': 'babel-jest',
   },
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1',
     '\\.(svg|png|jpg|jpeg)$': '<rootDir>/tests/__mocks__/fileMock.js',
+    '^@/(.*)$': '<rootDir>/src/$1',
   },
   moduleFileExtensions: ['vue', 'js', 'ts', 'json'],
+  setupFilesAfterEnv: ['<rootDir>/tests/setup.js'],
 }

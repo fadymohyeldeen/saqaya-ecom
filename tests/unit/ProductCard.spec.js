@@ -21,7 +21,6 @@ describe('ProductCard Loading State', () => {
         },
         isLoading: false,
       },
-      stubs: ['router-link'],
     })
   })
 
@@ -52,7 +51,6 @@ describe('ProductCard DOM Rendering', () => {
         },
         isLoading: false,
       },
-      stubs: ['router-link'],
     })
   })
 
@@ -108,7 +106,6 @@ describe('ProductCard Logic', () => {
         },
         isLoading: false,
       },
-      stubs: ['router-link'],
     })
   })
 
@@ -151,7 +148,6 @@ describe('ProductCard Logic', () => {
         },
         isLoading: false,
       },
-      stubs: ['router-link'],
     })
     wrapper.vm.addToCart()
     expect(commitSpy).toHaveBeenCalledWith('cart/ADD_TO_CART', {

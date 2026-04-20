@@ -8,7 +8,6 @@ describe('ButtonApp', () => {
       propsData: {
         label: 'Click me',
       },
-      stubs: ['router-link'],
     })
   })
 
@@ -30,13 +29,13 @@ describe('ButtonApp', () => {
 
   // -------------- Button ------------------
   it('emits click event when button is clicked', async () => {
-    await wrapper.trigger('click')
+    await wrapper.find('button').trigger('click')
     expect(wrapper.emitted('click')).toBeTruthy()
   })
 
   // -------------- Disabled ----------------
   it('button has disabled attribute when disabled prop is true', async () => {
     await wrapper.setProps({ disabled: true })
-    expect(wrapper.find('button').attributes('disabled')).toBe('disabled')
+    expect(wrapper.find('button').attributes('disabled')).toBeDefined()
   })
 })
