@@ -24,6 +24,6 @@ describe('ButtonTrash', () => {
   // --------------- Disabled ---------------
   it('has disabled attribute when disabled prop is true', async () => {
     await wrapper.setProps({ disabled: true })
-    expect(button.attributes().disabled).toBe('disabled')
+    expect(button.attributes().disabled).toBeDefined()
   })
 })

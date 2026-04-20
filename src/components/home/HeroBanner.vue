@@ -86,7 +86,7 @@
     mounted() {
       this.autoPlaySlider()
     },
-    beforeDestroy() {
+    beforeUnmount() {
       clearInterval(this.autoPlayInterval)
     },
     methods: {

@@ -34,7 +34,7 @@
     mounted() {
       document.addEventListener('click', this.handleOutsideClick)
     },
-    beforeDestroy() {
+    beforeUnmount() {
       document.removeEventListener('click', this.handleOutsideClick)
     },
     methods: {

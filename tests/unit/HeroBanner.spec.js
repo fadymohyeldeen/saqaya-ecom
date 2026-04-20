@@ -9,7 +9,7 @@ describe('HeroBanner', () => {
   let title
 
   beforeEach(() => {
-    wrapper = shallowMount(HeroBanner, { stubs: ['router-link'] })
+    wrapper = shallowMount(HeroBanner)
     dots = wrapper.findAll('.hero__dot')
     activeDot = dots.at(wrapper.vm.currentSlide)
     brandName = wrapper.find('.hero__brand-name')
@@ -43,19 +43,19 @@ describe('HeroBanner', () => {
   // ----------- autoPlaySlider() ------------
   it('autoPlaySlider() changes slider every 2 secs with setInterval', () => {
     jest.useFakeTimers()
-    const wrapper = shallowMount(HeroBanner, { stubs: ['router-link'] })
+    const wrapper = shallowMount(HeroBanner)
     expect(wrapper.vm.currentSlide).toBe(0)
     jest.advanceTimersByTime(2000)
     expect(wrapper.vm.currentSlide).toBe(1)
     jest.advanceTimersByTime(2000)
     expect(wrapper.vm.currentSlide).toBe(2)
     jest.useRealTimers()
-    wrapper.destroy()
+    wrapper.unmount()
   })
 
   it('autoPlaySlider() clears interval on unmount', () => {
     const spy = jest.spyOn(global, 'clearInterval')
-    wrapper.destroy()
+    wrapper.unmount()
     expect(spy).toHaveBeenCalled()
   })
 

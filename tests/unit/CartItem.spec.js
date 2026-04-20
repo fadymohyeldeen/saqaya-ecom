@@ -43,7 +43,6 @@ describe('CartItem', () => {
           quantity: 1,
         },
       },
-      stubs: ['router-link'],
     })
 
     cartItem = wrapper.find('.cart-item')
