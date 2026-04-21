@@ -102,6 +102,7 @@
         currentSlide,
         slides,
         changeCurrentSlide,
+        nextSlide, // not used in template but returned for testing.
       }
     },
   }
