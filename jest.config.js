@@ -1,4 +1,5 @@
 module.exports = {
+  coverageProvider: 'v8', // doesn't include CSS lines in coverage
   testEnvironment: 'jsdom',
   transform: {
     '^.+\\.vue$': '@vue/vue3-jest',
