@@ -1,15 +1,14 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import ProductCard from '@/components/shared/ProductCard.vue'
-import Vuex from 'vuex'
-
-const localVue = createLocalVue()
-localVue.use(Vuex)
+import { useCartStore } from '@/stores/cart'
 
 describe('ProductCard Loading State', () => {
+  let store
   let wrapper
   beforeEach(() => {
+    store = useCartStore()
     wrapper = shallowMount(ProductCard, {
-      propsData: {
+      props: {
         product: {
           id: 1,
           title: 'Product 1',
@@ -39,7 +38,7 @@ describe('ProductCard DOM Rendering', () => {
   let wrapper
   beforeEach(() => {
     wrapper = shallowMount(ProductCard, {
-      propsData: {
+      props: {
         product: {
           id: 1,
           title: 'Product 1',
@@ -91,10 +90,12 @@ describe('ProductCard DOM Rendering', () => {
 })
 
 describe('ProductCard Logic', () => {
+  let store
   let wrapper
   beforeEach(() => {
+    store = useCartStore()
     wrapper = shallowMount(ProductCard, {
-      propsData: {
+      props: {
         product: {
           id: 1,
           title: 'Product 1',
@@ -121,36 +122,9 @@ describe('ProductCard Logic', () => {
 
   // -------------- addToCart ---------------
   it('addToCart commits to Vuex with correct payload', () => {
-    const store = new Vuex.Store({
-      modules: {
-        cart: {
-          namespaced: true,
-          state: () => ({ cart: [] }),
-          mutations: {
-            ADD_TO_CART: () => {},
-          },
-        },
-      },
-    })
-    const commitSpy = jest.spyOn(store, 'commit')
-    const wrapper = shallowMount(ProductCard, {
-      store,
-      localVue,
-      propsData: {
-        product: {
-          id: 1,
-          title: 'Product 1',
-          price: 10,
-          discountPercentage: 10,
-          rating: 4.5,
-          reviews: [{ rating: 1 }],
-          thumbnail: 'https://example.com/product1.jpg',
-        },
-        isLoading: false,
-      },
-    })
+    jest.spyOn(store, 'addToCart')
     wrapper.vm.addToCart()
-    expect(commitSpy).toHaveBeenCalledWith('cart/ADD_TO_CART', {
+    expect(store.addToCart).toHaveBeenCalledWith({
       newItem: wrapper.vm.product,
       quantity: 1,
     })

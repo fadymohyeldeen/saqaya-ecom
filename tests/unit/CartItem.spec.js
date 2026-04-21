@@ -1,9 +1,6 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
-import Vuex from 'vuex'
+import { shallowMount, RouterLinkStub } from '@vue/test-utils'
 import CartItem from '@/components/cart/CartItem.vue'
-
-const localVue = createLocalVue()
-localVue.use(Vuex)
+import { useCartStore } from '@/stores/cart'
 
 describe('CartItem', () => {
   let store
@@ -15,27 +12,13 @@ describe('CartItem', () => {
   let removeButton
 
   beforeEach(() => {
-    store = new Vuex.Store({
-      modules: {
-        cart: {
-          namespaced: true,
-          state: () => ({
-            cartItems: [],
-            isCartOpen: false,
-          }),
-          mutations: {
-            REMOVE_FROM_CART: () => {},
-            UPDATE_CART_ITEM_QUANTITY: () => {},
-          },
-        },
-      },
-    })
-    jest.spyOn(store, 'commit')
+    store = useCartStore()
+
+    jest.spyOn(store, 'removeFromCart')
+    jest.spyOn(store, 'updateCartItemQuantity')
 
     wrapper = shallowMount(CartItem, {
-      store,
-      localVue,
-      propsData: {
+      props: {
         item: {
           id: 1,
           price: 10,
@@ -57,9 +40,9 @@ describe('CartItem', () => {
     expect(cartItem.exists()).toBe(true)
   })
 
-  it('renders the product image', () => {
-    expect(itemImage.exists()).toBe(true)
-    expect(itemImage.attributes('src')).toBe('https://example.com/product1.jpg')
+  it('links to the correct product page', () => {
+    const link = wrapper.findComponent(RouterLinkStub)
+    expect(link.props('to')).toBe(`/products/${wrapper.vm.item.id}`)
   })
 
   it('renders the correct product price', () => {
@@ -72,15 +55,15 @@ describe('CartItem', () => {
     expect(itemQuantity.text()).toBe('1')
   })
 
-  // -------------- Mutations ---------------
+  // -------------- Actions -----------------
   it('commits REMOVE_FROM_CART when remove button is clicked', async () => {
     await removeButton.trigger('click')
-    expect(store.commit).toHaveBeenCalledWith('cart/REMOVE_FROM_CART', wrapper.vm.item.id)
+    expect(store.removeFromCart).toHaveBeenCalledWith(wrapper.vm.item.id)
   })
 
   it('commits UPDATE_CART_ITEM_QUANTITY with quantity + 1 when increase is clicked', async () => {
     await wrapper.find('[aria-label="Increase quantity"]').trigger('click')
-    expect(store.commit).toHaveBeenCalledWith('cart/UPDATE_CART_ITEM_QUANTITY', {
+    expect(store.updateCartItemQuantity).toHaveBeenCalledWith({
       itemId: wrapper.vm.item.id,
       quantity: wrapper.vm.item.quantity + 1,
     })
@@ -88,7 +71,7 @@ describe('CartItem', () => {
 
   it('commits UPDATE_CART_ITEM_QUANTITY with quantity - 1 when decrease is clicked', async () => {
     await wrapper.find('[aria-label="Decrease quantity"]').trigger('click')
-    expect(store.commit).toHaveBeenCalledWith('cart/UPDATE_CART_ITEM_QUANTITY', {
+    expect(store.updateCartItemQuantity).toHaveBeenCalledWith({
       itemId: wrapper.vm.item.id,
       quantity: wrapper.vm.item.quantity - 1,
     })
