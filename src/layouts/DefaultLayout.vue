@@ -16,6 +16,7 @@
   import AppHeader from '@/components/layout/AppHeader.vue'
   import AppFooter from '@/components/layout/AppFooter.vue'
   import CartSidebar from '@/components/cart/CartSidebar.vue'
+  import { computed } from 'vue'
   export default {
     name: 'DefaultLayout',
     components: {
@@ -23,10 +24,14 @@
       AppFooter,
       CartSidebar,
     },
-    computed: {
-      isCartOpen() {
-        return useCartStore().isCartOpen
-      },
+    setup() {
+      const cartStore = useCartStore()
+      const isCartOpen = computed(() => {
+        return cartStore.isCartOpen
+      })
+      return {
+        isCartOpen,
+      }
     },
   }
 </script>
