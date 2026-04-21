@@ -3,10 +3,10 @@
     <div class="header__container">
       <router-link to="/" class="header__logo">Exclusive</router-link>
       <nav class="header__nav" :class="{ 'header__nav--open': menuOpen }">
-        <router-link to="/" @click.native="menuOpen = false">Home</router-link>
-        <router-link to="/products" @click.native="menuOpen = false">Products</router-link>
-        <router-link to="/contact" @click.native="menuOpen = false">Contact</router-link>
-        <router-link to="/about-us" @click.native="menuOpen = false">About</router-link>
+        <router-link to="/" @click="menuOpen = false">Home</router-link>
+        <router-link to="/products" @click="menuOpen = false">Products</router-link>
+        <router-link to="/contact" @click="menuOpen = false">Contact</router-link>
+        <router-link to="/about-us" @click="menuOpen = false">About</router-link>
       </nav>
 
       <div class="header__actions">
@@ -31,17 +31,19 @@
 
 <script>
   import { useCartStore } from '@/stores/cart'
+  import { ref } from 'vue'
   export default {
     name: 'AppHeader',
-    data() {
-      return {
-        menuOpen: false,
+    setup() {
+      const menuOpen = ref(false)
+      const cartStore = useCartStore()
+      function toggleCart() {
+        cartStore.toggleCart()
       }
-    },
-    methods: {
-      toggleCart() {
-        useCartStore().toggleCart()
-      },
+      return {
+        menuOpen,
+        toggleCart,
+      }
     },
   }
 </script>
