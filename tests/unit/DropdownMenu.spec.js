@@ -48,6 +48,16 @@ describe('DropdownMenu', () => {
     expect(wrapper.emitted('select')[0][0]).toEqual({ label: 'Option 1', value: 'option1' })
   })
 
+  // ------------ Lifecycle ----------------
+  it('removes click listener when unmounted', () => {
+    jest.spyOn(document, 'removeEventListener')
+    wrapper.unmount()
+    expect(document.removeEventListener).toHaveBeenCalledWith(
+      'click',
+      wrapper.vm.handleOutsideClick
+    )
+  })
+
   // ------------ DOM Rendering -------------
   it('renders the correct number of options', async () => {
     await dropdownBtn.trigger('click')

@@ -1,10 +1,7 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import CartSidebar from '@/components/cart/CartSidebar.vue'
-import Vuex from 'vuex'
 import CartItem from '@/components/cart/CartItem.vue'
-
-const localVue = createLocalVue()
-localVue.use(Vuex)
+import { useCartStore } from '@/stores/cart'
 
 describe('CartSidebar', () => {
   let store
@@ -12,27 +9,10 @@ describe('CartSidebar', () => {
   let closeSidebarButton
 
   beforeEach(() => {
-    store = new Vuex.Store({
-      modules: {
-        cart: {
-          namespaced: true,
-          state: () => ({
-            cartItems: [],
-            isCartOpen: false,
-          }),
-          mutations: {
-            TOGGLE_CART: state => {
-              state.isCartOpen = !state.isCartOpen
-            },
-          },
-        },
-      },
-    })
-    wrapper = shallowMount(CartSidebar, {
-      store,
-      localVue,
-    })
+    store = useCartStore()
+    wrapper = shallowMount(CartSidebar)
     closeSidebarButton = wrapper.find('.cart-sidebar__close')
+    jest.spyOn(store, 'toggleCart')
   })
 
   // -------------- Empty State --------------
@@ -56,16 +36,14 @@ describe('CartSidebar', () => {
         quantity: 2,
       },
     ]
-    store.state.cart.cartItems = cartItems
+    store.cartItems = cartItems
     await wrapper.vm.$nextTick()
-    expect(wrapper.findAllComponents(CartItem).length).toBe(2)
+    expect(wrapper.findAllComponents(CartItem).length).toBe(cartItems.length)
   })
 
   // -------------- Close Button -------------
-  it('commits cart/TOGGLE_CART when close button is clicked', async () => {
-    store.state.cart.isCartOpen = true
-    await wrapper.vm.$nextTick()
+  it('calls toggleCart when close button is clicked', async () => {
     await closeSidebarButton.trigger('click')
-    expect(store.state.cart.isCartOpen).toBe(false)
+    expect(store.toggleCart).toHaveBeenCalled()
   })
 })
