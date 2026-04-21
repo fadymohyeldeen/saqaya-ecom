@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils'
+import { shallowMount, RouterLinkStub } from '@vue/test-utils'
 import ButtonApp from '@/components/shared/ButtonApp.vue'
 
 describe('ButtonApp', () => {
@@ -14,7 +14,7 @@ describe('ButtonApp', () => {
   // ------------ Render Mode ---------------
   it('renders a <router-link> when `to` prop is passed', async () => {
     await wrapper.setProps({ to: '/test' })
-    expect(wrapper.find('router-link-stub').exists()).toBe(true)
+    expect(wrapper.findComponent(RouterLinkStub).exists()).toBe(true)
   })
 
   it('renders a <button> when no `to` prop is passed', async () => {

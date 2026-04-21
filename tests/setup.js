@@ -1,3 +1,8 @@
-import { config } from '@vue/test-utils'
+import { createPinia, setActivePinia } from 'pinia'
+import { config, RouterLinkStub } from '@vue/test-utils'
 
-config.global.stubs = { RouterLink: true }
+config.global.stubs = { RouterLink: RouterLinkStub }
+
+beforeEach(() => {
+  setActivePinia(createPinia())
+})
