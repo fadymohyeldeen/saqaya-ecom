@@ -28,27 +28,26 @@
   export default {
     name: 'CartItem',
     props: { item: { type: Object, required: true } },
-    computed: {
-      cartStore() {
-        return useCartStore()
-      },
-    },
-    methods: {
-      removeItem() {
-        this.cartStore.removeFromCart(this.item.id)
-      },
-      increaseQuantity() {
-        this.cartStore.updateCartItemQuantity({
-          itemId: this.item.id,
-          quantity: this.item.quantity + 1,
+
+    setup(props) {
+      const cartStore = useCartStore()
+
+      function removeItem() {
+        cartStore.removeFromCart(props.item.id)
+      }
+      function increaseQuantity() {
+        cartStore.updateCartItemQuantity({
+          itemId: props.item.id,
+          quantity: props.item.quantity + 1,
         })
-      },
-      decreaseQuantity() {
-        this.cartStore.updateCartItemQuantity({
-          itemId: this.item.id,
-          quantity: this.item.quantity - 1,
+      }
+      function decreaseQuantity() {
+        cartStore.updateCartItemQuantity({
+          itemId: props.item.id,
+          quantity: props.item.quantity - 1,
         })
-      },
+      }
+      return { removeItem, increaseQuantity, decreaseQuantity }
     },
   }
 </script>
