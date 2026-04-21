@@ -20,6 +20,8 @@
 <script>
   import SectionHeader from '@/components/shared/SectionHeader.vue'
   import CategoryCard from '@/components/home/CategoryCard.vue'
+  import { ref } from 'vue'
+  import { useRouter } from 'vue-router'
 
   export default {
     name: 'CategorySection',
@@ -30,22 +32,30 @@
         required: true,
       },
     },
-    methods: {
-      scrollNext() {
-        const container = this.$refs.scrollContainer
+    setup() {
+      const router = useRouter()
+      const scrollContainer = ref(null)
+      function scrollNext() {
+        const container = scrollContainer.value
         const card = container.firstElementChild
         if (!card) return
         container.scrollBy({ left: card.offsetWidth, behavior: 'smooth' })
-      },
-      scrollPrev() {
-        const container = this.$refs.scrollContainer
+      }
+      function scrollPrev() {
+        const container = scrollContainer.value
         const card = container.firstElementChild
         if (!card) return
         container.scrollBy({ left: -card.offsetWidth, behavior: 'smooth' })
-      },
-      onSelect(category) {
-        this.$router.push({ path: '/products', query: { category } })
-      },
+      }
+      function onSelect(category) {
+        router.push({ path: '/products', query: { category } })
+      }
+      return {
+        scrollNext,
+        scrollPrev,
+        onSelect,
+        scrollContainer,
+      }
     },
   }
 </script>

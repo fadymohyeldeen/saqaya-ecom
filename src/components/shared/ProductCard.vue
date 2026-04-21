@@ -62,35 +62,28 @@
   import SkeletonBox from '@/components/shared/SkeletonBox.vue'
   import placeholderImg from '@/assets/images/placeholder.svg'
   import { useCartStore } from '@/stores/cart'
+  import { computed } from 'vue'
 
   export default {
     name: 'ProductCard',
     components: { ButtonFav, ButtonEye, StarRating, SkeletonBox },
-    data() {
-      return {
-        placeholderImg,
-      }
-    },
     props: {
       product: { type: Object, default: null },
       isLoading: { type: Boolean, default: false },
     },
-    computed: {
-      cartStore() {
-        return useCartStore()
-      },
-      priceAfterDiscount() {
-        if (!this.product) return null
+    setup(props) {
+      const cartStore = useCartStore()
+      const priceAfterDiscount = computed(() => {
+        if (!props.product) return null
         return (
-          this.product.price -
-          this.product.price * (this.product.discountPercentage / 100)
+          props.product.price -
+          props.product.price * (props.product.discountPercentage / 100)
         ).toFixed(2)
-      },
-    },
-    methods: {
-      addToCart() {
-        this.cartStore.addToCart({ newItem: this.product, quantity: 1 })
-      },
+      })
+      function addToCart() {
+        cartStore.addToCart({ newItem: props.product, quantity: 1 })
+      }
+      return { priceAfterDiscount, addToCart, placeholderImg }
     },
   }
 </script>

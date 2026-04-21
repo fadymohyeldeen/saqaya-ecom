@@ -30,13 +30,14 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
   import HeroBanner from '@/components/home/HeroBanner.vue'
   import CategorySection from '@/components/home/CategorySection.vue'
   import ServiceItems from '@/components/shared/ServiceItems.vue'
   import ProductSection from '@/components/shared/ProductSection.vue'
   import { SERVICES } from '@/utils/constants'
   import { useProductsStore } from '@/stores/products'
+  import { computed, onMounted } from 'vue'
 
   export default {
     name: 'HomeView',
@@ -46,35 +47,34 @@
       ServiceItems,
       ProductSection,
     },
-    data() {
+    setup() {
+      const productsStore = useProductsStore()
+      const flashSaleProducts = computed(() => {
+        return productsStore.flashSaleProducts
+      })
+      const exploreProducts = computed(() => {
+        return productsStore.exploreProducts
+      })
+      const isLoading = computed(() => {
+        return productsStore.isLoading
+      })
+      const categoryList = computed(() => {
+        return productsStore.categoryList
+      })
+      onMounted(async () => {
+        await Promise.all([
+          productsStore.getFlashSaleProducts(),
+          productsStore.getExploreProducts(),
+          productsStore.getCategoryList(),
+        ])
+      })
       return {
+        flashSaleProducts,
+        exploreProducts,
+        isLoading,
+        categoryList,
         services: SERVICES,
       }
-    },
-    computed: {
-      productsStore() {
-        return useProductsStore()
-      },
-      flashSaleProducts() {
-        return this.productsStore.flashSaleProducts
-      },
-      exploreProducts() {
-        return this.productsStore.exploreProducts
-      },
-      isLoading() {
-        return this.productsStore.isLoading
-      },
-      categoryList() {
-        return this.productsStore.categoryList
-      },
-    },
-
-    async mounted() {
-      await Promise.all([
-        this.productsStore.getFlashSaleProducts(),
-        this.productsStore.getExploreProducts(),
-        this.productsStore.getCategoryList(),
-      ])
     },
   }
 </script>

@@ -15,8 +15,8 @@
         required: true,
       },
     },
-    methods: {
-      formatName,
+    setup() {
+      return { formatName }
     },
   }
 </script>

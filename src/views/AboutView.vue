@@ -19,10 +19,8 @@
   export default {
     name: 'AboutView',
     components: { AppBreadcrumb, StorySection, AboutStats, AboutTeam, ServiceItems },
-    data() {
-      return {
-        services: SERVICES,
-      }
+    setup() {
+      return { services: SERVICES }
     },
   }
 </script>

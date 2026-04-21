@@ -21,6 +21,7 @@
   import SectionHeader from '@/components/shared/SectionHeader.vue'
   import ProductCard from '@/components/shared/ProductCard.vue'
   import ButtonApp from '@/components/shared/ButtonApp.vue'
+  import { ref } from 'vue'
 
   export default {
     name: 'ProductSection',
@@ -48,19 +49,19 @@
         default: false,
       },
     },
-    methods: {
-      scrollNext() {
-        const scrollContainer = this.$refs.scrollContainer
-        const card = scrollContainer.firstElementChild
+    setup() {
+      const scrollContainer = ref(null)
+      function scrollNext() {
+        const card = scrollContainer.value.firstElementChild
         if (!card) return
-        scrollContainer.scrollBy({ left: card.offsetWidth, behavior: 'smooth' }) // scrolls by the width of a card
-      },
-      scrollPrev() {
-        const scrollContainer = this.$refs.scrollContainer
-        const card = scrollContainer.firstElementChild
+        scrollContainer.value.scrollBy({ left: card.offsetWidth, behavior: 'smooth' }) // scrolls by the width of a card
+      }
+      function scrollPrev() {
+        const card = scrollContainer.value.firstElementChild
         if (!card) return
-        scrollContainer.scrollBy({ left: -card.offsetWidth, behavior: 'smooth' })
-      },
+        scrollContainer.value.scrollBy({ left: -card.offsetWidth, behavior: 'smooth' })
+      }
+      return { scrollContainer, scrollNext, scrollPrev }
     },
   }
 </script>

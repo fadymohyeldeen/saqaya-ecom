@@ -25,6 +25,8 @@
 
 <script>
   import { formatName } from '@/utils/formatters'
+  import { computed } from 'vue'
+  import { useRoute } from 'vue-router'
 
   export default {
     name: 'AppBreadcrumb',
@@ -34,9 +36,10 @@
         default: null,
       },
     },
-    computed: {
-      breadcrumbs() {
-        const urlSegments = this.$route.path.split('/').filter(Boolean)
+    setup(props) {
+      const route = useRoute()
+      const breadcrumbs = computed(() => {
+        const urlSegments = route.path.split('/').filter(Boolean)
         const crumbs = [{ label: 'Home', to: '/' }]
 
         urlSegments.forEach((segment, index) => {
@@ -44,13 +47,13 @@
           const label = formatName(segment)
 
           crumbs.push({
-            label: isLastSegment && this.productName ? this.productName : label,
+            label: isLastSegment && props.productName ? props.productName : label,
             to: isLastSegment ? null : '/' + urlSegments.slice(0, index + 1).join('/'),
           })
         })
-
         return crumbs
-      },
+      })
+      return { breadcrumbs }
     },
   }
 </script>

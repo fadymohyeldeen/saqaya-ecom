@@ -19,6 +19,8 @@
 </template>
 
 <script>
+  import { onMounted, ref, onBeforeUnmount } from 'vue'
+
   export default {
     name: 'DropdownMenu',
     props: {
@@ -26,30 +28,35 @@
       options: { type: Array, required: true },
       icon: { type: String, default: null },
     },
-    data() {
-      return {
-        isOpen: false,
+
+    setup(_, { emit }) {
+      const isOpen = ref(false)
+      const dropdownRef = ref(null)
+      onMounted(() => {
+        document.addEventListener('click', handleOutsideClick)
+      })
+      onBeforeUnmount(() => {
+        document.removeEventListener('click', handleOutsideClick)
+      })
+      function toggle() {
+        isOpen.value = !isOpen.value
       }
-    },
-    mounted() {
-      document.addEventListener('click', this.handleOutsideClick)
-    },
-    beforeUnmount() {
-      document.removeEventListener('click', this.handleOutsideClick)
-    },
-    methods: {
-      toggle() {
-        this.isOpen = !this.isOpen
-      },
-      select(option) {
-        this.$emit('select', option)
-        this.isOpen = false
-      },
-      handleOutsideClick(e) {
-        if (this.$refs.dropdownRef && !this.$refs.dropdownRef.contains(e.target)) {
-          this.isOpen = false
+      function select(option) {
+        emit('select', option)
+        isOpen.value = false
+      }
+      function handleOutsideClick(e) {
+        if (dropdownRef.value && !dropdownRef.value.contains(e.target)) {
+          isOpen.value = false
         }
-      },
+      }
+      return {
+        isOpen,
+        dropdownRef,
+        toggle,
+        select,
+        handleOutsideClick,
+      }
     },
   }
 </script>

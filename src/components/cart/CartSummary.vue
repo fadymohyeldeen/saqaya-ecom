@@ -28,25 +28,27 @@
   import ButtonApp from '@/components/shared/ButtonApp.vue'
   import ButtonTrash from '@/components/cart/ButtonTrash.vue'
   import { useCartStore } from '@/stores/cart'
+  import { computed } from 'vue'
 
   export default {
     name: 'CartSummary',
     components: { ButtonApp, ButtonTrash },
-    computed: {
-      cartStore() {
-        return useCartStore()
-      },
-      cartTotal() {
-        return this.cartStore.cartTotal.toFixed(2)
-      },
-      cartIsEmpty() {
-        return this.cartStore.cartItems.length === 0
-      },
-    },
-    methods: {
-      clearCart() {
-        this.cartStore.clearCart()
-      },
+    setup() {
+      const cartStore = useCartStore()
+      const cartTotal = computed(() => {
+        return cartStore.cartTotal.toFixed(2)
+      })
+      const cartIsEmpty = computed(() => {
+        return cartStore.cartItems.length === 0
+      })
+      function clearCart() {
+        cartStore.clearCart()
+      }
+      return {
+        cartTotal,
+        cartIsEmpty,
+        clearCart,
+      }
     },
   }
 </script>
