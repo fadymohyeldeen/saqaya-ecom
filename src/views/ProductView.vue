@@ -36,6 +36,8 @@
   import ProductSection from '@/components/shared/ProductSection.vue'
   import ErrorMessage from '@/components/shared/ErrorMessage.vue'
   import { useProductsStore } from '@/stores/products'
+  import { ref, computed, onMounted } from 'vue'
+  import { onBeforeRouteUpdate, useRoute } from 'vue-router'
 
   export default {
     name: 'ProductView',
@@ -46,49 +48,50 @@
       ProductSection,
       ErrorMessage,
     },
-    data() {
-      return {
-        selectedImage: 0,
-        quantity: 1,
+    setup() {
+      const selectedImage = ref(0)
+      const quantity = ref(1)
+      const route = useRoute()
+      const productsStore = useProductsStore()
+      const product = computed(() => {
+        return productsStore.selectedProduct
+      })
+      const relatedProducts = computed(() => {
+        return productsStore.relatedProducts
+      })
+      const isLoading = computed(() => {
+        return productsStore.isLoading
+      })
+      const category = computed(() => {
+        return productsStore.selectedProduct?.category
+      })
+
+      onMounted(async () => {
+        // first visit
+        await productsStore.getProductById(route.params.id)
+        await productsStore.getRelatedProducts(category.value)
+      })
+      onBeforeRouteUpdate(async (to, _from, next) => {
+        // when navigating between products
+        await productsStore.getProductById(to.params.id)
+        await productsStore.getRelatedProducts(category.value)
+        next()
+      })
+      function increaseQty() {
+        quantity.value++
       }
-    },
-    methods: {
-      increaseQty() {
-        this.quantity++
-      },
-      decreaseQty() {
-        if (this.quantity > 1) this.quantity--
-      },
-    },
-    async mounted() {
-      // first visit
-      await this.productsStore.getProductById(this.$route.params.id)
-      await this.productsStore.getRelatedProducts(this.category)
-    },
-
-    async beforeRouteUpdate(to, _from, next) {
-      // when navigating between products
-      await this.productsStore.getProductById(to.params.id)
-      await this.productsStore.getRelatedProducts(this.category)
-      next()
-    },
-
-    computed: {
-      productsStore() {
-        return useProductsStore()
-      },
-      product() {
-        return this.productsStore.selectedProduct
-      },
-      relatedProducts() {
-        return this.productsStore.relatedProducts
-      },
-      isLoading() {
-        return this.productsStore.isLoading
-      },
-      category() {
-        return this.productsStore.selectedProduct?.category
-      },
+      function decreaseQty() {
+        if (quantity.value > 1) quantity.value--
+      }
+      return {
+        selectedImage,
+        quantity,
+        product,
+        relatedProducts,
+        isLoading,
+        increaseQty,
+        decreaseQty,
+      }
     },
   }
 </script>
