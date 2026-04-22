@@ -1,12 +1,13 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { getFromLocalStorage, setToLocalStorage, removeFromLocalStorage } from '@/utils/storage'
+import type { CartItem } from '@/types/cart'
 
 export const useCartStore = defineStore('cart', () => {
   // --------------- State ------------------
   // ----------------------------------------
   // -------------- Cart Items --------------
-  const cartItems = ref(getFromLocalStorage('cartItems') || [])
+  const cartItems = ref<CartItem[]>(getFromLocalStorage('cartItems') || [])
 
   // --------------- Sidebar ----------------
   const isCartOpen = ref(false)
@@ -22,7 +23,7 @@ export const useCartStore = defineStore('cart', () => {
   // -------------- Actions -----------------
   // ----------------------------------------
   // -------------- Cart Items --------------
-  function addToCart({ newItem, quantity = 1 }) {
+  function addToCart({ newItem, quantity = 1 }: { newItem: CartItem; quantity?: number }) {
     isCartOpen.value = true
     const itemExists = cartItems.value.find(item => item.id === newItem.id)
     if (itemExists) {
@@ -33,12 +34,12 @@ export const useCartStore = defineStore('cart', () => {
     setToLocalStorage('cartItems', cartItems.value)
   }
 
-  function removeFromCart(itemId) {
+  function removeFromCart(itemId: number) {
     cartItems.value = cartItems.value.filter(item => item.id !== itemId)
     setToLocalStorage('cartItems', cartItems.value)
   }
 
-  function updateCartItemQuantity({ itemId, quantity }) {
+  function updateCartItemQuantity({ itemId, quantity }: { itemId: number; quantity: number }) {
     const item = cartItems.value.find(item => item.id === itemId)
     if (quantity === 0) {
       cartItems.value = cartItems.value.filter(item => item.id !== itemId)
