@@ -1,33 +1,34 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import api from '@/services/api'
+import type { Product } from '@/types/product'
 
 export const useProductsStore = defineStore('products', () => {
   // --------------- State ------------------
   // ----------------------------------------
   // ------------- Products Grid ------------
-  const products = ref([])
+  const products = ref<Product[]>([])
   const displayedProductsCount = ref(20)
   const totalProductsCount = ref(0)
 
   // ------------ Single Product ------------
-  const selectedProduct = ref(null)
-  const relatedProducts = ref([])
+  const selectedProduct = ref<Product | null>(null)
+  const relatedProducts = ref<Product[]>([])
 
   // ---------- Home Page Sections ----------
-  const categoryList = ref([])
-  const flashSaleProducts = ref([])
-  const exploreProducts = ref([])
+  const categoryList = ref<string[]>([])
+  const flashSaleProducts = ref<Product[]>([])
+  const exploreProducts = ref<Product[]>([])
 
   // ----------- Category Filter ------------
-  const selectedCategory = ref(null)
+  const selectedCategory = ref<string | null>(null)
 
   // ----------------- Sort -----------------
   const sortBy = ref('createdAt')
   const sortOrder = ref('desc')
 
   // ------------ Error Handling ------------
-  const error = ref(null)
+  const error = ref<string | null>(null)
 
   // --------------- Loading ----------------
   const isLoading = ref(false)
@@ -44,7 +45,7 @@ export const useProductsStore = defineStore('products', () => {
   // ------------- Products Grid ------------
   async function getProducts() {
     const params = new URLSearchParams({
-      limit: 40,
+      limit: '40',
       sortBy: sortBy.value,
       order: sortOrder.value,
     })
@@ -62,14 +63,14 @@ export const useProductsStore = defineStore('products', () => {
       isLoading.value = false
     } catch (err) {
       isLoading.value = false
-      error.value = err.message
+      error.value = err instanceof Error ? err.message : String(err)
     }
   }
 
   async function loadMoreProducts() {
     const params = new URLSearchParams({
-      limit: 20,
-      skip: products.value.length,
+      limit: '20',
+      skip: String(products.value.length),
       sortBy: sortBy.value,
       order: sortOrder.value,
     })
@@ -85,12 +86,12 @@ export const useProductsStore = defineStore('products', () => {
       displayedProductsCount.value += 20
       totalProductsCount.value = response.data.total
     } catch (err) {
-      error.value = err.message
+      error.value = err instanceof Error ? err.message : String(err)
     }
   }
 
   // ------------ Single Product ------------
-  async function getProductById(productId) {
+  async function getProductById(productId: number) {
     try {
       isLoading.value = true
       error.value = null
@@ -99,11 +100,11 @@ export const useProductsStore = defineStore('products', () => {
       isLoading.value = false
     } catch (err) {
       isLoading.value = false
-      error.value = err.message
+      error.value = err instanceof Error ? err.message : String(err)
     }
   }
 
-  async function getRelatedProducts(category) {
+  async function getRelatedProducts(category: string) {
     try {
       isLoading.value = true
       error.value = null
@@ -112,7 +113,7 @@ export const useProductsStore = defineStore('products', () => {
       isLoading.value = false
     } catch (err) {
       isLoading.value = false
-      error.value = err.message
+      error.value = err instanceof Error ? err.message : String(err)
     }
   }
 
@@ -126,7 +127,7 @@ export const useProductsStore = defineStore('products', () => {
       isLoading.value = false
     } catch (err) {
       isLoading.value = false
-      error.value = err.message
+      error.value = err instanceof Error ? err.message : String(err)
     }
   }
 
@@ -136,7 +137,7 @@ export const useProductsStore = defineStore('products', () => {
       const response = await api.get('/products/category-list')
       categoryList.value = response.data
     } catch (err) {
-      error.value = err.message
+      error.value = err instanceof Error ? err.message : String(err)
     }
   }
 
@@ -150,17 +151,17 @@ export const useProductsStore = defineStore('products', () => {
       isLoading.value = false
     } catch (err) {
       isLoading.value = false
-      error.value = err.message
+      error.value = err instanceof Error ? err.message : String(err)
     }
   }
 
   // ----------- Category & Sort ------------
-  function setCategory(category) {
+  function setCategory(category: string) {
     selectedCategory.value = category
     displayedProductsCount.value = 20
   }
 
-  function setSort({ sortBy: by, sortOrder: order }) {
+  function setSort({ sortBy: by, sortOrder: order }: { sortBy: string; sortOrder: string }) {
     sortBy.value = by
     sortOrder.value = order
     displayedProductsCount.value = 20
