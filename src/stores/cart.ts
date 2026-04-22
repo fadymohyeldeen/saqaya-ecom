@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { getFromLocalStorage, setToLocalStorage, removeFromLocalStorage } from '@/utils/storage'
 import type { CartItem } from '@/types/cart'
+import type { Product } from '@/types/product'
 
 export const useCartStore = defineStore('cart', () => {
   // --------------- State ------------------
@@ -23,7 +24,7 @@ export const useCartStore = defineStore('cart', () => {
   // -------------- Actions -----------------
   // ----------------------------------------
   // -------------- Cart Items --------------
-  function addToCart({ newItem, quantity = 1 }: { newItem: CartItem; quantity?: number }) {
+  function addToCart({ newItem, quantity = 1 }: { newItem: Product; quantity?: number }) {
     isCartOpen.value = true
     const itemExists = cartItems.value.find(item => item.id === newItem.id)
     if (itemExists) {
@@ -61,7 +62,6 @@ export const useCartStore = defineStore('cart', () => {
     isCartOpen.value = !isCartOpen.value
   }
 
-  // -------------- Return ---------------
   return {
     cartItems,
     isCartOpen,
