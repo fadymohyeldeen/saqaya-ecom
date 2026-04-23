@@ -1,3 +1,12 @@
+// What's tested:
+// - renders the cardItem
+// - links to the correct product page
+// - renders the correct product price
+// - renders the correct product quantity
+// - commits REMOVE_FROM_CART when remove button is clicked
+// - commits UPDATE_CART_ITEM_QUANTITY with quantity + 1 when increase is clicked
+// - commits UPDATE_CART_ITEM_QUANTITY with quantity - 1 when decrease is clicked
+
 import { shallowMount, RouterLinkStub } from '@vue/test-utils'
 import CartItem from '@/components/cart/CartItem.vue'
 import { useCartStore } from '@/stores/cart'

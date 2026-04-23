@@ -9,9 +9,13 @@ module.exports = {
     parser: '@typescript-eslint/parser',
   },
 
+  plugins: ['simple-import-sort'],
+
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
   },
 
   overrides: [

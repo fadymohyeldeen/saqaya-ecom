@@ -1,3 +1,6 @@
+<!-- Purpose: Renders a horizontal container of ProductCards with a SectionHeader.
+  Used In: src/views/HomeView.vue, src/views/ProductView.vue
+  Notes: Scrolls horizontally through products -->
 <template>
   <section class="products-section">
     <SectionHeader :label="label" :title="title" @next="scrollNext()" @prev="scrollPrev()" />
@@ -18,10 +21,11 @@
 </template>
 
 <script>
-  import SectionHeader from '@/components/shared/SectionHeader.vue'
-  import ProductCard from '@/components/shared/ProductCard.vue'
-  import ButtonApp from '@/components/shared/ButtonApp.vue'
   import { ref } from 'vue'
+
+  import ButtonApp from '@/components/shared/ButtonApp.vue'
+  import ProductCard from '@/components/shared/ProductCard.vue'
+  import SectionHeader from '@/components/shared/SectionHeader.vue'
 
   export default {
     name: 'ProductSection',

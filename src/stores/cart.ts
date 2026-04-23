@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
-import { getFromLocalStorage, setToLocalStorage, removeFromLocalStorage } from '@/utils/storage'
+import { computed, ref } from 'vue'
+
 import type { CartItem } from '@/types/cart'
 import type { Product } from '@/types/product'
+import { getFromLocalStorage, removeFromLocalStorage, setToLocalStorage } from '@/utils/storage'
 
 export const useCartStore = defineStore('cart', () => {
   // --------------- State ------------------
@@ -14,6 +15,7 @@ export const useCartStore = defineStore('cart', () => {
   const isCartOpen = ref(false)
 
   // ------------- Getters ------------------
+  // ----------------------------------------
   // ------------- Cart Totals --------------
   const cartItemsCount = computed(() =>
     cartItems.value.reduce((count, item) => count + item.quantity, 0)

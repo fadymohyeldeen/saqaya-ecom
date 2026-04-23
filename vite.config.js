@@ -11,10 +11,11 @@ export default defineConfig({
   },
   server: {
     proxy: {
+      // receives /api requests and forwards them to dummyjson to prevent CORS errors
       '/api': {
         target: 'https://dummyjson.com',
         changeOrigin: true,
-        rewrite: path => path.replace(/^\/api/, ''),
+        rewrite: path => path.replace(/^\/api/, ''), // replaces /api with nothing
       },
     },
   },

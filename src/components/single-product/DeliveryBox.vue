@@ -1,3 +1,5 @@
+<!-- Purpose: Displays static delivery features (Free Delivery, Return Delivery).
+  Used In: src/components/single-product/ProductInfo.vue -->
 <template>
   <div class="delivery-box">
     <div class="delivery-box__item">

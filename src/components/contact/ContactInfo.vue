@@ -1,3 +1,6 @@
+<!-- Purpose: Reusable info block component containing an icon slot, title, and body list.
+  Used In: src/components/contact/ContactForm.vue
+  Notes: Iterates through props to display info. -->
 <template>
   <div class="contact__info-block">
     <div class="contact__info-header">

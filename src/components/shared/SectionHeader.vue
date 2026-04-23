@@ -1,3 +1,6 @@
+<!-- Purpose: Displays a section label, optional title, and previous/next navigation buttons.
+  Used In: src/components/shared/ProductSection.vue, src/components/home/CategorySection.vue
+  Notes: Emits prev and next events for slider control. -->
 <template>
   <div class="section-header">
     <div class="section-header__tag">

@@ -1,3 +1,11 @@
+// What's tested:
+// - always renders 5 stars
+// - stars <= rating are filled orange #FFAD33
+// - stars > rating are filled black #000000
+// - shows reviews count when reviews prop is passed
+// - shows "No Reviews" when reviews prop is 0
+// - shows "No Reviews" when reviews prop is null
+
 import { shallowMount } from '@vue/test-utils'
 import StarRating from '@/components/shared/StarRating.vue'
 

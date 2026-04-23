@@ -30,14 +30,15 @@
 </template>
 
 <script>
+  import { computed, onMounted, ref } from 'vue'
+  import { onBeforeRouteUpdate, useRoute } from 'vue-router'
+
   import AppBreadcrumb from '@/components/shared/AppBreadcrumb.vue'
+  import ErrorMessage from '@/components/shared/ErrorMessage.vue'
+  import ProductSection from '@/components/shared/ProductSection.vue'
   import ProductGallery from '@/components/single-product/ProductGallery.vue'
   import ProductInfo from '@/components/single-product/ProductInfo.vue'
-  import ProductSection from '@/components/shared/ProductSection.vue'
-  import ErrorMessage from '@/components/shared/ErrorMessage.vue'
   import { useProductsStore } from '@/stores/products'
-  import { ref, computed, onMounted } from 'vue'
-  import { onBeforeRouteUpdate, useRoute } from 'vue-router'
 
   export default {
     name: 'ProductView',

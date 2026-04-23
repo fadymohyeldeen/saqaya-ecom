@@ -1,3 +1,6 @@
+<!-- Purpose: Clickable card displaying a formatted category name.
+  Used In: src/components/home/CategorySection.vue
+  Notes: Emits select event with category data. -->
 <template>
   <div class="category-card" @click="$emit('select', name)">
     <span class="category-card__name">{{ formatName(name) }}</span>

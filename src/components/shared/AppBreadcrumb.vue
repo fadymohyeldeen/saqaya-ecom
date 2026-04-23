@@ -1,3 +1,5 @@
+<!-- Purpose: Displays a dynamic navigation trail based on current Vue Router path.
+  Used In: src/views/AboutView.vue, src/views/ProductView.vue, src/views/ProductsView.vue, src/views/ErrorView.vue, src/views/ContactView.vue -->
 <template>
   <nav class="breadcrumb">
     <template v-for="(item, index) in breadcrumbs">
@@ -15,7 +17,7 @@
         :class="{ 'breadcrumb__item--muted': index < breadcrumbs.length - 1 }"
         >{{ item.label }}</span
       >
-      <!-- renderes / between items except the last one -->
+      <!-- renders / between items except the last one -->
       <span v-if="index < breadcrumbs.length - 1" :key="`sep-${index}`" class="breadcrumb__sep"
         >/</span
       >
@@ -24,9 +26,10 @@
 </template>
 
 <script>
-  import { formatName } from '@/utils/formatters'
   import { computed } from 'vue'
   import { useRoute } from 'vue-router'
+
+  import { formatName } from '@/utils/formatters'
 
   export default {
     name: 'AppBreadcrumb',
@@ -39,16 +42,16 @@
     setup(props) {
       const route = useRoute()
       const breadcrumbs = computed(() => {
-        const urlSegments = route.path.split('/').filter(Boolean)
-        const crumbs = [{ label: 'Home', to: '/' }]
+        const urlSegments = route.path.split('/').filter(Boolean) // splits the current path into segments and removes empty strings
+        const crumbs = [{ label: 'Home', to: '/' }] // always starts with home
 
         urlSegments.forEach((segment, index) => {
           const isLastSegment = index === urlSegments.length - 1
-          const label = formatName(segment)
+          const label = formatName(segment) // removes hyphens and capitalizes
 
           crumbs.push({
-            label: isLastSegment && props.productName ? props.productName : label,
-            to: isLastSegment ? null : '/' + urlSegments.slice(0, index + 1).join('/'),
+            label: isLastSegment && props.productName ? props.productName : label, // uses productName on last segment if its a product page
+            to: isLastSegment ? null : '/' + urlSegments.slice(0, index + 1).join('/'), // adds a link to the current segment if its not the last one
           })
         })
         return crumbs
@@ -77,6 +80,7 @@
   .breadcrumb__item--muted {
     opacity: 0.5;
   }
+
   .breadcrumb__item--muted:hover {
     color: var(--color-primary);
     opacity: 1;

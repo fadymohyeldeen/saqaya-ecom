@@ -1,3 +1,10 @@
+// What's tested:
+// - renders a <router-link> when `to` prop is passed
+// - renders a <button> when no `to` prop is passed
+// - renders the correct label text
+// - emits click event when button is clicked
+// - button has disabled attribute when disabled prop is true
+
 import { shallowMount, RouterLinkStub } from '@vue/test-utils'
 import ButtonApp from '@/components/shared/ButtonApp.vue'
 

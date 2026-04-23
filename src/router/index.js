@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
 import HomeView from '@/views/HomeView.vue'
 
 const router = createRouter({
@@ -7,16 +8,15 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView, // eager loading
+      component: HomeView,
       meta: {
         layout: 'DefaultLayout',
       },
     },
-    // used eager loading for home and lazy loading for others for performance
     {
       path: '/products',
       name: 'products',
-      component: () => import('@/views/ProductsView.vue'), // lazy loadings
+      component: () => import('@/views/ProductsView.vue'),
     },
     {
       path: '/products/:id',

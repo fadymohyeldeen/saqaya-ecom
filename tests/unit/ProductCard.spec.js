@@ -1,3 +1,16 @@
+// What's tested:
+// - skeleton renders when isLoading: true
+// - product card renders when isLoading: false
+// - product name matches prop
+// - product thumbnail matches prop
+// - discount badge visible when discountPercentage > 0
+// - discount badge hidden when discountPercentage is 0
+// - original price hidden when no discount
+// - original price visible when discountPercentage > 0
+// - priceAfterDiscount computed calculates correctly
+// - priceAfterDiscount returns null when product is null
+// - addToCart commits to Vuex with correct payload
+
 import { shallowMount } from '@vue/test-utils'
 import ProductCard from '@/components/shared/ProductCard.vue'
 import { useCartStore } from '@/stores/cart'

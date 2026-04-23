@@ -1,3 +1,5 @@
+<!-- Purpose: Generic input wrapper that can render as a standard text input or textarea.
+  Used In: src/components/contact/ContactForm.vue -->
 <template>
   <div class="input-field">
     <textarea

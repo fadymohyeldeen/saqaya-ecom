@@ -1,3 +1,6 @@
+<!-- Purpose: Displays a single item row inside the cart sidebar with an image, remove button, and price link.
+  Used In: src/components/cart/CartSidebar.vue
+  Notes: Connects to useCartStore to Increase/Decrease/Remove items in cart. -->
 <template>
   <div class="cart-item">
     <button class="cart-item__remove" aria-label="Remove item" @click="removeItem">

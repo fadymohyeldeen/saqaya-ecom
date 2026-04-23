@@ -1,3 +1,5 @@
+<!-- Purpose: Displays an alert box with an error icon and formatted text message.
+  Used In: src/views/ProductView.vue, src/views/ProductsView.vue -->
 <template>
   <div class="error-message" role="alert">
     <img src="@/assets/icons/shared/icon-error.svg" alt="" class="error-message__icon" />

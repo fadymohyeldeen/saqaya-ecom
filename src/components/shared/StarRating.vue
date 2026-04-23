@@ -1,3 +1,6 @@
+<!-- Purpose: Renders an SVG-based 5-star rating graphic.
+  Used In: src/components/shared/ProductCard.vue, src/components/single-product/ProductInfo.vue
+  Notes: Requires rating prop, optional reviews count. -->
 <template>
   <div class="star-rating">
     <div class="star-rating__stars">

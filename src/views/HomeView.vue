@@ -31,13 +31,14 @@
 </template>
 
 <script>
-  import HeroBanner from '@/components/home/HeroBanner.vue'
-  import CategorySection from '@/components/home/CategorySection.vue'
-  import ServiceItems from '@/components/shared/ServiceItems.vue'
-  import ProductSection from '@/components/shared/ProductSection.vue'
-  import { SERVICES } from '@/utils/constants'
-  import { useProductsStore } from '@/stores/products'
   import { computed, onMounted } from 'vue'
+
+  import CategorySection from '@/components/home/CategorySection.vue'
+  import HeroBanner from '@/components/home/HeroBanner.vue'
+  import ProductSection from '@/components/shared/ProductSection.vue'
+  import ServiceItems from '@/components/shared/ServiceItems.vue'
+  import { useProductsStore } from '@/stores/products'
+  import { SERVICES } from '@/utils/constants'
 
   export default {
     name: 'HomeView',

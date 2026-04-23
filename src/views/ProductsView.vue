@@ -28,17 +28,18 @@
 </template>
 
 <script>
-  import { formatName } from '@/utils/formatters'
-  import { SORT_OPTIONS } from '@/utils/constants'
+  import { computed, onMounted } from 'vue'
+  import { onBeforeRouteUpdate, useRoute, useRouter } from 'vue-router'
+
+  import filterIcon from '@/assets/icons/products/icon-filter.svg'
   import AppBreadcrumb from '@/components/shared/AppBreadcrumb.vue'
   import ButtonApp from '@/components/shared/ButtonApp.vue'
-  import ProductCard from '@/components/shared/ProductCard.vue'
-  import ErrorMessage from '@/components/shared/ErrorMessage.vue'
   import DropdownMenu from '@/components/shared/DropdownMenu.vue'
-  import filterIcon from '@/assets/icons/products/icon-filter.svg'
+  import ErrorMessage from '@/components/shared/ErrorMessage.vue'
+  import ProductCard from '@/components/shared/ProductCard.vue'
   import { useProductsStore } from '@/stores/products'
-  import { onMounted, computed } from 'vue'
-  import { onBeforeRouteUpdate, useRoute, useRouter } from 'vue-router'
+  import { SORT_OPTIONS } from '@/utils/constants'
+  import { formatName } from '@/utils/formatters'
 
   export default {
     name: 'ProductsView',

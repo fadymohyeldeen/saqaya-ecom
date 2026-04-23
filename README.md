@@ -17,19 +17,53 @@ An e-commerce web app built with Vue 3.
 
 ## Core Features
 
-- Homepage with hero banner, flash sales, and category browsing.
 - Product listing with category filter, sort, and load more pagination.
 - Product detail page with image gallery, rating, and reviews.
-- Add to cart from any product card or detail page.
 - Cart sidebar with quantity controls and persistent localStorage state.
 - Skeleton loading and error states across all views.
 - Responsive, mobile-first layout.
 
 ---
 
+## Architecture
+
+```
+src/
+├── assets/         ← Icons and images (grouped by page/component)
+├── components/     ← UI components (grouped by page/component)
+├── layouts/        ← Page layout wrappers
+├── router/         ← Route definitions
+├── services/       ← Axios instance
+├── stores/         ← Pinia stores (cart, products)
+├── styles/         ← Global CSS Variables, Typography, Reset
+├── types/          ← TypeScript interfaces (cart, products)
+├── utils/          ← Static content & helper functions
+└── views/          ← Pages (one view per route)
+```
+
+---
+
 ## Getting Started
 
-```bash
-npm install
-npm run dev
-```
+**Prerequisites:** Node.js 18+
+| Script | Description |
+| ------------------- | ------------------------------ |
+| `npm install` | Install dependencies |
+| `npm run dev` | Start development server |
+| `npm run format` | Format all files with Prettier |
+| `npm run test:unit` | Run unit tests |
+
+---
+
+## Environment Variables
+
+| Variable            | Description               |
+| ------------------- | ------------------------- |
+| `VITE_API_BASE_URL` | Base URL for API requests |
+
+## Env Files
+
+| File               | Purpose                                              |
+| ------------------ | ---------------------------------------------------- |
+| `.env.development` | proxies requests through Vite (`/api`) to avoid CORS |
+| `.env.production`  | points directly to `https://dummyjson.com`           |

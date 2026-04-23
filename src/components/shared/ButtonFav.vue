@@ -1,3 +1,5 @@
+<!-- Purpose: Action button with a heart icon for favorites.
+  Used In: src/components/shared/ProductCard.vue, src/components/single-product/ProductActions.vue -->
 <template>
   <button class="fav-btn" aria-label="Add to favourites" @click.prevent>
     <svg width="34" height="34" viewBox="0 0 34 34" fill="none">

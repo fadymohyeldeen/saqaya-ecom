@@ -1,3 +1,8 @@
+// What's tested:
+// - shows "Cart is empty.." when cartItems is []
+// - renders a CartItem for each item in the store
+// - calls toggleCart when close button is clicked
+
 import { shallowMount } from '@vue/test-utils'
 import CartSidebar from '@/components/cart/CartSidebar.vue'
 import CartItem from '@/components/cart/CartItem.vue'
@@ -15,12 +20,12 @@ describe('CartSidebar', () => {
     jest.spyOn(store, 'toggleCart')
   })
 
-  // -------------- Empty State --------------
+  // -------------- Empty State -------------
   it('shows "Cart is empty.." when cartItems is []', () => {
     expect(wrapper.text()).toContain('Cart is empty..')
   })
 
-  // --------------- Cart Items --------------
+  // -------------- Cart Items --------------
   it('renders a CartItem for each item in the store', async () => {
     const cartItems = [
       {
@@ -41,7 +46,7 @@ describe('CartSidebar', () => {
     expect(wrapper.findAllComponents(CartItem).length).toBe(cartItems.length)
   })
 
-  // -------------- Close Button -------------
+  // ------------- Close Button -------------
   it('calls toggleCart when close button is clicked', async () => {
     await closeSidebarButton.trigger('click')
     expect(store.toggleCart).toHaveBeenCalled()

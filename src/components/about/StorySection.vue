@@ -1,3 +1,5 @@
+<!-- Purpose: Renders the "Our Story" section in About page.
+  Used In: src/views/AboutView.vue -->
 <template>
   <section class="our-story">
     <div class="our-story__text">

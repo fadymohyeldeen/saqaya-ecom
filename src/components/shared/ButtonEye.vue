@@ -1,3 +1,5 @@
+<!-- Purpose: Action button with an eye icon.
+  Used In: src/components/shared/ProductCard.vue -->
 <template>
   <button class="eye-btn" aria-label="Quick view" @click.prevent>
     <svg width="34" height="34" viewBox="0 0 34 34" fill="none">

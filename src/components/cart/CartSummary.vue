@@ -1,3 +1,6 @@
+<!-- Purpose: Displays the subtotal, shipping, total price, and checkout actions for the cart.
+  Used In: src/components/cart/CartSidebar.vue
+  Notes: calculates total price -->
 <template>
   <div class="cart-summary">
     <div class="cart-summary__row">
@@ -25,10 +28,11 @@
 </template>
 
 <script>
-  import ButtonApp from '@/components/shared/ButtonApp.vue'
-  import ButtonTrash from '@/components/cart/ButtonTrash.vue'
-  import { useCartStore } from '@/stores/cart'
   import { computed } from 'vue'
+
+  import ButtonTrash from '@/components/cart/ButtonTrash.vue'
+  import ButtonApp from '@/components/shared/ButtonApp.vue'
+  import { useCartStore } from '@/stores/cart'
 
   export default {
     name: 'CartSummary',

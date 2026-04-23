@@ -1,7 +1,8 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
+
 import api from '@/services/api'
-import type { Product } from '@/types/product'
+import type { Product, ProductsResponse } from '@/types/product'
 
 export const useProductsStore = defineStore('products', () => {
   // --------------- State ------------------
@@ -15,7 +16,7 @@ export const useProductsStore = defineStore('products', () => {
   const selectedProduct = ref<Product | null>(null)
   const relatedProducts = ref<Product[]>([])
 
-  // ---------- Home Page Sections ----------
+  // ---------- Home Sections ----------
   const categoryList = ref<string[]>([])
   const flashSaleProducts = ref<Product[]>([])
   const exploreProducts = ref<Product[]>([])
@@ -57,7 +58,7 @@ export const useProductsStore = defineStore('products', () => {
     try {
       isLoading.value = true
       error.value = null
-      const response = await api.get(url)
+      const response = await api.get<ProductsResponse>(url)
       products.value = response.data.products
       totalProductsCount.value = response.data.total
       isLoading.value = false
@@ -81,7 +82,7 @@ export const useProductsStore = defineStore('products', () => {
 
     try {
       error.value = null
-      const response = await api.get(url)
+      const response = await api.get<ProductsResponse>(url)
       products.value = [...products.value, ...response.data.products]
       displayedProductsCount.value += 20
       totalProductsCount.value = response.data.total
@@ -95,7 +96,7 @@ export const useProductsStore = defineStore('products', () => {
     try {
       isLoading.value = true
       error.value = null
-      const response = await api.get(`/products/${productId}`)
+      const response = await api.get<Product>(`/products/${productId}`)
       selectedProduct.value = response.data
       isLoading.value = false
     } catch (err) {
@@ -108,7 +109,7 @@ export const useProductsStore = defineStore('products', () => {
     try {
       isLoading.value = true
       error.value = null
-      const response = await api.get(`/products/category/${category}?limit=8`)
+      const response = await api.get<ProductsResponse>(`/products/category/${category}?limit=8`)
       relatedProducts.value = response.data.products
       isLoading.value = false
     } catch (err) {
@@ -122,7 +123,9 @@ export const useProductsStore = defineStore('products', () => {
     try {
       isLoading.value = true
       error.value = null
-      const response = await api.get('/products?limit=8&sortBy=discountPercentage&order=desc')
+      const response = await api.get<ProductsResponse>(
+        '/products?limit=8&sortBy=discountPercentage&order=desc'
+      )
       flashSaleProducts.value = response.data.products
       isLoading.value = false
     } catch (err) {
@@ -134,7 +137,7 @@ export const useProductsStore = defineStore('products', () => {
   async function getCategoryList() {
     try {
       error.value = null
-      const response = await api.get('/products/category-list')
+      const response = await api.get<string[]>('/products/category-list')
       categoryList.value = response.data
     } catch (err) {
       error.value = err instanceof Error ? err.message : String(err)
@@ -146,7 +149,7 @@ export const useProductsStore = defineStore('products', () => {
       isLoading.value = true
       error.value = null
       const skip = Math.floor(Math.random() * 100)
-      const response = await api.get(`/products?limit=8&skip=${skip}`)
+      const response = await api.get<ProductsResponse>(`/products?limit=8&skip=${skip}`)
       exploreProducts.value = response.data.products
       isLoading.value = false
     } catch (err) {

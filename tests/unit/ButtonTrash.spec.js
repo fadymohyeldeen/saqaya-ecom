@@ -1,3 +1,8 @@
+// What's tested:
+// - renders the trash button
+// - emits click when button is clicked
+// - has disabled attribute when disabled prop is true
+
 import { shallowMount } from '@vue/test-utils'
 import ButtonTrash from '@/components/cart/ButtonTrash.vue'
 

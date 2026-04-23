@@ -1,3 +1,5 @@
+<!-- Purpose: Renders the site-wide footer.
+  Used In: src/layouts/DefaultLayout.vue -->
 <template>
   <footer class="footer">
     <div class="footer__container">
@@ -81,13 +83,13 @@
 </template>
 
 <script>
+  import appStore from '@/assets/icons/footer/icon-app-store.svg'
   import facebook from '@/assets/icons/footer/icon-facebook.svg'
-  import twitter from '@/assets/icons/footer/icon-twitter.svg'
+  import googlePlay from '@/assets/icons/footer/icon-google-play.svg'
   import instagram from '@/assets/icons/footer/icon-instagram.svg'
   import linkedin from '@/assets/icons/footer/icon-linkedin.svg'
   import qrCode from '@/assets/icons/footer/icon-qr.svg'
-  import googlePlay from '@/assets/icons/footer/icon-google-play.svg'
-  import appStore from '@/assets/icons/footer/icon-app-store.svg'
+  import twitter from '@/assets/icons/footer/icon-twitter.svg'
 
   export default {
     name: 'AppFooter',

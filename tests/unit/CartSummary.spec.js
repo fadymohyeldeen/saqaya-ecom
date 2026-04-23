@@ -1,3 +1,9 @@
+// What's tested:
+// - renders the actual cart total
+// - cartIsEmpty is true when cartItems is empty
+// - cartIsEmpty is false when cartItems has items
+// - commits CLEAR_CART when clearCart is called
+
 import { shallowMount } from '@vue/test-utils'
 import CartSummary from '@/components/cart/CartSummary.vue'
 import { useCartStore } from '@/stores/cart'

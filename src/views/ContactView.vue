@@ -12,8 +12,8 @@
 </template>
 
 <script>
-  import AppBreadcrumb from '@/components/shared/AppBreadcrumb.vue'
   import ContactForm from '@/components/contact/ContactForm.vue'
+  import AppBreadcrumb from '@/components/shared/AppBreadcrumb.vue'
 
   export default {
     name: 'ContactView',
