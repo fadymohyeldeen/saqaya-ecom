@@ -31,6 +31,7 @@
 
 <script setup>
   import SkeletonBox from '@/components/shared/SkeletonBox.vue'
+  import { defineProps, defineEmits } from 'vue'
 
   const props = defineProps({
     isLoading: {

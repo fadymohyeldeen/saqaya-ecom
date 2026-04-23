@@ -54,6 +54,7 @@
   import DeliveryBox from '@/components/single-product/DeliveryBox.vue'
   import ProductActions from '@/components/single-product/ProductActions.vue'
   import { formatName } from '@/utils/formatters'
+  import { defineProps, defineEmits } from 'vue'
 
   const props = defineProps({
     isLoading: {
@@ -69,7 +70,7 @@
       default: 1,
     },
   })
-  const emit = defineEmits[('increase-qty', 'decrease-qty')]
+  const emit = defineEmits(['increase-qty', 'decrease-qty'])
 </script>
 
 <style scoped>

@@ -64,6 +64,8 @@
   })
   onBeforeRouteUpdate(async (to, _from, next) => {
     // when navigating between products
+    selectedImage.value = 0
+    quantity.value = 1
     await productsStore.getProductById(to.params.id)
     await productsStore.getRelatedProducts(category.value)
     next()

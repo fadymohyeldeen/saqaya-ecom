@@ -11,6 +11,7 @@ export const useProductsStore = defineStore('products', () => {
   const products = ref<Product[]>([])
   const displayedProductsCount = ref(20)
   const totalProductsCount = ref(0)
+  const isLoadingMore = ref(false)
 
   // ------------ Single Product ------------
   const selectedProduct = ref<Product | null>(null)
@@ -69,6 +70,9 @@ export const useProductsStore = defineStore('products', () => {
   }
 
   async function loadMoreProducts() {
+    if (isLoadingMore.value) return
+    isLoadingMore.value = true
+
     const params = new URLSearchParams({
       limit: '20',
       skip: String(products.value.length),
@@ -86,7 +90,9 @@ export const useProductsStore = defineStore('products', () => {
       products.value = [...products.value, ...response.data.products]
       displayedProductsCount.value += 20
       totalProductsCount.value = response.data.total
+      isLoadingMore.value = false
     } catch (err) {
+      isLoadingMore.value = false
       error.value = err instanceof Error ? err.message : String(err)
     }
   }
@@ -195,5 +201,6 @@ export const useProductsStore = defineStore('products', () => {
     getExploreProducts,
     setCategory,
     setSort,
+    isLoadingMore,
   }
 })

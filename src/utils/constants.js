@@ -4,6 +4,36 @@ import moneyIcon from '@/assets/icons/about/icon-money-bag.svg'
 import sellerIcon from '@/assets/icons/about/icon-sellers.svg'
 import cartIcon from '@/assets/icons/header/icon-cart.svg'
 
+// ------------- Hero Slides -------------
+export const slides = [
+  {
+    imageBg: 'https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=800&q=80',
+    brandName: 'iPhone 14 Series',
+    title: 'Up to 10% off Voucher',
+  },
+  {
+    imageBg:
+      'https://www.m1.com.sg/content/dam/M1/hero-banner-carousel/2025/jan/samsung/pre/21125/new/1440x520.png',
+    brandName: 'Samsung Galaxy Series',
+    title: 'Up to 15% off Today',
+  },
+  {
+    imageBg: 'https://techlingo.co/wp-content/uploads/2018/10/OnePlus-6T-Banner-1500x500.jpg',
+    brandName: 'OnePlus Series',
+    title: 'Best Deals Week',
+  },
+  {
+    imageBg: 'https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=800&q=80',
+    brandName: 'Nothing Phone Series',
+    title: 'Up to 20% off Voucher',
+  },
+  {
+    imageBg: 'https://images.unsplash.com/photo-1580910051074-3eb694886505?w=800&q=80',
+    brandName: 'Xiaomi Series',
+    title: 'Up to 25% off Voucher',
+  },
+]
+
 // --------------- Services ---------------
 export const SERVICES = [
   {

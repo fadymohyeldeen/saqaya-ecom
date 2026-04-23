@@ -20,16 +20,13 @@
 </template>
 
 <script setup>
-  import { computed } from 'vue'
-
   import CartItem from '@/components/cart/CartItem.vue'
   import CartSummary from '@/components/cart/CartSummary.vue'
   import { useCartStore } from '@/stores/cart'
+  import { storeToRefs } from 'pinia'
 
   const cartStore = useCartStore()
-  const cartItems = computed(() => {
-    return cartStore.cartItems
-  })
+  const { cartItems } = storeToRefs(cartStore)
   function toggleCart() {
     cartStore.toggleCart()
   }

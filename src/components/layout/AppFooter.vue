@@ -27,7 +27,7 @@
         <h3 class="footer__heading">Account</h3>
         <ul class="footer__list">
           <li v-for="link in accountLinks" :key="link.label">
-            <a :href="link.path" :aria-label="link.label">
+            <a :href="link.path" :aria-label="link.label" @click.prevent>
               {{ link.label }}
             </a>
           </li>
@@ -39,7 +39,7 @@
         <h3 class="footer__heading">Quick Link</h3>
         <ul class="footer__list">
           <li v-for="link in quickLinks" :key="link.label">
-            <a :href="link.path">{{ link.label }}</a>
+            <router-link :to="link.path">{{ link.label }}</router-link>
           </li>
         </ul>
       </div>
@@ -69,6 +69,7 @@
             :key="social.alt"
             :href="social.path"
             :aria-label="social.alt"
+            @click.prevent
           >
             <img :src="social.src" :alt="social.alt" />
           </a>

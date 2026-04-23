@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-  import { onBeforeUnmount, onMounted, ref } from 'vue'
+  import { onBeforeUnmount, onMounted, ref, defineProps, defineEmits } from 'vue'
 
   const props = defineProps({
     label: { type: String, default: '' },

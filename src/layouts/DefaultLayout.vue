@@ -12,15 +12,12 @@
 </template>
 
 <script setup>
-  import { computed } from 'vue'
-
   import CartSidebar from '@/components/cart/CartSidebar.vue'
   import AppFooter from '@/components/layout/AppFooter.vue'
   import AppHeader from '@/components/layout/AppHeader.vue'
   import { useCartStore } from '@/stores/cart'
+  import { storeToRefs } from 'pinia'
 
   const cartStore = useCartStore()
-  const isCartOpen = computed(() => {
-    return cartStore.isCartOpen
-  })
+  const { isCartOpen } = storeToRefs(cartStore)
 </script>

@@ -21,7 +21,12 @@
       </div>
 
       <div class="products__load-more">
-        <ButtonApp v-if="hasMoreProducts" label="Load More ..." @click="loadMore" />
+        <ButtonApp
+          v-if="hasMoreProducts"
+          label="Load More ..."
+          :disabled="isLoadingMore"
+          @click="loadMore"
+        />
       </div>
     </div>
   </div>
@@ -50,6 +55,7 @@
   const categories = computed(() => productsStore.categoryList)
   const error = computed(() => productsStore.error)
   const isLoading = computed(() => productsStore.isLoading)
+  const isLoadingMore = computed(() => productsStore.isLoadingMore)
 
   const hasMoreProducts = computed(() => {
     return productsStore.totalProductsCount > products.value.length

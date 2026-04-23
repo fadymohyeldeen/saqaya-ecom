@@ -36,6 +36,7 @@
   import { ref } from 'vue'
 
   import { useCartStore } from '@/stores/cart'
+
   const menuOpen = ref(false)
   const cartStore = useCartStore()
   function toggleCart() {

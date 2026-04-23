@@ -8,6 +8,7 @@
 </template>
 
 <script setup>
+  import { defineProps, defineEmits } from 'vue'
   import { formatName } from '@/utils/formatters'
 
   const props = defineProps({

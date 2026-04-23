@@ -15,3 +15,14 @@
     padding: 40px var(--container-padding);
   }
 }
+
+/* Cart Sidebar Transitions */
+.cart-slide-enter-active,
+.cart-slide-leave-active {
+  transition: transform 0.3s ease;
+}
+
+.cart-slide-enter-from,
+.cart-slide-leave-to {
+  transform: translateX(100%);
+}

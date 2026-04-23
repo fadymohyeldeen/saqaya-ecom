@@ -32,6 +32,7 @@
   import ButtonApp from '@/components/shared/ButtonApp.vue'
   import ButtonFav from '@/components/shared/ButtonFav.vue'
   import { useCartStore } from '@/stores/cart'
+  import { defineProps, defineEmits } from 'vue'
 
   const props = defineProps({
     product: {
