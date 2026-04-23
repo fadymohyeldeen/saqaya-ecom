@@ -53,7 +53,7 @@ src/
 | `/contact`        | `contact`   | `ContactView.vue`  | Yes  |                              |
 | `/:pathMatch(.*)` | `not-found` | `ErrorView.vue`    | Yes  | Catches all unmatched routes |
 
-## ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| State Management
+## ||||||||||||||||||||||||||||||||||||||||||||||||| State Management
 
 Two Pinia stores:
 
