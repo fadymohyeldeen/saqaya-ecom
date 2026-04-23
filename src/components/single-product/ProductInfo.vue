@@ -48,35 +48,28 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import SkeletonBox from '@/components/shared/SkeletonBox.vue'
   import StarRating from '@/components/shared/StarRating.vue'
   import DeliveryBox from '@/components/single-product/DeliveryBox.vue'
   import ProductActions from '@/components/single-product/ProductActions.vue'
   import { formatName } from '@/utils/formatters'
 
-  export default {
-    name: 'ProductInfo',
-    components: { StarRating, ProductActions, DeliveryBox, SkeletonBox },
-    props: {
-      isLoading: {
-        type: Boolean,
-        default: false,
-      },
-      product: {
-        type: Object,
-        default: null,
-      },
-      quantity: {
-        type: Number,
-        default: 1,
-      },
+  const props = defineProps({
+    isLoading: {
+      type: Boolean,
+      default: false,
     },
-    emits: ['increase-qty', 'decrease-qty'],
-    methods: {
-      formatName,
+    product: {
+      type: Object,
+      default: null,
     },
-  }
+    quantity: {
+      type: Number,
+      default: 1,
+    },
+  })
+  const emit = defineEmits[('increase-qty', 'decrease-qty')]
 </script>
 
 <style scoped>

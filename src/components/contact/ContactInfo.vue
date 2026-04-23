@@ -15,20 +15,17 @@
   </div>
 </template>
 
-<script>
-  export default {
-    name: 'ContactInfo',
-    props: {
-      title: {
-        type: String,
-        required: true,
-      },
-      body: {
-        type: Array,
-        required: true,
-      },
+<script setup>
+  const props = defineProps({
+    title: {
+      type: String,
+      required: true,
     },
-  }
+    body: {
+      type: Array,
+      required: true,
+    },
+  })
 </script>
 
 <style scoped>

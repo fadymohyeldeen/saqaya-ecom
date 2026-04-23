@@ -24,12 +24,6 @@
   </section>
 </template>
 
-<script>
-  export default {
-    name: 'StorySection',
-  }
-</script>
-
 <style scoped>
   .our-story {
     display: flex;

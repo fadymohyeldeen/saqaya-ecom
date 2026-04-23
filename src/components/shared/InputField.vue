@@ -12,24 +12,21 @@
   </div>
 </template>
 
-<script>
-  export default {
-    name: 'InputField',
-    props: {
-      type: {
-        type: String,
-        default: 'text',
-      },
-      name: {
-        type: String,
-        default: null,
-      },
-      placeholder: {
-        type: String,
-        default: '',
-      },
+<script setup>
+  const props = defineProps({
+    type: {
+      type: String,
+      default: 'text',
     },
-  }
+    name: {
+      type: String,
+      default: null,
+    },
+    placeholder: {
+      type: String,
+      default: '',
+    },
+  })
 </script>
 
 <style scoped>

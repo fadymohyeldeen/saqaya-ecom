@@ -22,12 +22,6 @@
   </div>
 </template>
 
-<script>
-  export default {
-    name: 'DeliveryBox',
-  }
-</script>
-
 <style scoped>
   .delivery-box {
     max-width: 100%;

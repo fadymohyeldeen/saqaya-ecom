@@ -21,47 +21,36 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import { onBeforeUnmount, onMounted, ref } from 'vue'
 
-  export default {
-    name: 'DropdownMenu',
-    props: {
-      label: { type: String, default: '' },
-      options: { type: Array, required: true },
-      icon: { type: String, default: null },
-    },
+  const props = defineProps({
+    label: { type: String, default: '' },
+    options: { type: Array, required: true },
+    icon: { type: String, default: null },
+  })
 
-    setup(_, { emit }) {
-      const isOpen = ref(false)
-      const dropdownRef = ref(null)
-      onMounted(() => {
-        document.addEventListener('click', handleOutsideClick)
-      })
-      onBeforeUnmount(() => {
-        document.removeEventListener('click', handleOutsideClick)
-      })
-      function toggle() {
-        isOpen.value = !isOpen.value
-      }
-      function select(option) {
-        emit('select', option)
-        isOpen.value = false
-      }
-      function handleOutsideClick(e) {
-        if (dropdownRef.value && !dropdownRef.value.contains(e.target)) {
-          isOpen.value = false
-        }
-      }
-      return {
-        isOpen,
-        dropdownRef,
-        toggle,
-        select,
-        handleOutsideClick,
-      }
-    },
+  const isOpen = ref(false)
+  const dropdownRef = ref(null)
+  onMounted(() => {
+    document.addEventListener('click', handleOutsideClick)
+  })
+  onBeforeUnmount(() => {
+    document.removeEventListener('click', handleOutsideClick)
+  })
+  function toggle() {
+    isOpen.value = !isOpen.value
   }
+  function select(option) {
+    emit('select', option)
+    isOpen.value = false
+  }
+  function handleOutsideClick(e) {
+    if (dropdownRef.value && !dropdownRef.value.contains(e.target)) {
+      isOpen.value = false
+    }
+  }
+  const emit = defineEmits(['select'])
 </script>
 
 <style scoped>

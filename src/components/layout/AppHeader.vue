@@ -32,23 +32,14 @@
   </header>
 </template>
 
-<script>
+<script setup>
   import { ref } from 'vue'
 
   import { useCartStore } from '@/stores/cart'
-  export default {
-    name: 'AppHeader',
-    setup() {
-      const menuOpen = ref(false)
-      const cartStore = useCartStore()
-      function toggleCart() {
-        cartStore.toggleCart()
-      }
-      return {
-        menuOpen,
-        toggleCart,
-      }
-    },
+  const menuOpen = ref(false)
+  const cartStore = useCartStore()
+  function toggleCart() {
+    cartStore.toggleCart()
   }
 </script>
 

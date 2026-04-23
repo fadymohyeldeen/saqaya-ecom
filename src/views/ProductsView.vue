@@ -27,7 +27,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import { computed, onMounted } from 'vue'
   import { onBeforeRouteUpdate, useRoute, useRouter } from 'vue-router'
 
@@ -41,74 +41,50 @@
   import { SORT_OPTIONS } from '@/utils/constants'
   import { formatName } from '@/utils/formatters'
 
-  export default {
-    name: 'ProductsView',
-    components: {
-      AppBreadcrumb,
-      ButtonApp,
-      ProductCard,
-      ErrorMessage,
-      DropdownMenu,
-    },
-    setup() {
-      const route = useRoute()
-      const router = useRouter()
-      const sortOptions = SORT_OPTIONS
-      const productsStore = useProductsStore()
+  const route = useRoute()
+  const router = useRouter()
+  const sortOptions = SORT_OPTIONS
+  const productsStore = useProductsStore()
 
-      const products = computed(() => productsStore.displayedProducts)
-      const categories = computed(() => productsStore.categoryList)
-      const error = computed(() => productsStore.error)
-      const isLoading = computed(() => productsStore.isLoading)
+  const products = computed(() => productsStore.displayedProducts)
+  const categories = computed(() => productsStore.categoryList)
+  const error = computed(() => productsStore.error)
+  const isLoading = computed(() => productsStore.isLoading)
 
-      const hasMoreProducts = computed(() => {
-        return productsStore.totalProductsCount > products.value.length
-      })
-      const filterOptions = computed(() => {
-        const all = [{ label: 'All Categories', value: null }]
-        const cats = categories.value.map(cat => ({ label: formatName(cat), value: cat }))
-        return [...all, ...cats]
-      })
-      onMounted(() => {
-        fetchByCategory(route.query.category)
-        productsStore.getCategoryList()
-      })
+  const hasMoreProducts = computed(() => {
+    return productsStore.totalProductsCount > products.value.length
+  })
+  const filterOptions = computed(() => {
+    const all = [{ label: 'All Categories', value: null }]
+    const cats = categories.value.map(cat => ({ label: formatName(cat), value: cat }))
+    return [...all, ...cats]
+  })
+  onMounted(() => {
+    fetchByCategory(route.query.category)
+    productsStore.getCategoryList()
+  })
 
-      onBeforeRouteUpdate(async (to, _from, next) => {
-        await fetchByCategory(to.query.category)
-        next()
-      })
+  onBeforeRouteUpdate(async (to, _from, next) => {
+    await fetchByCategory(to.query.category)
+    next()
+  })
 
-      function loadMore() {
-        productsStore.loadMoreProducts()
-      }
-      async function fetchByCategory(category) {
-        productsStore.setCategory(category || null)
-        await productsStore.getProducts()
-      }
-      function onFilterSelect(option) {
-        const category = option.value
-        const sameCategory = (route.query.category || null) === (category || null)
-        if (sameCategory) return
-        router.push({ path: '/products', query: category ? { category } : {} })
-      }
-      async function onSortSelect(option) {
-        productsStore.setSort({ sortBy: option.value, sortOrder: option.order })
-        await productsStore.getProducts()
-      }
-      return {
-        sortOptions,
-        filterIcon,
-        products,
-        error,
-        isLoading,
-        hasMoreProducts,
-        filterOptions,
-        loadMore,
-        onFilterSelect,
-        onSortSelect,
-      }
-    },
+  function loadMore() {
+    productsStore.loadMoreProducts()
+  }
+  async function fetchByCategory(category) {
+    productsStore.setCategory(category || null)
+    await productsStore.getProducts()
+  }
+  function onFilterSelect(option) {
+    const category = option.value
+    const sameCategory = (route.query.category || null) === (category || null)
+    if (sameCategory) return
+    router.push({ path: '/products', query: category ? { category } : {} })
+  }
+  async function onSortSelect(option) {
+    productsStore.setSort({ sortBy: option.value, sortOrder: option.order })
+    await productsStore.getProducts()
   }
 </script>
 

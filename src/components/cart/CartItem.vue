@@ -26,32 +26,26 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import { useCartStore } from '@/stores/cart'
-  export default {
-    name: 'CartItem',
-    props: { item: { type: Object, required: true } },
+  const props = defineProps({ item: { type: Object, required: true } })
 
-    setup(props) {
-      const cartStore = useCartStore()
+  const cartStore = useCartStore()
 
-      function removeItem() {
-        cartStore.removeFromCart(props.item.id)
-      }
-      function increaseQuantity() {
-        cartStore.updateCartItemQuantity({
-          itemId: props.item.id,
-          quantity: props.item.quantity + 1,
-        })
-      }
-      function decreaseQuantity() {
-        cartStore.updateCartItemQuantity({
-          itemId: props.item.id,
-          quantity: props.item.quantity - 1,
-        })
-      }
-      return { removeItem, increaseQuantity, decreaseQuantity }
-    },
+  function removeItem() {
+    cartStore.removeFromCart(props.item.id)
+  }
+  function increaseQuantity() {
+    cartStore.updateCartItemQuantity({
+      itemId: props.item.id,
+      quantity: props.item.quantity + 1,
+    })
+  }
+  function decreaseQuantity() {
+    cartStore.updateCartItemQuantity({
+      itemId: props.item.id,
+      quantity: props.item.quantity - 1,
+    })
   }
 </script>
 

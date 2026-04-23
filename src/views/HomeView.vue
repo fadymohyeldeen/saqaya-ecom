@@ -30,7 +30,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import { computed, onMounted } from 'vue'
 
   import CategorySection from '@/components/home/CategorySection.vue'
@@ -40,44 +40,27 @@
   import { useProductsStore } from '@/stores/products'
   import { SERVICES } from '@/utils/constants'
 
-  export default {
-    name: 'HomeView',
-    components: {
-      HeroBanner,
-      CategorySection,
-      ServiceItems,
-      ProductSection,
-    },
-    setup() {
-      const productsStore = useProductsStore()
-      const flashSaleProducts = computed(() => {
-        return productsStore.flashSaleProducts
-      })
-      const exploreProducts = computed(() => {
-        return productsStore.exploreProducts
-      })
-      const isLoading = computed(() => {
-        return productsStore.isLoading
-      })
-      const categoryList = computed(() => {
-        return productsStore.categoryList
-      })
-      onMounted(async () => {
-        await Promise.all([
-          productsStore.getFlashSaleProducts(),
-          productsStore.getExploreProducts(),
-          productsStore.getCategoryList(),
-        ])
-      })
-      return {
-        flashSaleProducts,
-        exploreProducts,
-        isLoading,
-        categoryList,
-        services: SERVICES,
-      }
-    },
-  }
+  const services = SERVICES
+  const productsStore = useProductsStore()
+  const flashSaleProducts = computed(() => {
+    return productsStore.flashSaleProducts
+  })
+  const exploreProducts = computed(() => {
+    return productsStore.exploreProducts
+  })
+  const isLoading = computed(() => {
+    return productsStore.isLoading
+  })
+  const categoryList = computed(() => {
+    return productsStore.categoryList
+  })
+  onMounted(async () => {
+    await Promise.all([
+      productsStore.getFlashSaleProducts(),
+      productsStore.getExploreProducts(),
+      productsStore.getCategoryList(),
+    ])
+  })
 </script>
 
 <style scoped>

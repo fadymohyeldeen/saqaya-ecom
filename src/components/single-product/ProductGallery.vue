@@ -29,32 +29,28 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import SkeletonBox from '@/components/shared/SkeletonBox.vue'
 
-  export default {
-    name: 'ProductGallery',
-    components: { SkeletonBox },
-    props: {
-      isLoading: {
-        type: Boolean,
-        default: false,
-      },
-      images: {
-        type: Array,
-        default: () => [],
-      },
-      selectedImage: {
-        type: Number,
-        default: 0,
-      },
-      alt: {
-        type: String,
-        default: 'Product image',
-      },
+  const props = defineProps({
+    isLoading: {
+      type: Boolean,
+      default: false,
     },
-    emits: ['select'],
-  }
+    images: {
+      type: Array,
+      default: () => [],
+    },
+    selectedImage: {
+      type: Number,
+      default: 0,
+    },
+    alt: {
+      type: String,
+      default: 'Product image',
+    },
+  })
+  const emit = defineEmits(['select'])
 </script>
 
 <style scoped>

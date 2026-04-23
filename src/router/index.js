@@ -9,9 +9,6 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-      meta: {
-        layout: 'DefaultLayout',
-      },
     },
     {
       path: '/products',
@@ -40,7 +37,7 @@ const router = createRouter({
     },
   ],
   scrollBehavior() {
-    return { x: 0, y: 0 }
+    return { left: 0, top: 0 }
   },
 })
 export default router

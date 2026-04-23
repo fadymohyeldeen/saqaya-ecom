@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import AboutStats from '@/components/about/AboutStats.vue'
   import AboutTeam from '@/components/about/AboutTeam.vue'
   import StorySection from '@/components/about/StorySection.vue'
@@ -16,11 +16,5 @@
   import ServiceItems from '@/components/shared/ServiceItems.vue'
   import { SERVICES } from '@/utils/constants'
 
-  export default {
-    name: 'AboutView',
-    components: { AppBreadcrumb, StorySection, AboutStats, AboutTeam, ServiceItems },
-    setup() {
-      return { services: SERVICES }
-    },
-  }
+  const services = SERVICES
 </script>

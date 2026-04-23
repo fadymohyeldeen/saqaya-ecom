@@ -11,28 +11,16 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import { computed } from 'vue'
 
   import CartSidebar from '@/components/cart/CartSidebar.vue'
   import AppFooter from '@/components/layout/AppFooter.vue'
   import AppHeader from '@/components/layout/AppHeader.vue'
   import { useCartStore } from '@/stores/cart'
-  export default {
-    name: 'DefaultLayout',
-    components: {
-      AppHeader,
-      AppFooter,
-      CartSidebar,
-    },
-    setup() {
-      const cartStore = useCartStore()
-      const isCartOpen = computed(() => {
-        return cartStore.isCartOpen
-      })
-      return {
-        isCartOpen,
-      }
-    },
-  }
+
+  const cartStore = useCartStore()
+  const isCartOpen = computed(() => {
+    return cartStore.isCartOpen
+  })
 </script>

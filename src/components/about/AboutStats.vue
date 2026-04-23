@@ -17,17 +17,9 @@
   </section>
 </template>
 
-<script>
+<script setup>
   import { STATS } from '@/utils/constants'
-
-  export default {
-    name: 'AboutStats',
-    setup() {
-      return {
-        stats: STATS,
-      }
-    },
-  }
+  const stats = STATS
 </script>
 
 <style scoped>

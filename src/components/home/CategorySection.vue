@@ -20,47 +20,35 @@
   </section>
 </template>
 
-<script>
+<script setup>
   import { ref } from 'vue'
   import { useRouter } from 'vue-router'
 
   import CategoryCard from '@/components/home/CategoryCard.vue'
   import SectionHeader from '@/components/shared/SectionHeader.vue'
 
-  export default {
-    name: 'CategorySection',
-    components: { SectionHeader, CategoryCard },
-    props: {
-      categories: {
-        type: Array,
-        required: true,
-      },
+  const props = defineProps({
+    categories: {
+      type: Array,
+      required: true,
     },
-    setup() {
-      const router = useRouter()
-      const scrollContainer = ref(null)
-      function scrollNext() {
-        const container = scrollContainer.value
-        const card = container.firstElementChild
-        if (!card) return
-        container.scrollBy({ left: card.offsetWidth, behavior: 'smooth' })
-      }
-      function scrollPrev() {
-        const container = scrollContainer.value
-        const card = container.firstElementChild
-        if (!card) return
-        container.scrollBy({ left: -card.offsetWidth, behavior: 'smooth' })
-      }
-      function onSelect(category) {
-        router.push({ path: '/products', query: { category } })
-      }
-      return {
-        scrollNext,
-        scrollPrev,
-        onSelect,
-        scrollContainer,
-      }
-    },
+  })
+  const router = useRouter()
+  const scrollContainer = ref(null)
+  function scrollNext() {
+    const container = scrollContainer.value
+    const card = container.firstElementChild
+    if (!card) return
+    container.scrollBy({ left: card.offsetWidth, behavior: 'smooth' })
+  }
+  function scrollPrev() {
+    const container = scrollContainer.value
+    const card = container.firstElementChild
+    if (!card) return
+    container.scrollBy({ left: -card.offsetWidth, behavior: 'smooth' })
+  }
+  function onSelect(category) {
+    router.push({ path: '/products', query: { category } })
   }
 </script>
 

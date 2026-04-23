@@ -19,26 +19,19 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import { computed } from 'vue'
 
   import CartItem from '@/components/cart/CartItem.vue'
   import CartSummary from '@/components/cart/CartSummary.vue'
   import { useCartStore } from '@/stores/cart'
 
-  export default {
-    name: 'CartSidebar',
-    components: { CartItem, CartSummary },
-    setup() {
-      const cartStore = useCartStore()
-      const cartItems = computed(() => {
-        return cartStore.cartItems
-      })
-      function toggleCart() {
-        cartStore.toggleCart()
-      }
-      return { cartItems, toggleCart }
-    },
+  const cartStore = useCartStore()
+  const cartItems = computed(() => {
+    return cartStore.cartItems
+  })
+  function toggleCart() {
+    cartStore.toggleCart()
   }
 </script>
 

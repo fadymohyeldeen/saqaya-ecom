@@ -20,53 +20,46 @@
   </section>
 </template>
 
-<script>
+<script setup>
   import { ref } from 'vue'
 
   import ButtonApp from '@/components/shared/ButtonApp.vue'
   import ProductCard from '@/components/shared/ProductCard.vue'
   import SectionHeader from '@/components/shared/SectionHeader.vue'
 
-  export default {
-    name: 'ProductSection',
-    components: { SectionHeader, ProductCard, ButtonApp },
-    props: {
-      label: {
-        type: String,
-        required: true,
-      },
-      title: {
-        type: String,
-        default: null,
-      },
-      products: {
-        type: Array,
-        required: true,
-      },
+  const props = defineProps({
+    label: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      default: null,
+    },
+    products: {
+      type: Array,
+      required: true,
+    },
 
-      viewAllLink: {
-        type: String,
-        default: null,
-      },
-      isLoading: {
-        type: Boolean,
-        default: false,
-      },
+    viewAllLink: {
+      type: String,
+      default: null,
     },
-    setup() {
-      const scrollContainer = ref(null)
-      function scrollNext() {
-        const card = scrollContainer.value.firstElementChild
-        if (!card) return
-        scrollContainer.value.scrollBy({ left: card.offsetWidth, behavior: 'smooth' }) // scrolls by the width of a card
-      }
-      function scrollPrev() {
-        const card = scrollContainer.value.firstElementChild
-        if (!card) return
-        scrollContainer.value.scrollBy({ left: -card.offsetWidth, behavior: 'smooth' })
-      }
-      return { scrollContainer, scrollNext, scrollPrev }
+    isLoading: {
+      type: Boolean,
+      default: false,
     },
+  })
+  const scrollContainer = ref(null)
+  function scrollNext() {
+    const card = scrollContainer.value.firstElementChild
+    if (!card) return
+    scrollContainer.value.scrollBy({ left: card.offsetWidth, behavior: 'smooth' }) // scrolls by the width of a card
+  }
+  function scrollPrev() {
+    const card = scrollContainer.value.firstElementChild
+    if (!card) return
+    scrollContainer.value.scrollBy({ left: -card.offsetWidth, behavior: 'smooth' })
   }
 </script>
 

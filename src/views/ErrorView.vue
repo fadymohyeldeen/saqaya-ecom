@@ -10,17 +10,9 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import AppBreadcrumb from '@/components/shared/AppBreadcrumb.vue'
   import ButtonApp from '@/components/shared/ButtonApp.vue'
-
-  export default {
-    name: 'ErrorView',
-    components: {
-      AppBreadcrumb,
-      ButtonApp,
-    },
-  }
 </script>
 
 <style scoped>

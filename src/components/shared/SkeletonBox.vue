@@ -5,20 +5,17 @@
   <div class="skeleton-block" :style="{ width: width, height: height }"></div>
 </template>
 
-<script>
-  export default {
-    name: 'SkeletonBox',
-    props: {
-      width: {
-        type: String,
-        default: '100%',
-      },
-      height: {
-        type: String,
-        required: true,
-      },
+<script setup>
+  const props = defineProps({
+    width: {
+      type: String,
+      default: '100%',
     },
-  }
+    height: {
+      type: String,
+      required: true,
+    },
+  })
 </script>
 
 <style scoped>

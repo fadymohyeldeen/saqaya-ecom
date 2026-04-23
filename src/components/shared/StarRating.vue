@@ -25,20 +25,17 @@
   </div>
 </template>
 
-<script>
-  export default {
-    name: 'StarRating',
-    props: {
-      rating: {
-        type: Number,
-        required: true,
-      },
-      reviews: {
-        type: Number,
-        default: null,
-      },
+<script setup>
+  const props = defineProps({
+    rating: {
+      type: Number,
+      required: true,
     },
-  }
+    reviews: {
+      type: Number,
+      default: null,
+    },
+  })
 </script>
 
 <style scoped>

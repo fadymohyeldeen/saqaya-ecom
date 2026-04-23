@@ -28,31 +28,25 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import ButtonApp from '@/components/shared/ButtonApp.vue'
   import ButtonFav from '@/components/shared/ButtonFav.vue'
   import { useCartStore } from '@/stores/cart'
 
-  export default {
-    name: 'ProductActions',
-    components: { ButtonApp, ButtonFav },
-    props: {
-      product: {
-        type: Object,
-        required: true,
-      },
-      quantity: {
-        type: Number,
-        required: true,
-      },
+  const props = defineProps({
+    product: {
+      type: Object,
+      required: true,
     },
-    emits: ['increase', 'decrease'],
-    methods: {
-      addToCart() {
-        useCartStore().addToCart({ newItem: this.product, quantity: this.quantity })
-      },
+    quantity: {
+      type: Number,
+      required: true,
     },
+  })
+  function addToCart() {
+    useCartStore().addToCart({ newItem: props.product, quantity: props.quantity })
   }
+  const emit = defineEmits(['increase', 'decrease'])
 </script>
 
 <style scoped>
