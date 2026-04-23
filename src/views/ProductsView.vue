@@ -56,7 +56,6 @@
   const error = computed(() => productsStore.error)
   const isLoading = computed(() => productsStore.isLoading)
   const isLoadingMore = computed(() => productsStore.isLoadingMore)
-
   const hasMoreProducts = computed(() => {
     return productsStore.totalProductsCount > products.value.length
   })
@@ -65,6 +64,7 @@
     const cats = categories.value.map(cat => ({ label: formatName(cat), value: cat }))
     return [...all, ...cats]
   })
+
   onMounted(() => {
     fetchByCategory(route.query.category)
     productsStore.getCategoryList()

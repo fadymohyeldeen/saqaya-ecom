@@ -1,3 +1,5 @@
+/* Removes browser default styles */
+
 *,
 *::before,
 *::after {
