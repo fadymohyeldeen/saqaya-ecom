@@ -1,3 +1,6 @@
+<!-- Purpose: Renders a trash icon button for deletion actions.
+  Used In: src/components/cart/CartSummary.vue
+  Notes: Accepts disabled and ariaLabel props, emits click. -->
 <template>
   <button class="btn-trash" :disabled="disabled" :aria-label="ariaLabel" @click="$emit('click')">
     <img src="@/assets/icons/cart/icon-trash.svg" :alt="ariaLabel" />

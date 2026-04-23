@@ -1,3 +1,6 @@
+<!-- Purpose: Renders a placeholder block for loading states.
+  Used In: src/components/shared/ProductCard.vue, src/components/single-product/ProductInfo.vue, src/components/single-product/ProductGallery.vue
+  Notes: Accepts dynamic width and height styles. -->
 <template>
   <div class="skeleton-block" :style="{ width: width, height: height }"></div>
 </template>

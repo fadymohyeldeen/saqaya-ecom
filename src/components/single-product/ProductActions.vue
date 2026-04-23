@@ -1,3 +1,6 @@
+<!-- Purpose: Holds the quantity minus/plus selectors, Add To Cart button, and favorite icon.
+  Used In: src/components/single-product/ProductInfo.vue
+  Notes: uses useCartStore.addToCart() to add items to the cart with the current quantity -->
 <template>
   <div class="product-actions">
     <div class="product-actions__qty">
@@ -43,12 +46,12 @@
         required: true,
       },
     },
+    emits: ['increase', 'decrease'],
     methods: {
       addToCart() {
         useCartStore().addToCart({ newItem: this.product, quantity: this.quantity })
       },
     },
-    emits: ['increase', 'decrease'],
   }
 </script>
 

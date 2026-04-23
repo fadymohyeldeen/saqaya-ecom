@@ -1,3 +1,6 @@
+<!-- Purpose: The top navigation linking to primary routes and toggling the cart sidebar.
+  Used In: src/layouts/DefaultLayout.vue
+  Notes: Toggles cart using useCartStore.toggleCart() -->
 <template>
   <header class="header">
     <div class="header__container">
@@ -30,8 +33,9 @@
 </template>
 
 <script>
-  import { useCartStore } from '@/stores/cart'
   import { ref } from 'vue'
+
+  import { useCartStore } from '@/stores/cart'
   export default {
     name: 'AppHeader',
     setup() {

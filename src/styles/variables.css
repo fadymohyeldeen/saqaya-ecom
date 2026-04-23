@@ -12,8 +12,6 @@
 
   --color-text-light: #fafafa;
 
-  --color-badge-new: #00ff66;
-  --color-star: #ffad33;
   --color-in-stock: #00ff66;
   --color-contact-bg: #cbe4e8;
 
@@ -27,8 +25,6 @@
   --text-md: 16px;
   --text-lg: 20px;
   --text-xl: 24px;
-  --text-2xl: 36px;
-  --text-3xl: 48px;
 
   /* ─── Layout ─── */
   --container-max-width: 1440px;

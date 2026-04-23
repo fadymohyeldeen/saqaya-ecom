@@ -1,3 +1,6 @@
+<!-- Purpose: Homepage slider showing images with pagination dots.
+  Used In: src/views/HomeView.vue
+  Notes: Implements autoPlayInterval for slide switching. -->
 <template>
   <div class="hero">
     <div class="hero__container">
@@ -46,7 +49,7 @@
 </template>
 
 <script>
-  import { ref, onMounted, onBeforeUnmount } from 'vue'
+  import { onBeforeUnmount, onMounted, ref } from 'vue'
   export default {
     name: 'HeroBanner',
     setup() {
@@ -91,7 +94,7 @@
         currentSlide.value = slideNumber
       }
       function nextSlide() {
-        currentSlide.value = (currentSlide.value + 1) % slides.length
+        currentSlide.value = (currentSlide.value + 1) % slides.length // goes back to 0 after the last slide
       }
       function autoPlaySlider() {
         autoPlayInterval.value = setInterval(() => {

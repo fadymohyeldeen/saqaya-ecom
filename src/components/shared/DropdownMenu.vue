@@ -1,3 +1,6 @@
+<!-- Purpose: A reusable dropdown menu component triggered by an icon or text.
+  Used In: src/views/ProductsView.vue
+  Notes: Takes an options array and tracks open state. -->
 <template>
   <div ref="dropdownRef" class="dropdown-menu">
     <img v-if="icon" :src="icon" alt="" class="dropdown-menu__icon" @click="toggle" />
@@ -19,7 +22,7 @@
 </template>
 
 <script>
-  import { onMounted, ref, onBeforeUnmount } from 'vue'
+  import { onBeforeUnmount, onMounted, ref } from 'vue'
 
   export default {
     name: 'DropdownMenu',

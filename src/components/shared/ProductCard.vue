@@ -1,3 +1,5 @@
+<!-- Purpose: Displays a product card that shows product information and allows adding it to the cart.
+  Used In: src/views/ProductsView.vue, src/components/shared/ProductSection.vue -->
 <template>
   <div>
     <template v-if="isLoading">
@@ -56,13 +58,14 @@
 </template>
 
 <script>
-  import ButtonFav from '@/components/shared/ButtonFav.vue'
-  import ButtonEye from '@/components/shared/ButtonEye.vue'
-  import StarRating from '@/components/shared/StarRating.vue'
-  import SkeletonBox from '@/components/shared/SkeletonBox.vue'
-  import placeholderImg from '@/assets/images/placeholder.svg'
-  import { useCartStore } from '@/stores/cart'
   import { computed } from 'vue'
+
+  import placeholderImg from '@/assets/images/placeholder.svg'
+  import ButtonEye from '@/components/shared/ButtonEye.vue'
+  import ButtonFav from '@/components/shared/ButtonFav.vue'
+  import SkeletonBox from '@/components/shared/SkeletonBox.vue'
+  import StarRating from '@/components/shared/StarRating.vue'
+  import { useCartStore } from '@/stores/cart'
 
   export default {
     name: 'ProductCard',

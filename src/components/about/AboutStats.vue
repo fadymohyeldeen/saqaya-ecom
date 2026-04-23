@@ -1,3 +1,6 @@
+<!-- Purpose: Displays key company statistics (users, ratings, etc.)
+  Used In: src/views/AboutView.vue
+  Notes: Data is sourced from @/utils/constants -->
 <template>
   <section class="about-stats">
     <div v-for="stat in stats" :key="stat.label" class="about-stats__card">
@@ -19,7 +22,7 @@
 
   export default {
     name: 'AboutStats',
-    data() {
+    setup() {
       return {
         stats: STATS,
       }
@@ -94,7 +97,7 @@
   }
 
   .about-stats__card:hover .about-stats__icon-inner img {
-    filter: invert(1); /* invert reverses the colors of the image */
+    filter: invert(1); /* reverts the colors of an SVG */
   }
 
   .about-stats__number {

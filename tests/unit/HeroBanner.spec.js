@@ -1,3 +1,16 @@
+// What's tested:
+// - HeroBanner starts at slide 0
+// - changeCurrentSlide() slides to the clicked slide
+// - nextSlide() slides to next slide
+// - nextSlide() wraps back to 0 when it reaches the end
+// - autoPlaySlider() changes slider every 2 secs with setInterval
+// - autoPlaySlider() clears interval on unmount
+// - renders the correct number of dots
+// - active dot is the same as current slide
+// - active dot updates when slide changes and previous dot becomes inactive
+// - brand name is the same as current slide
+// - title is the same as current slide
+
 import { shallowMount } from '@vue/test-utils'
 import HeroBanner from '@/components/home/HeroBanner.vue'
 
@@ -16,19 +29,19 @@ describe('HeroBanner', () => {
     title = wrapper.find('.hero__title')
   })
 
-  // ------------- Initial State -------------
+  // ------------- Initial State ------------
   it('HeroBanner starts at slide 0', () => {
     expect(wrapper.vm.currentSlide).toBe(0)
   })
 
-  // --------- changeCurrentSlide() ----------
+  // --------- changeCurrentSlide() ---------
   it('changeCurrentSlide() slides to the clicked slide', () => {
     const num = Math.floor(Math.random() * wrapper.vm.slides.length)
     wrapper.vm.changeCurrentSlide(num)
     expect(wrapper.vm.currentSlide).toBe(num)
   })
 
-  // -------------- nextSlide() --------------
+  // -------------- nextSlide() -------------
   it('nextSlide() slides to next slide', () => {
     wrapper.vm.nextSlide()
     expect(wrapper.vm.currentSlide).toBe(1)
@@ -40,7 +53,7 @@ describe('HeroBanner', () => {
     expect(wrapper.vm.currentSlide).toBe(0)
   })
 
-  // ----------- autoPlaySlider() ------------
+  // ----------- autoPlaySlider() -----------
   it('autoPlaySlider() changes slider every 2 secs with setInterval', () => {
     jest.useFakeTimers()
     const wrapper = shallowMount(HeroBanner)
@@ -59,7 +72,7 @@ describe('HeroBanner', () => {
     expect(spy).toHaveBeenCalled()
   })
 
-  // ----------------- Dots ------------------
+  // ----------------- Dots -----------------
   it('renders the correct number of dots', () => {
     expect(dots.length).toBe(wrapper.vm.slides.length)
   })
@@ -76,7 +89,7 @@ describe('HeroBanner', () => {
     expect(dots.at(0).classes()).not.toContain('hero__dot--active')
   })
 
-  // ------------- Slide Content -------------
+  // ------------- Slide Content ------------
   it('brand name is the same as current slide', () => {
     const currentSlide = wrapper.vm.slides[wrapper.vm.currentSlide]
     expect(brandName.text()).toBe(currentSlide.brandName)

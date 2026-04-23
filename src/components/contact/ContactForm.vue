@@ -1,3 +1,6 @@
+<!-- Purpose: Contact us form.  
+  Used In: src/views/ContactView.vue
+  Notes: Combines ContactInfo and InputFields. -->
 <template>
   <div class="contact__details">
     <div class="contact__info-card">
@@ -36,8 +39,8 @@
 </template>
 
 <script>
-  import ButtonApp from '@/components/shared/ButtonApp.vue'
   import ContactInfo from '@/components/contact/ContactInfo.vue'
+  import ButtonApp from '@/components/shared/ButtonApp.vue'
   import InputField from '@/components/shared/InputField.vue'
 
   export default {

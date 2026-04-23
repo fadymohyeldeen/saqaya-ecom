@@ -1,8 +1,8 @@
-import cartIcon from '@/assets/icons/header/icon-cart.svg'
 import customerIcon from '@/assets/icons/about/icon-customer.svg'
 import dollarIcon from '@/assets/icons/about/icon-dollar.svg'
-import sellerIcon from '@/assets/icons/about/icon-sellers.svg'
 import moneyIcon from '@/assets/icons/about/icon-money-bag.svg'
+import sellerIcon from '@/assets/icons/about/icon-sellers.svg'
+import cartIcon from '@/assets/icons/header/icon-cart.svg'
 
 // --------------- Services ---------------
 export const SERVICES = [

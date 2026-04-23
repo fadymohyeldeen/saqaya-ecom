@@ -1,3 +1,6 @@
+<!-- Purpose: Displays a section of scrollable CategoryCards.
+  Used In: src/views/HomeView.vue
+  Notes: Wraps CategoryCards with a SectionHeader. -->
 <template>
   <section class="categories-section">
     <SectionHeader
@@ -18,10 +21,11 @@
 </template>
 
 <script>
-  import SectionHeader from '@/components/shared/SectionHeader.vue'
-  import CategoryCard from '@/components/home/CategoryCard.vue'
   import { ref } from 'vue'
   import { useRouter } from 'vue-router'
+
+  import CategoryCard from '@/components/home/CategoryCard.vue'
+  import SectionHeader from '@/components/shared/SectionHeader.vue'
 
   export default {
     name: 'CategorySection',

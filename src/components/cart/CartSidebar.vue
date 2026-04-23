@@ -1,3 +1,6 @@
+<!-- Purpose: Slide-out sidebar displaying the Shopping Cart.
+  Used In: src/layouts/DefaultLayout.vue
+  Notes: Contains CartItem and CartSummary; toggles via useCartStore.toggleCart() -->
 <template>
   <div class="cart-sidebar">
     <div class="cart-sidebar__header">
@@ -17,10 +20,11 @@
 </template>
 
 <script>
+  import { computed } from 'vue'
+
   import CartItem from '@/components/cart/CartItem.vue'
   import CartSummary from '@/components/cart/CartSummary.vue'
   import { useCartStore } from '@/stores/cart'
-  import { computed } from 'vue'
 
   export default {
     name: 'CartSidebar',
@@ -56,7 +60,7 @@
   }
 
   .cart-sidebar::before {
-    /* the arrow pointing to the cart icon */
+    /* the arrow pointing to the cart icon in the header */
     content: '';
     position: absolute;
     top: 27px;

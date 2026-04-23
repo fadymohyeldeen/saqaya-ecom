@@ -1,3 +1,9 @@
+// What's tested:
+// - renders the skeleton block element
+// - applies the correct height from props
+// - has default width of 100%
+// - applies the correct width when passed
+
 import { shallowMount } from '@vue/test-utils'
 import SkeletonBox from '@/components/shared/SkeletonBox.vue'
 

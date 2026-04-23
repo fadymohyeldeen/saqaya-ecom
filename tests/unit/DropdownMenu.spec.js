@@ -1,3 +1,13 @@
+// What's tested:
+// - Opens dropdown when trigger is clicked
+// - if open and trigger is clicked again dropdown closes
+// - closes dropdown when an option is clicked
+// - closes dropdown when clicked outside
+// - emits selected option value when clicked
+// - removes click listener when unmounted
+// - renders the correct number of options
+// - renders icon trigger when icon prop is passed
+
 import { shallowMount } from '@vue/test-utils'
 import DropdownMenu from '@/components/shared/DropdownMenu.vue'
 
@@ -48,7 +58,7 @@ describe('DropdownMenu', () => {
     expect(wrapper.emitted('select')[0][0]).toEqual({ label: 'Option 1', value: 'option1' })
   })
 
-  // ------------ Lifecycle ----------------
+  // --------------- Lifecycle --------------
   it('removes click listener when unmounted', () => {
     jest.spyOn(document, 'removeEventListener')
     wrapper.unmount()

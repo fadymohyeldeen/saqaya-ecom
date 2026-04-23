@@ -1,3 +1,5 @@
+<!-- Purpose: Renders the active large product image and a strip of thumbnails for selection.
+  Used In: src/views/ProductView.vue -->
 <template>
   <div class="product-gallery">
     <template v-if="isLoading">

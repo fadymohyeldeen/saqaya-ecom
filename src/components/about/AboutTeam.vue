@@ -1,3 +1,6 @@
+<!-- Purpose: Displays the team members with their photos, roles, and social media links.
+  Used In: src/views/AboutView.vue
+  Notes: Data is sourced from @/utils/constants -->
 <template>
   <section class="about-team">
     <div class="about-team__grid">
@@ -30,7 +33,7 @@
 
   export default {
     name: 'AboutTeam',
-    data() {
+    setup() {
       return {
         team: TEAM,
       }

@@ -1,3 +1,6 @@
+<!-- Purpose: Displays a row of service highlight icons and descriptions.
+  Used In: src/views/AboutView.vue, src/views/HomeView.vue
+  Notes: Iterates over a services array prop. -->
 <template>
   <section class="services-strip">
     <div v-for="service in services" :key="service.title" class="services-strip__item">

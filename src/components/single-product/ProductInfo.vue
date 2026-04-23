@@ -1,3 +1,5 @@
+<!-- Purpose: Compiles StarRating, descriptions, ProductActions, and DeliveryBox into the main details block.
+  Used In: src/views/ProductView.vue -->
 <template>
   <div class="product-info">
     <template v-if="isLoading">
@@ -47,10 +49,10 @@
 </template>
 
 <script>
-  import StarRating from '@/components/shared/StarRating.vue'
-  import ProductActions from '@/components/single-product/ProductActions.vue'
-  import DeliveryBox from '@/components/single-product/DeliveryBox.vue'
   import SkeletonBox from '@/components/shared/SkeletonBox.vue'
+  import StarRating from '@/components/shared/StarRating.vue'
+  import DeliveryBox from '@/components/single-product/DeliveryBox.vue'
+  import ProductActions from '@/components/single-product/ProductActions.vue'
   import { formatName } from '@/utils/formatters'
 
   export default {
@@ -70,10 +72,10 @@
         default: 1,
       },
     },
+    emits: ['increase-qty', 'decrease-qty'],
     methods: {
       formatName,
     },
-    emits: ['increase-qty', 'decrease-qty'],
   }
 </script>
 

@@ -1,3 +1,6 @@
+<!-- Purpose: A generic button that can be used as a router-link or standard button.
+  Used In: src/views/ProductsView.vue, src/views/ErrorView.vue, src/components/cart/CartSummary.vue, src/components/shared/ProductSection.vue, src/components/contact/ContactForm.vue, src/components/single-product/ProductActions.vue
+  Notes: if passed 'to' prop, it will be a router-link, otherwise it will be a standard button -->
 <template>
   <!-- for navigation -->
   <router-link v-if="to" :to="to" class="app-btn">
