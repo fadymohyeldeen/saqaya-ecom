@@ -38,15 +38,10 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import ContactInfo from '@/components/contact/ContactInfo.vue'
   import ButtonApp from '@/components/shared/ButtonApp.vue'
   import InputField from '@/components/shared/InputField.vue'
-
-  export default {
-    name: 'ContactForm',
-    components: { ButtonApp, ContactInfo, InputField },
-  }
 </script>
 
 <style scoped>

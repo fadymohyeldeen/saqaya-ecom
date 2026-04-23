@@ -82,7 +82,7 @@
   </footer>
 </template>
 
-<script>
+<script setup>
   import appStore from '@/assets/icons/footer/icon-app-store.svg'
   import facebook from '@/assets/icons/footer/icon-facebook.svg'
   import googlePlay from '@/assets/icons/footer/icon-google-play.svg'
@@ -91,43 +91,29 @@
   import qrCode from '@/assets/icons/footer/icon-qr.svg'
   import twitter from '@/assets/icons/footer/icon-twitter.svg'
 
-  export default {
-    name: 'AppFooter',
-    setup() {
-      const supportInfo = [
-        '111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.',
-        'exclusive@gmail.com',
-        '+88015-88888-9999',
-      ]
-      const accountLinks = [
-        { label: 'My Account', path: '#' },
-        { label: 'Login / Register', path: '#' },
-        { label: 'Cart', path: '#' },
-        { label: 'Wishlist', path: '#' },
-      ]
-      const quickLinks = [
-        { label: 'Home', path: '/' },
-        { label: 'Products', path: '/products' },
-        { label: 'Contact', path: '/contact' },
-        { label: 'About', path: '/about-us' },
-      ]
-      const socialIcons = [
-        { src: facebook, alt: 'Facebook', path: '#' },
-        { src: twitter, alt: 'Twitter', path: '#' },
-        { src: instagram, alt: 'Instagram', path: '#' },
-        { src: linkedin, alt: 'LinkedIn', path: '#' },
-      ]
-      return {
-        supportInfo,
-        accountLinks,
-        quickLinks,
-        socialIcons,
-        qrCode,
-        googlePlay,
-        appStore,
-      }
-    },
-  }
+  const supportInfo = [
+    '111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.',
+    'exclusive@gmail.com',
+    '+88015-88888-9999',
+  ]
+  const accountLinks = [
+    { label: 'My Account', path: '#' },
+    { label: 'Login / Register', path: '#' },
+    { label: 'Cart', path: '#' },
+    { label: 'Wishlist', path: '#' },
+  ]
+  const quickLinks = [
+    { label: 'Home', path: '/' },
+    { label: 'Products', path: '/products' },
+    { label: 'Contact', path: '/contact' },
+    { label: 'About', path: '/about-us' },
+  ]
+  const socialIcons = [
+    { src: facebook, alt: 'Facebook', path: '#' },
+    { src: twitter, alt: 'Twitter', path: '#' },
+    { src: instagram, alt: 'Instagram', path: '#' },
+    { src: linkedin, alt: 'LinkedIn', path: '#' },
+  ]
 </script>
 
 <style scoped>

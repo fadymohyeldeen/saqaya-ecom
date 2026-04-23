@@ -7,21 +7,16 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import { formatName } from '@/utils/formatters'
 
-  export default {
-    name: 'CategoryCard',
-    props: {
-      name: {
-        type: String,
-        required: true,
-      },
+  const props = defineProps({
+    name: {
+      type: String,
+      required: true,
     },
-    setup() {
-      return { formatName }
-    },
-  }
+  })
+  const emits = defineEmits(['select'])
 </script>
 
 <style scoped>

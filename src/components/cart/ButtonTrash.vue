@@ -7,21 +7,18 @@
   </button>
 </template>
 
-<script>
-  export default {
-    name: 'ButtonTrash',
-    props: {
-      disabled: {
-        type: Boolean,
-        default: false,
-      },
-      ariaLabel: {
-        type: String,
-        default: 'Delete',
-      },
+<script setup>
+  const props = defineProps({
+    disabled: {
+      type: Boolean,
+      default: false,
     },
-    emits: ['click'],
-  }
+    ariaLabel: {
+      type: String,
+      default: 'Delete',
+    },
+  })
+  const emits = defineEmits(['click'])
 </script>
 
 <style scoped>

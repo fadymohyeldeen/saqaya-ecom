@@ -28,17 +28,9 @@
   </section>
 </template>
 
-<script>
+<script setup>
   import { TEAM } from '@/utils/constants'
-
-  export default {
-    name: 'AboutTeam',
-    setup() {
-      return {
-        team: TEAM,
-      }
-    },
-  }
+  const team = TEAM
 </script>
 
 <style scoped>

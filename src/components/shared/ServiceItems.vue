@@ -22,16 +22,13 @@
   </section>
 </template>
 
-<script>
-  export default {
-    name: 'ServiceItems',
-    props: {
-      services: {
-        type: Array,
-        required: true,
-      },
+<script setup>
+  const props = defineProps({
+    services: {
+      type: Array,
+      required: true,
     },
-  }
+  })
 </script>
 
 <style scoped>

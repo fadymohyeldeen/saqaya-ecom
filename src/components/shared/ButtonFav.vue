@@ -13,12 +13,6 @@
   </button>
 </template>
 
-<script>
-  export default {
-    name: 'ButtonFav',
-  }
-</script>
-
 <style scoped>
   .fav-btn {
     background: none;

@@ -25,40 +25,34 @@
   </nav>
 </template>
 
-<script>
+<script setup>
   import { computed } from 'vue'
   import { useRoute } from 'vue-router'
 
   import { formatName } from '@/utils/formatters'
 
-  export default {
-    name: 'AppBreadcrumb',
-    props: {
-      productName: {
-        type: String,
-        default: null,
-      },
+  const props = defineProps({
+    productName: {
+      type: String,
+      default: null,
     },
-    setup(props) {
-      const route = useRoute()
-      const breadcrumbs = computed(() => {
-        const urlSegments = route.path.split('/').filter(Boolean) // splits the current path into segments and removes empty strings
-        const crumbs = [{ label: 'Home', to: '/' }] // always starts with home
+  })
+  const route = useRoute()
+  const breadcrumbs = computed(() => {
+    const urlSegments = route.path.split('/').filter(Boolean) // splits the current path into segments and removes empty strings
+    const crumbs = [{ label: 'Home', to: '/' }] // always starts with home
 
-        urlSegments.forEach((segment, index) => {
-          const isLastSegment = index === urlSegments.length - 1
-          const label = formatName(segment) // removes hyphens and capitalizes
+    urlSegments.forEach((segment, index) => {
+      const isLastSegment = index === urlSegments.length - 1
+      const label = formatName(segment) // removes hyphens and capitalizes
 
-          crumbs.push({
-            label: isLastSegment && props.productName ? props.productName : label, // uses productName on last segment if its a product page
-            to: isLastSegment ? null : '/' + urlSegments.slice(0, index + 1).join('/'), // adds a link to the current segment if its not the last one
-          })
-        })
-        return crumbs
+      crumbs.push({
+        label: isLastSegment && props.productName ? props.productName : label, // uses productName on last segment if its a product page
+        to: isLastSegment ? null : '/' + urlSegments.slice(0, index + 1).join('/'), // adds a link to the current segment if its not the last one
       })
-      return { breadcrumbs }
-    },
-  }
+    })
+    return crumbs
+  })
 </script>
 
 <style scoped>

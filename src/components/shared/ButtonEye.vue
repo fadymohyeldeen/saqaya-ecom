@@ -14,12 +14,6 @@
   </button>
 </template>
 
-<script>
-  export default {
-    name: 'ButtonEye',
-  }
-</script>
-
 <style scoped>
   .eye-btn {
     background: none;

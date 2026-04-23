@@ -13,25 +13,22 @@
   </button>
 </template>
 
-<script>
-  export default {
-    name: 'ButtonApp',
-    props: {
-      label: {
-        type: String,
-        required: true,
-      },
-      to: {
-        type: String,
-        default: null,
-      },
-      disabled: {
-        type: Boolean,
-        default: false,
-      },
+<script setup>
+  const props = defineProps({
+    label: {
+      type: String,
+      required: true,
     },
-    emits: ['click'],
-  }
+    to: {
+      type: String,
+      default: null,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+  })
+  const emit = defineEmits(['click'])
 </script>
 
 <style scoped>

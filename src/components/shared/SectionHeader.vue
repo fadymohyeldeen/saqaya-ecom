@@ -40,21 +40,18 @@
   </div>
 </template>
 
-<script>
-  export default {
-    name: 'SectionHeader',
-    props: {
-      label: {
-        type: String,
-        required: true,
-      },
-      title: {
-        type: String,
-        default: null,
-      },
+<script setup>
+  const props = defineProps({
+    label: {
+      type: String,
+      required: true,
     },
-    emits: ['prev', 'next'],
-  }
+    title: {
+      type: String,
+      default: null,
+    },
+  })
+  const emit = defineEmits(['prev', 'next'])
 </script>
 
 <style scoped>

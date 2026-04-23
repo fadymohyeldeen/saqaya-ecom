@@ -57,7 +57,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import { computed } from 'vue'
 
   import placeholderImg from '@/assets/images/placeholder.svg'
@@ -67,27 +67,20 @@
   import StarRating from '@/components/shared/StarRating.vue'
   import { useCartStore } from '@/stores/cart'
 
-  export default {
-    name: 'ProductCard',
-    components: { ButtonFav, ButtonEye, StarRating, SkeletonBox },
-    props: {
-      product: { type: Object, default: null },
-      isLoading: { type: Boolean, default: false },
-    },
-    setup(props) {
-      const cartStore = useCartStore()
-      const priceAfterDiscount = computed(() => {
-        if (!props.product) return null
-        return (
-          props.product.price -
-          props.product.price * (props.product.discountPercentage / 100)
-        ).toFixed(2)
-      })
-      function addToCart() {
-        cartStore.addToCart({ newItem: props.product, quantity: 1 })
-      }
-      return { priceAfterDiscount, addToCart, placeholderImg }
-    },
+  const props = defineProps({
+    product: { type: Object, default: null },
+    isLoading: { type: Boolean, default: false },
+  })
+  const cartStore = useCartStore()
+  const priceAfterDiscount = computed(() => {
+    if (!props.product) return null
+    return (
+      props.product.price -
+      props.product.price * (props.product.discountPercentage / 100)
+    ).toFixed(2)
+  })
+  function addToCart() {
+    cartStore.addToCart({ newItem: props.product, quantity: 1 })
   }
 </script>
 

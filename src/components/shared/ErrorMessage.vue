@@ -7,16 +7,13 @@
   </div>
 </template>
 
-<script>
-  export default {
-    name: 'ErrorMessage',
-    props: {
-      message: {
-        type: String,
-        required: true,
-      },
+<script setup>
+  const props = defineProps({
+    message: {
+      type: String,
+      required: true,
     },
-  }
+  })
 </script>
 
 <style scoped>
