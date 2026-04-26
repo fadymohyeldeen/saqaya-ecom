@@ -1,4 +1,4 @@
-# Saqaya E-Commerce
+# Vue.js E-Commerce
 
 An e-commerce web app built with Vue 3.
 
